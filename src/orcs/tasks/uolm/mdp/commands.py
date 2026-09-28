@@ -48,6 +48,14 @@ from orcs.core.mdp.commands import (
     MultiClipMotionCommandCfg,
     sample_se3,
 )
+from orcs.tasks.uolm.diffusion_runtime import (
+    BatchedDiffusionGenerator,
+    DiffusionGeneratorCfg,
+)
+from orcs.tasks.uolm.generated_reference import (
+    GeneratedReferenceAdapter,
+    project_generated_joint_positions_,
+)
 from orcs.tasks.uolm.mdp.contact_schedule import ContactSchedule
 from orcs.tasks.uolm.mdp.demo_loader import get_motion_files_for_objects
 from orcs.tasks.uolm.sources.reconstructed import (
@@ -61,6 +69,8 @@ if TYPE_CHECKING:
 __all__ = [
     "ObjectMotionCommandCfg",
     "ObjectMotionCommand",
+    "DiffusionObjectMotionCommandCfg",
+    "DiffusionObjectMotionCommand",
     "SmplSeedObjectMotionCommandCfg",
     "SmplSeedObjectMotionCommand",
     "motion_dirs",
@@ -864,6 +874,264 @@ class SmplSeedObjectMotionCommand(ObjectMotionCommand):
                 )
 
 
+class _GeneratedMotionStore:
+    """Per-environment generated timelines with the legacy loader interface."""
+
+    tag = "uolm-diffusion"
+
+    def __init__(
+        self,
+        *,
+        num_envs: int,
+        horizon: int,
+        num_joints: int,
+        num_bodies: int,
+        num_contacts: int,
+        device: torch.device,
+    ) -> None:
+        shape = (num_envs * horizon,)
+        self.joint_pos = torch.zeros(*shape, num_joints, device=device)
+        self.joint_vel = torch.zeros_like(self.joint_pos)
+        self.body_pos_w = torch.zeros(*shape, num_bodies, 3, device=device)
+        self.body_quat_w = torch.zeros(*shape, num_bodies, 4, device=device)
+        self.body_quat_w[..., 0] = 1.0
+        self.body_lin_vel_w = torch.zeros_like(self.body_pos_w)
+        self.body_ang_vel_w = torch.zeros_like(self.body_pos_w)
+        self.obj_pos = torch.zeros(*shape, 3, device=device)
+        self.obj_quat = torch.zeros(*shape, 4, device=device)
+        self.obj_quat[..., 0] = 1.0
+        self.obj_lin_vel = torch.zeros_like(self.obj_pos)
+        self.obj_ang_vel = torch.zeros_like(self.obj_pos)
+        self.obj_bodywise_contact = torch.zeros(
+            *shape, num_contacts, device=device
+        )
+        self.obj_contact_any = torch.zeros(*shape, device=device)
+        self.clip_lengths = torch.full(
+            (num_envs,), horizon, dtype=torch.long, device=device
+        )
+        self.clip_offsets = (
+            torch.arange(num_envs, dtype=torch.long, device=device) * horizon
+        )
+        self.clip_ends = self.clip_offsets + self.clip_lengths
+        self.n_clips = num_envs
+        self.max_clip_length = horizon
+        self.time_step_total = num_envs * horizon
+
+
+class DiffusionObjectMotionCommand(ObjectMotionCommand):
+    """Native UOLM command backed by reset-time diffusion generation.
+
+    The prerecorded library remains the source of object identity, initial
+    context, requested goal, and temporary contact labels.  Every continuously
+    tracked robot/object channel comes from the generated trajectory.
+    """
+
+    cfg: "DiffusionObjectMotionCommandCfg"
+
+    def __init__(self, cfg: "DiffusionObjectMotionCommandCfg", env: ManagerBasedRlEnv):
+        super().__init__(cfg, env)
+        self.conditioning_motion = self.motion
+        generator_cfg = DiffusionGeneratorCfg(
+            source_path=cfg.diffusion_source_path,
+            checkpoint_path=cfg.diffusion_checkpoint_path,
+            sampler=cfg.diffusion_sampler,
+            num_inference_steps=cfg.diffusion_num_inference_steps,
+            eta=cfg.diffusion_eta,
+            generation_batch_size=cfg.generation_batch_size,
+            horizon=cfg.generated_horizon,
+            precision=cfg.diffusion_precision,
+        )
+        self.diffusion_generator = BatchedDiffusionGenerator(generator_cfg, self.device)
+        self.generated_reference_adapter = GeneratedReferenceAdapter(
+            device=self.device,
+            dt=float(env.step_dt),
+            fk_batch_size=cfg.fk_batch_size,
+        )
+        configured_bodies = tuple(cfg.body_names)
+        adapter_bodies = self.generated_reference_adapter.tracked_body_names
+        if configured_bodies != adapter_bodies:
+            raise ValueError(
+                "diffusion generated-reference body order must match "
+                "G1_TRACKED_BODIES exactly; "
+                f"configured={configured_bodies}, adapter={adapter_bodies}"
+            )
+        if abs(float(env.step_dt) - 0.02) > 1.0e-9:
+            raise ValueError(
+                f"diffusion UOLM requires 50 Hz control (dt=0.02), got {env.step_dt}"
+            )
+        contact_count = len(cfg.contact_graph_body_names or ())
+        self.motion = _GeneratedMotionStore(
+            num_envs=self.num_envs,
+            horizon=cfg.generated_horizon,
+            num_joints=len(self.robot.joint_names),
+            num_bodies=len(cfg.body_names),
+            num_contacts=contact_count,
+            device=self.device,
+        )
+        self._clip_ids[:] = torch.arange(self.num_envs, device=self.device)
+        self.time_steps[:] = self.motion.clip_offsets
+        self._reset_update_env_ids: torch.Tensor | None = None
+
+    @staticmethod
+    def _matrix_to_columns6d(matrix: torch.Tensor) -> torch.Tensor:
+        return matrix[..., :, :2].transpose(-1, -2).reshape(*matrix.shape[:-2], 6)
+
+    def _physical_object_frame(self, pos: torch.Tensor, quat_wxyz: torch.Tensor) -> torch.Tensor:
+        # CHECKPOINT COMPATIBILITY: physical wxyz source components were read by
+        # training preprocessing as xyzw.  Recreate that historical encoding
+        # for all object conditions; the generated output is corrected by the
+        # GeneratedReferenceAdapter on the way back into ORCS.
+        encoded_quat_wxyz = quat_wxyz.roll(1, dims=-1)
+        encoded_rot6d = self._matrix_to_columns6d(matrix_from_quat(encoded_quat_wxyz))
+        return torch.cat([pos, encoded_rot6d], dim=-1)
+
+    def _sample_conditioning_frame(
+        self, env_ids: torch.Tensor
+    ) -> tuple[torch.Tensor, torch.Tensor]:
+        motion = self.conditioning_motion
+        n = len(env_ids)
+        allowed = self._clip_allowance(env_ids)
+        if self.cfg.start_from_zero:
+            if allowed is None:
+                clip_ids = torch.randint(motion.n_clips, (n,), device=self.device)
+            else:
+                clip_ids = torch.multinomial(allowed, 1).squeeze(1)
+            return clip_ids, motion.clip_offsets[clip_ids]
+
+        lengths = motion.clip_lengths
+        if self._init_phase_max < 1.0:
+            init_lengths = (lengths.float() * self._init_phase_max).long().clamp(min=1)
+        else:
+            init_lengths = lengths
+        weights = init_lengths.float()
+        if allowed is None:
+            clip_ids = torch.multinomial(weights, n, replacement=True)
+        else:
+            clip_ids = torch.multinomial(weights[None, :] * allowed, 1).squeeze(1)
+        local = (torch.rand(n, device=self.device) * init_lengths[clip_ids]).long()
+        local = local.clamp(max=init_lengths[clip_ids] - 1)
+        return clip_ids, motion.clip_offsets[clip_ids] + local
+
+    def _build_condition(
+        self, clip_ids: torch.Tensor, starts: torch.Tensor
+    ) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
+        source = self.conditioning_motion
+        ends = source.clip_ends[clip_ids] - 1
+        root_pos = source.body_pos_w[starts, self.motion_anchor_body_index]
+        root_quat = source.body_quat_w[starts, self.motion_anchor_body_index]
+        root_rot6d = self._matrix_to_columns6d(matrix_from_quat(root_quat))
+        robot_initial = torch.cat(
+            [root_pos, root_rot6d, source.joint_pos[starts]], dim=-1
+        )
+        object_initial = self._physical_object_frame(
+            source.obj_pos[starts], source.obj_quat[starts]
+        )
+        object_goal = self._physical_object_frame(
+            source.obj_pos[ends], source.obj_quat[ends]
+        )
+        return (
+            torch.cat([object_goal, robot_initial, object_initial], dim=-1),
+            source.obj_pos[ends],
+            source.obj_quat[ends],
+        )
+
+    def _resampled_contacts(
+        self, clip_ids: torch.Tensor, starts: torch.Tensor
+    ) -> torch.Tensor:
+        source = self.conditioning_motion
+        if source.obj_bodywise_contact is None:
+            raise RuntimeError("diffusion UOLM requires the legacy contact schedule")
+        horizon = self.cfg.generated_horizon
+        ends = source.clip_ends[clip_ids] - 1
+        phase = torch.linspace(0.0, 1.0, horizon, device=self.device)
+        indices = starts[:, None] + torch.round(
+            (ends - starts)[:, None] * phase[None, :]
+        ).long()
+        # TODO(generated contacts): these discrete labels belong to the
+        # conditioning demonstration and are not generated contact truth.
+        # Replace them only when generated-reference contact inference exists.
+        # Keep phase mapping on-device for large resets in the meantime.
+        return source.obj_bodywise_contact[indices]
+
+    @torch.inference_mode()
+    def _write_generated_store(
+        self,
+        env_ids: torch.Tensor,
+        trajectory: torch.Tensor,
+        contacts: torch.Tensor,
+    ) -> None:
+        # Use the live robot's exact reset limits before deriving any robot
+        # quantity. The inherited reset writer applies these same limits, so its
+        # frame-zero clamp is now a no-op and physics matches the stored target.
+        soft_limits = self.robot.data.soft_joint_pos_limits[env_ids]
+        project_generated_joint_positions_(trajectory, soft_limits)
+        reference = self.generated_reference_adapter(trajectory)
+        horizon = self.cfg.generated_horizon
+        indices = self.motion.clip_offsets[env_ids, None] + torch.arange(
+            horizon, device=self.device
+        )[None, :]
+        self.motion.joint_pos[indices] = reference.joint_pos
+        self.motion.joint_vel[indices] = reference.joint_vel
+        self.motion.body_pos_w[indices] = reference.body_pos_local
+        self.motion.body_quat_w[indices] = reference.body_quat_wxyz
+        self.motion.body_lin_vel_w[indices] = reference.body_lin_vel_w
+        self.motion.body_ang_vel_w[indices] = reference.body_ang_vel_w
+        self.motion.obj_pos[indices] = reference.object_pos_local
+        self.motion.obj_quat[indices] = reference.object_quat_wxyz
+        self.motion.obj_lin_vel[indices] = reference.object_lin_vel_w
+        self.motion.obj_ang_vel[indices] = reference.object_ang_vel_w
+        self.motion.obj_bodywise_contact[indices] = contacts
+        self.motion.obj_contact_any[indices] = contacts.amax(dim=-1)
+
+    def _resample_command(self, env_ids: torch.Tensor) -> None:
+        """Select conditioning clips, generate, store, and reset to frame zero."""
+        clip_ids, source_starts = self._sample_conditioning_frame(env_ids)
+        condition, goal_pos, goal_quat = self._build_condition(clip_ids, source_starts)
+        generated = self.diffusion_generator.generate(condition)
+        contacts = self._resampled_contacts(clip_ids, source_starts)
+        self._write_generated_store(env_ids, generated, contacts)
+
+        self._clip_ids[env_ids] = env_ids
+        first = self.motion.clip_offsets[env_ids]
+        self.time_steps[env_ids] = first
+        self._steps_past_end[env_ids] = 0
+        self._object_goal_pos[env_ids] = goal_pos
+        self._object_goal_quat[env_ids] = goal_quat
+
+        origins = self._env.scene.env_origins[env_ids]
+        self._write_reference_state_to_sim(
+            env_ids,
+            self.motion.body_pos_w[first, self.motion_anchor_body_index] + origins,
+            self.motion.body_quat_w[first, self.motion_anchor_body_index],
+            self.motion.body_lin_vel_w[first, self.motion_anchor_body_index],
+            self.motion.body_ang_vel_w[first, self.motion_anchor_body_index],
+            self.motion.joint_pos[first],
+            self.motion.joint_vel[first],
+        )
+        object_state = torch.cat(
+            [
+                self.motion.obj_pos[first] + origins,
+                self.motion.obj_quat[first],
+                self.motion.obj_lin_vel[first],
+                self.motion.obj_ang_vel[first],
+            ],
+            dim=-1,
+        )
+        self.object.write_root_state_to_sim(object_state, env_ids=env_ids)
+
+        # ManagerBasedRlEnv calls command_manager.compute(dt=0) after a reset.
+        # The installed CommandManager does not forward env_ids to that update,
+        # so remember them here to avoid advancing unrelated environments on a
+        # partial reset.
+        self._reset_update_env_ids = env_ids.detach().clone()
+
+    def _update_command(self, env_ids: torch.Tensor | None = None) -> None:
+        if env_ids is None and self._reset_update_env_ids is not None:
+            env_ids = self._reset_update_env_ids
+            self._reset_update_env_ids = None
+        super()._update_command(env_ids)
+
+
 # ---------------------------------------------------------------------------
 # Config
 # ---------------------------------------------------------------------------
@@ -923,6 +1191,24 @@ class ObjectMotionCommandCfg(MultiClipMotionCommandCfg):
 
     def build(self, env: ManagerBasedRlEnv) -> ObjectMotionCommand:
         return ObjectMotionCommand(self, env)
+
+
+@dataclass(kw_only=True)
+class DiffusionObjectMotionCommandCfg(ObjectMotionCommandCfg):
+    """Reset-time diffusion reference generation for native robot UOLM."""
+
+    diffusion_source_path: str = ""
+    diffusion_checkpoint_path: str = ""
+    diffusion_sampler: Literal["ddim", "ddpm"] = "ddim"
+    diffusion_num_inference_steps: int = 50
+    diffusion_eta: float = 0.0
+    diffusion_precision: Literal["fp32", "fp16", "bf16"] = "fp32"
+    generation_batch_size: int = 16
+    generated_horizon: int = 300
+    fk_batch_size: int = 256
+
+    def build(self, env: ManagerBasedRlEnv) -> DiffusionObjectMotionCommand:
+        return DiffusionObjectMotionCommand(self, env)
 
 
 @dataclass(kw_only=True)

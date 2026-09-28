@@ -16,8 +16,9 @@ privileged. Single factory:
 
 from __future__ import annotations
 
+import os
 from functools import lru_cache
-from typing import Callable, Mapping
+from typing import Callable, Literal, Mapping
 
 import numpy as np
 from mjlab.entity import EntityCfg
@@ -50,6 +51,7 @@ from orcs.core.paths import DATA_ROOT
 from orcs.core.robustness import strip_domain
 from orcs.tasks.uolm import mdp
 from orcs.tasks.uolm.mdp.commands import (
+    DiffusionObjectMotionCommandCfg,
     ObjectMotionCommandCfg,
     SmplSeedObjectMotionCommandCfg,
 )
@@ -221,6 +223,16 @@ def uolm_env_cfg(
     object_names: tuple[str, ...] | None = None,
     collision: Collision | Mapping[str, Collision] | None = None,
     num_steps_per_env: int = 24,
+    reference_source: Literal["clip", "diffusion"] = "clip",
+    diffusion_source_path: str | None = None,
+    diffusion_checkpoint_path: str | None = None,
+    diffusion_sampler: Literal["ddim", "ddpm"] = "ddim",
+    diffusion_num_inference_steps: int = 50,
+    diffusion_eta: float = 0.0,
+    generation_batch_size: int = 16,
+    generated_horizon: int = 300,
+    diffusion_precision: Literal["fp32", "fp16", "bf16"] = "fp32",
+    fk_batch_size: int = 256,
     robot_cfg: Callable[[], EntityCfg] | None = None,
     kill_bodies: tuple[str, ...] = UOLM_KILL_BODIES,
     kill_exclude: tuple[str, ...] = (),
@@ -249,6 +261,9 @@ def uolm_env_cfg(
                   nothing but the feet should touch down.
     """
     assert agent in ("sonic", "tara"), f"unknown agent {agent!r}"
+    assert reference_source in ("clip", "diffusion")
+    assert not (reference_source == "diffusion" and command_space != "robot"), (
+        "diffusion references are integrated only for native robot UOLM")
     assert not (agent == "tara" and command_space == "smpl"), (
         "the smpl command space rides the SONIC smpl encoder — no tabula-rasa variant")
 
@@ -351,7 +366,27 @@ def uolm_env_cfg(
         GROUND_CONTACT_SENSOR_NAME)
 
     # ── motion command (omni mode) + object contact-graph sensor ──
-    cfg.commands["motion"] = ObjectMotionCommandCfg(
+    command_cfg_cls = (
+        DiffusionObjectMotionCommandCfg
+        if reference_source == "diffusion"
+        else ObjectMotionCommandCfg
+    )
+    diffusion_kwargs = {}
+    if reference_source == "diffusion":
+        diffusion_kwargs = {
+            "diffusion_source_path": diffusion_source_path
+            or os.environ.get("ORCS_G1_DIFFUSION_SOURCE", ""),
+            "diffusion_checkpoint_path": diffusion_checkpoint_path
+            or os.environ.get("ORCS_G1_DIFFUSION_CHECKPOINT", ""),
+            "diffusion_sampler": diffusion_sampler,
+            "diffusion_num_inference_steps": diffusion_num_inference_steps,
+            "diffusion_eta": diffusion_eta,
+            "generation_batch_size": generation_batch_size,
+            "generated_horizon": generated_horizon,
+            "diffusion_precision": diffusion_precision,
+            "fk_batch_size": fk_batch_size,
+        }
+    cfg.commands["motion"] = command_cfg_cls(
         motion_file=motion_file,
         dataset_dir=dataset_dir,
         ordered_object_names=cmd_object_names,
@@ -366,6 +401,7 @@ def uolm_env_cfg(
         joint_position_range=(0.0, 0.0),
         contact_graph_body_names=CONTACT_GRAPH_BODY_NAMES,
         contact_graph_sensor_name=CONTACT_GRAPH_SENSOR_NAME,
+        **diffusion_kwargs,
     )
     cfg.scene.sensors = cfg.scene.sensors + (
         object_contact_graph_sensor(OBJECT_BODY_NAME),
@@ -373,7 +409,10 @@ def uolm_env_cfg(
 
     # episode = longest clip + ε hold padding (episode owns resets)
     step_dt = cfg.sim.mujoco.timestep * cfg.decimation
-    cfg.episode_length_s = max_clip_len * step_dt + _MOTION_PAD_EPS_SEC
+    reference_length = (
+        generated_horizon if reference_source == "diffusion" else max_clip_len
+    )
+    cfg.episode_length_s = reference_length * step_dt + _MOTION_PAD_EPS_SEC
     # OBJECT tracking tubes only — fcrl parity (2026-08-01). The robot anchor
     # kills (`bad_anchor_{pos,ori}`) are the pure-tracking layer's and fcrl's
     # uolm dropped them: under loco-manip the object legitimately drags the

@@ -104,6 +104,50 @@ Verify task registration:
 python -c "import mjlab, orcs; from mjlab.tasks.registry import list_tasks; print('\n'.join(list_tasks()))"
 ```
 
+### diffusion-backed UOLM
+
+`Orcs-Uolm-AdaptSonic` uses the cleaned `g1-diffusion` checkout and a compatible
+single-stage object-goal checkpoint to generate its reference at reset. Complete
+the normal ORCS setup above first; `sync_dependencies.sh` must remain the final
+package installation step. Then configure the external source and checkpoint:
+
+```bash
+export ORCS_G1_DIFFUSION_SOURCE=/path/to/g1-diffusion
+export ORCS_G1_DIFFUSION_CHECKPOINT=/path/to/object_goal_single_stage_init_goal_epoch_000999.pt
+```
+
+The task defaults to DDIM with 50 inference steps, `eta=0`, FP32, a 300-frame
+horizon, and generation chunks of 16. FP32 matches the checkpoint's active
+sampling configuration; pure FP16 DDIM produced non-finite output on an RTX
+2060. These settings can be overridden through
+`env.commands.motion.{diffusion-sampler,diffusion-num-inference-steps,diffusion-eta,diffusion-precision,generation-batch-size}`.
+The corresponding Python configuration fields are `diffusion_source_path`,
+`diffusion_checkpoint_path`, `diffusion_sampler`,
+`diffusion_num_inference_steps`, `diffusion_eta`, `diffusion_precision`, and
+`generation_batch_size`.
+
+Run a small CUDA rollout with the initial AdaptSonic policy:
+
+```bash
+play Orcs-Uolm-AdaptSonic --agent initial --num-envs 4 \
+  --device cuda:0 --viewer native
+```
+
+Train on GPU 0, using a conservative generation chunk for a 6 GiB GPU:
+
+```bash
+train Orcs-Uolm-AdaptSonic --gpu-ids 0 \
+  --env.scene.num-envs 256 \
+  --env.commands.motion.generation-batch-size 8
+```
+
+Large initial resets run DDIM for every environment and can take substantially
+longer than ordinary rollout steps. Later partial resets generate only for the
+resetting environments.
+The 12 contact labels come from the selected conditioning demonstration and are
+nearest-neighbor phase-resampled onto the 300 generated frames; they are not
+contacts inferred from the diffusion-generated motion.
+
 ## play
 
 ```bash
@@ -147,6 +191,8 @@ train Orcs-PerLoco-Grail-AdaptSonic --env.scene.num-envs 4096
 | `ORCS_ASSETS_SOURCE` | host assets checkout, then installed `assets` package |
 | `ORCS_SMPLX_DIR` | `<deps>/GRAIL/imports/GEM-SMPL/inputs/checkpoints/body_models` |
 | `ORCS_RELEASE_ROOT` | `~/.cache/orcs/releases` or `$XDG_CACHE_HOME/orcs/releases` |
+| `ORCS_G1_DIFFUSION_SOURCE` | required cleaned `g1-diffusion` checkout for native UOLM |
+| `ORCS_G1_DIFFUSION_CHECKPOINT` | required compatible object-goal checkpoint |
 
 ## license and credits
 
