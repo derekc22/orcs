@@ -27,6 +27,10 @@ class DiffusionGeneratorCfg:
     eta: float = 0.0
     generation_batch_size: int = 16
     horizon: int = 300
+    # The matched six-object training corpus stays below |z|=4.37.  Leave
+    # generous headroom for ordinary samples while rejecting the severe OOD
+    # conditions that previously produced visually static trajectories.
+    condition_abs_z_limit: float | None = 8.0
     # This checkpoint is numerically unstable under pure FP16 DDIM on RTX 20
     # series hardware (the denoising state becomes non-finite).  Match the
     # checkpoint's active sampling configuration and default to FP32.
@@ -93,6 +97,23 @@ class BatchedDiffusionGenerator:
                 "physical_global_condition must have shape [B,56], got "
                 f"{tuple(physical_global_condition.shape)}"
             )
+        if self.cfg.condition_abs_z_limit is not None:
+            normalized = self.pipeline.normalize_global_cond(
+                physical_global_condition
+            )
+            sample_abs_max = normalized.abs().amax(dim=1)
+            invalid = sample_abs_max > self.cfg.condition_abs_z_limit
+            if invalid.any():
+                rows = torch.nonzero(invalid, as_tuple=False).flatten().tolist()
+                values = sample_abs_max[invalid].tolist()
+                raise ValueError(
+                    "diffusion global condition is outside the configured "
+                    "training-distribution guard: "
+                    f"rows={rows}, max_abs_z={values}, "
+                    f"limit={self.cfg.condition_abs_z_limit}. Refusing to "
+                    "sample instead of returning a misleading collapsed "
+                    "reference."
+                )
         chunks: list[torch.Tensor] = []
         for condition in physical_global_condition.split(
             self.cfg.generation_batch_size, dim=0

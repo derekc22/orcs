@@ -937,6 +937,7 @@ class DiffusionObjectMotionCommand(ObjectMotionCommand):
             sampler=cfg.diffusion_sampler,
             num_inference_steps=cfg.diffusion_num_inference_steps,
             eta=cfg.diffusion_eta,
+            condition_abs_z_limit=cfg.diffusion_condition_abs_z_limit,
             generation_batch_size=cfg.generation_batch_size,
             horizon=cfg.generated_horizon,
             precision=cfg.diffusion_precision,
@@ -1202,6 +1203,7 @@ class DiffusionObjectMotionCommandCfg(ObjectMotionCommandCfg):
     diffusion_sampler: Literal["ddim", "ddpm"] = "ddim"
     diffusion_num_inference_steps: int = 50
     diffusion_eta: float = 0.0
+    diffusion_condition_abs_z_limit: float | None = 8.0
     diffusion_precision: Literal["fp32", "fp16", "bf16"] = "fp32"
     generation_batch_size: int = 16
     generated_horizon: int = 300
