@@ -95,7 +95,16 @@ _TASKS = (
     # anything. If it moves, split them; if it does not, both are excluded at
     # once and the next suspect is the VOF decay outrunning the learning rate.
     ("Orcs-Uolm-AdaptSonic",
-     partial(uolm_env_cfg, reference_source="diffusion"),
+     partial(
+         uolm_env_cfg,
+         reference_source="diffusion",
+         object_names=("largebox",),
+         conditioning_dataset_dirs=("omomo/sub3_largebox_003",),
+         conditioning_window_starts=(0, 10, 20),
+         conditioning_window_length=300,
+         reference_contacts=False,
+         virtual_object_force_decay_iterations=300,
+     ),
      partial(adapt_sonic_agent_cfg, "orcs_uolm",
              rank=_ADAPTER_RANK, alpha=_ADAPTER_RANK, std_scale=_STD_SCALE)),
     ("Orcs-Uolm-TaRa",

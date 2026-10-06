@@ -55,7 +55,7 @@ from orcs.tasks.uolm.mdp.commands import (
     ObjectMotionCommandCfg,
     SmplSeedObjectMotionCommandCfg,
 )
-from orcs.tasks.uolm.mdp.demo_loader import get_motion_files_for_objects
+from orcs.tasks.uolm.mdp.demo_loader import get_motion_files_for_objects, scan_flat
 from orcs.tasks.uolm.observation_cfgs import ObsCtx, sonic_obs, tara_obs
 from orcs.tasks.uolm.robustness import apply_robustness
 from orcs.tasks.uolm.sensors import (
@@ -234,6 +234,11 @@ def uolm_env_cfg(
     generated_horizon: int = 300,
     diffusion_precision: Literal["fp32", "fp16", "bf16"] = "fp32",
     fk_batch_size: int = 256,
+    conditioning_dataset_dirs: tuple[str, ...] | None = None,
+    conditioning_window_starts: tuple[int, ...] | None = None,
+    conditioning_window_length: int | None = None,
+    reference_contacts: bool = True,
+    virtual_object_force_decay_iterations: int = 10_000,
     robot_cfg: Callable[[], EntityCfg] | None = None,
     kill_bodies: tuple[str, ...] = UOLM_KILL_BODIES,
     kill_exclude: tuple[str, ...] = (),
@@ -290,6 +295,29 @@ def uolm_env_cfg(
         files, max_clip_len = _resolve_motions(names, _EXCLUDE_MOTIONS)
         motion_file, dataset_dir = files[0], _G1_DATASETS_ROOT
         cmd_object_names, cmd_excludes = names, _EXCLUDE_MOTIONS
+        if conditioning_dataset_dirs is not None:
+            dataset_dirs = [
+                path if os.path.isabs(path) else os.path.join(_G1_DATASETS_ROOT, path)
+                for path in conditioning_dataset_dirs
+            ]
+            conditioning_files = scan_flat(dataset_dirs)
+            if not conditioning_files:
+                raise FileNotFoundError(
+                    f"no conditioning motions found under {dataset_dirs}"
+                )
+            motion_file = conditioning_files[0]
+            dataset_dir = (
+                dataset_dirs[0] if len(dataset_dirs) == 1 else dataset_dirs
+            )
+            max_clip_len = max(
+                int(np.load(path)["joint_pos"].shape[0])
+                for path in conditioning_files
+            )
+            # A dedicated conditioning library is already homogeneous. Use the
+            # depth-invariant flat scanner instead of the multi-dataset roster
+            # scanner, while the scene remains the requested single variant.
+            cmd_object_names = None
+            cmd_excludes = None
 
     cfg = ManagerBasedRlEnvCfg(
         scene=SceneCfg(
@@ -325,7 +353,7 @@ def uolm_env_cfg(
                     "natural_frequency": 12.0,
                     "terminal_scale": 1e-4,
                     "decay_mode": "exponential",
-                    "decay_by_policy_iterations": 10_000,
+                    "decay_by_policy_iterations": virtual_object_force_decay_iterations,
                     "object_cfg": obj,
                     **_p,
                 },
@@ -387,6 +415,8 @@ def uolm_env_cfg(
             "generated_horizon": generated_horizon,
             "diffusion_precision": diffusion_precision,
             "fk_batch_size": fk_batch_size,
+            "conditioning_window_starts": conditioning_window_starts,
+            "conditioning_window_length": conditioning_window_length,
         }
     cfg.commands["motion"] = command_cfg_cls(
         motion_file=motion_file,
@@ -401,8 +431,8 @@ def uolm_env_cfg(
         pose_range={},
         velocity_range={},
         joint_position_range=(0.0, 0.0),
-        contact_graph_body_names=CONTACT_GRAPH_BODY_NAMES,
-        contact_graph_sensor_name=CONTACT_GRAPH_SENSOR_NAME,
+        contact_graph_body_names=(CONTACT_GRAPH_BODY_NAMES if reference_contacts else None),
+        contact_graph_sensor_name=(CONTACT_GRAPH_SENSOR_NAME if reference_contacts else None),
         **diffusion_kwargs,
     )
     cfg.scene.sensors = cfg.scene.sensors + (
@@ -469,12 +499,18 @@ def uolm_env_cfg(
         "action_rate_l2": RewardTermCfg(func=mdp.action_rate_l2, weight=-0.1),
         "joint_pos_limits": RewardTermCfg(func=mdp.joint_pos_limits, weight=-1.0),
     }
+    if not reference_contacts:
+        cfg.rewards.pop("contact_consistency")
 
     # ── obs: 3-stream layout (policy + tokenizer / augmentation / critic) ──
     ctx = ObsCtx(obj=obj, p=_p)
     cfg.observations = (
         tara_obs(ctx) if agent == "tara"
-        else sonic_obs(ctx, mode="smpl" if command_space == "smpl" else "g1")
+        else sonic_obs(
+            ctx,
+            mode="smpl" if command_space == "smpl" else "g1",
+            include_contact=reference_contacts,
+        )
     )
 
     if command_space == "smpl":
@@ -493,6 +529,10 @@ def uolm_env_cfg(
             sensor_name=CONTACT_GRAPH_SENSOR_NAME,
             hand_body_names=HAND_BODY_NAMES,
         )
+        if not reference_contacts:
+            # BPS source clips have no authored contact schedule. Do not use a
+            # fabricated zero schedule to gate mid-clip object perturbations.
+            cfg.commands["motion"].object_in_contact_velocity_range = None
     apply_obs_noise(cfg)
 
     # INVARIANT: play overrides are LAST — they SUBTRACT from the assembled

@@ -137,6 +137,14 @@ class _ConcatMotionLoader(ConcatMotionLoader):
         oblv, _ = load_field_or_make_zeros(od, "obj_lin_vel_w", (T, 3), device)
         obav, _ = load_field_or_make_zeros(od, "obj_ang_vel_w", (T, 3), device)
 
+        # Legacy HF-BPS/OMOMO object archives are float64 while the simulator,
+        # generator, and staged ORCS clips are float32.  Normalize at the data
+        # boundary so source goals and generated references share one dtype.
+        obp = obp.float()
+        obq = obq.float()
+        oblv = oblv.float()
+        obav = obav.float()
+
         self._all_op.append(obp)
         self._all_oq.append(obq)
         self._all_olv.append(oblv)
@@ -144,6 +152,26 @@ class _ConcatMotionLoader(ConcatMotionLoader):
         self._clip_lengths.append(T)
 
     def _finalize_extra(self) -> None:
+        if not self._contact_graph_body_names:
+            # The HF-BPS largebox source has no authored contact matrices.  Do
+            # not manufacture an all-zero *reference* schedule: contact terms
+            # are removed from that experiment's observations and rewards.
+            # obj_contact_any remains an internal RSI gate, explicitly disabled
+            # here because no source-contact truth exists.
+            self.contact = None
+            self.obj_bodywise_contact = None
+            self.obj_contact_any = torch.zeros(
+                sum(self._clip_lengths), device=self.device
+            )
+            self.smpl_joints = torch.cat(self._all_sj)
+            self.smpl_root_quat = torch.cat(self._all_sq)
+            self.smpl_joints_viz = torch.cat(self._all_sv)
+            self.obj_pos = torch.cat(self._all_op)
+            self.obj_quat = torch.cat(self._all_oq)
+            self.obj_lin_vel = torch.cat(self._all_olv)
+            self.obj_ang_vel = torch.cat(self._all_oav)
+            return
+
         self.contact = ContactSchedule(
             self.motion_files, self._clip_lengths, self.device)
 
@@ -931,6 +959,35 @@ class DiffusionObjectMotionCommand(ObjectMotionCommand):
     def __init__(self, cfg: "DiffusionObjectMotionCommandCfg", env: ManagerBasedRlEnv):
         super().__init__(cfg, env)
         self.conditioning_motion = self.motion
+        if cfg.conditioning_window_starts is not None:
+            if cfg.conditioning_window_length is None:
+                raise ValueError(
+                    "conditioning_window_length is required when "
+                    "conditioning_window_starts is set"
+                )
+            if cfg.conditioning_window_length != cfg.generated_horizon:
+                raise ValueError(
+                    "conditioning window and generated horizon must match, got "
+                    f"{cfg.conditioning_window_length} and {cfg.generated_horizon}"
+                )
+            starts = tuple(int(start) for start in cfg.conditioning_window_starts)
+            if not starts or min(starts) < 0 or len(set(starts)) != len(starts):
+                raise ValueError(
+                    "conditioning_window_starts must be non-empty, unique, and "
+                    f"non-negative, got {starts}"
+                )
+            required = max(starts) + cfg.conditioning_window_length
+            too_short = torch.nonzero(
+                self.conditioning_motion.clip_lengths < required,
+                as_tuple=False,
+            ).flatten()
+            if len(too_short):
+                lengths = self.conditioning_motion.clip_lengths[too_short].tolist()
+                raise ValueError(
+                    "conditioning clips are too short for the configured windows: "
+                    f"clip_ids={too_short.tolist()}, lengths={lengths}, "
+                    f"required={required}"
+                )
         generator_cfg = DiffusionGeneratorCfg(
             source_path=cfg.diffusion_source_path,
             checkpoint_path=cfg.diffusion_checkpoint_path,
@@ -992,6 +1049,21 @@ class DiffusionObjectMotionCommand(ObjectMotionCommand):
         motion = self.conditioning_motion
         n = len(env_ids)
         allowed = self._clip_allowance(env_ids)
+        if self.cfg.conditioning_window_starts is not None:
+            if allowed is None:
+                clip_ids = torch.randint(motion.n_clips, (n,), device=self.device)
+            else:
+                clip_ids = torch.multinomial(allowed, 1).squeeze(1)
+            valid_starts = torch.as_tensor(
+                self.cfg.conditioning_window_starts,
+                dtype=torch.long,
+                device=self.device,
+            )
+            selected = valid_starts[
+                torch.randint(len(valid_starts), (n,), device=self.device)
+            ]
+            return clip_ids, motion.clip_offsets[clip_ids] + selected
+
         if self.cfg.start_from_zero:
             if allowed is None:
                 clip_ids = torch.randint(motion.n_clips, (n,), device=self.device)
@@ -1013,11 +1085,18 @@ class DiffusionObjectMotionCommand(ObjectMotionCommand):
         local = local.clamp(max=init_lengths[clip_ids] - 1)
         return clip_ids, motion.clip_offsets[clip_ids] + local
 
+    def _conditioning_ends(
+        self, clip_ids: torch.Tensor, starts: torch.Tensor
+    ) -> torch.Tensor:
+        if self.cfg.conditioning_window_length is not None:
+            return starts + self.cfg.conditioning_window_length - 1
+        return self.conditioning_motion.clip_ends[clip_ids] - 1
+
     def _build_condition(
         self, clip_ids: torch.Tensor, starts: torch.Tensor
     ) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
         source = self.conditioning_motion
-        ends = source.clip_ends[clip_ids] - 1
+        ends = self._conditioning_ends(clip_ids, starts)
         root_pos = source.body_pos_w[starts, self.motion_anchor_body_index]
         root_quat = source.body_quat_w[starts, self.motion_anchor_body_index]
         root_rot6d = self._matrix_to_columns6d(matrix_from_quat(root_quat))
@@ -1040,10 +1119,14 @@ class DiffusionObjectMotionCommand(ObjectMotionCommand):
         self, clip_ids: torch.Tensor, starts: torch.Tensor
     ) -> torch.Tensor:
         source = self.conditioning_motion
+        horizon = self.cfg.generated_horizon
+        if not self.cfg.contact_graph_body_names:
+            return torch.empty(
+                len(clip_ids), horizon, 0, device=self.device
+            )
         if source.obj_bodywise_contact is None:
             raise RuntimeError("diffusion UOLM requires the legacy contact schedule")
-        horizon = self.cfg.generated_horizon
-        ends = source.clip_ends[clip_ids] - 1
+        ends = self._conditioning_ends(clip_ids, starts)
         phase = torch.linspace(0.0, 1.0, horizon, device=self.device)
         indices = starts[:, None] + torch.round(
             (ends - starts)[:, None] * phase[None, :]
@@ -1082,7 +1165,10 @@ class DiffusionObjectMotionCommand(ObjectMotionCommand):
         self.motion.obj_lin_vel[indices] = reference.object_lin_vel_w
         self.motion.obj_ang_vel[indices] = reference.object_ang_vel_w
         self.motion.obj_bodywise_contact[indices] = contacts
-        self.motion.obj_contact_any[indices] = contacts.amax(dim=-1)
+        if contacts.shape[-1] == 0:
+            self.motion.obj_contact_any[indices] = 0.0
+        else:
+            self.motion.obj_contact_any[indices] = contacts.amax(dim=-1)
 
     def _resample_command(self, env_ids: torch.Tensor) -> None:
         """Select conditioning clips, generate, store, and reset to frame zero."""
@@ -1208,6 +1294,10 @@ class DiffusionObjectMotionCommandCfg(ObjectMotionCommandCfg):
     generation_batch_size: int = 16
     generated_horizon: int = 300
     fk_batch_size: int = 256
+    conditioning_window_starts: tuple[int, ...] | None = None
+    """Allowed source-local initial frames for distribution-matched conditions."""
+    conditioning_window_length: int | None = None
+    """Source window length; its final frame supplies the requested goal."""
 
     def build(self, env: ManagerBasedRlEnv) -> DiffusionObjectMotionCommand:
         return DiffusionObjectMotionCommand(self, env)
