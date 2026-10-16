@@ -53,6 +53,7 @@ from orcs.tasks.uolm import mdp
 from orcs.tasks.uolm.mdp.commands import (
     DiffusionObjectMotionCommandCfg,
     ObjectMotionCommandCfg,
+    RealizedObjectMotionCommandCfg,
     SmplSeedObjectMotionCommandCfg,
 )
 from orcs.tasks.uolm.mdp.demo_loader import get_motion_files_for_objects, scan_flat
@@ -92,21 +93,20 @@ _DEFAULT_OBJECT_NAMES = (
     "tire",
     "woodchair2",
 )
-_EXCLUDE_MOTIONS = ("sub5_suitcase_015", 
-                    "woodchair2_sit", 
-
-                    # tire: `custom/tire_roll/sample1` over sugar's three. The
-                    # sugar takes move the tire further (net 1.46 m vs 1.29) but
-                    # that is the trap — the demo walks fast enough that the
-                    # policy settles on "roll it away, then stand", which is the
-                    # sub-optimum we see. custom's take is slower and shorter
-                    # with clean stepping, so the walk stays learnable.
-                    "tire_flip",
-                    "sugar/tire_roll",
-
-                    "custom/woodchair2_flip/sample1",
-                    "custom/woodchair2_flip/sample3",
-                    )
+_EXCLUDE_MOTIONS = (
+    "sub5_suitcase_015",
+    "woodchair2_sit",
+    # tire: `custom/tire_roll/sample1` over sugar's three. The
+    # sugar takes move the tire further (net 1.46 m vs 1.29) but
+    # that is the trap — the demo walks fast enough that the
+    # policy settles on "roll it away, then stand", which is the
+    # sub-optimum we see. custom's take is slower and shorter
+    # with clean stepping, so the walk stays learnable.
+    "tire_flip",
+    "sugar/tire_roll",
+    "custom/woodchair2_flip/sample1",
+    "custom/woodchair2_flip/sample3",
+)
 
 # Collision budget: cvx_dcmp everywhere. Whole-object hulls looked like the
 # cheap option but are a narrowphase trap (measured 2026-07-15, 4096 envs):
@@ -120,6 +120,7 @@ _DEFAULT_COLLISION: dict[str, Collision] = {}  # all -> "cvx_dcmp"
 
 # Post-motion hold padding (episode — not the motion — owns resets).
 _MOTION_PAD_EPS_SEC = 2.0
+
 
 @lru_cache(maxsize=None)
 def _resolve_motions(
@@ -138,6 +139,7 @@ def _resolve_smpl_motions() -> tuple[str | None, int]:
     dataset. Graceful when data/smpl_motions is absent/empty — registration must
     not require the (contributor-built) dataset; env build then errors clearly."""
     from orcs.tasks.uolm.mdp.commands import _scan_flat_dataset
+
     try:
         files = _scan_flat_dataset(_SMPL_DATASETS_ROOT)
     except (FileNotFoundError, NotADirectoryError, OSError):
@@ -161,8 +163,7 @@ def _resolve_reconstructed_smpl_seeds(
     if not motion_sets or len(set(motion_sets)) != len(motion_sets):
         raise ValueError("motion_sets must be non-empty and contain no duplicates")
     if interaction_names is not None and (
-        not interaction_names
-        or len(set(interaction_names)) != len(interaction_names)
+        not interaction_names or len(set(interaction_names)) != len(interaction_names)
     ):
         raise ValueError(
             "interaction_names must be non-empty and contain no duplicates"
@@ -206,14 +207,17 @@ def _resolve_reconstructed_smpl_seeds(
                 "orcs-pseudo-retarget --scene uolm "
                 f"--motion-set {motion_set} --all"
             )
-    return ready_samples[0][0], len(ready_samples), max(
-        length for _, length in ready_samples
+    return (
+        ready_samples[0][0],
+        len(ready_samples),
+        max(length for _, length in ready_samples),
     )
 
 
 # ---------------------------------------------------------------------------
 # THE factory
 # ---------------------------------------------------------------------------
+
 
 def uolm_env_cfg(
     *,
@@ -223,7 +227,7 @@ def uolm_env_cfg(
     object_names: tuple[str, ...] | None = None,
     collision: Collision | Mapping[str, Collision] | None = None,
     num_steps_per_env: int = 24,
-    reference_source: Literal["clip", "diffusion"] = "clip",
+    reference_source: Literal["clip", "diffusion", "realized"] = "clip",
     diffusion_source_path: str | None = None,
     diffusion_checkpoint_path: str | None = None,
     diffusion_sampler: Literal["ddim", "ddpm"] = "ddim",
@@ -237,7 +241,20 @@ def uolm_env_cfg(
     conditioning_dataset_dirs: tuple[str, ...] | None = None,
     conditioning_window_starts: tuple[int, ...] | None = None,
     conditioning_window_length: int | None = None,
+    realized_reference_paths: tuple[str, ...] | None = None,
     reference_contacts: bool = True,
+    use_virtual_object_force: bool = True,
+    object_tracking_terminations: bool = True,
+    realized_control_tracking_weight: float = 0.0,
+    object_goal_reward_weight: float = 0.5,
+    object_goal_position_std: float = 0.3,
+    object_goal_orientation_std: float = 0.4,
+    object_position_reward_weight: float = 2.0,
+    object_position_tracking_std: float = 0.3,
+    object_orientation_reward_weight: float = 1.0,
+    object_orientation_tracking_std: float = 0.4,
+    realized_residual_actions: bool = False,
+    realized_residual_bound: float = 0.15,
     virtual_object_force_decay_iterations: int = 10_000,
     robot_cfg: Callable[[], EntityCfg] | None = None,
     kill_bodies: tuple[str, ...] = UOLM_KILL_BODIES,
@@ -267,17 +284,26 @@ def uolm_env_cfg(
                   nothing but the feet should touch down.
     """
     assert agent in ("sonic", "tara"), f"unknown agent {agent!r}"
-    assert reference_source in ("clip", "diffusion")
+    assert reference_source in ("clip", "diffusion", "realized")
     assert not (reference_source == "diffusion" and command_space != "robot"), (
-        "diffusion references are integrated only for native robot UOLM")
+        "diffusion references are integrated only for native robot UOLM"
+    )
     assert not (agent == "tara" and command_space == "smpl"), (
-        "the smpl command space rides the SONIC smpl encoder — no tabula-rasa variant")
+        "the smpl command space rides the SONIC smpl encoder — no tabula-rasa variant"
+    )
 
     names = tuple(object_names or _DEFAULT_OBJECT_NAMES)
     obj = SceneEntityCfg(OBJECT_BODY_NAME)
     _p = {"command_name": "motion"}
 
-    if _bootstrap_motion is not None:
+    if reference_source == "realized":
+        if not realized_reference_paths:
+            raise ValueError("realized_reference_paths are required")
+        motion_file = realized_reference_paths[0]
+        dataset_dir = os.path.dirname(motion_file)
+        max_clip_len = generated_horizon
+        cmd_object_names, cmd_excludes = None, None
+    elif _bootstrap_motion is not None:
         # Internal composition seam for source-only pipelines. The command and
         # scene entity are replaced by their specialized factory before env
         # build; supplying the bootstrap explicitly prevents an accidental
@@ -306,12 +332,9 @@ def uolm_env_cfg(
                     f"no conditioning motions found under {dataset_dirs}"
                 )
             motion_file = conditioning_files[0]
-            dataset_dir = (
-                dataset_dirs[0] if len(dataset_dirs) == 1 else dataset_dirs
-            )
+            dataset_dir = dataset_dirs[0] if len(dataset_dirs) == 1 else dataset_dirs
             max_clip_len = max(
-                int(np.load(path)["joint_pos"].shape[0])
-                for path in conditioning_files
+                int(np.load(path)["joint_pos"].shape[0]) for path in conditioning_files
             )
             # A dedicated conditioning library is already homogeneous. Use the
             # depth-invariant flat scanner instead of the multi-dataset roster
@@ -323,18 +346,19 @@ def uolm_env_cfg(
         scene=SceneCfg(
             terrain=TerrainEntityCfg(terrain_type="plane"),
             entities={
-                OBJECT_BODY_NAME: _object_entity or omni_object_entity_cfg(
-                    names, collision or _DEFAULT_COLLISION),
+                OBJECT_BODY_NAME: _object_entity
+                or omni_object_entity_cfg(names, collision or _DEFAULT_COLLISION),
             },
             num_envs=1,
             env_spacing=6.0,  # largetable-sized objects need clearance
         ),
         observations={},  # set by _sonic_obs below
-        actions={},       # set below (SONIC profile)
+        actions={},  # set below (SONIC profile)
         commands={},
         events={
             "reset_default": EventTermCfg(
-                func=mdp.reset_scene_to_default, mode="reset"),
+                func=mdp.reset_scene_to_default, mode="reset"
+            ),
             "policy_update_counter": EventTermCfg(
                 func=mdp.PolicyUpdateCounter,
                 mode="interval",
@@ -359,7 +383,7 @@ def uolm_env_cfg(
                 },
             ),
         },
-        rewards={},       # filled below
+        rewards={},  # filled below
         terminations={
             "time_out": TerminationTermCfg(func=mdp.time_out, time_out=True),
             "illegal_contact": TerminationTermCfg(func=illegal_contact),
@@ -376,8 +400,9 @@ def uolm_env_cfg(
         sim=SimulationCfg(
             nconmax=150,
             njmax=450,
-            mujoco=MujocoCfg(timestep=0.005, iterations=10, ls_iterations=20,
-                             ccd_iterations=24),  # EPA scratch ~ 6+5*it rows
+            mujoco=MujocoCfg(
+                timestep=0.005, iterations=10, ls_iterations=20, ccd_iterations=24
+            ),  # EPA scratch ~ 6+5*it rows
         ),
         decimation=4,
         episode_length_s=10.0,  # overwritten below from the dataset
@@ -386,20 +411,34 @@ def uolm_env_cfg(
     # ── SONIC robot + action (flat-hand G1, hip_pitch regroup, MJ-order) ──
     robot = profile.robot_cfg(base=(robot_cfg or get_g1_flat_hand_cfg)())
     cfg.scene.entities["robot"] = robot
-    cfg.actions["joint_pos"] = profile.action_cfg(robot)
+    nominal_action_cfg = profile.action_cfg(robot)
+    if realized_residual_actions:
+        if reference_source != "realized":
+            raise ValueError("realized residual actions require a realized reference")
+        cfg.actions["joint_pos"] = mdp.RealizedResidualJointPositionActionCfg(
+            entity_name=nominal_action_cfg.entity_name,
+            actuator_names=nominal_action_cfg.actuator_names,
+            scale=nominal_action_cfg.scale,
+            use_default_offset=nominal_action_cfg.use_default_offset,
+            command_name="motion",
+            residual_bound=realized_residual_bound,
+        )
+    else:
+        cfg.actions["joint_pos"] = nominal_action_cfg
 
     cfg.scene.sensors = (cfg.scene.sensors or ()) + (
         ground_contact_sensor(kill_bodies, kill_exclude),
     )
     cfg.terminations["illegal_contact"].params["sensor_name"] = (
-        GROUND_CONTACT_SENSOR_NAME)
+        GROUND_CONTACT_SENSOR_NAME
+    )
 
     # ── motion command (omni mode) + object contact-graph sensor ──
-    command_cfg_cls = (
-        DiffusionObjectMotionCommandCfg
-        if reference_source == "diffusion"
-        else ObjectMotionCommandCfg
-    )
+    command_cfg_cls = {
+        "clip": ObjectMotionCommandCfg,
+        "diffusion": DiffusionObjectMotionCommandCfg,
+        "realized": RealizedObjectMotionCommandCfg,
+    }[reference_source]
     diffusion_kwargs = {}
     if reference_source == "diffusion":
         diffusion_kwargs = {
@@ -418,6 +457,15 @@ def uolm_env_cfg(
             "conditioning_window_starts": conditioning_window_starts,
             "conditioning_window_length": conditioning_window_length,
         }
+    elif reference_source == "realized":
+        if not realized_reference_paths:
+            raise ValueError("realized_reference_paths are required")
+        diffusion_kwargs = {
+            "realized_reference_paths": realized_reference_paths,
+            "realized_reference_start_ids": (0, 10, 20),
+            "realized_horizon": generated_horizon,
+            "fk_batch_size": fk_batch_size,
+        }
     cfg.commands["motion"] = command_cfg_cls(
         motion_file=motion_file,
         dataset_dir=dataset_dir,
@@ -431,8 +479,12 @@ def uolm_env_cfg(
         pose_range={},
         velocity_range={},
         joint_position_range=(0.0, 0.0),
-        contact_graph_body_names=(CONTACT_GRAPH_BODY_NAMES if reference_contacts else None),
-        contact_graph_sensor_name=(CONTACT_GRAPH_SENSOR_NAME if reference_contacts else None),
+        contact_graph_body_names=(
+            CONTACT_GRAPH_BODY_NAMES if reference_contacts else None
+        ),
+        contact_graph_sensor_name=(
+            CONTACT_GRAPH_SENSOR_NAME if reference_contacts else None
+        ),
         **diffusion_kwargs,
     )
     cfg.scene.sensors = cfg.scene.sensors + (
@@ -442,7 +494,9 @@ def uolm_env_cfg(
     # episode = longest clip + ε hold padding (episode owns resets)
     step_dt = cfg.sim.mujoco.timestep * cfg.decimation
     reference_length = (
-        generated_horizon if reference_source == "diffusion" else max_clip_len
+        generated_horizon
+        if reference_source in ("diffusion", "realized")
+        else max_clip_len
     )
     cfg.episode_length_s = reference_length * step_dt + _MOTION_PAD_EPS_SEC
     # OBJECT tracking tubes only — fcrl parity (2026-08-01). The robot anchor
@@ -451,61 +505,106 @@ def uolm_env_cfg(
     # root off the reference, so an anchor tube kills recoverable states and
     # truncates every episode before the goal earns credit. `bad_object_ori`
     # is back to fcrl's 0.6 (0.8 let the object tumble past recovery).
-    cfg.terminations.update({
-        "bad_object_pos": TerminationTermCfg(
-            func=mdp.bad_object_pos, params={**_p, "threshold": 0.3}),
-        "bad_object_ori": TerminationTermCfg(
-            func=mdp.bad_object_ori, params={**_p, "threshold": 0.6}),
-        "exceeded_motion": TerminationTermCfg(
-            func=mdp.exceeded_motion_by_eps, time_out=True,
-            params={**_p, "epsilon_steps": int(_MOTION_PAD_EPS_SEC / step_dt)}),
-    })
+    cfg.terminations.update(
+        {
+            "bad_object_pos": TerminationTermCfg(
+                func=mdp.bad_object_pos, params={**_p, "threshold": 0.3}
+            ),
+            "bad_object_ori": TerminationTermCfg(
+                func=mdp.bad_object_ori, params={**_p, "threshold": 0.6}
+            ),
+            "exceeded_motion": TerminationTermCfg(
+                func=mdp.exceeded_motion_by_eps,
+                time_out=True,
+                params={**_p, "epsilon_steps": int(_MOTION_PAD_EPS_SEC / step_dt)},
+            ),
+        }
+    )
 
     # ── rewards: fcrl parity — robot tracking + object tracking + pose goal ──
     cfg.rewards = {
         "object_goal": RewardTermCfg(
             func=mdp.object_goal_pose_reward,
-            weight=0.5, params={"object_cfg": obj, **_p,
-                                "std_pos": 0.3, "std_quat": 0.4}),
+            weight=object_goal_reward_weight,
+            params={
+                "object_cfg": obj,
+                **_p,
+                "std_pos": object_goal_position_std,
+                "std_quat": object_goal_orientation_std,
+            },
+        ),
         "object_pos": RewardTermCfg(
             func=mdp.object_pos_tracking_reward,
-            weight=2.0, params={**_p, "std": 0.3}),
+            weight=object_position_reward_weight,
+            params={**_p, "std": object_position_tracking_std},
+        ),
         "object_ori": RewardTermCfg(
             func=mdp.object_ori_tracking_reward,
-            weight=1.0, params={**_p, "std": 0.4}),
+            weight=object_orientation_reward_weight,
+            params={**_p, "std": object_orientation_tracking_std},
+        ),
         "root_pos": RewardTermCfg(
             func=tracking_rewards.motion_global_anchor_position_error_exp,
-            weight=0.5, params={**_p, "std": 0.3}),
+            weight=0.5,
+            params={**_p, "std": 0.3},
+        ),
         "root_ori": RewardTermCfg(
             func=tracking_rewards.motion_global_anchor_orientation_error_exp,
-            weight=0.5, params={**_p, "std": 0.4}),
+            weight=0.5,
+            params={**_p, "std": 0.4},
+        ),
         "body_pos": RewardTermCfg(
             func=tracking_rewards.motion_relative_body_position_error_exp,
-            weight=1.0, params={**_p, "std": 0.3}),
+            weight=1.0,
+            params={**_p, "std": 0.3},
+        ),
         "body_ori": RewardTermCfg(
             func=tracking_rewards.motion_relative_body_orientation_error_exp,
-            weight=1.0, params={**_p, "std": 0.4}),
+            weight=1.0,
+            params={**_p, "std": 0.4},
+        ),
         "body_lin_vel": RewardTermCfg(
             func=tracking_rewards.motion_global_body_linear_velocity_error_exp,
-            weight=1.0, params={**_p, "std": 1.0}),
+            weight=1.0,
+            params={**_p, "std": 1.0},
+        ),
         "body_ang_vel": RewardTermCfg(
             func=tracking_rewards.motion_global_body_angular_velocity_error_exp,
-            weight=1.0, params={**_p, "std": 3.14}),
+            weight=1.0,
+            params={**_p, "std": 3.14},
+        ),
         "contact_consistency": RewardTermCfg(
             func=mdp.object_contact_consistency,
-            weight=1.0, params={**_p,
-                                "sensor_name": CONTACT_GRAPH_SENSOR_NAME,
-                                "contact_force_threshold": 0.1}),
+            weight=1.0,
+            params={
+                **_p,
+                "sensor_name": CONTACT_GRAPH_SENSOR_NAME,
+                "contact_force_threshold": 0.1,
+            },
+        ),
         "action_rate_l2": RewardTermCfg(func=mdp.action_rate_l2, weight=-0.1),
         "joint_pos_limits": RewardTermCfg(func=mdp.joint_pos_limits, weight=-1.0),
     }
     if not reference_contacts:
         cfg.rewards.pop("contact_consistency")
+    if reference_source == "realized" and realized_control_tracking_weight != 0.0:
+        cfg.rewards["realized_control"] = RewardTermCfg(
+            func=mdp.realized_control_action_reward,
+            weight=realized_control_tracking_weight,
+            # The saved absolute targets map to normalized SONIC actions with
+            # roughly 5 rad RMS error under the unadapted base.  A width of 5
+            # keeps this guide informative from initialization while bounded.
+            params={**_p, "action_name": "joint_pos", "std": 5.0},
+        )
+    if not object_tracking_terminations:
+        for name in ("bad_object_pos", "bad_object_ori"):
+            cfg.terminations.pop(name, None)
 
     # ── obs: 3-stream layout (policy + tokenizer / augmentation / critic) ──
     ctx = ObsCtx(obj=obj, p=_p)
     cfg.observations = (
-        tara_obs(ctx) if agent == "tara"
+        tara_obs(ctx)
+        if agent == "tara"
         else sonic_obs(
             ctx,
             mode="smpl" if command_space == "smpl" else "g1",
@@ -525,7 +624,8 @@ def uolm_env_cfg(
         # ── robustness domain: state (isr + pushes) + param (physical DR),
         #    both halves — this is the task that has an object ──
         apply_robustness(
-            cfg, object_name=OBJECT_BODY_NAME,
+            cfg,
+            object_name=OBJECT_BODY_NAME,
             sensor_name=CONTACT_GRAPH_SENSOR_NAME,
             hand_body_names=HAND_BODY_NAMES,
         )
@@ -533,7 +633,26 @@ def uolm_env_cfg(
             # BPS source clips have no authored contact schedule. Do not use a
             # fabricated zero schedule to gate mid-clip object perturbations.
             cfg.commands["motion"].object_in_contact_velocity_range = None
+        if reference_source == "realized":
+            # These artifacts are dynamically validated initial-value
+            # problems.  Preserve their frame-zero state exactly; interval
+            # robustness and the existing VOF curriculum remain available,
+            # but reset must not alter the physical launch momentum/contact.
+            cfg.commands["motion"].pose_range = {}
+            cfg.commands["motion"].velocity_range = {}
+            cfg.commands["motion"].joint_position_range = (0.0, 0.0)
+            cfg.commands["motion"].object_init_pose_range = None
+            cfg.commands["motion"].object_in_contact_velocity_range = None
     apply_obs_noise(cfg)
+
+    # A realized contact-impulse trajectory can have substantial target
+    # velocity while its pose error is still near zero.  The legacy VOF is a
+    # pose PD with damping toward zero velocity (it has no target-velocity
+    # channel), so applying it to such references opposes the validated
+    # physical motion.  Keep the implementation untouched and make its use an
+    # explicit per-task curriculum choice.
+    if not use_virtual_object_force:
+        cfg.events.pop("virtual_object_force", None)
 
     # INVARIANT: play overrides are LAST — they SUBTRACT from the assembled
     # domain, so anything wired below this line leaks into play/eval.

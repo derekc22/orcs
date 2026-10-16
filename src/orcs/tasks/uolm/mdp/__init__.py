@@ -6,6 +6,7 @@ with the local object-manip terms, so ``mdp.<name>`` resolves all of them.
 
 from orcs.core.mdp import *  # noqa: F401, F403
 
+from .actions import *  # noqa: F403
 from .commands import *  # noqa: F403
 from .contact_schedule import ContactSchedule  # noqa: F401
 from .curriculums import *  # noqa: F403

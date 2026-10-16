@@ -14,7 +14,42 @@ __all__ = [
     "object_goal_ori_reward",
     "object_goal_pose_reward",
     "object_contact_consistency",
+    "realized_control_action_l2",
+    "realized_control_action_reward",
 ]
+
+
+def realized_control_action_l2(
+    env: ManagerBasedRlEnv,
+    command_name: str,
+    action_name: str = "joint_pos",
+) -> torch.Tensor:
+    """Squared normalized-action error to a realized rollout's legal controls.
+
+    This term is intentionally available only when the command exposes saved
+    actuator targets.  It converts those absolute position targets through the
+    active action affine map, including encoder bias, so it remains correct
+    under the normal UOLM actuator/domain-randomization interface.
+    """
+    cmd = env.command_manager.get_term(command_name)
+    if not hasattr(cmd, "realized_control_target"):
+        raise TypeError("realized_control_action_l2 requires a realized reference")
+    action = env.action_manager.get_term(action_name)
+    encoder_bias = action._entity.data.encoder_bias[:, action.target_ids]
+    desired_processed = cmd.realized_control_target + encoder_bias
+    desired_raw = (desired_processed - action.offset) / action.scale
+    return torch.mean((action.raw_action - desired_raw).square(), dim=-1)
+
+
+def realized_control_action_reward(
+    env: ManagerBasedRlEnv,
+    command_name: str,
+    action_name: str = "joint_pos",
+    std: float = 2.0,
+) -> torch.Tensor:
+    """Bounded positive reward for matching the realized legal control prior."""
+    error = realized_control_action_l2(env, command_name, action_name)
+    return torch.exp(-error / (std * std))
 
 
 def _goal_quat(env: ManagerBasedRlEnv, command_name: str) -> torch.Tensor:

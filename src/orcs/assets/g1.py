@@ -14,6 +14,8 @@ own variant compose on `flat_hand_spec` rather than re-deriving the surgery —
 
 from __future__ import annotations
 
+from dataclasses import replace
+
 import mujoco
 import numpy as np
 from mjlab.asset_zoo.robots.unitree_g1.g1_constants import (
@@ -94,4 +96,27 @@ def get_g1_flat_hand_cfg() -> EntityCfg:
     )
 
 
-__all__ = ["get_g1_flat_hand_cfg", "flat_hand_spec", "find_body", "find_body_or_none"]
+def get_g1_flat_hand_realized_reference_cfg() -> EntityCfg:
+    """Flat-hand G1 whose software reset range equals the XML hard range.
+
+    The validated physical references contain three legal joint positions just
+    outside MJLab's conventional 0.9 soft-limit envelope.  This changes no XML,
+    actuator, collision, or hard limit; it only prevents the entity reset
+    writer from silently altering a validated frame-zero state.
+    """
+    cfg = get_g1_flat_hand_cfg()
+    # MuJoCo permits initialization a few milliradians beyond a limited
+    # joint's range and resolves the hard-limit constraint dynamically.  The
+    # validated start states use that behavior (maximum excess: 18.8 mrad), so
+    # the reset writer needs a 3% envelope to avoid pre-simulation clipping.
+    cfg.articulation = replace(cfg.articulation, soft_joint_pos_limit_factor=1.03)
+    return cfg
+
+
+__all__ = [
+    "get_g1_flat_hand_cfg",
+    "get_g1_flat_hand_realized_reference_cfg",
+    "flat_hand_spec",
+    "find_body",
+    "find_body_or_none",
+]

@@ -30,7 +30,9 @@ A missing task is the signal; `SKIP_REASON` is the explanation:
 """
 
 from functools import partial
+from pathlib import Path
 
+from orcs.assets.g1 import get_g1_flat_hand_realized_reference_cfg
 from orcs.core.registry import register_all
 from orcs.core.rl import SMPL_CKPT, adapt_sonic_agent_cfg, tara_agent_cfg
 from orcs.tasks.uolm.env_cfg import uolm_env_cfg, uolm_smpl_env_cfg
@@ -86,6 +88,24 @@ _ADAPTER_RANK = 28
 # frozen base's mean action and `--agent initial` bit-exactness are untouched.
 # Do NOT reach for the action term's `scale` instead — see `sonic_adapter_actor`.
 _STD_SCALE = 1.3
+_REPO_ROOT = Path(__file__).resolve().parents[4]
+_REALIZED_REFERENCES = tuple(
+    str(
+        _REPO_ROOT
+        / "logs"
+        / "unified_physical_reference"
+        / f"final_start_{start:03d}"
+        / "physical_reference.npz"
+    )
+    for start in (0, 10, 20)
+)
+
+
+def _realized_residual_agent_cfg():
+    """Standard TaRa PPO with exploration calibrated to a 0.15 rad residual."""
+    cfg = tara_agent_cfg("orcs_uolm_realized_residual")
+    cfg.actor.distribution_cfg["init_std"] = 0.2
+    return cfg
 
 # The agents come from `orcs.core.rl` — a task picks one and names its
 # experiment, it never declares PPO. See that module's docstring.
@@ -94,33 +114,134 @@ _TASKS = (
     # single-variable rows are not worth spending before either is known to do
     # anything. If it moves, split them; if it does not, both are excluded at
     # once and the next suspect is the VOF decay outrunning the learning rate.
-    ("Orcs-Uolm-AdaptSonic",
-     partial(
-         uolm_env_cfg,
-         reference_source="diffusion",
-         object_names=("largebox",),
-         conditioning_dataset_dirs=("omomo/sub3_largebox_003",),
-         conditioning_window_starts=(0, 10, 20),
-         conditioning_window_length=300,
-         reference_contacts=False,
-         virtual_object_force_decay_iterations=300,
-     ),
-     partial(adapt_sonic_agent_cfg, "orcs_uolm",
-             rank=_ADAPTER_RANK, alpha=_ADAPTER_RANK, std_scale=_STD_SCALE)),
-    ("Orcs-Uolm-TaRa",
-     partial(uolm_env_cfg, agent="tara"),
-     partial(tara_agent_cfg, "orcs_uolm_tara")),
-    ("Orcs-Uolm-AdaptSonic-Smpl",
-     partial(uolm_smpl_env_cfg),
-     partial(adapt_sonic_agent_cfg, "orcs_uolm_smpl", base_checkpoint=SMPL_CKPT)),
-    ("Orcs-Uolm-SmallCubeTable-AdaptSonic-Smpl",
-     partial(uolm_smpl_env_cfg, motion_sets=("small-cube-table",)),
-     partial(adapt_sonic_agent_cfg, "orcs_uolm_smpl_small_cube_table",
-             base_checkpoint=SMPL_CKPT)),
-    ("Orcs-Uolm-BigCubeFloor-AdaptSonic-Smpl",
-     partial(uolm_smpl_env_cfg, motion_sets=("big-cube-floor",)),
-     partial(adapt_sonic_agent_cfg, "orcs_uolm_smpl_big_cube_floor",
-             base_checkpoint=SMPL_CKPT)),
+    (
+        "Orcs-Uolm-AdaptSonic",
+        partial(
+            uolm_env_cfg,
+            reference_source="diffusion",
+            object_names=("largebox",),
+            conditioning_dataset_dirs=("omomo/sub3_largebox_003",),
+            conditioning_window_starts=(0, 10, 20),
+            conditioning_window_length=300,
+            reference_contacts=False,
+            virtual_object_force_decay_iterations=300,
+        ),
+        partial(
+            adapt_sonic_agent_cfg,
+            "orcs_uolm",
+            rank=_ADAPTER_RANK,
+            alpha=_ADAPTER_RANK,
+            std_scale=_STD_SCALE,
+        ),
+    ),
+    (
+        "Orcs-Uolm-Realized-AdaptSonic",
+        partial(
+            uolm_env_cfg,
+            reference_source="realized",
+            realized_reference_paths=_REALIZED_REFERENCES,
+            object_names=("largebox",),
+            conditioning_dataset_dirs=("omomo/sub3_largebox_003",),
+            reference_contacts=False,
+            use_virtual_object_force=False,
+            object_tracking_terminations=False,
+            realized_control_tracking_weight=2.0,
+            # The standard UOLM kernels are retained, but widened for the
+            # strike/slide reference.  The narrow pickup kernels provide
+            # effectively no gradient after a missed impulse (~0.8 m, 2 rad).
+            object_goal_reward_weight=2.0,
+            object_goal_position_std=0.8,
+            object_goal_orientation_std=1.5,
+            object_position_reward_weight=4.0,
+            object_position_tracking_std=0.8,
+            object_orientation_reward_weight=2.0,
+            object_orientation_tracking_std=1.5,
+            robot_cfg=get_g1_flat_hand_realized_reference_cfg,
+        ),
+        partial(
+            adapt_sonic_agent_cfg,
+            "orcs_uolm_realized",
+            rank=_ADAPTER_RANK,
+            alpha=_ADAPTER_RANK,
+            std_scale=_STD_SCALE,
+        ),
+    ),
+    (
+        "Orcs-Uolm-Realized-Residual-TaRa",
+        partial(
+            uolm_env_cfg,
+            agent="tara",
+            reference_source="realized",
+            realized_reference_paths=_REALIZED_REFERENCES,
+            object_names=("largebox",),
+            conditioning_dataset_dirs=("omomo/sub3_largebox_003",),
+            reference_contacts=False,
+            use_virtual_object_force=False,
+            object_tracking_terminations=False,
+            realized_residual_actions=True,
+            realized_residual_bound=0.15,
+            object_goal_reward_weight=2.0,
+            object_goal_position_std=0.8,
+            object_goal_orientation_std=1.5,
+            object_position_reward_weight=4.0,
+            object_position_tracking_std=0.8,
+            object_orientation_reward_weight=2.0,
+            object_orientation_tracking_std=1.5,
+            robot_cfg=get_g1_flat_hand_realized_reference_cfg,
+        ),
+        _realized_residual_agent_cfg,
+    ),
+    (
+        "Orcs-Uolm-Realized-Expert-TaRa",
+        partial(
+            uolm_env_cfg,
+            agent="tara",
+            reference_source="realized",
+            realized_reference_paths=_REALIZED_REFERENCES,
+            object_names=("largebox",),
+            conditioning_dataset_dirs=("omomo/sub3_largebox_003",),
+            reference_contacts=False,
+            use_virtual_object_force=False,
+            object_tracking_terminations=False,
+            object_goal_reward_weight=4.0,
+            object_goal_position_std=0.5,
+            object_goal_orientation_std=0.7,
+            object_position_reward_weight=2.0,
+            object_position_tracking_std=0.8,
+            object_orientation_reward_weight=2.0,
+            object_orientation_tracking_std=1.0,
+            robot_cfg=get_g1_flat_hand_realized_reference_cfg,
+        ),
+        partial(tara_agent_cfg, "orcs_uolm_realized_expert"),
+    ),
+    (
+        "Orcs-Uolm-TaRa",
+        partial(uolm_env_cfg, agent="tara"),
+        partial(tara_agent_cfg, "orcs_uolm_tara"),
+    ),
+    (
+        "Orcs-Uolm-AdaptSonic-Smpl",
+        partial(uolm_smpl_env_cfg),
+        partial(adapt_sonic_agent_cfg, "orcs_uolm_smpl", base_checkpoint=SMPL_CKPT),
+    ),
+    (
+        "Orcs-Uolm-SmallCubeTable-AdaptSonic-Smpl",
+        partial(uolm_smpl_env_cfg, motion_sets=("small-cube-table",)),
+        partial(
+            adapt_sonic_agent_cfg,
+            "orcs_uolm_smpl_small_cube_table",
+            base_checkpoint=SMPL_CKPT,
+        ),
+    ),
+    (
+        "Orcs-Uolm-BigCubeFloor-AdaptSonic-Smpl",
+        partial(uolm_smpl_env_cfg, motion_sets=("big-cube-floor",)),
+        partial(
+            adapt_sonic_agent_cfg,
+            "orcs_uolm_smpl_big_cube_floor",
+            base_checkpoint=SMPL_CKPT,
+        ),
+    ),
 )
 
 SKIP_REASON: dict[str, str] = register_all(_TASKS)

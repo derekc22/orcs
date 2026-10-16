@@ -58,6 +58,7 @@ from orcs.tasks.uolm.generated_reference import (
 )
 from orcs.tasks.uolm.mdp.contact_schedule import ContactSchedule
 from orcs.tasks.uolm.mdp.demo_loader import get_motion_files_for_objects
+from orcs.tasks.uolm.realized_reference import load_realized_reference
 from orcs.tasks.uolm.sources.reconstructed import (
     cache_motion_files,
     is_current_cache_sample,
@@ -71,6 +72,8 @@ __all__ = [
     "ObjectMotionCommand",
     "DiffusionObjectMotionCommandCfg",
     "DiffusionObjectMotionCommand",
+    "RealizedObjectMotionCommandCfg",
+    "RealizedObjectMotionCommand",
     "SmplSeedObjectMotionCommandCfg",
     "SmplSeedObjectMotionCommand",
     "motion_dirs",
@@ -173,36 +176,42 @@ class _ConcatMotionLoader(ConcatMotionLoader):
             return
 
         self.contact = ContactSchedule(
-            self.motion_files, self._clip_lengths, self.device)
+            self.motion_files, self._clip_lengths, self.device
+        )
 
         # per-body contact-graph node vector, concatenated onto the same
         # timeline as obj_pos (only if a reward asks for it).
         names = self._contact_graph_body_names
         self.obj_bodywise_contact: torch.Tensor | None = (
-            torch.cat([
-                self.contact.body_object_contacts(i, names)
-                for i in range(len(self.motion_files))
-            ])  # (T_tot, K)
-            if names else None
+            torch.cat(
+                [
+                    self.contact.body_object_contacts(i, names)
+                    for i in range(len(self.motion_files))
+                ]
+            )  # (T_tot, K)
+            if names
+            else None
         )
 
         # (T_tot,) ANY-robot-body<->object contact — gates the conditional
         # object RSI (twist rand only where the robot has control-authority).
-        self.obj_contact_any = torch.cat([
-            self.contact.object_robot_contact_any(i)
-            for i in range(len(self.motion_files))
-        ])
+        self.obj_contact_any = torch.cat(
+            [
+                self.contact.object_robot_contact_any(i)
+                for i in range(len(self.motion_files))
+            ]
+        )
 
         # ── SMPL human reference (smpl command space) ──
-        self.smpl_joints = torch.cat(self._all_sj)     # (T_tot, 24, 3) RAW (encoder)
+        self.smpl_joints = torch.cat(self._all_sj)  # (T_tot, 24, 3) RAW (encoder)
         self.smpl_root_quat = torch.cat(self._all_sq)  # (T_tot, 4) z-up, wxyz
         self.smpl_joints_viz = torch.cat(self._all_sv)  # (T_tot, 24, 3) z-up world
 
         # ── object tracking ──
-        self.obj_pos = torch.cat(self._all_op)         # (T_tot, 3)
-        self.obj_quat = torch.cat(self._all_oq)        # (T_tot, 4)
-        self.obj_lin_vel = torch.cat(self._all_olv)    # (T_tot, 3)
-        self.obj_ang_vel = torch.cat(self._all_oav)    # (T_tot, 3)
+        self.obj_pos = torch.cat(self._all_op)  # (T_tot, 3)
+        self.obj_quat = torch.cat(self._all_oq)  # (T_tot, 4)
+        self.obj_lin_vel = torch.cat(self._all_olv)  # (T_tot, 3)
+        self.obj_ang_vel = torch.cat(self._all_oav)  # (T_tot, 3)
 
 
 class _SeededSmplObjectMotionLoader(SeededSmplMotionLoader):
@@ -261,7 +270,9 @@ class _SeededSmplObjectMotionLoader(SeededSmplMotionLoader):
                             f"({value.shape[0]} != {expected_frames})"
                         )
                     if not np.isfinite(value).all():
-                        raise ValueError(f"{sample}: {label} object state contains NaN/Inf")
+                        raise ValueError(
+                            f"{sample}: {label} object state contains NaN/Inf"
+                        )
 
             for destination, value in zip(
                 (seed_pos, seed_quat, seed_lin_vel, seed_ang_vel),
@@ -291,6 +302,7 @@ class _SeededSmplObjectMotionLoader(SeededSmplMotionLoader):
 # ObjectMotionCommand
 # ---------------------------------------------------------------------------
 
+
 class ObjectMotionCommand(MultiClipMotionCommand):
     """MotionCommand + object tracking, multi-clip loader, RSI, phase annealing."""
 
@@ -306,7 +318,8 @@ class ObjectMotionCommand(MultiClipMotionCommand):
         cfg = self.cfg
         if cfg.ordered_object_names:
             files_by_obj, files_ordered = get_motion_files_for_objects(
-                list(cfg.ordered_object_names), cfg.dataset_dir,
+                list(cfg.ordered_object_names),
+                cfg.dataset_dir,
                 exclude_motions=list(cfg.exclude_motions or ()),
             )
             counts = [len(files_by_obj[n]) for n in cfg.ordered_object_names]
@@ -318,11 +331,13 @@ class ObjectMotionCommand(MultiClipMotionCommand):
             # flat scan honors exclude_motions (folder- or sample-level)
             files_ordered = (
                 scan_flat(cfg.dataset_dir, cfg.exclude_motions)
-                if cfg.exclude_motions else None
+                if cfg.exclude_motions
+                else None
             )
             self._clip_object_ids = None
         return _ConcatMotionLoader(
-            cfg.dataset_dir, self.device,
+            cfg.dataset_dir,
+            self.device,
             contact_graph_body_names=cfg.contact_graph_body_names,
             motion_files=files_ordered,
         )
@@ -350,28 +365,33 @@ class ObjectMotionCommand(MultiClipMotionCommand):
             assert int(self._env_object_ids.max()) < len(cfg.ordered_object_names)
             self._clip_allowed = (
                 self._clip_object_ids[None, :]
-                == torch.arange(len(cfg.ordered_object_names),
-                                device=self.device)[:, None]
+                == torch.arange(len(cfg.ordered_object_names), device=self.device)[
+                    :, None
+                ]
             )  # (n_objects, n_clips)
         else:
             self._env_object_ids = None
             self._clip_allowed = None
 
         # Object goal: final-frame orientation per env (set at reset)
-        self._object_goal_pos = torch.zeros(
-            self.num_envs, 3, device=self.device
-        )
-        self._object_goal_quat = torch.zeros(
-            self.num_envs, 4, device=self.device
-        )
+        self._object_goal_pos = torch.zeros(self.num_envs, 3, device=self.device)
+        self._object_goal_quat = torch.zeros(self.num_envs, 4, device=self.device)
         self._object_goal_quat[:, 0] = 1.0
 
         # Object tracking metrics
-        self.metrics["error_object_pos"] = torch.zeros(self.num_envs, device=self.device)
-        self.metrics["error_object_ori"] = torch.zeros(self.num_envs, device=self.device)
+        self.metrics["error_object_pos"] = torch.zeros(
+            self.num_envs, device=self.device
+        )
+        self.metrics["error_object_ori"] = torch.zeros(
+            self.num_envs, device=self.device
+        )
         # Object goal metrics
-        self.metrics["error_object_pos_goal"] = torch.zeros(self.num_envs, device=self.device)
-        self.metrics["error_object_ori_goal"] = torch.zeros(self.num_envs, device=self.device)
+        self.metrics["error_object_pos_goal"] = torch.zeros(
+            self.num_envs, device=self.device
+        )
+        self.metrics["error_object_ori_goal"] = torch.zeros(
+            self.num_envs, device=self.device
+        )
         self.metrics["at_goal"] = torch.zeros(self.num_envs, device=self.device)
 
     def _clip_allowance(self, env_ids: torch.Tensor) -> torch.Tensor | None:
@@ -412,35 +432,38 @@ class ObjectMotionCommand(MultiClipMotionCommand):
             m = at_clip_start
             if m.any():
                 s = sample_se3(
-                    self.cfg.object_init_pose_range, int(m.sum()), self.device)
+                    self.cfg.object_init_pose_range, int(m.sum()), self.device
+                )
                 obj_pos[m] = obj_pos[m] + s[:, 0:3]
                 obj_quat[m] = quat_mul(
-                    quat_from_euler_xyz(s[:, 3], s[:, 4], s[:, 5]), obj_quat[m])
+                    quat_from_euler_xyz(s[:, 3], s[:, 4], s[:, 5]), obj_quat[m]
+                )
         if self.cfg.object_in_contact_velocity_range:
             m = ~at_clip_start & (self.motion.obj_contact_any[t] > 0.5)
             if m.any():
                 s = sample_se3(
-                    self.cfg.object_in_contact_velocity_range, int(m.sum()),
-                    self.device)
+                    self.cfg.object_in_contact_velocity_range, int(m.sum()), self.device
+                )
                 obj_lin_vel[m] = obj_lin_vel[m] + s[:, 0:3]
                 obj_ang_vel[m] = obj_ang_vel[m] + s[:, 3:6]
 
-        obj_state = torch.cat(
-            [obj_pos, obj_quat, obj_lin_vel, obj_ang_vel], dim=-1)
+        obj_state = torch.cat([obj_pos, obj_quat, obj_lin_vel, obj_ang_vel], dim=-1)
         self.object.write_root_state_to_sim(obj_state, env_ids=env_ids)
 
     def _update_task(self) -> None:
         """RobotObjectContactGraph: per-body demo-vs-actual contact disparity
         |ref - live|, averaged over envs (logged whenever a graph sensor is
         configured, whatever contact reward, if any, is live)."""
-        if not (self.cfg.contact_graph_body_names
-                and self.cfg.contact_graph_sensor_name):
+        if not (
+            self.cfg.contact_graph_body_names and self.cfg.contact_graph_sensor_name
+        ):
             return
         log = self._env.extras.setdefault("log", {})
         sensor = self._env.scene.sensors[self.cfg.contact_graph_sensor_name]
         force = torch.norm(sensor.data.force, dim=-1)  # (N, K) sensor order
-        cols = [sensor.primary_names.index(b)
-                for b in self.cfg.contact_graph_body_names]
+        cols = [
+            sensor.primary_names.index(b) for b in self.cfg.contact_graph_body_names
+        ]
         live = (force[:, cols] > self.cfg.contact_force_threshold).float()
         disparity = (self.object_bodywise_contact - live).abs().mean(dim=0)
         for k, body in enumerate(self.cfg.contact_graph_body_names):
@@ -497,7 +520,8 @@ class ObjectMotionCommand(MultiClipMotionCommand):
         """(B, K) reference per-body robot<->object contact at the current frame —
         the contact-graph node vector, ordered by cfg.contact_graph_body_names."""
         assert self.motion.obj_bodywise_contact is not None, (
-            "object_bodywise_contact requires cfg.contact_graph_body_names")
+            "object_bodywise_contact requires cfg.contact_graph_body_names"
+        )
         return self.motion.obj_bodywise_contact[self.time_steps]
 
     @property
@@ -551,8 +575,10 @@ class ObjectMotionCommand(MultiClipMotionCommand):
                 pos = self.object_pos_w[batch].cpu().numpy()
                 rot = matrix_from_quat(self.object_quat_w[batch]).cpu().numpy()
                 visualizer.add_frame(
-                    position=pos, rotation_matrix=rot,
-                    scale=_VIZ_FRAME_SCALE, label=f"ref_obj_frame_{batch}",
+                    position=pos,
+                    rotation_matrix=rot,
+                    scale=_VIZ_FRAME_SCALE,
+                    label=f"ref_obj_frame_{batch}",
                     axis_radius=0.005,
                 )
                 self._debug_vis_goal(visualizer, batch)
@@ -595,7 +621,8 @@ class ObjectMotionCommand(MultiClipMotionCommand):
                 # unfilled variant slots carry dataid -1: hide + point at a
                 # valid mesh so the renderer never dereferences -1
                 unfilled = (gm.geom_type == mujoco.mjtGeom.mjGEOM_MESH) & (
-                    gm.geom_dataid < 0)
+                    gm.geom_dataid < 0
+                )
                 gm.geom_rgba[unfilled, 3] = 0.0
                 gm.geom_dataid[unfilled] = 0
             qpos = np.zeros(self._env.sim.mj_model.nq)
@@ -605,15 +632,19 @@ class ObjectMotionCommand(MultiClipMotionCommand):
             qpos[o_fj[0:3]] = self.object_pos_w[batch].cpu().numpy()
             qpos[o_fj[3:7]] = self.object_quat_w[batch].cpu().numpy()
             visualizer.add_ghost_mesh(
-                qpos, model=self._ghost_model, label=f"ghost_{batch}",
+                qpos,
+                model=self._ghost_model,
+                label=f"ghost_{batch}",
             )
 
             # Orientation frame on reference object
             pos = self.object_pos_w[batch].cpu().numpy()
             rot = matrix_from_quat(self.object_quat_w[batch]).cpu().numpy()
             visualizer.add_frame(
-                position=pos, rotation_matrix=rot,
-                scale=_VIZ_FRAME_SCALE, label=f"ref_obj_frame_{batch}",
+                position=pos,
+                rotation_matrix=rot,
+                scale=_VIZ_FRAME_SCALE,
+                label=f"ref_obj_frame_{batch}",
                 axis_radius=0.005,
             )
 
@@ -627,8 +658,10 @@ class ObjectMotionCommand(MultiClipMotionCommand):
         goal_center = origin + self._object_goal_pos[batch].cpu().numpy()
         goal_rot = matrix_from_quat(self._object_goal_quat[batch]).cpu().numpy()
         visualizer.add_frame(
-            position=goal_center, rotation_matrix=goal_rot,
-            scale=_VIZ_FRAME_SCALE, label=f"goal_frame_{batch}",
+            position=goal_center,
+            rotation_matrix=goal_rot,
+            scale=_VIZ_FRAME_SCALE,
+            label=f"goal_frame_{batch}",
             axis_radius=0.003,
         )
         at_goal = self.metrics["at_goal"][batch] > 0.5
@@ -743,7 +776,9 @@ class SmplSeedObjectMotionCommand(ObjectMotionCommand):
     @property
     def point_target_vel_w(self) -> torch.Tensor:
         previous = self._previous_frames(self.time_steps)
-        return (self._targets(self.time_steps) - self._targets(previous)) / self._env.step_dt
+        return (
+            self._targets(self.time_steps) - self._targets(previous)
+        ) / self._env.step_dt
 
     @property
     def robot_point_pos_w(self) -> torch.Tensor:
@@ -930,9 +965,7 @@ class _GeneratedMotionStore:
         self.obj_quat[..., 0] = 1.0
         self.obj_lin_vel = torch.zeros_like(self.obj_pos)
         self.obj_ang_vel = torch.zeros_like(self.obj_pos)
-        self.obj_bodywise_contact = torch.zeros(
-            *shape, num_contacts, device=device
-        )
+        self.obj_bodywise_contact = torch.zeros(*shape, num_contacts, device=device)
         self.obj_contact_any = torch.zeros(*shape, device=device)
         self.clip_lengths = torch.full(
             (num_envs,), horizon, dtype=torch.long, device=device
@@ -1034,7 +1067,9 @@ class DiffusionObjectMotionCommand(ObjectMotionCommand):
     def _matrix_to_columns6d(matrix: torch.Tensor) -> torch.Tensor:
         return matrix[..., :, :2].transpose(-1, -2).reshape(*matrix.shape[:-2], 6)
 
-    def _physical_object_frame(self, pos: torch.Tensor, quat_wxyz: torch.Tensor) -> torch.Tensor:
+    def _physical_object_frame(
+        self, pos: torch.Tensor, quat_wxyz: torch.Tensor
+    ) -> torch.Tensor:
         # CHECKPOINT COMPATIBILITY: physical wxyz source components were read by
         # training preprocessing as xyzw.  Recreate that historical encoding
         # for all object conditions; the generated output is corrected by the
@@ -1121,16 +1156,15 @@ class DiffusionObjectMotionCommand(ObjectMotionCommand):
         source = self.conditioning_motion
         horizon = self.cfg.generated_horizon
         if not self.cfg.contact_graph_body_names:
-            return torch.empty(
-                len(clip_ids), horizon, 0, device=self.device
-            )
+            return torch.empty(len(clip_ids), horizon, 0, device=self.device)
         if source.obj_bodywise_contact is None:
             raise RuntimeError("diffusion UOLM requires the legacy contact schedule")
         ends = self._conditioning_ends(clip_ids, starts)
         phase = torch.linspace(0.0, 1.0, horizon, device=self.device)
-        indices = starts[:, None] + torch.round(
-            (ends - starts)[:, None] * phase[None, :]
-        ).long()
+        indices = (
+            starts[:, None]
+            + torch.round((ends - starts)[:, None] * phase[None, :]).long()
+        )
         # TODO(generated contacts): these discrete labels belong to the
         # conditioning demonstration and are not generated contact truth.
         # Replace them only when generated-reference contact inference exists.
@@ -1151,9 +1185,10 @@ class DiffusionObjectMotionCommand(ObjectMotionCommand):
         project_generated_joint_positions_(trajectory, soft_limits)
         reference = self.generated_reference_adapter(trajectory)
         horizon = self.cfg.generated_horizon
-        indices = self.motion.clip_offsets[env_ids, None] + torch.arange(
-            horizon, device=self.device
-        )[None, :]
+        indices = (
+            self.motion.clip_offsets[env_ids, None]
+            + torch.arange(horizon, device=self.device)[None, :]
+        )
         self.motion.joint_pos[indices] = reference.joint_pos
         self.motion.joint_vel[indices] = reference.joint_vel
         self.motion.body_pos_w[indices] = reference.body_pos_local
@@ -1219,9 +1254,237 @@ class DiffusionObjectMotionCommand(ObjectMotionCommand):
         super()._update_command(env_ids)
 
 
+class RealizedObjectMotionCommand(ObjectMotionCommand):
+    """UOLM command backed by validated, uninterrupted MuJoCo trajectories.
+
+    The artifacts are loaded once and copied into the same per-environment
+    store used by diffusion references.  Reset writes frame zero (including
+    velocities); subsequent frames are targets only and never overwrite the
+    physical robot or object.
+    """
+
+    cfg: "RealizedObjectMotionCommandCfg"
+
+    def _build_loader(self) -> _GeneratedMotionStore:
+        """Build the temporary base-command timeline directly from artifact 0."""
+        artifact = load_realized_reference(self.cfg.realized_reference_paths[0])
+        reference = artifact.to_generated_reference(
+            device=self.device,
+            dt=float(self._env.step_dt),
+            fk_batch_size=self.cfg.fk_batch_size,
+        )
+        self._bootstrap_artifact = artifact
+        self._bootstrap_reference = reference
+        store = _GeneratedMotionStore(
+            num_envs=1,
+            horizon=self.cfg.realized_horizon,
+            num_joints=reference.joint_pos.shape[-1],
+            num_bodies=reference.body_pos_local.shape[-2],
+            num_contacts=len(self.cfg.contact_graph_body_names or ()),
+            device=self.device,
+        )
+        for target_name, source_name in (
+            ("joint_pos", "joint_pos"),
+            ("joint_vel", "joint_vel"),
+            ("body_pos_w", "body_pos_local"),
+            ("body_quat_w", "body_quat_wxyz"),
+            ("body_lin_vel_w", "body_lin_vel_w"),
+            ("body_ang_vel_w", "body_ang_vel_w"),
+            ("obj_pos", "object_pos_local"),
+            ("obj_quat", "object_quat_wxyz"),
+            ("obj_lin_vel", "object_lin_vel_w"),
+            ("obj_ang_vel", "object_ang_vel_w"),
+        ):
+            getattr(store, target_name)[:] = getattr(reference, source_name)[0]
+        return store
+
+    def __init__(
+        self, cfg: "RealizedObjectMotionCommandCfg", env: ManagerBasedRlEnv
+    ) -> None:
+        super().__init__(cfg, env)
+        if not cfg.realized_reference_paths:
+            raise ValueError("realized_reference_paths must be non-empty")
+        if len(cfg.realized_reference_paths) != len(cfg.realized_reference_start_ids):
+            raise ValueError(
+                "realized reference paths and start ids must have equal length"
+            )
+        if len(set(cfg.realized_reference_start_ids)) != len(
+            cfg.realized_reference_start_ids
+        ):
+            raise ValueError("realized_reference_start_ids must be unique")
+        if abs(float(env.step_dt) - 0.02) > 1.0e-9:
+            raise ValueError(
+                f"realized UOLM requires 50 Hz control (dt=0.02), got {env.step_dt}"
+            )
+
+        artifacts = [self._bootstrap_artifact] + [
+            load_realized_reference(path) for path in cfg.realized_reference_paths[1:]
+        ]
+        references = [self._bootstrap_reference] + [
+            artifact.to_generated_reference(
+                device=self.device,
+                dt=float(env.step_dt),
+                fk_batch_size=cfg.fk_batch_size,
+            )
+            for artifact in artifacts[1:]
+        ]
+        if any(
+            reference.root_pos_local.shape[1] != cfg.realized_horizon
+            for reference in references
+        ):
+            raise ValueError(
+                f"all realized references must have horizon {cfg.realized_horizon}"
+            )
+        configured_bodies = tuple(cfg.body_names)
+        if any(
+            reference.tracked_body_names != configured_bodies
+            for reference in references
+        ):
+            raise ValueError("realized-reference body order does not match UOLM")
+
+        def stack(name: str) -> torch.Tensor:
+            return torch.cat([getattr(reference, name) for reference in references])
+
+        self._library = {
+            name: stack(name)
+            for name in (
+                "joint_pos",
+                "joint_vel",
+                "body_pos_local",
+                "body_quat_wxyz",
+                "body_lin_vel_w",
+                "body_ang_vel_w",
+                "object_pos_local",
+                "object_quat_wxyz",
+                "object_lin_vel_w",
+                "object_ang_vel_w",
+            )
+        }
+        self._library_goal_pos = torch.as_tensor(
+            np.stack([artifact.goal_position for artifact in artifacts]),
+            dtype=torch.float32,
+            device=self.device,
+        )
+        self._library_goal_quat = torch.as_tensor(
+            np.stack([artifact.goal_quaternion for artifact in artifacts]),
+            dtype=torch.float32,
+            device=self.device,
+        )
+        self._library_control = torch.as_tensor(
+            np.stack([artifact.control for artifact in artifacts]),
+            dtype=torch.float32,
+            device=self.device,
+        )
+        self._realized_control = torch.zeros(
+            self.num_envs * cfg.realized_horizon,
+            len(self.robot.joint_names),
+            dtype=torch.float32,
+            device=self.device,
+        )
+        self._start_ids = torch.as_tensor(
+            cfg.realized_reference_start_ids,
+            dtype=torch.long,
+            device=self.device,
+        )
+        self.selected_reference_start = torch.zeros(
+            self.num_envs, dtype=torch.long, device=self.device
+        )
+        self.metrics["reference_start"] = torch.zeros(self.num_envs, device=self.device)
+
+        contact_count = len(cfg.contact_graph_body_names or ())
+        self.motion = _GeneratedMotionStore(
+            num_envs=self.num_envs,
+            horizon=cfg.realized_horizon,
+            num_joints=len(self.robot.joint_names),
+            num_bodies=len(cfg.body_names),
+            num_contacts=contact_count,
+            device=self.device,
+        )
+        self._clip_ids[:] = torch.arange(self.num_envs, device=self.device)
+        self.time_steps[:] = self.motion.clip_offsets
+        self._reset_update_env_ids: torch.Tensor | None = None
+
+    @torch.inference_mode()
+    def _resample_command(self, env_ids: torch.Tensor) -> None:
+        # Randomized balanced assignment: within each reset batch, library
+        # counts differ by at most one, while a random offset and permutation
+        # prevent a fixed environment-to-reference mapping.
+        count = len(env_ids)
+        library_size = len(self._start_ids)
+        offset = torch.randint(library_size, (), device=self.device)
+        selected = (torch.arange(count, device=self.device) + offset) % library_size
+        selected = selected[torch.randperm(count, device=self.device)]
+        horizon = self.cfg.realized_horizon
+        indices = (
+            self.motion.clip_offsets[env_ids, None]
+            + torch.arange(horizon, device=self.device)[None, :]
+        )
+        for target_name, source_name in (
+            ("joint_pos", "joint_pos"),
+            ("joint_vel", "joint_vel"),
+            ("body_pos_w", "body_pos_local"),
+            ("body_quat_w", "body_quat_wxyz"),
+            ("body_lin_vel_w", "body_lin_vel_w"),
+            ("body_ang_vel_w", "body_ang_vel_w"),
+            ("obj_pos", "object_pos_local"),
+            ("obj_quat", "object_quat_wxyz"),
+            ("obj_lin_vel", "object_lin_vel_w"),
+            ("obj_ang_vel", "object_ang_vel_w"),
+        ):
+            getattr(self.motion, target_name)[indices] = self._library[source_name][
+                selected
+            ]
+        self.motion.obj_bodywise_contact[indices] = 0.0
+        self.motion.obj_contact_any[indices] = 0.0
+        self._realized_control[indices] = self._library_control[selected]
+
+        self._clip_ids[env_ids] = env_ids
+        first = self.motion.clip_offsets[env_ids]
+        self.time_steps[env_ids] = first
+        self._steps_past_end[env_ids] = 0
+        self._object_goal_pos[env_ids] = self._library_goal_pos[selected]
+        self._object_goal_quat[env_ids] = self._library_goal_quat[selected]
+        self.selected_reference_start[env_ids] = self._start_ids[selected]
+        self.metrics["reference_start"][env_ids] = self._start_ids[selected].float()
+
+        origins = self._env.scene.env_origins[env_ids]
+        self._write_reference_state_to_sim(
+            env_ids,
+            self.motion.body_pos_w[first, self.motion_anchor_body_index] + origins,
+            self.motion.body_quat_w[first, self.motion_anchor_body_index],
+            self.motion.body_lin_vel_w[first, self.motion_anchor_body_index],
+            self.motion.body_ang_vel_w[first, self.motion_anchor_body_index],
+            self.motion.joint_pos[first],
+            self.motion.joint_vel[first],
+        )
+        object_state = torch.cat(
+            [
+                self.motion.obj_pos[first] + origins,
+                self.motion.obj_quat[first],
+                self.motion.obj_lin_vel[first],
+                self.motion.obj_ang_vel[first],
+            ],
+            dim=-1,
+        )
+        self.object.write_root_state_to_sim(object_state, env_ids=env_ids)
+        self._reset_update_env_ids = env_ids.detach().clone()
+
+    @property
+    def realized_control_target(self) -> torch.Tensor:
+        """Saved physical-rollout actuator target at the current frame."""
+        return self._realized_control[self.time_steps]
+
+    def _update_command(self, env_ids: torch.Tensor | None = None) -> None:
+        if env_ids is None and self._reset_update_env_ids is not None:
+            env_ids = self._reset_update_env_ids
+            self._reset_update_env_ids = None
+        super()._update_command(env_ids)
+
+
 # ---------------------------------------------------------------------------
 # Config
 # ---------------------------------------------------------------------------
+
 
 @dataclass(kw_only=True)
 class ObjectMotionCommandCfg(MultiClipMotionCommandCfg):
@@ -1301,6 +1564,19 @@ class DiffusionObjectMotionCommandCfg(ObjectMotionCommandCfg):
 
     def build(self, env: ManagerBasedRlEnv) -> DiffusionObjectMotionCommand:
         return DiffusionObjectMotionCommand(self, env)
+
+
+@dataclass(kw_only=True)
+class RealizedObjectMotionCommandCfg(ObjectMotionCommandCfg):
+    """Validated dynamics-aware references loaded from immutable artifacts."""
+
+    realized_reference_paths: tuple[str, ...] = ()
+    realized_reference_start_ids: tuple[int, ...] = (0, 10, 20)
+    realized_horizon: int = 300
+    fk_batch_size: int = 300
+
+    def build(self, env: ManagerBasedRlEnv) -> RealizedObjectMotionCommand:
+        return RealizedObjectMotionCommand(self, env)
 
 
 @dataclass(kw_only=True)
