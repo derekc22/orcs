@@ -40,7 +40,197 @@ def _make_env(task: str, start: int, num_envs: int, device: str, seed: int):
     agent_cfg.upload_model = False
     env = RslRlVecEnvWrapper(raw_env, clip_actions=agent_cfg.clip_actions)
     runner = MjlabOnPolicyRunner(env, asdict(agent_cfg), device=device)
-    return env, runner
+    return raw_env, env, runner
+
+
+def _load_actor_on_env(env, task: str, checkpoint: Path, device: str):
+    """Load a second frozen actor without constructing another simulator."""
+    from mjlab.rl.runner import MjlabOnPolicyRunner
+    from mjlab.tasks.registry import load_rl_cfg
+
+    agent_cfg = load_rl_cfg(task)
+    agent_cfg.upload_model = False
+    runner = MjlabOnPolicyRunner(env, asdict(agent_cfg), device=device)
+    runner.load(
+        str(checkpoint),
+        load_cfg={
+            "actor": True,
+            "critic": False,
+            "optimizer": False,
+            "iteration": False,
+            "rnd": False,
+        },
+        map_location=device,
+    )
+    return runner.get_inference_policy(device=device)
+
+
+def _feedback_teacher(
+    raw_env,
+    target: torch.Tensor,
+    target_velocity: torch.Tensor,
+    parameters: torch.Tensor,
+    frame: int,
+    feedback_start: int,
+    root_feedback_start: int,
+) -> torch.Tensor:
+    """Query the compact state-feedback expert on the states actually visited.
+
+    The original DAgger prototype repeated the nominal demonstration action at
+    every off-nominal state.  That is not DAgger: it supplies no recovery
+    feedback and teaches the actor to ignore the very state error that caused
+    the rollout to diverge.  This is the same legal joint-target feedback law
+    used to generate the validated strict expert, evaluated on each current
+    MuJoCo world independently.
+    """
+    from mjlab.utils.lab_api.math import quat_box_minus
+    from search_strict_orcs_expert import _raw_action
+    from search_strict_orcs_feedback_expert import _group_ids
+
+    robot = raw_env.scene["robot"]
+    action_term = raw_env.action_manager.get_term("joint_pos")
+    groups = torch.as_tensor(
+        _group_ids(list(robot.joint_names)), device=raw_env.device
+    )
+    controlled = groups >= 0
+    group_index = groups.clamp_min(0)
+    kp = parameters[:4]
+    kd = parameters[4:8]
+    q = robot.data.joint_pos[:, action_term.target_ids]
+    qd = robot.data.joint_vel[:, action_term.target_ids]
+    nominal = target[frame].expand(q.shape[0], -1)
+    desired_velocity = target_velocity[frame].expand(q.shape[0], -1)
+    correction = kp[group_index] * (nominal - q) + kd[group_index] * (
+        desired_velocity - qd
+    )
+    command = raw_env.command_manager.get_term("motion")
+    names = list(robot.joint_names)
+    if len(parameters) >= 10 and frame >= root_feedback_start:
+        desired_root_z = command.motion.body_pos_w[
+            command.time_steps, command.motion_anchor_body_index, 2
+        ]
+        root_error = desired_root_z - robot.data.root_link_pos_w[:, 2]
+        knee_ids = torch.as_tensor(
+            [i for i, name in enumerate(names) if "knee" in name],
+            device=raw_env.device,
+        )
+        hip_pitch_ids = torch.as_tensor(
+            [i for i, name in enumerate(names) if "hip_pitch" in name],
+            device=raw_env.device,
+        )
+        if len(parameters) == 12:
+            correction[:, knee_ids] += parameters[8:10] * root_error[:, None]
+            correction[:, hip_pitch_ids] += parameters[10:12] * root_error[:, None]
+        else:
+            correction[:, knee_ids] += parameters[8] * root_error[:, None]
+            correction[:, hip_pitch_ids] += parameters[9] * root_error[:, None]
+    if len(parameters) >= 26 and frame >= root_feedback_start:
+        torso = robot.body_names.index("torso_link")
+        motion_torso = command.cfg.body_names.index("torso_link")
+        torso_error = quat_box_minus(
+            command.motion.body_quat_w[command.time_steps, motion_torso],
+            robot.data.body_link_quat_w[:, torso],
+        )
+        torso_velocity_error = (
+            command.motion.body_ang_vel_w[command.time_steps, motion_torso]
+            - robot.data.body_link_ang_vel_w[:, torso]
+        )
+        channel_specs = (
+            (("left_hip_roll_joint",), 0),
+            (("right_hip_roll_joint",), 0),
+            (("left_ankle_roll_joint",), 0),
+            (("right_ankle_roll_joint",), 0),
+            (("waist_roll_joint",), 0),
+            (("left_hip_pitch_joint", "right_hip_pitch_joint"), 1),
+            (("left_ankle_pitch_joint", "right_ankle_pitch_joint"), 1),
+            (("waist_pitch_joint",), 1),
+        )
+        for channel, (joint_names, axis) in enumerate(channel_specs):
+            ids = torch.as_tensor(
+                [names.index(name) for name in joint_names], device=raw_env.device
+            )
+            value = (
+                parameters[10 + 2 * channel] * torso_error[:, axis]
+                + parameters[11 + 2 * channel] * torso_velocity_error[:, axis]
+            )
+            correction[:, ids] += value[:, None]
+    correction[:, ~controlled] = 0.0
+    if frame < feedback_start:
+        correction.zero_()
+    applied_target = nominal + correction.clamp(-0.25, 0.25)
+    return _raw_action(action_term, applied_target)
+
+
+def _policy_feedback_correction(
+    raw_env,
+    parameters: torch.Tensor,
+    frame: int,
+    feedback_start: int,
+) -> torch.Tensor:
+    """Action-space recovery used by the late learned-policy expert."""
+    from mjlab.utils.lab_api.math import quat_box_minus
+
+    robot = raw_env.scene["robot"]
+    command = raw_env.command_manager.get_term("motion")
+    names = list(robot.joint_names)
+    correction = torch.zeros(
+        (raw_env.num_envs, len(names)), device=raw_env.device
+    )
+    if frame < feedback_start:
+        return correction
+    step = command.time_steps
+    desired_z = command.motion.body_pos_w[
+        step, command.motion_anchor_body_index, 2
+    ]
+    desired_vz = command.motion.body_lin_vel_w[
+        step, command.motion_anchor_body_index, 2
+    ]
+    root_error = desired_z - robot.data.root_link_pos_w[:, 2]
+    velocity_error = desired_vz - robot.data.root_link_lin_vel_w[:, 2]
+    knee = torch.as_tensor(
+        [names.index("left_knee_joint"), names.index("right_knee_joint")],
+        device=raw_env.device,
+    )
+    hip_pitch = torch.as_tensor(
+        [names.index("left_hip_pitch_joint"), names.index("right_hip_pitch_joint")],
+        device=raw_env.device,
+    )
+    correction[:, knee] += (
+        parameters[0] * root_error + parameters[1] * velocity_error
+    )[:, None]
+    correction[:, hip_pitch] += (
+        parameters[2] * root_error + parameters[3] * velocity_error
+    )[:, None]
+    torso = robot.body_names.index("torso_link")
+    motion_torso = command.cfg.body_names.index("torso_link")
+    torso_error = quat_box_minus(
+        command.motion.body_quat_w[step, motion_torso],
+        robot.data.body_link_quat_w[:, torso],
+    )
+    omega_error = (
+        command.motion.body_ang_vel_w[step, motion_torso]
+        - robot.data.body_link_ang_vel_w[:, torso]
+    )
+    channels = (
+        (("left_hip_roll_joint",), 0),
+        (("right_hip_roll_joint",), 0),
+        (("left_ankle_roll_joint",), 0),
+        (("right_ankle_roll_joint",), 0),
+        (("waist_roll_joint",), 0),
+        (("left_hip_pitch_joint", "right_hip_pitch_joint"), 1),
+        (("left_ankle_pitch_joint", "right_ankle_pitch_joint"), 1),
+        (("waist_pitch_joint",), 1),
+    )
+    for channel, (joint_names, axis) in enumerate(channels):
+        ids = torch.as_tensor(
+            [names.index(name) for name in joint_names], device=raw_env.device
+        )
+        value = (
+            parameters[4 + 2 * channel] * torso_error[:, axis]
+            + parameters[5 + 2 * channel] * omega_error[:, axis]
+        )
+        correction[:, ids] += value[:, None]
+    return correction.clamp(-0.35, 0.35)
 
 
 def main() -> None:
@@ -51,6 +241,27 @@ def main() -> None:
         type=Path,
         default=Path("logs/realized_expert_dataset_broad"),
     )
+    parser.add_argument(
+        "--feedback",
+        type=Path,
+        help=(
+            "Validated compact feedback-expert artifact. When supplied, label "
+            "every learner-visited state by querying this feedback law instead "
+            "of replaying the nominal demonstration action."
+        ),
+    )
+    parser.add_argument(
+        "--policy-feedback",
+        type=Path,
+        help="Late action-space feedback artifact layered on a frozen teacher actor.",
+    )
+    parser.add_argument(
+        "--teacher-checkpoint",
+        type=Path,
+        help="Frozen actor used with --policy-feedback (defaults to learner checkpoint).",
+    )
+    parser.add_argument("--feedback-start", type=int, default=0)
+    parser.add_argument("--root-feedback-start", type=int, default=0)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--task", default="Orcs-Uolm-Realized-Expert-TaRa")
     parser.add_argument("--starts", default="0,10,20")
@@ -70,25 +281,105 @@ def main() -> None:
     reports = []
     starts = tuple(int(item) for item in args.starts.split(","))
     for start in starts:
-        env, runner = _make_env(
+        raw_env, env, runner = _make_env(
             args.task, start, args.num_envs, args.device, args.seed + start
         )
-        runner.load(str(args.checkpoint), map_location=args.device)
-        actor = runner.get_inference_policy(device=args.device)
-        expert = torch.as_tensor(
-            np.load(args.expert_root / f"expert_start_{start:03d}.npz")["action"],
-            device=args.device,
+        runner.load(
+            str(args.checkpoint),
+            load_cfg={
+                "actor": True,
+                "critic": False,
+                "optimizer": False,
+                "iteration": False,
+                "rnd": False,
+            },
+            map_location=args.device,
         )
+        actor = runner.get_inference_policy(device=args.device)
+        teacher_actor = None
+        if args.policy_feedback is not None:
+            feedback = np.load(args.policy_feedback)
+            parameters = torch.as_tensor(
+                feedback["parameters"], device=args.device, dtype=torch.float32
+            )
+            policy_feedback_start = int(feedback["feedback_start"])
+            teacher_actor = _load_actor_on_env(
+                env,
+                args.task,
+                args.teacher_checkpoint or args.checkpoint,
+                args.device,
+            )
+            max_frames = 300
+            expert = None
+        elif args.feedback is not None:
+            feedback = np.load(args.feedback)
+            target = torch.as_tensor(
+                feedback["target_rad"], device=args.device, dtype=torch.float32
+            )
+            parameters = torch.as_tensor(
+                feedback["parameters"], device=args.device, dtype=torch.float32
+            )
+            target_velocity = torch.zeros_like(target)
+            target_velocity[1:-1] = (target[2:] - target[:-2]) * 25.0
+            target_velocity[0] = (target[1] - target[0]) * 50.0
+            target_velocity[-1] = (target[-1] - target[-2]) * 50.0
+            max_frames = min(300, int(target.shape[0]))
+            expert = None
+        else:
+            expert = torch.as_tensor(
+                np.load(args.expert_root / f"expert_start_{start:03d}.npz")["action"],
+                device=args.device,
+            )
+            max_frames = min(300, int(expert.shape[0]))
         generator = torch.Generator(device=args.device).manual_seed(args.seed + start)
         obs = env.get_observations()
         alive = torch.ones(args.num_envs, dtype=torch.bool, device=args.device)
         collected = 0
-        for frame in range(300):
+        from mjlab.utils.lab_api.math import matrix_from_quat
+
+        robot = raw_env.scene["robot"]
+        torso_index = robot.body_names.index("torso_link")
+        initial_rotation = matrix_from_quat(
+            robot.data.body_link_quat_w[:, torso_index]
+        )
+        torso_local_up = (
+            initial_rotation.transpose(-1, -2)
+            @ torch.tensor([0.0, 0.0, 1.0], device=args.device)
+            .expand(args.num_envs, 3)
+            .unsqueeze(-1)
+        ).squeeze(-1)
+        # Never manufacture labels beyond the demonstrated teacher horizon.
+        # Some recovery experts are intentionally partial and end at their
+        # first unsupported state; clamping their final action would silently
+        # turn that terminal control into a fictitious long-horizon teacher.
+        for frame in range(max_frames):
+            if teacher_actor is not None:
+                with torch.inference_mode():
+                    teacher_action = teacher_actor(obs) + _policy_feedback_correction(
+                        raw_env,
+                        parameters,
+                        frame,
+                        policy_feedback_start,
+                    )
+            else:
+                teacher_action = (
+                    _feedback_teacher(
+                    raw_env,
+                    target,
+                    target_velocity,
+                    parameters,
+                    frame,
+                    args.feedback_start,
+                    args.root_feedback_start,
+                )
+                    if args.feedback is not None
+                    else expert[frame].expand(args.num_envs, -1)
+                )
             chunks["policy_observation"].append(
                 obs["policy"].detach().cpu().numpy()
             )
             chunks["action"].append(
-                expert[frame].expand(args.num_envs, -1).detach().cpu().numpy()
+                teacher_action.detach().cpu().numpy()
             )
             chunks["frame"].append(
                 np.full(args.num_envs, frame, dtype=np.int64)
@@ -98,7 +389,6 @@ def main() -> None:
             )
             with torch.inference_mode():
                 learner_action = actor(obs)
-            teacher_action = expert[frame].expand_as(learner_action)
             action = (
                 (1.0 - args.teacher_mixture) * learner_action
                 + args.teacher_mixture * teacher_action
@@ -107,10 +397,23 @@ def main() -> None:
                 action.shape, generator=generator, device=action.device
             )
             obs, _, done, _ = env.step(action)
-            done = done.bool()
+            root_height = robot.data.root_link_pos_w[:, 2]
+            torso_rotation = matrix_from_quat(
+                robot.data.body_link_quat_w[:, torso_index]
+            )
+            torso_up = (torso_rotation @ torso_local_up.unsqueeze(-1)).squeeze(-1)
+            torso_tilt = torch.rad2deg(
+                torch.acos(torso_up[:, 2].clamp(-1.0, 1.0))
+            )
+            physical_invalid = (root_height < 0.439) | (torso_tilt > 50.0)
+            done = done.bool() | physical_invalid
             alive &= ~done
             collected += args.num_envs
-            if not bool(alive.any().item()):
+            # With auto_reset disabled MJLab requires every terminated world
+            # to be reset before another vector step.  Stop at the first
+            # learner failure; these are precisely the boundary states this
+            # DAgger batch is intended to label.
+            if bool(done.any().item()):
                 break
         reports.append(
             {

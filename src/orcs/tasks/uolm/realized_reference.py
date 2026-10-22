@@ -20,6 +20,36 @@ if TYPE_CHECKING:
     from orcs.tasks.uolm.generated_reference import GeneratedReference
 
 
+# The standalone MuJoCo generator records ``data.ctrl`` in compiled actuator
+# order.  MJLab's JointPositionAction consumes values in robot joint/qpos
+# order.  G1's actuator declaration is intentionally grouped by motor class,
+# so these orders are not interchangeable (actuator 0 is left shoulder pitch,
+# while joint 0 is left hip pitch).  Keep the immutable validation artifacts
+# untouched and reorder only at their ORCS integration boundary.
+_MUJOCO_ACTUATOR_TO_JOINT_INDEX = np.asarray(
+    [
+        15, 16, 17, 18, 19,
+        22, 23, 24, 25, 26,
+        2, 8, 12,
+        0, 1, 3, 6, 7, 9,
+        20, 21, 27, 28,
+        13, 14,
+        4, 5, 10, 11,
+    ],
+    dtype=np.int64,
+)
+
+
+def _control_in_joint_order(control: np.ndarray) -> np.ndarray:
+    if control.ndim != 2 or control.shape[1] != len(
+        _MUJOCO_ACTUATOR_TO_JOINT_INDEX
+    ):
+        raise ValueError(f"expected actuator control shape (T, 29), got {control.shape}")
+    joint_order = np.empty_like(control)
+    joint_order[:, _MUJOCO_ACTUATOR_TO_JOINT_INDEX] = control
+    return joint_order
+
+
 @dataclass(frozen=True, slots=True)
 class RealizedReferenceArtifact:
     """A continuously simulated robot/object reference and its validation."""
@@ -124,18 +154,21 @@ def load_realized_reference(path: str | Path) -> RealizedReferenceArtifact:
             path=npz_path,
             qpos=data["qpos"].copy(),
             qvel=data["qvel"].copy(),
-            control=data["ctrl"].copy(),
+            control=_control_in_joint_order(data["ctrl"]),
             simulation_trace=data["simulation_trace"].copy(),
             diffusion_prior=data["diffusion_prior"].copy(),
             goal_position=data["goal_position"].copy(),
             goal_quaternion=data["goal_quaternion"].copy(),
             validation=validation,
         )
-    if artifact.qpos.shape[0] != 300 or artifact.qvel.shape[0] != 300:
-        raise ValueError("a final physical reference must contain exactly 300 frames")
-    if artifact.control.shape != (300, 29):
+    horizon = artifact.qpos.shape[0]
+    if horizon not in (300, 1200) or artifact.qvel.shape[0] != horizon:
         raise ValueError(
-            f"a final physical reference must contain controls with shape (300, 29), "
+            "a final physical reference must contain exactly 300 or 1200 frames"
+        )
+    if artifact.control.shape != (horizon, 29):
+        raise ValueError(
+            f"a final physical reference must contain controls with shape ({horizon}, 29), "
             f"got {artifact.control.shape}"
         )
     if not np.isfinite(artifact.qpos).all() or not np.isfinite(artifact.qvel).all():

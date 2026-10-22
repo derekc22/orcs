@@ -34,7 +34,14 @@ from pathlib import Path
 
 from orcs.assets.g1 import get_g1_flat_hand_realized_reference_cfg
 from orcs.core.registry import register_all
-from orcs.core.rl import SMPL_CKPT, adapt_sonic_agent_cfg, tara_agent_cfg
+from orcs.core.rl import (
+    SMPL_CKPT,
+    WBC_HIDDEN,
+    adapt_sonic_agent_cfg,
+    runner,
+    tara_agent_cfg,
+)
+from orcs.core.sensors import STRICT_KILL_BODIES
 from orcs.tasks.uolm.env_cfg import uolm_env_cfg, uolm_smpl_env_cfg
 
 # LoRA size for THIS task's adapter (2026-08-04). rank 16 -> 28, alpha 1 -> 28.
@@ -100,11 +107,87 @@ _REALIZED_REFERENCES = tuple(
     for start in (0, 10, 20)
 )
 
+_REALIZED_REFERENCES_200HZ = tuple(
+    str(
+        _REPO_ROOT
+        / "logs"
+        / "unified_physical_reference_200hz"
+        / f"final_start_{start:03d}"
+        / "physical_reference.npz"
+    )
+    for start in (0, 10, 20)
+)
+
 
 def _realized_residual_agent_cfg():
     """Standard TaRa PPO with exploration calibrated to a 0.15 rad residual."""
     cfg = tara_agent_cfg("orcs_uolm_realized_residual")
     cfg.actor.distribution_cfg["init_std"] = 0.2
+    return cfg
+
+
+def _strict_expert_sidecar_agent_cfg():
+    """Frozen robot-valid start-0 actor plus a trainable full-state residual."""
+    cfg = runner("orcs_uolm_realized_strict_sidecar")
+    cfg.actor = {
+        "class_name": "rsl_rl.models.MLPWithSidecarModel",
+        "hidden_dims": list(WBC_HIDDEN),
+        "activation": "elu",
+        "obs_normalization": True,
+        "distribution_cfg": {
+            "class_name": "GaussianDistribution",
+            "init_std": 0.03,
+            "std_type": "scalar",
+            "learn_std": False,
+        },
+        # The TaRa task exposes the complete deployable state as `policy`.
+        # Reusing it for the sidecar stream gives the residual state feedback
+        # without adding privileged observations.
+        "sidecar_obs_group": "policy",
+        "sidecar_hidden_dims": [512, 256, 128],
+        "sidecar_activation": "elu",
+        "sidecar_head_init_gain": 0.0,
+        "sidecar_output_scale": 1.0,
+        "sidecar_output_bound": "tanh",
+        "condition_on_base_output": True,
+        # Policy context is [phase, start-0, start-10, start-20].  Gate the
+        # trainable residual with start-10 so starts 0/20 remain bit-exactly
+        # equal to the frozen robot-valid base actor.
+        "sidecar_gate_obs_group": "policy",
+        "sidecar_gate_obs_index": -2,
+        "base_checkpoint": str(
+            _REPO_ROOT / "logs/strict_orcs_goal_feedback_bc_v2/actor_base.pt"
+        ),
+        "freeze_base": True,
+    }
+    return cfg
+
+
+def _strict_expert_dual_sidecar_agent_cfg():
+    """Freeze start-0/base and start-10 residual; adapt start 20 alone."""
+    cfg = _strict_expert_sidecar_agent_cfg()
+    cfg.experiment_name = "orcs_uolm_realized_strict_dual_sidecar"
+    cfg.actor.update(
+        {
+            "secondary_sidecar_gate_obs_group": "policy",
+            "secondary_sidecar_gate_obs_index": -1,
+            "freeze_primary_sidecar": True,
+        }
+    )
+    return cfg
+
+
+def _strict_expert_dual_primary_agent_cfg():
+    """Adapt start 10 while freezing the established start-20 residual."""
+    cfg = _strict_expert_sidecar_agent_cfg()
+    cfg.experiment_name = "orcs_uolm_realized_strict_dual_primary_sidecar"
+    cfg.actor.update(
+        {
+            "secondary_sidecar_gate_obs_group": "policy",
+            "secondary_sidecar_gate_obs_index": -1,
+            "freeze_secondary_sidecar": True,
+        }
+    )
     return cfg
 
 # The agents come from `orcs.core.rl` — a task picks one and names its
@@ -213,6 +296,175 @@ _TASKS = (
             robot_cfg=get_g1_flat_hand_realized_reference_cfg,
         ),
         partial(tara_agent_cfg, "orcs_uolm_realized_expert"),
+    ),
+    (
+        "Orcs-Uolm-Realized-Strict-TaRa",
+        partial(
+            uolm_env_cfg,
+            agent="tara",
+            reference_source="realized",
+            realized_reference_paths=_REALIZED_REFERENCES,
+            object_names=("largebox",),
+            conditioning_dataset_dirs=("omomo/sub3_largebox_003",),
+            reference_contacts=False,
+            use_virtual_object_force=False,
+            object_tracking_terminations=False,
+            # The strict learned executor is initialized from the verified
+            # closed-loop expert dataset.  The artifact's downsampled 50 Hz
+            # controls are not executable for every start and must not pull
+            # PPO back toward that stale open-loop interface.
+            realized_control_tracking_weight=0.0,
+            strict_executor_training=True,
+            object_goal_reward_weight=6.0,
+            object_goal_position_std=0.5,
+            object_goal_orientation_std=0.7,
+            object_position_reward_weight=2.0,
+            object_position_tracking_std=0.8,
+            object_orientation_reward_weight=2.0,
+            object_orientation_tracking_std=1.0,
+            kill_bodies=STRICT_KILL_BODIES,
+            kill_exclude=(".*foot.*",),
+            robot_cfg=get_g1_flat_hand_realized_reference_cfg,
+        ),
+        partial(tara_agent_cfg, "orcs_uolm_realized_strict"),
+    ),
+    (
+        "Orcs-Uolm-Realized-Strict-ExpertSidecar",
+        partial(
+            uolm_env_cfg,
+            agent="tara",
+            reference_source="realized",
+            realized_reference_paths=_REALIZED_REFERENCES,
+            object_names=("largebox",),
+            conditioning_dataset_dirs=("omomo/sub3_largebox_003",),
+            reference_contacts=False,
+            use_virtual_object_force=False,
+            object_tracking_terminations=False,
+            realized_control_tracking_weight=0.0,
+            strict_executor_training=True,
+            object_goal_reward_weight=6.0,
+            object_goal_position_std=0.5,
+            object_goal_orientation_std=0.7,
+            object_position_reward_weight=2.0,
+            object_position_tracking_std=0.8,
+            object_orientation_reward_weight=2.0,
+            object_orientation_tracking_std=1.0,
+            kill_bodies=STRICT_KILL_BODIES,
+            kill_exclude=(".*foot.*",),
+            robot_cfg=get_g1_flat_hand_realized_reference_cfg,
+        ),
+        _strict_expert_sidecar_agent_cfg,
+    ),
+    (
+        "Orcs-Uolm-Realized-Strict-ExpertDualSidecar",
+        partial(
+            uolm_env_cfg,
+            agent="tara",
+            reference_source="realized",
+            realized_reference_paths=_REALIZED_REFERENCES,
+            object_names=("largebox",),
+            conditioning_dataset_dirs=("omomo/sub3_largebox_003",),
+            reference_contacts=False,
+            use_virtual_object_force=False,
+            object_tracking_terminations=False,
+            realized_control_tracking_weight=0.0,
+            strict_executor_training=True,
+            object_goal_reward_weight=6.0,
+            object_goal_position_std=0.5,
+            object_goal_orientation_std=0.7,
+            object_position_reward_weight=2.0,
+            object_position_tracking_std=0.8,
+            object_orientation_reward_weight=2.0,
+            object_orientation_tracking_std=1.0,
+            kill_bodies=STRICT_KILL_BODIES,
+            kill_exclude=(".*foot.*",),
+            robot_cfg=get_g1_flat_hand_realized_reference_cfg,
+        ),
+        _strict_expert_dual_sidecar_agent_cfg,
+    ),
+    (
+        "Orcs-Uolm-Realized-Strict-ExpertDualPrimarySidecar",
+        partial(
+            uolm_env_cfg,
+            agent="tara",
+            reference_source="realized",
+            realized_reference_paths=_REALIZED_REFERENCES,
+            object_names=("largebox",),
+            conditioning_dataset_dirs=("omomo/sub3_largebox_003",),
+            reference_contacts=False,
+            use_virtual_object_force=False,
+            object_tracking_terminations=False,
+            realized_control_tracking_weight=0.0,
+            strict_executor_training=True,
+            object_goal_reward_weight=6.0,
+            object_goal_position_std=0.5,
+            object_goal_orientation_std=0.7,
+            object_position_reward_weight=2.0,
+            object_position_tracking_std=0.8,
+            object_orientation_reward_weight=2.0,
+            object_orientation_tracking_std=1.0,
+            kill_bodies=STRICT_KILL_BODIES,
+            kill_exclude=(".*foot.*",),
+            robot_cfg=get_g1_flat_hand_realized_reference_cfg,
+        ),
+        _strict_expert_dual_primary_agent_cfg,
+    ),
+    (
+        "Orcs-Uolm-Realized-Strict-AdaptSonic",
+        partial(
+            uolm_env_cfg,
+            reference_source="realized",
+            realized_reference_paths=_REALIZED_REFERENCES,
+            object_names=("largebox",),
+            conditioning_dataset_dirs=("omomo/sub3_largebox_003",),
+            reference_contacts=False,
+            use_virtual_object_force=False,
+            object_tracking_terminations=False,
+            realized_control_tracking_weight=0.0,
+            object_goal_reward_weight=6.0,
+            object_goal_position_std=0.5,
+            object_goal_orientation_std=0.7,
+            object_position_reward_weight=2.0,
+            object_position_tracking_std=0.8,
+            object_orientation_reward_weight=2.0,
+            object_orientation_tracking_std=1.0,
+            strict_executor_training=True,
+            kill_bodies=STRICT_KILL_BODIES,
+            kill_exclude=(".*foot.*",),
+            robot_cfg=get_g1_flat_hand_realized_reference_cfg,
+        ),
+        partial(
+            adapt_sonic_agent_cfg,
+            "orcs_uolm_realized_strict_adapt_sonic",
+            rank=_ADAPTER_RANK,
+            alpha=_ADAPTER_RANK,
+            std_scale=_STD_SCALE,
+        ),
+    ),
+    (
+        "Orcs-Uolm-Realized-Expert-200Hz-TaRa",
+        partial(
+            uolm_env_cfg,
+            agent="tara",
+            reference_source="realized",
+            realized_reference_paths=_REALIZED_REFERENCES_200HZ,
+            generated_horizon=1200,
+            control_decimation=1,
+            object_names=("largebox",),
+            conditioning_dataset_dirs=("omomo/sub3_largebox_003",),
+            reference_contacts=False,
+            use_virtual_object_force=False,
+            object_tracking_terminations=False,
+            object_goal_reward_weight=4.0,
+            object_goal_position_std=0.5,
+            object_goal_orientation_std=0.7,
+            object_position_reward_weight=2.0,
+            object_position_tracking_std=0.8,
+            object_orientation_reward_weight=2.0,
+            object_orientation_tracking_std=1.0,
+            robot_cfg=get_g1_flat_hand_realized_reference_cfg,
+        ),
+        partial(tara_agent_cfg, "orcs_uolm_realized_expert_200hz"),
     ),
     (
         "Orcs-Uolm-TaRa",

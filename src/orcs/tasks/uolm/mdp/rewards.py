@@ -5,7 +5,11 @@ from __future__ import annotations
 import torch
 from mjlab.envs import ManagerBasedRlEnv
 from mjlab.managers.scene_entity_config import SceneEntityCfg
-from mjlab.utils.lab_api.math import quat_error_magnitude
+from mjlab.utils.lab_api.math import (
+    quat_apply,
+    quat_apply_inverse,
+    quat_error_magnitude,
+)
 
 __all__ = [
     "orientation_success_bonus",
@@ -16,7 +20,73 @@ __all__ = [
     "object_contact_consistency",
     "realized_control_action_l2",
     "realized_control_action_reward",
+    "robot_survival_reward",
+    "strict_termination_penalty",
+    "root_height_viability_reward",
+    "torso_upright_reward",
+    "reference_relative_torso_upright_reward",
 ]
+
+
+def robot_survival_reward(env: ManagerBasedRlEnv) -> torch.Tensor:
+    """Per-step credit for remaining outside every non-timeout termination."""
+    return (~env.termination_manager.terminated).float()
+
+
+def strict_termination_penalty(env: ManagerBasedRlEnv) -> torch.Tensor:
+    """One-step indicator for a physical (non-timeout) failure."""
+    return env.termination_manager.terminated.float()
+
+
+def root_height_viability_reward(
+    env: ManagerBasedRlEnv,
+    minimum_height: float = 0.439,
+    margin: float = 0.16,
+    robot_cfg: SceneEntityCfg = SceneEntityCfg("robot"),  # noqa: B008
+) -> torch.Tensor:
+    """Dense approach reward for maintaining clearance above the hard gate."""
+    height = env.scene[robot_cfg.name].data.root_link_pos_w[:, 2]
+    return ((height - minimum_height) / margin).clamp(0.0, 1.0)
+
+
+def torso_upright_reward(
+    env: ManagerBasedRlEnv,
+    torso_name: str = "torso_link",
+    std_rad: float = 0.55,
+    robot_cfg: SceneEntityCfg = SceneEntityCfg("robot"),  # noqa: B008
+) -> torch.Tensor:
+    """Smooth world-upright reward for the torso used by strict training."""
+    robot = env.scene[robot_cfg.name]
+    torso_index = robot.body_names.index(torso_name)
+    gravity = torch.tensor([0.0, 0.0, -1.0], device=env.device).expand(
+        env.num_envs, 3
+    )
+    projected = quat_apply_inverse(
+        robot.data.body_link_quat_w[:, torso_index], gravity
+    )
+    cosine = (-projected[:, 2]).clamp(-1.0, 1.0)
+    tilt = torch.acos(cosine)
+    return torch.exp(-tilt.square() / (std_rad * std_rad))
+
+
+def reference_relative_torso_upright_reward(
+    env: ManagerBasedRlEnv,
+    command_name: str,
+    torso_name: str = "torso_link",
+    std_rad: float = 0.55,
+    robot_cfg: SceneEntityCfg = SceneEntityCfg("robot"),  # noqa: B008
+) -> torch.Tensor:
+    """Dense version of the corrected evaluator's torso-validity metric."""
+    command = env.command_manager.get_term(command_name)
+    if not hasattr(command, "initial_torso_local_up"):
+        raise TypeError("reference-relative torso reward requires realized command")
+    robot = env.scene[robot_cfg.name]
+    torso_index = robot.body_names.index(torso_name)
+    torso_up_w = quat_apply(
+        robot.data.body_link_quat_w[:, torso_index], command.initial_torso_local_up
+    )
+    tilt = torch.acos(torso_up_w[:, 2].clamp(-1.0, 1.0))
+    return torch.exp(-tilt.square() / (std_rad * std_rad))
 
 
 def realized_control_action_l2(

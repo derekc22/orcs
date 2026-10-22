@@ -46,7 +46,7 @@ from orcs.assets import (
     table_entity_cfg,
 )
 from orcs.core.data.seeds import SeedMotion
-from orcs.core.obs import apply_obs_noise
+from orcs.core.obs import T, apply_obs_noise
 from orcs.core.paths import DATA_ROOT
 from orcs.core.robustness import strip_domain
 from orcs.tasks.uolm import mdp
@@ -255,6 +255,8 @@ def uolm_env_cfg(
     object_orientation_tracking_std: float = 0.4,
     realized_residual_actions: bool = False,
     realized_residual_bound: float = 0.15,
+    control_decimation: int = 4,
+    strict_executor_training: bool = False,
     virtual_object_force_decay_iterations: int = 10_000,
     robot_cfg: Callable[[], EntityCfg] | None = None,
     kill_bodies: tuple[str, ...] = UOLM_KILL_BODIES,
@@ -404,7 +406,7 @@ def uolm_env_cfg(
                 timestep=0.005, iterations=10, ls_iterations=20, ccd_iterations=24
             ),  # EPA scratch ~ 6+5*it rows
         ),
-        decimation=4,
+        decimation=control_decimation,
         episode_length_s=10.0,  # overwritten below from the dataset
     )
 
@@ -599,6 +601,34 @@ def uolm_env_cfg(
     if not object_tracking_terminations:
         for name in ("bad_object_pos", "bad_object_ori"):
             cfg.terminations.pop(name, None)
+    if strict_executor_training:
+        # Make the learning contract identical to the collapse-aware policy
+        # evaluator.  Object success cannot compensate for a fallen robot.
+        cfg.terminations["root_height"] = TerminationTermCfg(
+            func=mdp.root_below_height, params={"height": 0.439}
+        )
+        cfg.terminations["torso_tilt"] = TerminationTermCfg(
+            func=mdp.reference_relative_torso_tilt_exceeded,
+            params={"command_name": "motion", "tilt_deg": 50.0},
+        )
+        cfg.rewards.update(
+            {
+                "survival": RewardTermCfg(
+                    func=mdp.robot_survival_reward, weight=3.0
+                ),
+                "termination_penalty": RewardTermCfg(
+                    func=mdp.strict_termination_penalty, weight=-30.0
+                ),
+                "root_height_viability": RewardTermCfg(
+                    func=mdp.root_height_viability_reward, weight=2.0
+                ),
+                "torso_viability": RewardTermCfg(
+                    func=mdp.reference_relative_torso_upright_reward,
+                    weight=2.0,
+                    params={"command_name": "motion", "std_rad": 0.55},
+                ),
+            }
+        )
 
     # ── obs: 3-stream layout (policy + tokenizer / augmentation / critic) ──
     ctx = ObsCtx(obj=obj, p=_p)
@@ -611,6 +641,14 @@ def uolm_env_cfg(
             include_contact=reference_contacts,
         )
     )
+    if reference_source == "realized" and agent == "tara":
+        # Contact-sensitive expert controls are phase- and reference-specific.
+        # Both values are available at deployment from the command generator;
+        # making them explicit avoids an unnecessary partial-observability
+        # problem for the memoryless TaRa actor.
+        term = T(mdp.realized_reference_context, _p)
+        cfg.observations["policy"].terms["realized_reference_context"] = term
+        cfg.observations["critic"].terms["realized_reference_context"] = term
 
     if command_space == "smpl":
         # Rollout-only for now: rewards + RSI design deferred (frozen base,

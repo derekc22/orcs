@@ -33,6 +33,7 @@ __all__ = [
     "robot_root_pos_env",
     "object_id_onehot",
     "object_inertial_desc",
+    "realized_reference_context",
     # tracking obs (ObjectMotionCommand)
     "object_pos_w_obs",
     "object_ori_mat6d_w",
@@ -52,6 +53,30 @@ __all__ = [
     "motion_anchor_pos_b_future",
     "motion_anchor_ori_b_future",
 ]
+
+
+def realized_reference_context(
+    env: ManagerBasedRlEnv, command_name: str
+) -> torch.Tensor:
+    """Deployable phase and realized-reference identity.
+
+    The three physically refined references can pass through very similar
+    proprioceptive states while requiring different contact timing.  Expose
+    the information already known to the command generator explicitly instead
+    of asking a memoryless actor to infer it from noisy future poses.  Layout:
+    normalized local phase followed by a one-hot over configured start IDs.
+    """
+    cmd = env.command_manager.get_term(command_name)
+    local = cmd.time_steps - cmd.motion.clip_offsets[cmd._clip_ids]
+    lengths = cmd.motion.clip_lengths[cmd._clip_ids].clamp_min(2)
+    phase = (local.float() / (lengths.float() - 1.0)).unsqueeze(-1)
+    starts = torch.as_tensor(
+        cmd.cfg.realized_reference_context_ids,
+        device=env.device,
+        dtype=cmd.selected_reference_start.dtype,
+    )
+    identity = cmd.selected_reference_start[:, None] == starts[None, :]
+    return torch.cat([phase, identity.float()], dim=-1)
 
 def _quat_to_mat6d(quat: torch.Tensor) -> torch.Tensor:
     """(B, 4) wxyz quat -> (B, 6) mat6d [col0, col1] of rotation matrix."""

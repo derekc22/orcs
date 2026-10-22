@@ -20,7 +20,7 @@ from tensordict import TensorDict
 
 
 def _load_dataset(
-    root: Path, extras: tuple[Path, ...]
+    root: Path, extras: tuple[Path, ...], starts: tuple[int, ...]
 ) -> dict[str, torch.Tensor]:
     arrays: dict[str, list[np.ndarray]] = {
         "observation": [],
@@ -28,7 +28,7 @@ def _load_dataset(
         "frame": [],
         "start": [],
     }
-    for start in (0, 10, 20):
+    for start in starts:
         data = np.load(root / f"expert_start_{start:03d}.npz")
         arrays["observation"].append(data["policy_observation"])
         arrays["action"].append(data["action"])
@@ -90,14 +90,36 @@ def main() -> None:
     parser.add_argument("--updates", type=int, default=8000)
     parser.add_argument("--batch-size", type=int, default=256)
     parser.add_argument("--learning-rate", type=float, default=3.0e-4)
+    parser.add_argument("--weight-decay", type=float, default=1.0e-6)
     parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--starts", default="0,10,20")
     parser.add_argument("--save-every", type=int, default=1000)
+    parser.add_argument(
+        "--teacher-frame-max",
+        type=int,
+        help=(
+            "If set, apply expert imitation only through this frame and anchor "
+            "later outputs to the initial checkpoint."
+        ),
+    )
+    parser.add_argument(
+        "--late-anchor-weight",
+        type=float,
+        default=1.0,
+        help="Output-distillation weight after --teacher-frame-max.",
+    )
+    parser.add_argument(
+        "--full-batch",
+        action="store_true",
+        help="Use the complete weighted dataset each update for exact interpolation.",
+    )
     args = parser.parse_args()
 
     torch.manual_seed(args.seed)
     np.random.seed(args.seed)
     args.output.mkdir(parents=True, exist_ok=True)
-    data = _load_dataset(args.dataset, tuple(args.extra_dataset))
+    starts = tuple(int(item) for item in args.starts.split(","))
+    data = _load_dataset(args.dataset, tuple(args.extra_dataset), starts)
     device = torch.device(args.device)
     observation = data["observation"].to(device=device, dtype=torch.float32)
     action = data["action"].to(device=device, dtype=torch.float32)
@@ -107,7 +129,17 @@ def main() -> None:
 
     env, runner = _make_runner(args.task, args.device)
     if args.checkpoint is not None:
-        runner.load(str(args.checkpoint), map_location=args.device)
+        runner.load(
+            str(args.checkpoint),
+            load_cfg={
+                "actor": True,
+                "critic": False,
+                "optimizer": False,
+                "iteration": False,
+                "rnd": False,
+            },
+            map_location=args.device,
+        )
     actor = runner.alg.get_policy()
     actor.train()
     full_obs = TensorDict({"policy": observation}, batch_size=[len(observation)])
@@ -116,8 +148,10 @@ def main() -> None:
     if args.checkpoint is None:
         actor.update_normalization(full_obs)
     actor.obs_normalizer.eval()
+    with torch.inference_mode():
+        anchor_action = actor(full_obs).detach().clone()
     optimizer = torch.optim.AdamW(
-        actor.parameters(), lr=args.learning_rate, weight_decay=1.0e-6
+        actor.parameters(), lr=args.learning_rate, weight_decay=args.weight_decay
     )
 
     probabilities = weight / weight.sum()
@@ -126,8 +160,10 @@ def main() -> None:
     best_strike_mse = float("inf")
     best_path = args.output / "model_best.pt"
     for update in range(1, args.updates + 1):
-        indices = torch.multinomial(
-            probabilities, args.batch_size, replacement=True
+        indices = (
+            torch.arange(len(observation), device=device)
+            if args.full_batch
+            else torch.multinomial(probabilities, args.batch_size, replacement=True)
         )
         batch_obs = TensorDict(
             {"policy": observation[indices]}, batch_size=[len(indices)]
@@ -136,9 +172,38 @@ def main() -> None:
         error = prediction - action[indices]
         # The right leg creates the physical strike.  Its modest auxiliary
         # weight prevents its six channels from being diluted by all 29 DOFs.
-        loss_all = error.square().mean()
-        loss_right_leg = error[:, right_leg_ids].square().mean()
-        loss = loss_all + 0.5 * loss_right_leg
+        if args.teacher_frame_max is not None:
+            teacher_mask = frame[indices] <= args.teacher_frame_max
+            late_mask = ~teacher_mask
+            if not bool(teacher_mask.any().item()):
+                raise RuntimeError("batch contains no samples inside teacher window")
+            teacher_error = error[teacher_mask]
+            loss_all = teacher_error.square().mean()
+            loss_right_leg = teacher_error[:, right_leg_ids].square().mean()
+            late_anchor = (
+                (prediction[late_mask] - anchor_action[indices][late_mask])
+                .square()
+                .mean()
+                if bool(late_mask.any().item())
+                else prediction.new_zeros(())
+            )
+        elif args.full_batch:
+            batch_weight = weight[indices]
+            batch_weight = batch_weight / batch_weight.sum()
+            loss_all = (error.square().mean(dim=-1) * batch_weight).sum()
+            loss_right_leg = (
+                error[:, right_leg_ids].square().mean(dim=-1) * batch_weight
+            ).sum()
+        else:
+            loss_all = error.square().mean()
+            loss_right_leg = error[:, right_leg_ids].square().mean()
+        if args.teacher_frame_max is None:
+            late_anchor = prediction.new_zeros(())
+        loss = (
+            loss_all
+            + 0.5 * loss_right_leg
+            + args.late_anchor_weight * late_anchor
+        )
         optimizer.zero_grad(set_to_none=True)
         loss.backward()
         torch.nn.utils.clip_grad_norm_(actor.parameters(), 5.0)
@@ -165,7 +230,7 @@ def main() -> None:
                         (prediction_all - action).abs().max().item()
                     ),
                 }
-                for start_id in (0, 10, 20):
+                for start_id in starts:
                     mask = start == start_id
                     metrics[f"start_{start_id}_mse"] = float(
                         squared[mask].mean().item()
@@ -196,7 +261,7 @@ def main() -> None:
                 "initial_checkpoint": (
                     str(args.checkpoint.resolve()) if args.checkpoint else None
                 ),
-                "num_demonstrations": 3,
+                "num_demonstrations": len(starts),
                 "num_samples": len(observation),
                 "phase_sampling": {
                     "frames_0_12": 12.0,
@@ -206,7 +271,11 @@ def main() -> None:
                 },
                 "updates": args.updates,
                 "batch_size": args.batch_size,
+                "full_batch": args.full_batch,
                 "learning_rate": args.learning_rate,
+                "weight_decay": args.weight_decay,
+                "teacher_frame_max": args.teacher_frame_max,
+                "late_anchor_weight": args.late_anchor_weight,
                 "metrics": ledger,
             },
             indent=2,

@@ -1312,9 +1312,11 @@ class RealizedObjectMotionCommand(ObjectMotionCommand):
             cfg.realized_reference_start_ids
         ):
             raise ValueError("realized_reference_start_ids must be unique")
-        if abs(float(env.step_dt) - 0.02) > 1.0e-9:
+        expected_dt = 6.0 / cfg.realized_horizon
+        if abs(float(env.step_dt) - expected_dt) > 1.0e-9:
             raise ValueError(
-                f"realized UOLM requires 50 Hz control (dt=0.02), got {env.step_dt}"
+                "realized UOLM control period/horizon must span six seconds; "
+                f"expected dt={expected_dt}, got {env.step_dt}"
             )
 
         artifacts = [self._bootstrap_artifact] + [
@@ -1389,6 +1391,9 @@ class RealizedObjectMotionCommand(ObjectMotionCommand):
         self.selected_reference_start = torch.zeros(
             self.num_envs, dtype=torch.long, device=self.device
         )
+        self.initial_torso_local_up = torch.zeros(
+            self.num_envs, 3, dtype=torch.float32, device=self.device
+        )
         self.metrics["reference_start"] = torch.zeros(self.num_envs, device=self.device)
 
         contact_count = len(cfg.contact_graph_body_names or ())
@@ -1446,6 +1451,17 @@ class RealizedObjectMotionCommand(ObjectMotionCommand):
         self._object_goal_quat[env_ids] = self._library_goal_quat[selected]
         self.selected_reference_start[env_ids] = self._start_ids[selected]
         self.metrics["reference_start"][env_ids] = self._start_ids[selected].float()
+
+        torso_index = tuple(self.cfg.body_names).index("torso_link")
+        initial_torso_rotation = matrix_from_quat(
+            self.motion.body_quat_w[first, torso_index]
+        )
+        world_up = torch.tensor(
+            [0.0, 0.0, 1.0], dtype=torch.float32, device=self.device
+        ).expand(len(env_ids), 3)
+        self.initial_torso_local_up[env_ids] = torch.matmul(
+            initial_torso_rotation.transpose(-1, -2), world_up.unsqueeze(-1)
+        ).squeeze(-1)
 
         origins = self._env.scene.env_origins[env_ids]
         self._write_reference_state_to_sim(
@@ -1572,6 +1588,9 @@ class RealizedObjectMotionCommandCfg(ObjectMotionCommandCfg):
 
     realized_reference_paths: tuple[str, ...] = ()
     realized_reference_start_ids: tuple[int, ...] = (0, 10, 20)
+    # Fixed actor-context vocabulary. Evaluation commonly narrows the loaded
+    # library to one reference, but that must not change observation shape.
+    realized_reference_context_ids: tuple[int, ...] = (0, 10, 20)
     realized_horizon: int = 300
     fk_batch_size: int = 300
 
