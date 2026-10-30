@@ -1,0 +1,7 @@
+# Tested with CPython 3.11 on Linux x86_64. No GPU or project assets needed.
+mujoco==3.8.1
+numpy==2.4.6
+scipy==1.17.1
+imageio==2.38.1
+imageio-ffmpeg==0.6.0
+pillow==12.3.0

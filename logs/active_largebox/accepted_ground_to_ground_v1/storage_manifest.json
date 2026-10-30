@@ -1,0 +1,52 @@
+{
+  "format": "gzip, lossless; SHA-256 verified before and after decompression",
+  "git_lfs_configured": false,
+  "all_execution_and_generator_inputs_in_git": false,
+  "compressed_files": {
+    "expert_model.mjb.gz": {
+      "raw_sha256": "4ea127fbd44f74f3e21b48fa9339fd7ae1cf6d256cd2abd2c169801be6843c5d",
+      "gzip_sha256": "e2de89ce2ee42d689e6f1431c7677f7ee807633609436ed3d407fd7873c8753c",
+      "raw_size_bytes": 90254623,
+      "gzip_size_bytes": 42855643,
+      "original_source": "logs/active_largebox/accepted_ground_to_ground_v1/expert_model.mjb"
+    },
+    "generation_inputs/original_largebox_vertical_rail_model_v1.mjb.gz": {
+      "raw_sha256": "d6c8968f5b479e3936702cf68cab8ae5073cdda500f2d48aeb462a7af30160dd",
+      "gzip_sha256": "e2eb0dce4d054c8ebbfa431cec899ecf80cc75328c06efb426ba36c07bd0a871",
+      "raw_size_bytes": 90503367,
+      "gzip_size_bytes": 42855016,
+      "original_source": "logs/engineering_ground_original_largebox_retention/original_largebox_vertical_rail_model_v1.mjb"
+    },
+    "generation_inputs/parallel_robot1_model.mjb.gz": {
+      "raw_sha256": "860f6ad90db14686c9793158d0f4ef7cca98d87664ca4fd753923faef7443749",
+      "gzip_sha256": "97133abc8d6457c26927666261dfa8dc8458a1840fae44c24ccfbdd526373052",
+      "raw_size_bytes": 90248348,
+      "gzip_size_bytes": 42854869,
+      "original_source": "logs/active_largebox/parallel_robot1_model.mjb"
+    },
+    "generation_inputs/controlled_release1_model.mjb.gz": {
+      "raw_sha256": "d9e3b350b4ec845077f44813cc0b20ad26d2dcd13d50ed671704dbf2298f79ef",
+      "gzip_sha256": "47d80ad60fadaca7d0329795d0e7ce9c13ad506c15bc2f7f14288edf8114ca3c",
+      "raw_size_bytes": 90251341,
+      "gzip_size_bytes": 42855256,
+      "original_source": "logs/active_largebox/controlled_release1_model.mjb"
+    },
+    "generation_inputs/sonic_last_ported.pt.gz": {
+      "raw_sha256": "74b7a5420bb74a1713990defaa0ebc2c80bb33b8d6b9be5ca964d39d511ae790",
+      "gzip_sha256": "55795b4368a482ec64ded7c47f1704bffeadd46c51710b129f70cd3ca1f416ce",
+      "raw_size_bytes": 57671186,
+      "gzip_size_bytes": 53666415,
+      "original_source": "dependencies/mocke/pretrained/sonic/last_ported.pt"
+    },
+    "full_source_20s_model.mjb.gz": {
+      "raw_sha256": "4ea127fbd44f74f3e21b48fa9339fd7ae1cf6d256cd2abd2c169801be6843c5d",
+      "gzip_sha256": "e2de89ce2ee42d689e6f1431c7677f7ee807633609436ed3d407fd7873c8753c",
+      "raw_size_bytes": 90254623,
+      "gzip_size_bytes": 42855643,
+      "original_source": "logs/active_largebox/accepted_ground_to_ground_v1/expert_model.mjb",
+      "alias_of": "expert_model.mjb.gz"
+    }
+  },
+  "fresh_clone_self_contained": false,
+  "git_storage_note": "Only accepted model is stored compressed in Git. Intermediate models and pretrained checkpoint remain local; see LOCAL_ARTIFACTS.json."
+}

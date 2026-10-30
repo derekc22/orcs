@@ -1,0 +1,67 @@
+{
+  "all_required_items_verified": true,
+  "requirements": {
+    "original_box_ground_start": [
+      "engineering_manifest.json",
+      "metrics.json:gates.original_geometry",
+      "metrics.json:gates.ground_start"
+    ],
+    "reach_close_force_grasp": [
+      "metrics.json:metrics.reach_down_m",
+      "physics_contact_trace.npz:26:32",
+      "rollout_integrity.json"
+    ],
+    "sustained_free_pickup": [
+      "metrics.json:replay_report.maximum_lift_m",
+      "metrics.json:replay_report.longest_free_bilateral_lift_task_frames"
+    ],
+    "walking_carry_support_transitions": [
+      "metrics.json:metrics.main_continuous_airborne_transport_m",
+      "metrics.json:metrics.carried_left_only_frames",
+      "metrics.json:metrics.carried_right_only_frames",
+      "full_execution.mp4"
+    ],
+    "deceleration_lowering": [
+      "metrics.json:metrics.landing_velocity_COM_mps",
+      "metrics.json:metrics.peak_carried_horizontal_speed_mps",
+      "full_execution.mp4"
+    ],
+    "terrain_weight_transfer_before_release": [
+      "metrics.json:metrics.terrain_accepting_weight_with_gripper_physics_steps",
+      "physics_contact_trace.npz:42"
+    ],
+    "deliberate_open_withdraw": [
+      "engineering_manifest.json:controller",
+      "physics_contact_trace.npz:26:32,43",
+      "metrics.json:gates.clean_withdrawal"
+    ],
+    "stable_final_robot_object": [
+      "metrics.json:gates.stable_object",
+      "metrics.json:gates.stable_robot",
+      "full_execution.mp4"
+    ],
+    "zero_forbidden_invalid_contacts": [
+      "contact_attribution.json",
+      "metrics.json:gates.zero_forbidden_contacts"
+    ],
+    "exact_independent_replay": [
+      "replay_metrics.json",
+      "rollout_integrity.json"
+    ],
+    "complete_video_visual_anticheat": [
+      "full_execution.mp4",
+      "every_frame_review_com/index.json",
+      "metrics.json:visual_review"
+    ],
+    "model_expert_manifest_reproduction": [
+      "expert_model.mjb",
+      "expert.npz",
+      "engineering_manifest.json",
+      "VALIDATION.md",
+      "verification_source"
+    ],
+    "prior_baseline_preserved": [
+      "baseline_preservation.json"
+    ]
+  }
+}

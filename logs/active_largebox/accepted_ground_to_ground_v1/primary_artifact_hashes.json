@@ -1,0 +1,9 @@
+{
+  "physics_contact_trace.npz": "bf9da6dfaf114a5dfad6267c9aa75009512d2a28a1d0a20dfde0fc5da3d12210",
+  "expert.npz": "c6073dc316e8d5d5ab92ad368dae1f6361b9f00dbfc96696480c463b0ccba3b1",
+  "montage.png": "7e8a5db09d4632de2301229e5b348fe524b9a1671cecb66fc53791def9a96273",
+  "full_source_20s.npz": "8bfb50050f1457bf97029228476619f5e2c492f4cdd0ae2f37927dc35d3b4a34",
+  "full_source_20s_model.mjb": "4ea127fbd44f74f3e21b48fa9339fd7ae1cf6d256cd2abd2c169801be6843c5d",
+  "expert_model.mjb": "4ea127fbd44f74f3e21b48fa9339fd7ae1cf6d256cd2abd2c169801be6843c5d",
+  "full_execution.mp4": "8799909472b5bd6f6f963ce47793525a1a27d7dddfe5e64b4013086cf888df0c"
+}

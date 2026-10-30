@@ -1,0 +1,10 @@
+{
+  "baseline_commit": "450a875",
+  "tracked_diff_empty": true,
+  "committed_or_pushed": false,
+  "baseline_hashes": {
+    "logs/engineering_ground_large/ground_large_sonic_expert_v1.npz": "5e863ecbaf468796869eabc0a4121008da9d0c3d12be3931b9d6ee9d4cc33008",
+    "logs/engineering_ground_large/ground_large_sonic_model_v1.mjb": "b1ef5eaa50d44653a796bdccb241af10a234cc7cc678e78ab6a81c22ad85f236"
+  },
+  "all_prior_research_preserved": true
+}

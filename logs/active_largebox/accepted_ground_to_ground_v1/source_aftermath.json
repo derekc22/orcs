@@ -1,0 +1,11 @@
+{
+  "source_physics_steps_after_goal": 172,
+  "source_duration_after_goal_s": 0.86,
+  "robot_root_height_min_m": 0.7435708183868264,
+  "object_body_position_drift_m": 7.639734489190345e-07,
+  "object_final_velocity_norm": 0.0004628438348500226,
+  "source_exact_replay_error": 0.0,
+  "source_forbidden_robot_object_impulse": 0.0,
+  "source_invalid_terrain_impulse": 0.0,
+  "source_robot_self_contact_impulse": 0.0
+}

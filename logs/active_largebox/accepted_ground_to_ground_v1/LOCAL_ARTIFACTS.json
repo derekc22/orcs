@@ -1,0 +1,342 @@
+{
+  "fresh_clone_self_contained": false,
+  "archive_root": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1",
+  "local_artifacts": [
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/SHA256SUMS",
+      "relative_path": "SHA256SUMS",
+      "size_bytes": 5529,
+      "sha256": "045dce90d1966dcf6b3fff64d9fef8a5a6a34840d33a971bb4035eeac7ac5c0b",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/every_frame_review/frames_0000_0099.png",
+      "relative_path": "every_frame_review/frames_0000_0099.png",
+      "size_bytes": 1110038,
+      "sha256": "b72ea413ac86db64ad5b839d3022122bf19e7c8c71d884afa3a2afeaf68a1dfb",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/every_frame_review/frames_0100_0199.png",
+      "relative_path": "every_frame_review/frames_0100_0199.png",
+      "size_bytes": 1237002,
+      "sha256": "7d3251f044d43fc1afabae2292e6e90bf0cebd215ff332208e9fc31f4eb86ab7",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/every_frame_review/frames_0200_0299.png",
+      "relative_path": "every_frame_review/frames_0200_0299.png",
+      "size_bytes": 1343698,
+      "sha256": "72d8b9f6ba52a9945a8335208bc0a9890e488e25f293dc4f5412c7fa98068cdc",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/every_frame_review/frames_0300_0399.png",
+      "relative_path": "every_frame_review/frames_0300_0399.png",
+      "size_bytes": 1148681,
+      "sha256": "7ab26e43f8c08b052e31e669ef3b33179b01014e4463c18050ec86174f6a534d",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/every_frame_review/frames_0400_0499.png",
+      "relative_path": "every_frame_review/frames_0400_0499.png",
+      "size_bytes": 989427,
+      "sha256": "21a0ebb012fa1bb0d91c37d1a73dd5fe5eb39412ffc9af1d57ecc86f455f3581",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/every_frame_review/frames_0500_0599.png",
+      "relative_path": "every_frame_review/frames_0500_0599.png",
+      "size_bytes": 1026176,
+      "sha256": "c573502482d25b19b1955aedbe7b52aad459e7414edf6f2d6dfcd820ab9cd2e6",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/every_frame_review/frames_0600_0699.png",
+      "relative_path": "every_frame_review/frames_0600_0699.png",
+      "size_bytes": 978530,
+      "sha256": "547a97fa37778abcdd6619d6cfda0c96c08180612cedb3ccd7be7df488a4c1ed",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/every_frame_review/frames_0700_0799.png",
+      "relative_path": "every_frame_review/frames_0700_0799.png",
+      "size_bytes": 773455,
+      "sha256": "6615a7c86fa6fa5b8a614683f4fc402ab41973b66eb5d306afddbc2a5b2d09e9",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/every_frame_review/frames_0800_0899.png",
+      "relative_path": "every_frame_review/frames_0800_0899.png",
+      "size_bytes": 1032440,
+      "sha256": "246c1b0cc1719b6d92bf831a1f1c3f7161040c2ef451f545ad82535c0a177374",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/every_frame_review/frames_0900_0956.png",
+      "relative_path": "every_frame_review/frames_0900_0956.png",
+      "size_bytes": 636869,
+      "sha256": "c3f8e223e07783132bb338d1344944a1370c0f28281c9be30de5068633562fb2",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/every_frame_review/index.json",
+      "relative_path": "every_frame_review/index.json",
+      "size_bytes": 483,
+      "sha256": "a1ffec7e5d8e881816fc46d68a4b1c9cd21b00415c2d418fed71d9d355b87cf0",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/every_frame_review_com/frames_0000_0099.png",
+      "relative_path": "every_frame_review_com/frames_0000_0099.png",
+      "size_bytes": 1116141,
+      "sha256": "e712569d4fd637742d3eac6d13b7553a4b87db3c96eff5943d0faae836f650ea",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/every_frame_review_com/frames_0100_0199.png",
+      "relative_path": "every_frame_review_com/frames_0100_0199.png",
+      "size_bytes": 1237700,
+      "sha256": "77ff36e5834c6b0fcf0961ed15ea73be52957f2de9ce6a7c400750c39b2ef7db",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/every_frame_review_com/frames_0200_0299.png",
+      "relative_path": "every_frame_review_com/frames_0200_0299.png",
+      "size_bytes": 1343157,
+      "sha256": "64ebafc8e378984119da75af1a4b62257fd67d1cee9af3c584278e70688288f5",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/every_frame_review_com/frames_0300_0399.png",
+      "relative_path": "every_frame_review_com/frames_0300_0399.png",
+      "size_bytes": 1152574,
+      "sha256": "ef136a210604cbddccb4eb6424f54819fd4b4bc43019b3777533225c8b30519b",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/every_frame_review_com/frames_0400_0499.png",
+      "relative_path": "every_frame_review_com/frames_0400_0499.png",
+      "size_bytes": 990969,
+      "sha256": "5aa5c33af3322b9cd268d94d67c84d4a055e54668355b7e9e38649c3ba517c9f",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/every_frame_review_com/frames_0500_0599.png",
+      "relative_path": "every_frame_review_com/frames_0500_0599.png",
+      "size_bytes": 1028941,
+      "sha256": "e7e2afd0fb592c5d0c5219afcdbd809b456eb718e15bca2342fd81d7f1e0c04a",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/every_frame_review_com/frames_0600_0699.png",
+      "relative_path": "every_frame_review_com/frames_0600_0699.png",
+      "size_bytes": 981801,
+      "sha256": "ede4fd1f3da5588be2bac40bf05ac931aafb54d1f5a67d095b8580c5ce0624c0",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/every_frame_review_com/frames_0700_0799.png",
+      "relative_path": "every_frame_review_com/frames_0700_0799.png",
+      "size_bytes": 775538,
+      "sha256": "b741395d8d3c090249a53ab1bc368dcdf49540e022d075edada1b9c574b9e77c",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/every_frame_review_com/frames_0800_0899.png",
+      "relative_path": "every_frame_review_com/frames_0800_0899.png",
+      "size_bytes": 1032351,
+      "sha256": "170b5dfd113069e7cf8f843e026d10e576afcfb9e77f42a8c7e57988bab57c9c",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/every_frame_review_com/frames_0900_0956.png",
+      "relative_path": "every_frame_review_com/frames_0900_0956.png",
+      "size_bytes": 636843,
+      "sha256": "af406ef52a398a9700932bfdba6e45915bf173c1eb6e7940506a735864de1a6f",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/every_frame_review_com/index.json",
+      "relative_path": "every_frame_review_com/index.json",
+      "size_bytes": 479,
+      "sha256": "32518175722cfbfd51477804ad1775f651d0711f103b9dcae14e477601dc4132",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/experiment_ledger.jsonl",
+      "relative_path": "experiment_ledger.jsonl",
+      "size_bytes": 3169,
+      "sha256": "ff216e4f377f0521d8a7c1901e27b266e97db6bbfdf15a5f6e13eef3874f971f",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/expert_model.mjb",
+      "relative_path": "expert_model.mjb",
+      "size_bytes": 90254623,
+      "sha256": "4ea127fbd44f74f3e21b48fa9339fd7ae1cf6d256cd2abd2c169801be6843c5d",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/full_source_20s.npz",
+      "relative_path": "full_source_20s.npz",
+      "size_bytes": 3687831,
+      "sha256": "8bfb50050f1457bf97029228476619f5e2c492f4cdd0ae2f37927dc35d3b4a34",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/full_source_20s_model.mjb",
+      "relative_path": "full_source_20s_model.mjb",
+      "size_bytes": 90254623,
+      "sha256": "4ea127fbd44f74f3e21b48fa9339fd7ae1cf6d256cd2abd2c169801be6843c5d",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/full_source_20s_model.mjb.gz",
+      "relative_path": "full_source_20s_model.mjb.gz",
+      "size_bytes": 42855643,
+      "sha256": "e2de89ce2ee42d689e6f1431c7677f7ee807633609436ed3d407fd7873c8753c",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/generation_inputs/SONIC_LICENSE.txt",
+      "relative_path": "generation_inputs/SONIC_LICENSE.txt",
+      "size_bytes": 8886,
+      "sha256": "24ab66be50d1aca4fc5e029ef76ce4ceaac6557ea21665caf4b140695a76ffee",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/generation_inputs/SONIC_PROVENANCE.json",
+      "relative_path": "generation_inputs/SONIC_PROVENANCE.json",
+      "size_bytes": 721,
+      "sha256": "c1504ac504c7e993da0ad7ff423b99c20f0afe963f5365fbefa05ca550856ff8",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/generation_inputs/controlled_release1_model.mjb.gz",
+      "relative_path": "generation_inputs/controlled_release1_model.mjb.gz",
+      "size_bytes": 42855256,
+      "sha256": "47d80ad60fadaca7d0329795d0e7ce9c13ad506c15bc2f7f14288edf8114ca3c",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/generation_inputs/original_largebox_vertical_rail_model_v1.mjb.gz",
+      "relative_path": "generation_inputs/original_largebox_vertical_rail_model_v1.mjb.gz",
+      "size_bytes": 42855016,
+      "sha256": "e2eb0dce4d054c8ebbfa431cec899ecf80cc75328c06efb426ba36c07bd0a871",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/generation_inputs/parallel_robot1_model.mjb.gz",
+      "relative_path": "generation_inputs/parallel_robot1_model.mjb.gz",
+      "size_bytes": 42854869,
+      "sha256": "97133abc8d6457c26927666261dfa8dc8458a1840fae44c24ccfbdd526373052",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/generation_inputs/sonic_last_ported.pt.gz",
+      "relative_path": "generation_inputs/sonic_last_ported.pt.gz",
+      "size_bytes": 53666415,
+      "sha256": "55795b4368a482ec64ded7c47f1704bffeadd46c51710b129f70cd3ca1f416ce",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/generation_source/active_largebox_clamp.py",
+      "relative_path": "generation_source/active_largebox_clamp.py",
+      "size_bytes": 14802,
+      "sha256": "ed43ccb3b4b6a880882bff9ea2522ca30d8590c9111850a90888b623f1c9763d",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/generation_source/active_largebox_engineering.py",
+      "relative_path": "generation_source/active_largebox_engineering.py",
+      "size_bytes": 9823,
+      "sha256": "76b06230845126a60819804436385da98d09620eb396e00cf5371f568cf2032e",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/generation_source/active_largebox_motion.py",
+      "relative_path": "generation_source/active_largebox_motion.py",
+      "size_bytes": 3203,
+      "sha256": "31486a74f55ed83b0c7284b57c60d36da38d1ffcba76fc74f9454ba7faf44875",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/generation_source/active_largebox_sonic.py",
+      "relative_path": "generation_source/active_largebox_sonic.py",
+      "size_bytes": 3426,
+      "sha256": "fc7683726541b67950252506d0eff7e1d3144087c611b3a2202d97622d47dcac",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/generation_source/build_engineered_ground_large_model.py",
+      "relative_path": "generation_source/build_engineered_ground_large_model.py",
+      "size_bytes": 2488,
+      "sha256": "df5a5b33d1a62ca96512175a2876c14601c03439438d465cbf45b2a6171d0f4a",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/generation_source/build_engineered_ground_original_largebox_model.py",
+      "relative_path": "generation_source/build_engineered_ground_original_largebox_model.py",
+      "size_bytes": 3334,
+      "sha256": "37e843bb7709b3912eb654c4419193ba0289dd1c7dc8e9beb4170bb00884ea33",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/generation_source/run_engineered_locomomanipulation.py",
+      "relative_path": "generation_source/run_engineered_locomomanipulation.py",
+      "size_bytes": 29831,
+      "sha256": "019289578a2b6747ff3158e0c7860d87bbbc59bf16b9d21f37d36ad45da19051",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/verification_source/audit_active_largebox.py",
+      "relative_path": "verification_source/audit_active_largebox.py",
+      "size_bytes": 8406,
+      "sha256": "9033fa9cc9b10cc579b337f03733428acaece3556b05dd72dd789571ce58f22b",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/verification_source/package_active_largebox_success.py",
+      "relative_path": "verification_source/package_active_largebox_success.py",
+      "size_bytes": 11628,
+      "sha256": "7a12ba275613f870e44a88749c14a7c786db9e152589f2cd48fc2b53917baa54",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/verification_source/reproduce_active_largebox.py",
+      "relative_path": "verification_source/reproduce_active_largebox.py",
+      "size_bytes": 1412,
+      "sha256": "f61ce3033ffdd480157c26afa277463eaa30b3e39aa3554959a72eea9cf1c436",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/verification_source/review_active_largebox_video.py",
+      "relative_path": "verification_source/review_active_largebox_video.py",
+      "size_bytes": 1372,
+      "sha256": "b80283946f0cc92c64683551a1e3e554044747d7a06f9e1da6692dbb7c1c450e",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/verification_source/terminate_active_largebox_expert.py",
+      "relative_path": "verification_source/terminate_active_largebox_expert.py",
+      "size_bytes": 2216,
+      "sha256": "4bd934a9b1191d60e98c28709aa2c9d71a7e4db347237c9b7f242acd3ac35c32",
+      "stored_in_git": false
+    },
+    {
+      "path": "/home/learning/Documents/orcs-fork/logs/active_largebox/accepted_ground_to_ground_v1/verification_source/verify_active_largebox.py",
+      "relative_path": "verification_source/verify_active_largebox.py",
+      "size_bytes": 7436,
+      "sha256": "9ed73e4d6006f1fd661ac44f493e8b2d77497b30fd03ed75bb771a6016559a57",
+      "stored_in_git": false
+    }
+  ],
+  "required_for_complete_audit": "generation_inputs/original_largebox_vertical_rail_model_v1.mjb.gz",
+  "generator_only_large_dependencies": [
+    "generation_inputs/parallel_robot1_model.mjb.gz",
+    "generation_inputs/controlled_release1_model.mjb.gz",
+    "generation_inputs/sonic_last_ported.pt.gz"
+  ],
+  "note": "Files remain preserved locally. Gzip/raw identity and original source locations are recorded in storage_manifest.json. Exact verify-only replay needs only the versioned accepted expert and model; full original-geometry audit additionally needs the local reference model."
+}

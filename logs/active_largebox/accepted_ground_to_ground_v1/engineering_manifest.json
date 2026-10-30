@@ -1,0 +1,632 @@
+{
+  "baseline_commit": "450a8750cd5eb79fda94adc036c6b23a685926f5",
+  "created_utc": "2026-10-29T17:01:50.893326+00:00",
+  "mujoco_version": "3.8.1",
+  "physics_rate_Hz": 200,
+  "task_and_video_rate_Hz": 50,
+  "physics_steps": 3828,
+  "task_frames": 957,
+  "duration_s": 19.14,
+  "state_convention": "initial_qpos/qvel precede control zero; qpos/qvel are physics-rate post-step states; contact forces belong to that physics step; landing velocities use the preceding post-step sample (pre-contact state).",
+  "object": {
+    "source": "repository largebox cvx_dcmp",
+    "external_collision_AABB_dimensions_m": [
+      0.4735717910264654,
+      0.46160235610393363,
+      0.4095586479283511
+    ],
+    "mass_kg": 0.05,
+    "inertia_kg_m2": [
+      0.0009753494444444445,
+      0.0009444005555555556,
+      0.0008700633333333334
+    ],
+    "COM_body_offset_m": [
+      -5.70063e-06,
+      0.000329085,
+      0.00497456
+    ],
+    "initial_qpos": [
+      -0.7337322160601616,
+      2.9699876587837934,
+      0.17197975516319275,
+      0.9656843543052673,
+      0.04236224293708801,
+      0.0767102763056755,
+      0.2444886714220047
+    ],
+    "mesh_vertex_and_geom_pose_error_from_original": 0.0,
+    "friction": [
+      2.5,
+      0.1,
+      0.003
+    ],
+    "contact_solref": [
+      0.03,
+      1.0
+    ],
+    "normal_ground_rest_orientation_preserved": true
+  },
+  "mechanism": {
+    "architecture": "single wrist-mounted rigid opposing-jaw clamp, six independently driven physical pistons",
+    "frame_mass_kg": 0.15100000000000008,
+    "finger_bodies_total_mass_kg": 0.15,
+    "finger_stroke_range_m": [
+      -0.05,
+      0.22
+    ],
+    "pad_radius_m": 0.025,
+    "piston_rod_length_m": 0.22,
+    "piston_rod_radius_m": 0.003,
+    "per_finger_force_limit_N": 2.0,
+    "carry_grip_force_target_N": 0.6,
+    "near_ground_grip_force_target_N": 1.0,
+    "additional_wrist_axis": {
+      "axis_local": [
+        0,
+        0,
+        1
+      ],
+      "range_rad": [
+        -1.57,
+        1.57
+      ],
+      "torque_limit_Nm": 5.0
+    },
+    "initial_wrist_to_grasp_centroid_m": 0.757174863103389,
+    "initial_max_wrist_to_pad_m": 0.9429481700215269,
+    "sphere_and_piston_collision_masks": [
+      4,
+      13
+    ],
+    "object_and_terrain_and_finger_self_collisions_enabled": true
+  },
+  "morphology_relaxations": [
+    {
+      "change": "Box-sized long distal clamp with physical rods, pads and frame",
+      "necessity": "Rear/upper passive contact bands and split-wrist pressure contacts could not supply reliable retention and release. The common frame accommodates opposing contacts on the original box; its complete finite mass and inertia load the wrist. This is a substantial distal end-effector modification, explicitly disclosed rather than described as stock G1 hands."
+    },
+    {
+      "change": "One additional physically actuated wrist axis",
+      "necessity": "Measured single-wrist pose limits during braking and set-down; provides rotation redundancy with a finite 5 Nm motor."
+    },
+    {
+      "change": "270 mm finger stroke",
+      "necessity": "Recorded 130 mm stops exhausted travel under the irregular source mesh and lost grip pressure. Longer pistons retain physical force and can deliberately retract beyond the original open position."
+    }
+  ],
+  "native_robot": {
+    "limb_kinematic_lengths_and_foot_geometry": "unchanged",
+    "native_torque_limits": "preserved",
+    "manipulation_joint_servo_gain_multiplier": 5.0,
+    "manipulation_joint_damping_multiplier": 2.23606797749979,
+    "support": "genuine bipedal stepping on native feet; no added supports"
+  },
+  "controller": {
+    "locomotion": "closed-loop native-joint SONIC with actual applied arm command history and morphology-compatible arm references",
+    "manipulation": "physical-rate finite-force finger control, arm/wrist pose IK, velocity feed-forward, near-ground vertical velocity feedback, terrain-load-triggered pose/pressure latch, equal-speed physical opening, upward withdrawal",
+    "opening_speed_mps": 0.05,
+    "opening_start_frame": 510.0,
+    "withdrawal_up_m": 0.08,
+    "withdrawal_complete_frame": 850.0,
+    "goal_termination": "first complete one-second quiet goal window; no controls or states changed; full 20 s source and aftermath retained"
+  },
+  "physics_integrity": {
+    "equality_constraints": 0,
+    "disabled_physics_flags": 0,
+    "maximum_external_applied_force": 0.0,
+    "object_actuators": 0,
+    "object_state_writes_after_initialization": 0,
+    "no_geometry_handles_floor_raise_or_external_fixtures": true,
+    "native_object_geometry_exact": true,
+    "all_force_limits_respected": true
+  },
+  "actuators": [
+    {
+      "name": "left_shoulder_pitch_joint",
+      "gain": 71.25311548937145,
+      "damping": 2.028611948342497,
+      "control_range": [
+        -4.843509255693469,
+        4.424709255693469
+      ],
+      "force_range": [
+        -25.0,
+        25.0
+      ],
+      "max_observed_force": 11.082222411709125
+    },
+    {
+      "name": "left_shoulder_roll_joint",
+      "gain": 71.25311548937145,
+      "damping": 2.028611948342497,
+      "control_range": [
+        -3.342509255693469,
+        4.005809255693469
+      ],
+      "force_range": [
+        -25.0,
+        25.0
+      ],
+      "max_observed_force": 6.493196647268466
+    },
+    {
+      "name": "left_shoulder_yaw_joint",
+      "gain": 71.25311548937145,
+      "damping": 2.028611948342497,
+      "control_range": [
+        -4.372309255693469,
+        4.372309255693469
+      ],
+      "force_range": [
+        -25.0,
+        25.0
+      ],
+      "max_observed_force": 3.1427824591192923
+    },
+    {
+      "name": "left_elbow_joint",
+      "gain": 71.25311548937145,
+      "damping": 2.028611948342497,
+      "control_range": [
+        -2.801509255693469,
+        3.8487092556934686
+      ],
+      "force_range": [
+        -25.0,
+        25.0
+      ],
+      "max_observed_force": 4.875389846704294
+    },
+    {
+      "name": "left_wrist_roll_joint",
+      "gain": 71.25311548937145,
+      "damping": 2.028611948342497,
+      "control_range": [
+        -3.7265292556934693,
+        3.7265292556934693
+      ],
+      "force_range": [
+        -25.0,
+        25.0
+      ],
+      "max_observed_force": 0.35653778725431096
+    },
+    {
+      "name": "right_shoulder_pitch_joint",
+      "gain": 71.25311548937145,
+      "damping": 2.028611948342497,
+      "control_range": [
+        -4.843509255693469,
+        4.424709255693469
+      ],
+      "force_range": [
+        -25.0,
+        25.0
+      ],
+      "max_observed_force": 25.0
+    },
+    {
+      "name": "right_shoulder_roll_joint",
+      "gain": 71.25311548937145,
+      "damping": 2.028611948342497,
+      "control_range": [
+        -4.005809255693469,
+        3.342509255693469
+      ],
+      "force_range": [
+        -25.0,
+        25.0
+      ],
+      "max_observed_force": 15.474299499153076
+    },
+    {
+      "name": "right_shoulder_yaw_joint",
+      "gain": 71.25311548937145,
+      "damping": 2.028611948342497,
+      "control_range": [
+        -4.372309255693469,
+        4.372309255693469
+      ],
+      "force_range": [
+        -25.0,
+        25.0
+      ],
+      "max_observed_force": 25.0
+    },
+    {
+      "name": "right_elbow_joint",
+      "gain": 71.25311548937145,
+      "damping": 2.028611948342497,
+      "control_range": [
+        -2.801509255693469,
+        3.8487092556934686
+      ],
+      "force_range": [
+        -25.0,
+        25.0
+      ],
+      "max_observed_force": 25.0
+    },
+    {
+      "name": "right_wrist_roll_joint",
+      "gain": 71.25311548937145,
+      "damping": 2.028611948342497,
+      "control_range": [
+        -3.7265292556934693,
+        3.7265292556934693
+      ],
+      "force_range": [
+        -25.0,
+        25.0
+      ],
+      "max_observed_force": 25.0
+    },
+    {
+      "name": "left_hip_yaw_joint",
+      "gain": 40.17923863450712,
+      "damping": 2.557889775413375,
+      "control_range": [
+        -4.9477858519644276,
+        4.9477858519644276
+      ],
+      "force_range": [
+        -88.0,
+        88.0
+      ],
+      "max_observed_force": 21.45148100603066
+    },
+    {
+      "name": "right_hip_yaw_joint",
+      "gain": 40.17923863450712,
+      "damping": 2.557889775413375,
+      "control_range": [
+        -4.9477858519644276,
+        4.9477858519644276
+      ],
+      "force_range": [
+        -88.0,
+        88.0
+      ],
+      "max_observed_force": 25.16003495696643
+    },
+    {
+      "name": "waist_yaw_joint",
+      "gain": 40.17923863450712,
+      "damping": 2.557889775413375,
+      "control_range": [
+        -4.808185851964427,
+        4.808185851964427
+      ],
+      "force_range": [
+        -88.0,
+        88.0
+      ],
+      "max_observed_force": 20.108776487905388
+    },
+    {
+      "name": "left_hip_pitch_joint",
+      "gain": 99.09842777666111,
+      "damping": 6.308801853496639,
+      "control_range": [
+        -3.9333458655152973,
+        4.282445865515298
+      ],
+      "force_range": [
+        -139.0,
+        139.0
+      ],
+      "max_observed_force": 52.1426323594543
+    },
+    {
+      "name": "left_hip_roll_joint",
+      "gain": 99.09842777666111,
+      "damping": 6.308801853496639,
+      "control_range": [
+        -1.9262458655152974,
+        4.369745865515297
+      ],
+      "force_range": [
+        -139.0,
+        139.0
+      ],
+      "max_observed_force": 51.5354681461947
+    },
+    {
+      "name": "left_knee_joint",
+      "gain": 99.09842777666111,
+      "damping": 6.308801853496639,
+      "control_range": [
+        -1.4899128655152973,
+        4.282445865515298
+      ],
+      "force_range": [
+        -139.0,
+        139.0
+      ],
+      "max_observed_force": 109.44954610469006
+    },
+    {
+      "name": "right_hip_pitch_joint",
+      "gain": 99.09842777666111,
+      "damping": 6.308801853496639,
+      "control_range": [
+        -3.9333458655152973,
+        4.282445865515298
+      ],
+      "force_range": [
+        -139.0,
+        139.0
+      ],
+      "max_observed_force": 60.90209547717861
+    },
+    {
+      "name": "right_hip_roll_joint",
+      "gain": 99.09842777666111,
+      "damping": 6.308801853496639,
+      "control_range": [
+        -4.369745865515297,
+        1.9262458655152974
+      ],
+      "force_range": [
+        -139.0,
+        139.0
+      ],
+      "max_observed_force": 38.30025472310831
+    },
+    {
+      "name": "right_knee_joint",
+      "gain": 99.09842777666111,
+      "damping": 6.308801853496639,
+      "control_range": [
+        -1.4899128655152973,
+        4.282445865515298
+      ],
+      "force_range": [
+        -139.0,
+        139.0
+      ],
+      "max_observed_force": 116.07924148302212
+    },
+    {
+      "name": "left_wrist_pitch_joint",
+      "gain": 83.89163740446395,
+      "damping": 2.388437008485581,
+      "control_range": [
+        -1.9124334813180286,
+        1.9124334813180286
+      ],
+      "force_range": [
+        -5.0,
+        5.0
+      ],
+      "max_observed_force": 0.901218817241304
+    },
+    {
+      "name": "left_wrist_yaw_joint",
+      "gain": 83.89163740446395,
+      "damping": 2.388437008485581,
+      "control_range": [
+        -1.9124334813180286,
+        1.9124334813180286
+      ],
+      "force_range": [
+        -5.0,
+        5.0
+      ],
+      "max_observed_force": 0.6499359028075844
+    },
+    {
+      "name": "right_wrist_pitch_joint",
+      "gain": 83.89163740446395,
+      "damping": 2.388437008485581,
+      "control_range": [
+        -1.9124334813180286,
+        1.9124334813180286
+      ],
+      "force_range": [
+        -5.0,
+        5.0
+      ],
+      "max_observed_force": 5.0
+    },
+    {
+      "name": "right_wrist_yaw_joint",
+      "gain": 83.89163740446395,
+      "damping": 2.388437008485581,
+      "control_range": [
+        -1.9124334813180286,
+        1.9124334813180286
+      ],
+      "force_range": [
+        -5.0,
+        5.0
+      ],
+      "max_observed_force": 5.0
+    },
+    {
+      "name": "waist_roll_joint",
+      "gain": 28.50124619574858,
+      "damping": 1.814445686584846,
+      "control_range": [
+        -2.2743092556934688,
+        2.2743092556934688
+      ],
+      "force_range": [
+        -50.0,
+        50.0
+      ],
+      "max_observed_force": 25.080385995509108
+    },
+    {
+      "name": "waist_pitch_joint",
+      "gain": 28.50124619574858,
+      "damping": 1.814445686584846,
+      "control_range": [
+        -2.2743092556934688,
+        2.2743092556934688
+      ],
+      "force_range": [
+        -50.0,
+        50.0
+      ],
+      "max_observed_force": 25.65018324836008
+    },
+    {
+      "name": "left_ankle_pitch_joint",
+      "gain": 28.50124619574858,
+      "damping": 1.814445686584846,
+      "control_range": [
+        -2.626979255693469,
+        2.277909255693469
+      ],
+      "force_range": [
+        -50.0,
+        50.0
+      ],
+      "max_observed_force": 50.0
+    },
+    {
+      "name": "left_ankle_roll_joint",
+      "gain": 28.50124619574858,
+      "damping": 1.814445686584846,
+      "control_range": [
+        -2.0161092556934688,
+        2.0161092556934688
+      ],
+      "force_range": [
+        -50.0,
+        50.0
+      ],
+      "max_observed_force": 7.3348316443791175
+    },
+    {
+      "name": "right_ankle_pitch_joint",
+      "gain": 28.50124619574858,
+      "damping": 1.814445686584846,
+      "control_range": [
+        -2.626979255693469,
+        2.277909255693469
+      ],
+      "force_range": [
+        -50.0,
+        50.0
+      ],
+      "max_observed_force": 50.0
+    },
+    {
+      "name": "right_ankle_roll_joint",
+      "gain": 28.50124619574858,
+      "damping": 1.814445686584846,
+      "control_range": [
+        -2.0161092556934688,
+        2.0161092556934688
+      ],
+      "force_range": [
+        -50.0,
+        50.0
+      ],
+      "max_observed_force": 10.799212206972623
+    },
+    {
+      "name": "clamp_grip0",
+      "gain": 180.0,
+      "damping": 1.0,
+      "control_range": [
+        -0.05,
+        0.22
+      ],
+      "force_range": [
+        -2.0,
+        2.0
+      ],
+      "max_observed_force": 1.2891063168367416
+    },
+    {
+      "name": "clamp_grip1",
+      "gain": 180.0,
+      "damping": 1.0,
+      "control_range": [
+        -0.05,
+        0.22
+      ],
+      "force_range": [
+        -2.0,
+        2.0
+      ],
+      "max_observed_force": 1.4685046543877307
+    },
+    {
+      "name": "clamp_grip2",
+      "gain": 180.0,
+      "damping": 1.0,
+      "control_range": [
+        -0.05,
+        0.22
+      ],
+      "force_range": [
+        -2.0,
+        2.0
+      ],
+      "max_observed_force": 1.313893458041512
+    },
+    {
+      "name": "clamp_grip3",
+      "gain": 180.0,
+      "damping": 1.0,
+      "control_range": [
+        -0.05,
+        0.22
+      ],
+      "force_range": [
+        -2.0,
+        2.0
+      ],
+      "max_observed_force": 1.2782094550011767
+    },
+    {
+      "name": "clamp_grip4",
+      "gain": 180.0,
+      "damping": 1.0,
+      "control_range": [
+        -0.05,
+        0.22
+      ],
+      "force_range": [
+        -2.0,
+        2.0
+      ],
+      "max_observed_force": 1.2011182582095277
+    },
+    {
+      "name": "clamp_grip5",
+      "gain": 180.0,
+      "damping": 1.0,
+      "control_range": [
+        -0.05,
+        0.22
+      ],
+      "force_range": [
+        -2.0,
+        2.0
+      ],
+      "max_observed_force": 1.094662807373822
+    },
+    {
+      "name": "clamp_yaw",
+      "gain": 80.0,
+      "damping": 4.0,
+      "control_range": [
+        -1.57,
+        1.57
+      ],
+      "force_range": [
+        -5.0,
+        5.0
+      ],
+      "max_observed_force": 5.0
+    }
+  ],
+  "reproduction": "From repository root: MUJOCO_GL=egl .venv/bin/python scripts/reproduce_active_largebox.py logs/active_largebox/accepted_ground_to_ground_v1/expert.npz --video",
+  "generation_dependencies": "generation_source contains the exact expert/controller code. Exact replay requires only expert_model.mjb, expert.npz, MuJoCo and verification source; GPU policy generation is not needed for replay."
+}

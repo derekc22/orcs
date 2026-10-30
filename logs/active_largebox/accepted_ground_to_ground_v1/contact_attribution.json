@@ -1,0 +1,29 @@
+{
+  "units": "N*s, integral of contact force magnitude at every 200 Hz physics step",
+  "terrain": 7.814961805737255,
+  "actuated_end_effector_pads": 31.942069064704977,
+  "actuated_end_effector_pistons": 0.10405555456683496,
+  "end_effector_frame": 1.9568846114973788,
+  "feet": 0.0,
+  "legs": 0.0,
+  "torso_pelvis": 0.0,
+  "other_non_end_effector": 0.0,
+  "robot_self": 0.0,
+  "invalid_terrain": 0.0,
+  "per_geom": {
+    "terrain": 7.814961805737255,
+    "clamp_pad4": 6.2542068435214935,
+    "clamp_pad5": 5.089027853056749,
+    "clamp_rail4": 1.9181574894034426,
+    "clamp_rail5": 0.03872712209393623,
+    "clamp_piston4": 0.030500947857035342,
+    "clamp_piston5": 0.007816209380533899,
+    "clamp_pad2": 4.3385635414345485,
+    "clamp_pad0": 4.513106085451346,
+    "clamp_pad3": 4.157648272291854,
+    "clamp_pad1": 7.589516468948987,
+    "clamp_piston3": 0.008908160619072552,
+    "clamp_piston1": 0.008004438892099864,
+    "clamp_piston0": 0.04882579781809332
+  }
+}

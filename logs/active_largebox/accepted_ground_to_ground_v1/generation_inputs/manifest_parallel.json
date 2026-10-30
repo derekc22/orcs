@@ -1,0 +1,104 @@
+{
+  "architecture": "bilateral independently powered three-finger clamp",
+  "box_dimensions_m": [
+    0.4735718,
+    0.46160235,
+    0.40955865
+  ],
+  "mass_kg": 0.05,
+  "fingers": [
+    {
+      "joint": "left_grip0",
+      "mount_local": [
+        0.6663442004924767,
+        -0.03661874842689228,
+        0.01193981089265455
+      ],
+      "axis_local": [
+        -0.0832771470044105,
+        -0.42806375537783764,
+        0.8999035160052602
+      ],
+      "force_limit_N": 8
+    },
+    {
+      "joint": "left_grip1",
+      "mount_local": [
+        0.788256213809528,
+        0.08270736649250943,
+        0.01418199732634657
+      ],
+      "axis_local": [
+        -0.0832771470044105,
+        -0.42806375537783764,
+        0.8999035160052602
+      ],
+      "force_limit_N": 8
+    },
+    {
+      "joint": "left_grip2",
+      "mount_local": [
+        0.6618796870746535,
+        0.1035162202922078,
+        0.014687002051014926
+      ],
+      "axis_local": [
+        -0.0832771470044105,
+        -0.42806375537783764,
+        0.8999035160052602
+      ],
+      "force_limit_N": 8
+    },
+    {
+      "joint": "right_grip0",
+      "mount_local": [
+        0.7093571850637652,
+        -0.04767555028543807,
+        -0.1689127550193854
+      ],
+      "axis_local": [
+        -0.07450363170531252,
+        0.18221734280525032,
+        0.980431562549735
+      ],
+      "force_limit_N": 8
+    },
+    {
+      "joint": "right_grip1",
+      "mount_local": [
+        0.8243268673347538,
+        -0.14072358150406988,
+        -0.08671285024748254
+      ],
+      "axis_local": [
+        -0.07450363170531252,
+        0.18221734280525032,
+        0.980431562549735
+      ],
+      "force_limit_N": 8
+    },
+    {
+      "joint": "right_grip2",
+      "mount_local": [
+        0.7001521569257596,
+        -0.16771540327406526,
+        -0.11495364662553915
+      ],
+      "axis_local": [
+        -0.07450363170531252,
+        0.18221734280525032,
+        0.980431562549735
+      ],
+      "force_limit_N": 8
+    }
+  ],
+  "pad_radius_m": 0.025,
+  "stroke_m": 0.13,
+  "baseline": "/home/learning/Documents/orcs-fork/logs/engineering_ground_original_largebox_retention/original_largebox_vertical_rail_model_v1.mjb",
+  "source": "/home/learning/Documents/orcs-fork/logs/engineering_ground_original_largebox_retention/original_largebox_yaw10_vertical_rail_pickup_expert_v1.npz",
+  "friction": [
+    2.5,
+    0.1,
+    0.003
+  ]
+}

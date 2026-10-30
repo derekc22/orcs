@@ -1,0 +1,23 @@
+{
+  "rate_Hz": 200,
+  "columns": {
+    "0": "object-terrain contact",
+    "1:3": "opposed pad-group contact",
+    "3:5": "left/right foot support contacts",
+    "5": "object COM lift m",
+    "6": "root height m",
+    "7": "torso tilt deg",
+    "8": "forbidden object impulse N*s this step",
+    "9": "invalid terrain impulse N*s this step",
+    "10": "end-effector vertical force on object N",
+    "11:14": "object COM world m",
+    "14:20": "left/right foot positions world m",
+    "20:23": "object COM velocity world m/s",
+    "23:26": "object angular velocity world rad/s",
+    "26:32": "six piston positions m",
+    "32:36": "object quaternion wxyz",
+    "36:42": "robot free-base velocity",
+    "42": "terrain vertical force on object N",
+    "43": "any end-effector assembly/object contact"
+  }
+}

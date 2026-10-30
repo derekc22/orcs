@@ -1,0 +1,11 @@
+{
+  "controls_equal_unedited_source_prefix": true,
+  "qpos_equal_unedited_source_prefix": true,
+  "qvel_equal_unedited_source_prefix": true,
+  "pre_step_anchors_preserved": true,
+  "principal_airborne_mean_EE_vertical_support_N": 0.48889244824644895,
+  "payload_weight_N": 0.49050000000000005,
+  "principal_airborne_EE_vertical_impulse_Ns": 2.3564616005478842,
+  "physics_steps": 3828,
+  "full_source_physics_steps": 4000
+}
