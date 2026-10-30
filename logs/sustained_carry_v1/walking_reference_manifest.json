@@ -1,0 +1,14 @@
+{
+  "source": "existing native SONIC demo",
+  "source_frames": [
+    5485,
+    5630
+  ],
+  "speed": 0.8,
+  "walk_start_frame": 40,
+  "walk_end_frame": 223,
+  "braking_end_frame": 283,
+  "total_frames": 433,
+  "reference_root_walk_displacement_m": 2.688988713292667,
+  "reference_root_final_displacement_m": 3.1576075632569114
+}

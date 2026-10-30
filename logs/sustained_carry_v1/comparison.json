@@ -1,0 +1,20 @@
+[
+  {
+    "execution": "logs/active_largebox/accepted_ground_to_ground_v1",
+    "root_airborne_net_m": 0.8253259432982091,
+    "object_airborne_net_m": 1.1223209534411553,
+    "airborne_duration_s": 4.82
+  },
+  {
+    "execution": "logs/compact_gripper_v1",
+    "root_airborne_net_m": 0.8675130378009156,
+    "object_airborne_net_m": 0.9518116450784571,
+    "airborne_duration_s": 11.415000000000001
+  },
+  {
+    "execution": "sustained_carry_v1/complete2",
+    "root_airborne_net_m": 2.599211524848484,
+    "object_airborne_net_m": 2.6138718742997127,
+    "airborne_duration_s": 10.370000000000001
+  }
+]

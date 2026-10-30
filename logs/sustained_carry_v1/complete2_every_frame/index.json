@@ -1,0 +1,22 @@
+{
+  "video": "logs/sustained_carry_v1/complete2.mp4",
+  "fps": 50.0,
+  "frame_count": 1245,
+  "duration_s": 24.9,
+  "every_frame_included_once": true,
+  "pages": [
+    "frames_0000_0099.png",
+    "frames_0100_0199.png",
+    "frames_0200_0299.png",
+    "frames_0300_0399.png",
+    "frames_0400_0499.png",
+    "frames_0500_0599.png",
+    "frames_0600_0699.png",
+    "frames_0700_0799.png",
+    "frames_0800_0899.png",
+    "frames_0900_0999.png",
+    "frames_1000_1099.png",
+    "frames_1100_1199.png",
+    "frames_1200_1244.png"
+  ]
+}

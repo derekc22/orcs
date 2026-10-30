@@ -1,0 +1,102 @@
+[
+  {
+    "side": "right",
+    "liftoff_step": 1128,
+    "replant_step": 1225,
+    "liftoff_s": 5.64,
+    "replant_s": 6.125,
+    "swing_duration_s": 0.485,
+    "sole_clearance_peak_m": 0.05493359572719321,
+    "same_foot_step_length_m": 0.8954163845464925,
+    "forward_step_length_m": 0.8945775377363063,
+    "liftoff_xy": [
+      -1.219868944828489,
+      2.513364034937372
+    ],
+    "replant_xy": [
+      -0.45437788833757764,
+      2.9779003027860087
+    ],
+    "replant_force_N": 370.6484482635937
+  },
+  {
+    "side": "left",
+    "liftoff_step": 1258,
+    "replant_step": 1369,
+    "liftoff_s": 6.29,
+    "replant_s": 6.845,
+    "swing_duration_s": 0.555,
+    "sole_clearance_peak_m": 0.061280179327406835,
+    "same_foot_step_length_m": 0.9550590801962692,
+    "forward_step_length_m": 0.953510970345422,
+    "liftoff_xy": [
+      -0.9099113666631569,
+      2.9711228645419236
+    ],
+    "replant_xy": [
+      -0.08674164614016433,
+      3.455405279956155
+    ],
+    "replant_force_N": 290.86191301199045
+  },
+  {
+    "side": "right",
+    "liftoff_step": 1388,
+    "replant_step": 1509,
+    "liftoff_s": 6.94,
+    "replant_s": 7.545,
+    "swing_duration_s": 0.605,
+    "sole_clearance_peak_m": 0.05774821603666874,
+    "same_foot_step_length_m": 0.9808856976109324,
+    "forward_step_length_m": 0.9804127351387977,
+    "liftoff_xy": [
+      -0.4190315832671931,
+      3.0269635056518385
+    ],
+    "replant_xy": [
+      0.3794135054151992,
+      3.596719762428938
+    ],
+    "replant_force_N": 242.4133517727953
+  },
+  {
+    "side": "left",
+    "liftoff_step": 1532,
+    "replant_step": 1640,
+    "liftoff_s": 7.66,
+    "replant_s": 8.2,
+    "swing_duration_s": 0.54,
+    "sole_clearance_peak_m": 0.05272421854916846,
+    "same_foot_step_length_m": 0.884755993557834,
+    "forward_step_length_m": 0.8813170418456904,
+    "liftoff_xy": [
+      -0.01652708896002165,
+      3.484461846756556
+    ],
+    "replant_xy": [
+      0.6731420282754101,
+      4.038672706329165
+    ],
+    "replant_force_N": 296.34202634145527
+  },
+  {
+    "side": "right",
+    "liftoff_step": 1656,
+    "replant_step": 1752,
+    "liftoff_s": 8.28,
+    "replant_s": 8.76,
+    "swing_duration_s": 0.48,
+    "sole_clearance_peak_m": 0.05319094590441785,
+    "same_foot_step_length_m": 0.7393520808210734,
+    "forward_step_length_m": 0.7386071578427091,
+    "liftoff_xy": [
+      0.4157970117167417,
+      3.6533661361845278
+    ],
+    "replant_xy": [
+      1.0484833086502463,
+      4.0359227321112225
+    ],
+    "replant_force_N": 303.7702511952341
+  }
+]

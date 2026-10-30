@@ -1,0 +1,52 @@
+{
+  "status": "SUCCESS",
+  "selected_rollout": "complete2.npz",
+  "model": "complete2_model.mjb",
+  "video": "complete2.mp4",
+  "metrics": "metrics.json",
+  "contact_attribution": "contact_attribution.json",
+  "foot_trajectories": "complete2_foot_trajectories.png",
+  "step_events": "complete2_step_events.json",
+  "locomotion_trace": "complete2_locomotion_trace.npz",
+  "physics_contact_trace": "complete2_verification_trace.npz",
+  "baseline_commit": "6ed4dcec47391d9513a7f5581726141ddf4a4ecc",
+  "mujoco_version": "3.8.1",
+  "physics_rate_Hz": 200,
+  "video_rate_Hz": 50,
+  "duration_s": 24.900000000000002,
+  "physics_steps": 4980,
+  "task_frames": 1245,
+  "model_source": "Unchanged logs/compact_gripper_v1/static6_model.mjb",
+  "model_array_comparison": "frozen_model_comparison.json: all compared physical arrays exactly unchanged",
+  "controller_changes": [
+    "Extended native walking reference from existing local demo frames 5485\u20135630 at 0.8 playback speed, yielding 3.66 s of continuous walking reference.",
+    "Frozen existing lower-body SONIC feedback with actual applied arm targets in observations; no training.",
+    "World-yaw-aware arm/clamp stabilization during translating gait.",
+    "Pickup rise compressed from 4 s to 2 s, followed by 0.4 s stabilization; reduced idle transitions without shortening the walking segment.",
+    "Smooth 1.2 s braking; lowering begins after measured stopped carry, while finger travel still retains margin.",
+    "Existing controlled terrain-load latch, physical outward opening and upward withdrawal."
+  ],
+  "object": {
+    "dimensions_m": [
+      0.4735717910264654,
+      0.46160235610393363,
+      0.4095586479283511
+    ],
+    "mass_kg": 0.05,
+    "friction": [
+      2.5,
+      0.1,
+      0.003
+    ],
+    "solref": [
+      0.03,
+      1
+    ],
+    "original_collision_mesh_and_poses_exact": true
+  },
+  "no_gripper_or_collision_redesign": true,
+  "limitations": [
+    "One deterministic expert execution is verified; no robustness/training claim.",
+    "Existing lightweight original-size box and accepted favorable finite contact settings retained."
+  ]
+}

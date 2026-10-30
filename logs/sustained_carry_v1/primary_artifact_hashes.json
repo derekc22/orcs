@@ -1,0 +1,58 @@
+{
+  "complete2.npz": {
+    "bytes": 4743759,
+    "sha256": "710f5c9d341312c380fd5c5bed979c16e7a403174b5aa21ec147e8a58613d043"
+  },
+  "complete2_model.mjb": {
+    "bytes": 90254623,
+    "sha256": "8453c159e6813d1e37b2c1690da2794f69d35b9c1436ff17304316a0a025c43e"
+  },
+  "complete2.mp4": {
+    "bytes": 11301290,
+    "sha256": "c49df5eb98a580ad16686a7f352c88f845f4a1fb11b0ac3df8202db043b1c14c"
+  },
+  "metrics.json": {
+    "bytes": 13230,
+    "sha256": "176557fbe983f9942bd5468eb2f952c982dd325e53cf0197801d6617f4b0a8c0"
+  },
+  "contact_attribution.json": {
+    "bytes": 1242,
+    "sha256": "a8218e92ebab4065b0db554640d1db6da47d4f9eb19b4ebf11871a4b33acdb10"
+  },
+  "complete2_verification.json": {
+    "bytes": 2966,
+    "sha256": "6c93723e8e1ada573e0699c8827446d67e3468651c65e72cad66ac2178985831"
+  },
+  "complete2_sustained_metrics.json": {
+    "bytes": 11718,
+    "sha256": "ff319ad4b687c8b4364b2fc63f5faf3b36444dcf3abae91082ad499c901313b2"
+  },
+  "complete2_locomotion_trace.npz": {
+    "bytes": 592958,
+    "sha256": "6bb53b2ba60c053a2c1ebdce7f38fdcdd77fe874ad5b128105ccedff8de0b0d5"
+  },
+  "complete2_verification_trace.npz": {
+    "bytes": 1244077,
+    "sha256": "f469f5b9114d1523f055aacbcd1f5543a024acd550a25b52f6fa9be1ed923eed"
+  },
+  "complete2_step_events.json": {
+    "bytes": 2534,
+    "sha256": "17706c584a60835cc0f1838326afbcbbb09c0b613c3a44c7afb13349722b5805"
+  },
+  "complete2_foot_trajectories.png": {
+    "bytes": 298553,
+    "sha256": "496d2ecafaaa06c3e0b23d7eff02cdb80f5476a94fffeaa9339457e0e816f19b"
+  },
+  "visual_review.json": {
+    "bytes": 1441,
+    "sha256": "4ee5bcc2a7470ce289b3b022bd49646fc8e1e8df4a2b7fbd8a5348abf304395e"
+  },
+  "VALIDATION.md": {
+    "bytes": 9117,
+    "sha256": "b8eda6bee3b35401a7fa29130d3283f7e8707a50abac772ebff9409f15b04544"
+  },
+  "engineering_manifest.json": {
+    "bytes": 2126,
+    "sha256": "1b2e9658acaf54d360113bcae7b2cdff1d6034a87c7f95b40a4cf011b96667a3"
+  }
+}

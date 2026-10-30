@@ -1,0 +1,28 @@
+[
+  {
+    "source": "logs/active_largebox/accepted_ground_to_ground_v1",
+    "interval_s": [
+      2.1,
+      6.92
+    ],
+    "air_duration_s": 4.82,
+    "root_net_m": 0.8253259432982091,
+    "root_max_from_air_start_m": 0.8892138153739562,
+    "root_path_length_m": 1.5056798590299936,
+    "object_net_m": 1.1223209534411553,
+    "object_max_from_air_start_m": 1.14481759623402
+  },
+  {
+    "source": "logs/compact_gripper_v1",
+    "interval_s": [
+      2.39,
+      13.805
+    ],
+    "air_duration_s": 11.415000000000001,
+    "root_net_m": 0.8675130378009156,
+    "root_max_from_air_start_m": 0.9324960074866784,
+    "root_path_length_m": 1.2562159995303748,
+    "object_net_m": 0.9518116450784571,
+    "object_max_from_air_start_m": 1.0062094081034387
+  }
+]

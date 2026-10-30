@@ -1,0 +1,35 @@
+{
+  "impulses_Ns": {
+    "terrain": 8.917202671314417,
+    "clamp_pad1": 18.810363051263394,
+    "clamp_pad2": 7.140348862543229,
+    "clamp_pad4": 15.664809071356569,
+    "clamp_pad0": 15.789044503355761,
+    "clamp_pad5": 9.789239549808748,
+    "clamp_pad3": 18.469128171394765,
+    "clamp_piston1": 2.3602231045342257,
+    "clamp_piston4": 0.5983474439399407,
+    "clamp_piston5": 0.14426020072987994,
+    "clamp_piston3": 1.8470016261080116,
+    "clamp_rail5": 1.2797543291205953,
+    "clamp_rail4": 0.3097701944372257,
+    "clamp_piston2": 0.1880362822098883,
+    "clamp_piston0": 0.6893864145573064,
+    "clamp_rail0": 1.4066877414599859,
+    "clamp_rail1": 0.023280809409072626
+  },
+  "strict_non_clamp_robot_object_impulse_Ns": 0,
+  "native_hand_object_impulse_Ns": 0,
+  "invalid_robot_terrain_impulse_Ns": 0.0,
+  "robot_self_impulse_Ns": 0,
+  "maximum_external_applied_force": 0.0,
+  "equality_constraints": 0,
+  "walking_terrain_contact_physics_steps": 0,
+  "walking_jaw_force_min_N": [
+    2.920127452214132,
+    3.373222172620217
+  ],
+  "walking_mean_end_effector_vertical_force_N": 0.4809657811359753,
+  "payload_weight_N": 0.4905,
+  "force_state_schema": "complete2_locomotion_trace.npz schema; actual 200 Hz replay contacts."
+}

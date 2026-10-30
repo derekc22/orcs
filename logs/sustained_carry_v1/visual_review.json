@@ -1,0 +1,27 @@
+{
+  "complete": true,
+  "video": "complete2.mp4",
+  "full_frame_range": [
+    0,
+    1244
+  ],
+  "full_frame_count": 1245,
+  "every_frame_included_once": true,
+  "full_atlas": "complete2_every_frame/index.json",
+  "additional_walking_frame_range": [
+    260,
+    442
+  ],
+  "additional_walking_frames": 183,
+  "walking_detail_atlas": "complete2_walking_detail/index.json",
+  "method": "Inspected all thirteen exhaustive full-execution atlas pages, all ten larger walking-detail pages, and the fixed-world/following-camera overview.",
+  "findings": [
+    "Ground-resting original-sized box is physically acquired before free lift.",
+    "Actual robot translates across the fixed world grid and 2 m ruler during five complete alternating swing/replant events; this is not object-only displacement or stationary stepping.",
+    "The box remains airborne and retained throughout the entire measured walking interval.",
+    "Root motion and alternating foot placements agree with the independent world-coordinate trajectories.",
+    "Braking precedes controlled lowering; terrain weight transfer precedes opening.",
+    "Physical opening, whole-tool upward withdrawal, and stable final robot/object are visible."
+  ],
+  "rendering_note": "Video is a state visualization of the complete rollout independently replayed exactly at every physics step. Ruler, grid and green root trail are rendering decorations only, absent from the physics model."
+}

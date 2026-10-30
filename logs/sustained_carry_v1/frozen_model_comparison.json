@@ -1,0 +1,18 @@
+{
+  "body_pos": 0.0,
+  "body_quat": 0.0,
+  "body_mass": 0.0,
+  "body_inertia": 0.0,
+  "geom_type": 0.0,
+  "geom_size": 0.0,
+  "geom_pos": 0.0,
+  "geom_quat": 0.0,
+  "geom_contype": 0.0,
+  "geom_conaffinity": 0.0,
+  "geom_friction": 0.0,
+  "geom_solref": 0.0,
+  "jnt_range": 0.0,
+  "actuator_forcerange": 0.0,
+  "actuator_gainprm": 0.0,
+  "actuator_biasprm": 0.0
+}

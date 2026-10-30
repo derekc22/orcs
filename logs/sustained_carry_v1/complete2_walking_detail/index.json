@@ -1,0 +1,21 @@
+{
+  "video": "complete2.mp4",
+  "frame_range": [
+    260,
+    442
+  ],
+  "count": 183,
+  "every_walking_frame_included_once": true,
+  "pages": [
+    "frames_0260_0279.png",
+    "frames_0280_0299.png",
+    "frames_0300_0319.png",
+    "frames_0320_0339.png",
+    "frames_0340_0359.png",
+    "frames_0360_0379.png",
+    "frames_0380_0399.png",
+    "frames_0400_0419.png",
+    "frames_0420_0439.png",
+    "frames_0440_0442.png"
+  ]
+}

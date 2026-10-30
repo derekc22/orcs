@@ -1,0 +1,11 @@
+{
+  "status": "SUCCESS",
+  "rollout": "complete2.npz",
+  "model": "complete2_model.mjb",
+  "video": "complete2.mp4",
+  "report": "VALIDATION.md",
+  "metrics": "metrics.json",
+  "contact_attribution": "contact_attribution.json",
+  "foot_trajectories": "complete2_foot_trajectories.png",
+  "steps": "complete2_step_events.json"
+}
