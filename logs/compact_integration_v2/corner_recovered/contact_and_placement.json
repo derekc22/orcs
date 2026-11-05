@@ -1,0 +1,28 @@
+{
+  "walking_COM_displacement_m": 2.7747757861719626,
+  "total_COM_horizontal_displacement_m": 2.8262726992306177,
+  "terrain_touchdown_s": 38.08,
+  "COM_vertical_velocity_at_touchdown_mps": -0.09620503885159595,
+  "COM_speed_at_touchdown_mps": 0.13208363871742482,
+  "last_1s_COM_speed_max_mps": 9.90352933868832e-05,
+  "last_1s_COM_angular_speed_max_radps": 0.0006373484144150396,
+  "contact_impulses_Ns": {
+    "terrain": 6.440620840520224,
+    "hand_right_pad0": 18.105334927996125,
+    "hand_right_pad1": 46.0260075162303,
+    "hand_left_pad0": 25.02616051977749,
+    "hand_left_pad1": 40.340273333645314,
+    "hand_right_pad2": 0.9235054314039541,
+    "hand_left_pad2": 0.6909755932828366,
+    "hand_left_thumb_contact": 7.48541368098158,
+    "hand_right_thumb_contact": 11.457450103394539,
+    "hand_right_thumb_tip": 10.102894618342006,
+    "hand_left_thumb_tip": 10.861841381718742,
+    "hand_left_toe0": 8.387493031657295,
+    "hand_right_toe1": 4.722601933335381,
+    "hand_left_toe1": 1.9567686917644747,
+    "hand_right_toe0": 9.053760556851561,
+    "hand_left_linear_housing": 0.0017549086706598865,
+    "hand_right_thumb_motor": 0.0014471962992736174
+  }
+}

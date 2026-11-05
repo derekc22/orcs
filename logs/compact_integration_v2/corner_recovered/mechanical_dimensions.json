@@ -1,0 +1,37 @@
+{
+  "hand_mass_kg": {
+    "left": 0.34099999999999997,
+    "right": 0.34099999999999997
+  },
+  "closed_hand_envelope_m": {
+    "left": [
+      0.33906365857663395,
+      0.15799999999999975,
+      0.22873659643211122
+    ],
+    "right": [
+      0.33906365857663345,
+      0.17884325142269564,
+      0.2287365964321107
+    ]
+  },
+  "closed_wrist_collision_reach_m": {
+    "left": 0.3942142541742046,
+    "right": 0.3942142541742037
+  },
+  "palm_plate_dimensions_m": [
+    0.12,
+    0.13,
+    0.01
+  ],
+  "finger_length_m": 0.15,
+  "toe_length_m": 0.08,
+  "carriage_stroke_m": 0.06,
+  "source": "Previously measured corner geometry; all physical model fields including body/joint poses and geom dimensions independently match pickup3.",
+  "accepted_object_mass_kg": 0.05,
+  "object_body_AABB_m": [
+    0.4735717910264652,
+    0.46160235610393363,
+    0.4095586479283511
+  ]
+}

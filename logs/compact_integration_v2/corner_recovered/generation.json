@@ -1,0 +1,20 @@
+{
+  "arguments": {
+    "source": "logs/compact_integration_v2/corner_place_support/rollout.npz",
+    "tag": "corner_recovered",
+    "prefix": 8661,
+    "seconds": 4.0,
+    "controller": "bounded"
+  },
+  "reason": "completed",
+  "prefix": 8661,
+  "continuation_seconds": 4.0,
+  "impulses": [
+    1.9620127129876823,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ]
+}

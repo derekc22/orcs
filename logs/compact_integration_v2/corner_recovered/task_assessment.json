@@ -1,0 +1,62 @@
+{
+  "status": "SUCCESS",
+  "numeric_and_integrity_gates": {
+    "original_box_and_contact_properties": true,
+    "unchanged_existing_hand_mechanism": true,
+    "initial_ground_support": true,
+    "terrain_free_COM_lift_over_5cm": true,
+    "actual_airborne_root_walk_over_2m": true,
+    "at_least_five_consecutive_alternating_qualifying_replants": true,
+    "no_object_terrain_contact_while_walking": true,
+    "continuous_bilateral_walking_support": true,
+    "continuous_EE_support_through_initial_airborne_carry": true,
+    "terrain_load_transfer_before_full_hand_opening": true,
+    "physical_hand_opening": true,
+    "clean_withdrawal_and_continuous_ground_support": true,
+    "stable_final_robot": true,
+    "stable_final_object": true,
+    "zero_forbidden_object_impulse": true,
+    "zero_robot_self_and_invalid_terrain_impulse": true,
+    "finite_actuation_with_preserved_effort_limits": true,
+    "no_virtual_grasp_or_hidden_force": true,
+    "independent_exact_raw_control_physics_replay": true,
+    "complete_video_inspection": true
+  },
+  "grasp_retention_review": {
+    "accepted_as_bounded_compliant_retention": true,
+    "zero_slip_claim": false,
+    "peak_contact_local_tangential_motion_mm": [
+      13.1441699735141,
+      5.306732212334498
+    ],
+    "final_contact_local_tangential_motion_mm": [
+      7.194183321386863,
+      1.1683233920777403
+    ],
+    "peak_relative_palm_rocking_degrees": [
+      14.520753516981598,
+      9.68252210656035
+    ],
+    "basis": "Measured material-point tangential excursions 13.14 / 5.31 mm end at 7.19 / 1.17 mm. Video and physical contact history show bounded rocking and settling, without progressive extraction, spinning, ejection, loss of grasp or ballistic carry. Nonzero motion is explicitly reported."
+  },
+  "stability_thresholds": {
+    "final_1s_root_linear_mps": 0.01,
+    "final_1s_root_angular_radps": 0.03,
+    "final_1s_object_linear_mps": 0.001,
+    "final_1s_object_angular_radps": 0.003
+  },
+  "raw_verifier_note": "Unconditional success:false and legacy 45-degree torso-tilt full_valid fields are preserved. This assessment uses the requested physical criteria and explicit visual review; independent raw replay measurements are unchanged.",
+  "physics_controls": 9461,
+  "duration_seconds": 47.305,
+  "minimum_final_1s_foot_loads_N": [
+    189.0468131403631,
+    144.01993322439893
+  ],
+  "mocap_count": 0,
+  "tendon_count": 0,
+  "gravity_mps2": [
+    0.0,
+    0.0,
+    -9.81
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "withdrawal_endpoint_prefix": 8661,
+  "recovery_prefix": 8661,
+  "prefix_controls_equal": true,
+  "prefix_qpos_equal": true,
+  "prefix_qvel_equal": true,
+  "continuation_uses_full_initial_state_replay": true,
+  "model_state_edits_after_initialization": false
+}
