@@ -1,0 +1,14 @@
+{
+  "sources": [
+    "/home/learning/Documents/orcs-fork/logs/compact_integration_v2/corner_recovered/rollout.npz",
+    "logs/compact_smooth_integration_v2/complete_execution/rollout.npz"
+  ],
+  "start_s": 0,
+  "end_s": 47.305,
+  "frames": 2365,
+  "fps": 50,
+  "playback_speed": 1.0,
+  "same_camera_parameters": true,
+  "unfiltered_states": true,
+  "final_frame_hold_if_lengths_differ": false
+}

@@ -1,0 +1,35 @@
+{
+  "exact_qpos_error": 0.0,
+  "exact_qvel_error": 0.0,
+  "walking_interval_s": [
+    17.245,
+    23.605
+  ],
+  "hands": {
+    "left": {
+      "peak_relative_rotation_deg": 9.094175963818456,
+      "max_COM_excursion_mm": 27.277919559997223,
+      "fixed_material_point_max_tangential_excursion_mm": 8.01459548049101,
+      "fixed_material_point_final_tangential_excursion_mm": 1.6956508002902102,
+      "loaded_contact_tangential_speed_RMS_mps": 0.04352869910749347,
+      "loaded_contact_mean_tangential_speed_mps": 0.029768950428981526,
+      "integrated_force_weighted_slip_speed_mm": 189.3305247283225,
+      "normal_force_weighted_fraction_above_5mmps": 0.9540561391715838
+    },
+    "right": {
+      "peak_relative_rotation_deg": 7.015233800255437,
+      "max_COM_excursion_mm": 21.99586378611906,
+      "fixed_material_point_max_tangential_excursion_mm": 5.029498667736295,
+      "fixed_material_point_final_tangential_excursion_mm": 2.1936347882043625,
+      "loaded_contact_tangential_speed_RMS_mps": 0.034770294889174026,
+      "loaded_contact_mean_tangential_speed_mps": 0.02418075844554438,
+      "integrated_force_weighted_slip_speed_mm": 153.78962371366225,
+      "normal_force_weighted_fraction_above_5mmps": 0.8996106602934506
+    }
+  },
+  "method": "Independent exact replay of loaded-contact slip and fixed material anchors.\n\nSlip speed is measured at the solver's contact point and tangent plane from\npoint Jacobians and the SAME pre-integration velocity used for that contact\nsolve. It is force-weighted per hand; its time integral is not the displacement\nof a single persistent contact patch. Fixed material anchors separately bound\nobject/palm relative excursions and rocking, using the accepted audit method.\n",
+  "provenance": {
+    "source": "logs/compact_smooth_v1/best_partial/contact_slip.json",
+    "identity": "controls/qpos/qvel through the entire walking interval exactly match the independently replayed smoothed prefix; verified in prefix_identity.json"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "arguments": {
+    "source": "logs/compact_smooth_integration_v2/measured_placement/rollout.npz",
+    "tag": "complete_execution",
+    "prefix": null,
+    "seconds": 4.0,
+    "controller": "bounded"
+  },
+  "reason": "completed",
+  "prefix": 8722,
+  "continuation_seconds": 4.0,
+  "impulses": [
+    1.9620138866367975,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ]
+}

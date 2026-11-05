@@ -1,0 +1,647 @@
+{
+  "artifact": "logs/compact_integration_v2/corner_recovered/rollout.npz",
+  "duration_s": 47.305,
+  "diagnostic_method": "200 Hz raw physical states; third-order zero-phase 6 Hz high-pass used only to quantify vibration above natural gait. Raw RMS/peak retained; controls, states and videos unfiltered.",
+  "phases": {
+    "pickup": {
+      "object_omega": {
+        "rms": 0.054322156879140986,
+        "peak": 0.22466233603916497,
+        "above_6Hz_rms": 0.016181518720863063,
+        "dominant_Hz": 0.390625
+      },
+      "object_alpha": {
+        "rms": 1.99024254098306,
+        "peak": 17.906240792790115,
+        "above_6Hz_rms": 2.390059173000582,
+        "dominant_Hz": 8.984375
+      },
+      "root_omega": {
+        "rms": 0.06675839952702002,
+        "peak": 0.16244728576331224,
+        "above_6Hz_rms": 0.0023480438358390848,
+        "dominant_Hz": 0.390625
+      },
+      "root_alpha": {
+        "rms": 0.31776662748458834,
+        "peak": 4.154301019968313,
+        "above_6Hz_rms": 0.2794406102231803,
+        "dominant_Hz": 0.390625
+      },
+      "relative_omega": {
+        "rms": 0.24127325023113985,
+        "peak": 1.7947943288910688,
+        "above_6Hz_rms": 0.11660954075934742,
+        "dominant_Hz": 0.390625
+      },
+      "arm_joint_speed": {
+        "rms": 0.9139299743891707,
+        "peak": 8.621548846623837,
+        "above_6Hz_rms": 0.44664495875580307,
+        "dominant_Hz": 0.390625
+      },
+      "lower_joint_speed": {
+        "rms": 0.14954944263525144,
+        "peak": 0.3295391193761412,
+        "above_6Hz_rms": 0.00937033400716865,
+        "dominant_Hz": 0.390625
+      },
+      "arm_torque_rate": {
+        "rms": 64.28053217754908,
+        "peak": 845.338169232975,
+        "above_6Hz_rms": 69.61502726636616,
+        "dominant_Hz": 49.609375
+      },
+      "lower_command_rate": {
+        "rms": 0.673704988073879,
+        "peak": 10.628342943640677,
+        "above_6Hz_rms": 0.7558749814668972,
+        "dominant_Hz": 49.609375
+      },
+      "press_torque": {
+        "rms": 1.1074636647458345,
+        "peak": 2.379399999632853,
+        "above_6Hz_rms": 0.07519210508335004,
+        "dominant_Hz": 0.390625
+      },
+      "press_torque_mean_N": [
+        0.3611474907707665,
+        0.32486649896035014
+      ],
+      "hand_force_variation": {
+        "rms": 1.1906928563710302,
+        "peak": 3.9377971028420666,
+        "above_6Hz_rms": 0.07002362135005415,
+        "dominant_Hz": 0.390625
+      },
+      "hand_force_mean_N": [
+        0.5170327270048879,
+        0.543868212671916
+      ],
+      "hand_force_min_N": [
+        0.0,
+        0.0
+      ]
+    },
+    "loaded_preparation": {
+      "object_omega": {
+        "rms": 0.12879388743429598,
+        "peak": 0.7062486707874014,
+        "above_6Hz_rms": 0.08230907209793821,
+        "dominant_Hz": 0.390625
+      },
+      "object_alpha": {
+        "rms": 13.988717978552016,
+        "peak": 65.67934573129956,
+        "above_6Hz_rms": 13.88772505783967,
+        "dominant_Hz": 50.390625
+      },
+      "root_omega": {
+        "rms": 0.11172771845809724,
+        "peak": 0.3458542086196368,
+        "above_6Hz_rms": 0.002115353695619596,
+        "dominant_Hz": 0.390625
+      },
+      "root_alpha": {
+        "rms": 0.4330227075469434,
+        "peak": 2.3653473466241026,
+        "above_6Hz_rms": 0.3333693222080005,
+        "dominant_Hz": 50.0
+      },
+      "relative_omega": {
+        "rms": 0.23283001454392058,
+        "peak": 1.0059308867529955,
+        "above_6Hz_rms": 0.11229219099887808,
+        "dominant_Hz": 0.390625
+      },
+      "arm_joint_speed": {
+        "rms": 0.8816312304010959,
+        "peak": 3.884632589335023,
+        "above_6Hz_rms": 0.22343015410120542,
+        "dominant_Hz": 0.390625
+      },
+      "lower_joint_speed": {
+        "rms": 0.584712108647346,
+        "peak": 1.8009973263072605,
+        "above_6Hz_rms": 0.008833830163822725,
+        "dominant_Hz": 0.390625
+      },
+      "arm_torque_rate": {
+        "rms": 58.03135635485457,
+        "peak": 286.50345374459965,
+        "above_6Hz_rms": 57.79149019836404,
+        "dominant_Hz": 50.0
+      },
+      "lower_command_rate": {
+        "rms": 1.135668971320517,
+        "peak": 5.122934751990325,
+        "above_6Hz_rms": 0.9516128759530957,
+        "dominant_Hz": 50.0
+      },
+      "press_torque": {
+        "rms": 0.29954364572556985,
+        "peak": 1.562108374720401,
+        "above_6Hz_rms": 0.10369361788821345,
+        "dominant_Hz": 0.390625
+      },
+      "press_torque_mean_N": [
+        1.5960497098190336,
+        1.9744699827624006
+      ],
+      "hand_force_variation": {
+        "rms": 0.4969018435180941,
+        "peak": 3.043060916559981,
+        "above_6Hz_rms": 0.22552539738311575,
+        "dominant_Hz": 0.390625
+      },
+      "hand_force_mean_N": [
+        2.5117103624434325,
+        2.5750856100125077
+      ],
+      "hand_force_min_N": [
+        1.7541521130052589,
+        1.9745519212710567
+      ]
+    },
+    "walking": {
+      "object_omega": {
+        "rms": 1.5142525969802727,
+        "peak": 4.505435658644625,
+        "above_6Hz_rms": 0.3275359179695866,
+        "dominant_Hz": 4.296875
+      },
+      "object_alpha": {
+        "rms": 35.4013417269366,
+        "peak": 107.60305531830795,
+        "above_6Hz_rms": 16.04315183692224,
+        "dominant_Hz": 4.296875
+      },
+      "root_omega": {
+        "rms": 1.060199359295113,
+        "peak": 3.869964574876519,
+        "above_6Hz_rms": 0.4665047911547593,
+        "dominant_Hz": 5.078125
+      },
+      "root_alpha": {
+        "rms": 38.350018872057326,
+        "peak": 163.08168415001606,
+        "above_6Hz_rms": 30.83488102237723,
+        "dominant_Hz": 5.46875
+      },
+      "relative_omega": {
+        "rms": 1.2531731923073672,
+        "peak": 3.915306649259718,
+        "above_6Hz_rms": 0.410184262677651,
+        "dominant_Hz": 3.90625
+      },
+      "arm_joint_speed": {
+        "rms": 1.1898397992142193,
+        "peak": 4.183567397640948,
+        "above_6Hz_rms": 0.4648283091460993,
+        "dominant_Hz": 3.90625
+      },
+      "lower_joint_speed": {
+        "rms": 6.455923249878749,
+        "peak": 25.824584433782597,
+        "above_6Hz_rms": 2.640139408920631,
+        "dominant_Hz": 0.78125
+      },
+      "arm_torque_rate": {
+        "rms": 124.15517092781683,
+        "peak": 430.7161609357875,
+        "above_6Hz_rms": 71.9707112545692,
+        "dominant_Hz": 4.296875
+      },
+      "lower_command_rate": {
+        "rms": 35.157307159895396,
+        "peak": 207.48496154750848,
+        "above_6Hz_rms": 30.051509221948212,
+        "dominant_Hz": 4.296875
+      },
+      "press_torque": {
+        "rms": 1.4221903339451651,
+        "peak": 5.063916528980883,
+        "above_6Hz_rms": 0.5063788819801309,
+        "dominant_Hz": 3.90625
+      },
+      "press_torque_mean_N": [
+        1.6209609628090418,
+        1.78623939571473
+      ],
+      "hand_force_variation": {
+        "rms": 1.0060473981697329,
+        "peak": 3.168794522431518,
+        "above_6Hz_rms": 0.3475500460215744,
+        "dominant_Hz": 0.78125
+      },
+      "hand_force_mean_N": [
+        2.5205256884141334,
+        2.839491650282913
+      ],
+      "hand_force_min_N": [
+        0.9627661751686569,
+        0.7841021179857973
+      ]
+    },
+    "braking": {
+      "object_omega": {
+        "rms": 0.8497387299556356,
+        "peak": 2.6631357998810565,
+        "above_6Hz_rms": 0.14607977475853476,
+        "dominant_Hz": 2.34375
+      },
+      "object_alpha": {
+        "rms": 15.166246459666729,
+        "peak": 59.35810434794065,
+        "above_6Hz_rms": 7.886094875062619,
+        "dominant_Hz": 3.125
+      },
+      "root_omega": {
+        "rms": 0.5807753306419655,
+        "peak": 2.694510778930604,
+        "above_6Hz_rms": 0.23191361846444336,
+        "dominant_Hz": 0.78125
+      },
+      "root_alpha": {
+        "rms": 20.03808149322131,
+        "peak": 107.02082782849364,
+        "above_6Hz_rms": 16.055118709188037,
+        "dominant_Hz": 7.8125
+      },
+      "relative_omega": {
+        "rms": 0.6220779998902458,
+        "peak": 2.2187361941484305,
+        "above_6Hz_rms": 0.17046460736078103,
+        "dominant_Hz": 2.734375
+      },
+      "arm_joint_speed": {
+        "rms": 0.5547025013348011,
+        "peak": 1.7598319564215958,
+        "above_6Hz_rms": 0.2660506927190192,
+        "dominant_Hz": 2.34375
+      },
+      "lower_joint_speed": {
+        "rms": 2.5476644259760444,
+        "peak": 10.242846979488405,
+        "above_6Hz_rms": 0.9201684244178182,
+        "dominant_Hz": 3.125
+      },
+      "arm_torque_rate": {
+        "rms": 59.09171813576238,
+        "peak": 229.84982314701261,
+        "above_6Hz_rms": 39.98478709029499,
+        "dominant_Hz": 2.34375
+      },
+      "lower_command_rate": {
+        "rms": 14.888943318649693,
+        "peak": 81.86804559489589,
+        "above_6Hz_rms": 12.075843891907866,
+        "dominant_Hz": 3.125
+      },
+      "press_torque": {
+        "rms": 0.7544447924850852,
+        "peak": 4.142575003041368,
+        "above_6Hz_rms": 0.23468333597956076,
+        "dominant_Hz": 2.734375
+      },
+      "press_torque_mean_N": [
+        1.7778475893170218,
+        1.9703438284049746
+      ],
+      "hand_force_variation": {
+        "rms": 0.6552205444368887,
+        "peak": 2.3061421518256195,
+        "above_6Hz_rms": 0.1721378786870682,
+        "dominant_Hz": 0.78125
+      },
+      "hand_force_mean_N": [
+        2.632915901294747,
+        2.7921728908524006
+      ],
+      "hand_force_min_N": [
+        0.9584408651423921,
+        1.2064790434375001
+      ]
+    },
+    "entry_transition": {
+      "object_omega": {
+        "rms": 0.1863034845968511,
+        "peak": 0.5496298567239281,
+        "above_6Hz_rms": 0.022842257579701746,
+        "dominant_Hz": 0.78125
+      },
+      "object_alpha": {
+        "rms": 3.414376691547609,
+        "peak": 14.024567364215011,
+        "above_6Hz_rms": 1.3301710329783079,
+        "dominant_Hz": 3.90625
+      },
+      "root_omega": {
+        "rms": 0.1137144035936146,
+        "peak": 0.46049896375582483,
+        "above_6Hz_rms": 0.04817659650941787,
+        "dominant_Hz": 0.78125
+      },
+      "root_alpha": {
+        "rms": 4.314607188840065,
+        "peak": 44.63740038331323,
+        "above_6Hz_rms": 3.6400212164369115,
+        "dominant_Hz": 3.90625
+      },
+      "relative_omega": {
+        "rms": 0.1977949034225351,
+        "peak": 0.7125779926433894,
+        "above_6Hz_rms": 0.050401737795124475,
+        "dominant_Hz": 3.515625
+      },
+      "arm_joint_speed": {
+        "rms": 0.14935662132581445,
+        "peak": 0.6584856426601076,
+        "above_6Hz_rms": 0.05447840657590757,
+        "dominant_Hz": 3.90625
+      },
+      "lower_joint_speed": {
+        "rms": 1.9235748338186225,
+        "peak": 8.991457034075408,
+        "above_6Hz_rms": 0.7918108812454611,
+        "dominant_Hz": 3.90625
+      },
+      "arm_torque_rate": {
+        "rms": 15.149705526564007,
+        "peak": 82.28668849556891,
+        "above_6Hz_rms": 8.074498247358454,
+        "dominant_Hz": 3.90625
+      },
+      "lower_command_rate": {
+        "rms": 11.17529284369043,
+        "peak": 88.73376513418167,
+        "above_6Hz_rms": 10.208444819123313,
+        "dominant_Hz": 9.375
+      },
+      "press_torque": {
+        "rms": 0.29688938900112677,
+        "peak": 1.3296956640132898,
+        "above_6Hz_rms": 0.08090230638703759,
+        "dominant_Hz": 0.390625
+      },
+      "press_torque_mean_N": [
+        2.020684108769215,
+        1.8985110884536012
+      ],
+      "hand_force_variation": {
+        "rms": 0.17670313692345296,
+        "peak": 0.6470520599999783,
+        "above_6Hz_rms": 0.069605469180941,
+        "dominant_Hz": 1.171875
+      },
+      "hand_force_mean_N": [
+        2.692061706433695,
+        2.761383488061975
+      ],
+      "hand_force_min_N": [
+        2.4552545545116073,
+        2.3724784698030854
+      ]
+    },
+    "placement": {
+      "object_omega": {
+        "rms": 0.4719542140769133,
+        "peak": 1.951941152085614,
+        "above_6Hz_rms": 0.16850614176835108,
+        "dominant_Hz": 2.34375
+      },
+      "object_alpha": {
+        "rms": 22.42334284364443,
+        "peak": 120.38055058883612,
+        "above_6Hz_rms": 20.909613572385826,
+        "dominant_Hz": 49.609375
+      },
+      "root_omega": {
+        "rms": 0.9264861485529927,
+        "peak": 2.724842599257821,
+        "above_6Hz_rms": 0.06666721972268683,
+        "dominant_Hz": 1.953125
+      },
+      "root_alpha": {
+        "rms": 13.679438571395552,
+        "peak": 79.59148843948091,
+        "above_6Hz_rms": 5.80953218477479,
+        "dominant_Hz": 2.34375
+      },
+      "relative_omega": {
+        "rms": 1.057628589810744,
+        "peak": 3.3876973324087505,
+        "above_6Hz_rms": 0.5335199149420554,
+        "dominant_Hz": 2.34375
+      },
+      "arm_joint_speed": {
+        "rms": 4.067529093523825,
+        "peak": 13.854431973127669,
+        "above_6Hz_rms": 1.4395178800912751,
+        "dominant_Hz": 2.34375
+      },
+      "lower_joint_speed": {
+        "rms": 3.282197042927178,
+        "peak": 22.824750320242128,
+        "above_6Hz_rms": 0.999556281904498,
+        "dominant_Hz": 2.34375
+      },
+      "arm_torque_rate": {
+        "rms": 206.8040441028007,
+        "peak": 797.5188863053654,
+        "above_6Hz_rms": 202.14812507959624,
+        "dominant_Hz": 48.046875
+      },
+      "lower_command_rate": {
+        "rms": 19.61270855161475,
+        "peak": 145.22468425167688,
+        "above_6Hz_rms": 18.4344469018303,
+        "dominant_Hz": 52.34375
+      },
+      "press_torque": {
+        "rms": 1.5347010596027806,
+        "peak": 4.906020773476405,
+        "above_6Hz_rms": 0.32674829015747237,
+        "dominant_Hz": 2.734375
+      },
+      "press_torque_mean_N": [
+        1.1452370907840492,
+        0.9744403065898553
+      ],
+      "hand_force_variation": {
+        "rms": 2.241034839596241,
+        "peak": 11.433867143527825,
+        "above_6Hz_rms": 0.6290092245155459,
+        "dominant_Hz": 0.390625
+      },
+      "hand_force_mean_N": [
+        1.676643804854389,
+        1.8098985411278583
+      ],
+      "hand_force_min_N": [
+        0.0,
+        0.0
+      ]
+    },
+    "recovery": {
+      "object_omega": {
+        "rms": 0.00037692771832873313,
+        "peak": 0.0006373484144150388,
+        "above_6Hz_rms": 0.0003780602252866517,
+        "dominant_Hz": 33.203125
+      },
+      "object_alpha": {
+        "rms": 0.06231967481969522,
+        "peak": 0.09752041731285781,
+        "above_6Hz_rms": 0.06237755923770034,
+        "dominant_Hz": 33.203125
+      },
+      "root_omega": {
+        "rms": 0.2149731099316977,
+        "peak": 1.4400695139208166,
+        "above_6Hz_rms": 0.03630902220026259,
+        "dominant_Hz": 3.90625
+      },
+      "root_alpha": {
+        "rms": 5.138700833912059,
+        "peak": 37.43760395693733,
+        "above_6Hz_rms": 2.466104658555157,
+        "dominant_Hz": 3.90625
+      },
+      "relative_omega": {
+        "rms": 0.49645339374704167,
+        "peak": 2.144879533379558,
+        "above_6Hz_rms": 0.10014486071410147,
+        "dominant_Hz": 3.515625
+      },
+      "arm_joint_speed": {
+        "rms": 0.4500020729874926,
+        "peak": 4.529923817163381,
+        "above_6Hz_rms": 0.09176572360225858,
+        "dominant_Hz": 3.515625
+      },
+      "lower_joint_speed": {
+        "rms": 3.1199388678705073,
+        "peak": 19.4794169948637,
+        "above_6Hz_rms": 0.9123013842904347,
+        "dominant_Hz": 0.390625
+      },
+      "arm_torque_rate": {
+        "rms": 32.0496118160429,
+        "peak": 163.72292930420173,
+        "above_6Hz_rms": 10.971380338571999,
+        "dominant_Hz": 3.515625
+      },
+      "lower_command_rate": {
+        "rms": 11.748662649115635,
+        "peak": 83.54587563544598,
+        "above_6Hz_rms": 7.714727925674958,
+        "dominant_Hz": 4.296875
+      },
+      "press_torque": {
+        "rms": 0.21561510997415362,
+        "peak": 1.609650633843791,
+        "above_6Hz_rms": 0.11067833898076966,
+        "dominant_Hz": 0.390625
+      },
+      "press_torque_mean_N": [
+        0.1189791597392601,
+        -0.06401817558172389
+      ],
+      "hand_force_variation": {
+        "rms": 0.0,
+        "peak": 0.0,
+        "above_6Hz_rms": 0.0,
+        "dominant_Hz": 0.390625
+      },
+      "hand_force_mean_N": [
+        0.0,
+        0.0
+      ],
+      "hand_force_min_N": [
+        0.0,
+        0.0
+      ]
+    },
+    "complete_execution": {
+      "object_omega": {
+        "rms": 0.6872708747719616,
+        "peak": 4.505435658644625,
+        "above_6Hz_rms": 0.16106612381010707,
+        "dominant_Hz": 2.34375
+      },
+      "object_alpha": {
+        "rms": 19.302956547462436,
+        "peak": 120.38055058883612,
+        "above_6Hz_rms": 14.06419642335661,
+        "dominant_Hz": 4.296875
+      },
+      "root_omega": {
+        "rms": 0.6361092678867898,
+        "peak": 3.869964574876519,
+        "above_6Hz_rms": 0.19530424367834326,
+        "dominant_Hz": 1.953125
+      },
+      "root_alpha": {
+        "rms": 17.326505111100573,
+        "peak": 163.08168415001606,
+        "above_6Hz_rms": 13.15417798489282,
+        "dominant_Hz": 2.34375
+      },
+      "relative_omega": {
+        "rms": 0.7524598658832725,
+        "peak": 3.915306649259718,
+        "above_6Hz_rms": 0.3123743928101522,
+        "dominant_Hz": 2.34375
+      },
+      "arm_joint_speed": {
+        "rms": 2.07453213639191,
+        "peak": 13.854431973127669,
+        "above_6Hz_rms": 0.7353517297085724,
+        "dominant_Hz": 2.34375
+      },
+      "lower_joint_speed": {
+        "rms": 3.1961885992304366,
+        "peak": 25.824584433782597,
+        "above_6Hz_rms": 1.1918208168487312,
+        "dominant_Hz": 2.34375
+      },
+      "arm_torque_rate": {
+        "rms": 116.83881923613824,
+        "peak": 845.338169232975,
+        "above_6Hz_rms": 107.27340050388435,
+        "dominant_Hz": 52.34375
+      },
+      "lower_command_rate": {
+        "rms": 17.79344151236373,
+        "peak": 207.48496154750848,
+        "above_6Hz_rms": 15.582054001075118,
+        "dominant_Hz": 3.90625
+      },
+      "press_torque": {
+        "rms": 1.3248580862847525,
+        "peak": 5.3989407685929205,
+        "above_6Hz_rms": 0.2682951996645028,
+        "dominant_Hz": 0.390625
+      },
+      "press_torque_mean_N": [
+        1.3343759662799695,
+        1.4353174604150416
+      ],
+      "hand_force_variation": {
+        "rms": 1.7269815048472368,
+        "peak": 11.082830243489196,
+        "above_6Hz_rms": 0.3545497455815611,
+        "dominant_Hz": 0.390625
+      },
+      "hand_force_mean_N": [
+        2.0029739169537732,
+        2.122249281975541
+      ],
+      "hand_force_min_N": [
+        0.0,
+        0.0
+      ]
+    }
+  }
+}

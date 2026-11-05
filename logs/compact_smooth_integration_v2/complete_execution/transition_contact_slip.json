@@ -1,0 +1,31 @@
+{
+  "exact_qpos_error": 0.0,
+  "exact_qvel_error": 0.0,
+  "measurement_interval_s": [
+    29.505,
+    33.505
+  ],
+  "hands": {
+    "left": {
+      "peak_relative_rotation_deg": 1.769849738282079,
+      "max_COM_excursion_mm": 5.064183255788256,
+      "fixed_material_point_max_tangential_excursion_mm": 0.5260587110730333,
+      "fixed_material_point_final_tangential_excursion_mm": 0.4066666080342907,
+      "loaded_contact_tangential_speed_RMS_mps": 0.0021436528339384836,
+      "loaded_contact_mean_tangential_speed_mps": 0.0010600158704822283,
+      "integrated_force_weighted_slip_speed_mm": 4.240063481928913,
+      "normal_force_weighted_fraction_above_5mmps": 0.04332051278054952
+    },
+    "right": {
+      "peak_relative_rotation_deg": 1.7997776005137762,
+      "max_COM_excursion_mm": 4.3161692036198325,
+      "fixed_material_point_max_tangential_excursion_mm": 1.8745266149102764,
+      "fixed_material_point_final_tangential_excursion_mm": 1.532538615135968,
+      "loaded_contact_tangential_speed_RMS_mps": 0.0022786335843864875,
+      "loaded_contact_mean_tangential_speed_mps": 0.0014336304337016729,
+      "integrated_force_weighted_slip_speed_mm": 5.734521734806691,
+      "normal_force_weighted_fraction_above_5mmps": 0.04631460367825265
+    }
+  },
+  "method": "Independent exact replay of loaded-contact slip and fixed material anchors.\n\nSlip speed is measured at the solver's contact point and tangent plane from\npoint Jacobians and the SAME pre-integration velocity used for that contact\nsolve. It is force-weighted per hand; its time integral is not the displacement\nof a single persistent contact patch. Fixed material anchors separately bound\nobject/palm relative excursions and rocking, using the accepted audit method.\n"
+}

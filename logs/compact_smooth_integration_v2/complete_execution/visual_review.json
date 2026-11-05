@@ -1,0 +1,39 @@
+{
+  "full_sequence_visual_review_complete": true,
+  "total_frames": 2380,
+  "fps": 50,
+  "coverage": {
+    "previously_inspected_pixel_identical_prefix": [
+      0,
+      1407
+    ],
+    "prefix_identity": "video_prefix_identity.json",
+    "reference_review": "logs/compact_smooth_v1/best_partial/visual_review.json",
+    "directly_inspected_frames": [
+      1408,
+      2379
+    ],
+    "directly_inspected_sheets": [
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37
+    ]
+  },
+  "review_method": "Complete decoded-frame coverage through exact pixel identity with the previously inspected prefix plus direct inspection of all remaining chronological frame sheets; not a claim of real-time playback viewing.",
+  "findings": "Continuous pickup/rise and genuine alternating walking retain the box. The preserved carry shows reduced object/palm wobble. COM shift and foot pivot settle into stationary support. Lowering remains visibly compliant and contains local object rocking; forks fold before supported release. Terrain supports the box before physical palm/thumb opening. Both hands separate, withdraw upward/back, and remain clear while the robot settles into a stable crouch and the box remains on terrain. No ejection, airborne release, forbidden contact, fall, or recontact is visible.",
+  "bounded_compliant_grasp_accepted": true,
+  "grasp_review_note": "Walking rocking remains bounded at 9.09/7.02 degrees; fixed box-material-point tangential excursions are 8.01/5.03 mm. Contact and pose histories retain physical hand support. The new support transition adds only 1.77/1.80 degrees of palm-relative motion, with 0.53/1.87 mm local excursions. Placement object angular acceleration regresses and is reported; zero slip and uniform improvement across all phases are not claimed."
+}

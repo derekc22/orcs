@@ -1,0 +1,8 @@
+{
+  "reference_video": "logs/compact_smooth_v1/best_partial/rollout.mp4",
+  "reference_review": "logs/compact_smooth_v1/best_partial/visual_review.json",
+  "checked_frames": 1408,
+  "identical_frames": 1408,
+  "first_nonidentical_frame": null,
+  "max_abs_pixel_error": 0
+}

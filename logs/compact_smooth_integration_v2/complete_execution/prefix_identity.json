@@ -1,0 +1,8 @@
+{
+  "smoothed_walking_and_braking_prefix_controls": 5901,
+  "source": "logs/compact_smooth_v1/best_partial/rollout.npz",
+  "controls_qpos_qvel_exact": true,
+  "release_probe_prefix_controls": 8301,
+  "release_probe_prefix_exact": true,
+  "no_real_state_transplantation": true
+}

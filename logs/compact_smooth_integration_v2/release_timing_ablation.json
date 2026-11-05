@@ -1,0 +1,21 @@
+{
+  "fixed_wait_source": "canonical_placement_probe",
+  "same_controls_qpos_qvel_until_opening": {
+    "ctrl_physics": true,
+    "qpos": true,
+    "qvel": true
+  },
+  "prefix_controls": 7921,
+  "opening_time_s": 39.605000000000004,
+  "physical_support_window_s": [
+    39.455000000000005,
+    39.665000000000006
+  ],
+  "required_sustained_support_s": 0.15,
+  "fixed_extra_wait_s": 0.7,
+  "fixed_wait_earliest_opening_s": 40.2,
+  "terrain_force_at_new_opening_N": 0.6248758011528828,
+  "box_weight_N": 0.4905,
+  "fixed_wait_invalid_terrain_impulse_Ns": 0.007374905358389233,
+  "new_invalid_terrain_impulse_Ns": 0.0
+}

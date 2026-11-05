@@ -1,0 +1,13 @@
+{
+  "status": "SUCCESS",
+  "selected_full_execution": true,
+  "duration_s": 47.61,
+  "physics_controls": 9522,
+  "walking_root_travel_m": 2.750144041418522,
+  "alternating_replants": 10,
+  "source_prefix": "logs/compact_smooth_v1/best_partial/rollout.npz",
+  "walking_smoothing_preserved_exactly": true,
+  "placement_regression_reported": true,
+  "physical_task_assessment": "task_assessment.json",
+  "integration_assessment": "integration_assessment.json"
+}

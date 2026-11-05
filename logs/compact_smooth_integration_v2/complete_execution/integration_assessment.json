@@ -1,0 +1,19 @@
+{
+  "status": "SUCCESS",
+  "gates": {
+    "complete_physical_task": true,
+    "exact_smoothed_pickup_walking_braking_prefix": true,
+    "retains_object_angular_acceleration_reduction_over_20percent": true,
+    "retains_palm_relative_rate_reduction_over_25percent": true,
+    "full_execution_object_angular_speed_improved": true,
+    "full_execution_object_angular_acceleration_improved": true
+  },
+  "regressions": {
+    "placement_object_angular_acceleration_RMS_percent": 22.469991163906133,
+    "placement_object_angular_speed_RMS_percent": 19.11592871538201,
+    "final_root_linear_speed_max_increased_but_still_below_gate": true,
+    "right_walking_final_material_point_excursion_increased": true
+  },
+  "physical_task_assessment": "task_assessment.json",
+  "smoothness_comparison": "../comparison_metrics.json"
+}
