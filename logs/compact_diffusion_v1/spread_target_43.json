@@ -1,0 +1,52 @@
+{
+  "source_sample": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_v1/proposals/sample_43.npz",
+  "mean_gain": 0.15,
+  "sample_gain": 4.0,
+  "retime_max_s": 0.04,
+  "timing_calibration": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_v1/calibration/sample_0.npz",
+  "phases": {
+    "pickup": {
+      "physical_interval_s": [
+        2.5,
+        8.0
+      ],
+      "diffusion_interval_frames": [
+        0,
+        105
+      ],
+      "object_target_peak_m": 0.006000000000000001,
+      "native_target_peak_rad": 0.023190389883240698,
+      "timing_shift_peak_s": 0.001613855824514735
+    },
+    "carry": {
+      "physical_interval_s": [
+        17.245,
+        23.605
+      ],
+      "diffusion_interval_frames": [
+        105,
+        225
+      ],
+      "object_target_peak_m": 0.006000000000000001,
+      "native_target_peak_rad": 0.018515235902285227,
+      "timing_shift_peak_s": 0.0006540129293458993
+    },
+    "placement": {
+      "physical_interval_s": [
+        33.505,
+        39.11
+      ],
+      "diffusion_interval_frames": [
+        225,
+        299
+      ],
+      "object_target_peak_m": 0.0018542512411229327,
+      "native_target_peak_rad": 0.010139003790296766,
+      "timing_shift_peak_s": 0.003369006361013056
+    }
+  },
+  "maximum_foot_kinematic_residual_m": 5.2097606603712654e-05,
+  "maximum_palm_translation_residual_m": 0.0007146489609305847,
+  "missing_hand_dofs": "All eight use the accepted physical mechanism schedule; diffusion generates none.",
+  "method": "Source-calibrated diffusion innovation; deterministic bounded differential IK preserving both sole trajectories and compact palm/object relative geometry; frozen controller-coupled ORCS projection required next."
+}

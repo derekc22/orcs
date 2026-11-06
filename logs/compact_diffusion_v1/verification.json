@@ -1,0 +1,742 @@
+{
+  "status": "SUCCESS",
+  "gates": {
+    "two_complete_physical_successes": true,
+    "two_exact_independent_replays": true,
+    "full_contact_attribution_replays": true,
+    "diffusion_survives_physical_refinement": true,
+    "diffusion_changes_final_reference_commands_and_motion": true,
+    "identical_diffusion_conditions": true,
+    "identical_diffusion_sampler": true,
+    "frozen_checkpoint": true,
+    "exact_frozen_inference_reproduction": true,
+    "physics_projection_uses_shared_expert_feedforward": true,
+    "physical_control_and_model_integrity": true,
+    "accepted_goal1_artifacts_unchanged": true,
+    "accepted_goal1_core_code_unchanged": true,
+    "accepted_goal1_exact_recheck": true
+  },
+  "task": "Orcs-Uolm-Compact-Diffusion-Feedback",
+  "diffusion": {
+    "checkpoint": "/home/learning/Documents/g1-diffusion/logs/object_goal_single_stage_init_goal_hf_bps_e10000_b16_lr5e-06_ts1000_w300_s10_transformer_2026Aug05_21-21-42/checkpoints/object_goal_single_stage_init_goal_epoch_000999.pt",
+    "checkpoint_sha256": "36470e72206000a1305d88a0c0bf8e5e6c73d12180b3de9f69d49efa4ae0d442",
+    "model_type": "object_goal_single_stage_init_goal",
+    "state_dim": 47,
+    "condition_dim": 56,
+    "horizon": 300,
+    "fps": 50,
+    "sampling": {
+      "sampler": "ddim",
+      "steps": 50,
+      "eta": 0.0,
+      "precision": "fp32",
+      "device": "cpu",
+      "seeds": [
+        42,
+        43
+      ]
+    },
+    "conditioning_source": "/home/learning/Documents/g1-diffusion/data/hf_bps_preprocessed/omomo_sub3_largebox_003_sample1.pkl",
+    "normalized_condition_absmax": 2.596539258956909,
+    "actual_task_condition_absmax": 148551.671875,
+    "conditioning_contract": "Matched native largebox motion prior; identical condition for both seeds. Actual compact initial state, final task goal and contacts are imposed by refinement, not claimed as diffusion outputs.",
+    "native_joint_names": [
+      "left_hip_pitch_joint",
+      "left_hip_roll_joint",
+      "left_hip_yaw_joint",
+      "left_knee_joint",
+      "left_ankle_pitch_joint",
+      "left_ankle_roll_joint",
+      "right_hip_pitch_joint",
+      "right_hip_roll_joint",
+      "right_hip_yaw_joint",
+      "right_knee_joint",
+      "right_ankle_pitch_joint",
+      "right_ankle_roll_joint",
+      "waist_yaw_joint",
+      "waist_roll_joint",
+      "waist_pitch_joint",
+      "left_shoulder_pitch_joint",
+      "left_shoulder_roll_joint",
+      "left_shoulder_yaw_joint",
+      "left_elbow_joint",
+      "left_wrist_roll_joint",
+      "left_wrist_pitch_joint",
+      "left_wrist_yaw_joint",
+      "right_shoulder_pitch_joint",
+      "right_shoulder_roll_joint",
+      "right_shoulder_yaw_joint",
+      "right_elbow_joint",
+      "right_wrist_roll_joint",
+      "right_wrist_pitch_joint",
+      "right_wrist_yaw_joint"
+    ],
+    "object_centroid_offset_body": [
+      -7.048849745214247e-09,
+      1.6680218611236138e-09,
+      8.448643020158696e-09
+    ],
+    "historical_object_correction_count": 1,
+    "causal_requirements": {
+      "per_phase_object_or_root_rms_m": 0.0005,
+      "per_phase_native_joint_rms_rad": 0.002,
+      "criterion": "Both sample-vs-baseline and sample-vs-sample must show >=0.5 mm RMS object/root motion OR >=2 mrad RMS native posture in every phase; no success from numerical differences alone."
+    }
+  },
+  "calibration_seed": 0,
+  "refinement": {
+    "mean_gain": 0.15,
+    "sample_spread_gain": 4.0,
+    "max_retime_s": 0.04,
+    "method": "Phase alignment, bounded diffusion-derived innovation and differential IK, then deterministic frozen-feedback projection through actual ORCS physics; compiled feasible reference executed again through ORCS."
+  },
+  "causal_windows_physics_steps": {
+    "pickup": [
+      0,
+      3449
+    ],
+    "carry": [
+      3449,
+      4721
+    ],
+    "placement": [
+      6701,
+      8092
+    ]
+  },
+  "causality": {
+    "identical_initial_state": true,
+    "thresholds": {
+      "root_or_object_rms_m": 0.0005,
+      "native_joint_rms_rad": 0.002
+    },
+    "comparisons": {
+      "42_vs_baseline": {
+        "pickup": {
+          "root_rms_m": 0.00135994260199368,
+          "object_rms_m": 0.001722586341202259,
+          "native_joint_rms_rad": 0.002640028251335025,
+          "actuator_command_rms": 0.002804738702252507,
+          "native_actuator_command_rms_rad": 0.0031166260596364737,
+          "pass_meaningful_motion": true,
+          "pass_command_difference": true
+        },
+        "carry": {
+          "root_rms_m": 0.0023057253565639257,
+          "object_rms_m": 0.0028476433362811804,
+          "native_joint_rms_rad": 0.006716602947562933,
+          "actuator_command_rms": 0.011717181652784348,
+          "native_actuator_command_rms_rad": 0.013136984780430794,
+          "pass_meaningful_motion": true,
+          "pass_command_difference": true
+        },
+        "placement": {
+          "root_rms_m": 0.0021630816627293825,
+          "object_rms_m": 0.002784264273941517,
+          "native_joint_rms_rad": 0.003189953276887536,
+          "actuator_command_rms": 0.0037057327572256327,
+          "native_actuator_command_rms_rad": 0.004079265985637903,
+          "pass_meaningful_motion": true,
+          "pass_command_difference": true
+        }
+      },
+      "43_vs_baseline": {
+        "pickup": {
+          "root_rms_m": 0.0016439894679933786,
+          "object_rms_m": 0.0024436393287032843,
+          "native_joint_rms_rad": 0.0028748256154358387,
+          "actuator_command_rms": 0.00282264593988657,
+          "native_actuator_command_rms_rad": 0.0031093209981918335,
+          "pass_meaningful_motion": true,
+          "pass_command_difference": true
+        },
+        "carry": {
+          "root_rms_m": 0.0028022124897688627,
+          "object_rms_m": 0.002392437541857362,
+          "native_joint_rms_rad": 0.006400626618415117,
+          "actuator_command_rms": 0.011502456851303577,
+          "native_actuator_command_rms_rad": 0.012889740988612175,
+          "pass_meaningful_motion": true,
+          "pass_command_difference": true
+        },
+        "placement": {
+          "root_rms_m": 0.0008576930267736316,
+          "object_rms_m": 0.0009126048535108566,
+          "native_joint_rms_rad": 0.0020375994499772787,
+          "actuator_command_rms": 0.0023960203398019075,
+          "native_actuator_command_rms_rad": 0.0026740164030343294,
+          "pass_meaningful_motion": true,
+          "pass_command_difference": true
+        }
+      },
+      "42_vs_43": {
+        "pickup": {
+          "root_rms_m": 0.0013805740745738149,
+          "object_rms_m": 0.002066229470074177,
+          "native_joint_rms_rad": 0.0015208873664960265,
+          "actuator_command_rms": 0.0019757780246436596,
+          "native_actuator_command_rms_rad": 0.0021746514830738306,
+          "pass_meaningful_motion": true,
+          "pass_command_difference": true
+        },
+        "carry": {
+          "root_rms_m": 0.0023200323339551687,
+          "object_rms_m": 0.0021005889866501093,
+          "native_joint_rms_rad": 0.004344967659562826,
+          "actuator_command_rms": 0.006875522434711456,
+          "native_actuator_command_rms_rad": 0.007685046177357435,
+          "pass_meaningful_motion": true,
+          "pass_command_difference": true
+        },
+        "placement": {
+          "root_rms_m": 0.0016616866923868656,
+          "object_rms_m": 0.0021573160775005817,
+          "native_joint_rms_rad": 0.002992166904732585,
+          "actuator_command_rms": 0.0032737909350544214,
+          "native_actuator_command_rms_rad": 0.0035756558645516634,
+          "pass_meaningful_motion": true,
+          "pass_command_difference": true
+        }
+      }
+    },
+    "identical_task_goals": true,
+    "reference_comparison": {
+      "pickup": {
+        "root_rms_m": 0.0013805736089125276,
+        "object_rms_m": 0.002066229237243533,
+        "native_joint_rms_rad": 0.0015208869008347392,
+        "actuator_command_rms": 0.0019757780246436596,
+        "native_actuator_command_rms_rad": 0.0021746514830738306,
+        "pass_meaningful_motion": true,
+        "pass_command_difference": true
+      },
+      "carry": {
+        "root_rms_m": 0.0023199780844151974,
+        "object_rms_m": 0.0021005526650696993,
+        "native_joint_rms_rad": 0.0043449001386761665,
+        "actuator_command_rms": 0.006875522434711456,
+        "native_actuator_command_rms_rad": 0.007685046177357435,
+        "pass_meaningful_motion": true,
+        "pass_command_difference": true
+      },
+      "placement": {
+        "root_rms_m": 0.00166168506257236,
+        "object_rms_m": 0.00215731468051672,
+        "native_joint_rms_rad": 0.0029921482782810926,
+        "actuator_command_rms": 0.0032737909350544214,
+        "native_actuator_command_rms_rad": 0.0035756558645516634,
+        "pass_meaningful_motion": true,
+        "pass_command_difference": true
+      }
+    },
+    "reference_vs_expert": {
+      "42": {
+        "pickup": {
+          "root_rms_m": 0.0013631529416516107,
+          "object_rms_m": 0.0017481367575345773,
+          "native_joint_rms_rad": 0.0026468431875832435,
+          "actuator_command_rms": 0.002803071854196002,
+          "native_actuator_command_rms_rad": 0.0031140963949277058,
+          "pass_meaningful_motion": true,
+          "pass_command_difference": true
+        },
+        "carry": {
+          "root_rms_m": 0.0023026503256424486,
+          "object_rms_m": 0.002833551304366924,
+          "native_joint_rms_rad": 0.006724316271527341,
+          "actuator_command_rms": 0.011740080490669538,
+          "native_actuator_command_rms_rad": 0.013163258632106448,
+          "pass_meaningful_motion": true,
+          "pass_command_difference": true
+        },
+        "placement": {
+          "root_rms_m": 0.0021658030562799013,
+          "object_rms_m": 0.002843604876308398,
+          "native_joint_rms_rad": 0.0032073935478876938,
+          "actuator_command_rms": 0.0037642863529405517,
+          "native_actuator_command_rms_rad": 0.004139242985372501,
+          "pass_meaningful_motion": true,
+          "pass_command_difference": true
+        }
+      },
+      "43": {
+        "pickup": {
+          "root_rms_m": 0.0016454899674497047,
+          "object_rms_m": 0.002475566731674143,
+          "native_joint_rms_rad": 0.002882837831909407,
+          "actuator_command_rms": 0.0028155607703911054,
+          "native_actuator_command_rms_rad": 0.003098951009540827,
+          "pass_meaningful_motion": true,
+          "pass_command_difference": true
+        },
+        "carry": {
+          "root_rms_m": 0.0027918606327107646,
+          "object_rms_m": 0.002387842285332006,
+          "native_joint_rms_rad": 0.00640958773680281,
+          "actuator_command_rms": 0.011525039585990746,
+          "native_actuator_command_rms_rad": 0.012915648189073136,
+          "pass_meaningful_motion": true,
+          "pass_command_difference": true
+        },
+        "placement": {
+          "root_rms_m": 0.0008597690781092328,
+          "object_rms_m": 0.0010767432144267906,
+          "native_joint_rms_rad": 0.002056795783652759,
+          "actuator_command_rms": 0.0024824768510364613,
+          "native_actuator_command_rms_rad": 0.0027591689366983927,
+          "pass_meaningful_motion": true,
+          "pass_command_difference": true
+        }
+      }
+    },
+    "pass_causality": true
+  },
+  "executions": {
+    "42": {
+      "physical_assessment": {
+        "status": "SUCCESS",
+        "numeric_gates": {
+          "full_execution": true,
+          "initial_ground_support": true,
+          "terrain_free_lift_over_5cm": true,
+          "actual_retained_root_walk_over_2m": true,
+          "alternating_footsteps_at_least_5": true,
+          "airborne_and_bilateral_grip_through_walk": true,
+          "continuous_physical_grasp_while_airborne": true,
+          "support_gated_opening": true,
+          "physical_open_hands": true,
+          "clean_withdrawal": true,
+          "stable_final_robot": true,
+          "stable_final_object": true,
+          "zero_forbidden_object_impulse": true,
+          "zero_self_and_invalid_terrain": true,
+          "independent_exact_replay": true,
+          "physical_model_integrity": true,
+          "effort_limits_preserved": true,
+          "genuine_orcs_pipeline": true,
+          "reference_clock": true,
+          "accepted_model_equivalence": true,
+          "full_task_video": true,
+          "accepted_baseline_preserved": true
+        },
+        "failed_gates": [],
+        "physics_steps": 9629,
+        "duration_seconds": 48.145,
+        "walking_root_displacement_m": 2.750624895095825,
+        "alternating_replants": 10,
+        "maximum_lift_m": 0.7890173157293753,
+        "minimum_walk_hand_force_N": [
+          0.40189607964863494,
+          0.29045546306361125
+        ],
+        "terrain_support_start_s": 39.11,
+        "opening_s": 40.14,
+        "terrain_load_at_opening_N": 0.5366011529258685,
+        "last_hand_contact_s": 40.455,
+        "final_root_linear_speed_max_mps": 0.0028116514764155117,
+        "final_root_angular_speed_max_radps": 0.010566473703189616,
+        "final_object_linear_speed_max_mps": 2.8356374156790607e-06,
+        "final_object_angular_speed_max_radps": 1.632405969725252e-05,
+        "bad_impulses_Ns": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "standalone_comparison": {
+          "root_position_rms_m": 0.0008258629474645151,
+          "object_position_rms_m": 0.001063643572404893,
+          "maximum_abs_control_difference": 0.1500000059609204
+        },
+        "maximum_effort_excess_backend": 0.0,
+        "maximum_effort_limit_representation_roundoff": 1.1920928966180355e-08,
+        "replay": {
+          "exact_qpos_error": 0.0,
+          "exact_qvel_error": 0.0,
+          "exact_control_error": 0.0,
+          "exact_contact_trace_error": 0.0,
+          "exact_locomotion_trace_error": 0.0
+        },
+        "checkpoint_sha256": "841a42fe5f4e2f163f6b279c090557293bd7b835b9a9f964a7881ed5511e3dbe"
+      },
+      "execution": {
+        "task": "Orcs-Uolm-Compact-Diffusion-Feedback",
+        "refined_reference_path": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_v1/feasible_42.npz",
+        "env_class": "mjlab.envs.manager_based_rl_env.ManagerBasedRlEnv",
+        "sim_class": "mjlab.sim.sim.Simulation",
+        "runner_class": "mjlab.rl.runner.MjlabOnPolicyRunner",
+        "actor_class": "CompactFeedbackActor",
+        "command_class": "DiffusionRefinedCommand",
+        "action_class": "CompactResidualAction",
+        "managers": {
+          "command_manager": "CommandManager",
+          "observation_manager": "ObservationManager",
+          "action_manager": "ActionManager",
+          "reward_manager": "RewardManager",
+          "termination_manager": "TerminationManager"
+        },
+        "steps": 9629,
+        "physics_dt": 0.005,
+        "step_dt": 0.005,
+        "reset_state_writes": 1,
+        "physics_step_counter": 9629,
+        "episode_step_counter": 9629,
+        "metric_substeps": 9629,
+        "reward_total": 144.434996756725,
+        "checkpoint_sha256": "841a42fe5f4e2f163f6b279c090557293bd7b835b9a9f964a7881ed5511e3dbe",
+        "training_performed": false,
+        "contact_impulses_Ns": {
+          "terrain": 6.663202805511781,
+          "hand_right_pad0": 19.237656619849982,
+          "hand_right_pad1": 47.93517034790736,
+          "hand_left_pad0": 25.96597157853948,
+          "hand_left_pad1": 41.71744030885481,
+          "hand_right_pad2": 0.8892532434050714,
+          "hand_left_pad2": 0.7828687650313281,
+          "hand_left_thumb_contact": 7.610082550952794,
+          "hand_right_thumb_contact": 11.096021233828264,
+          "hand_left_thumb_tip": 11.005660280059935,
+          "hand_right_thumb_tip": 9.822150150304717,
+          "hand_left_toe0": 8.175305694209824,
+          "hand_right_toe1": 4.356247211213534,
+          "hand_left_toe1": 1.9003704078983874,
+          "hand_right_toe0": 8.298697336907992
+        },
+        "bad_impulses_Ns": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "maximum_abs_actuator_force": [
+          12.638870239257812,
+          6.4298553466796875,
+          4.3355255126953125,
+          6.797943115234375,
+          8.625839233398438,
+          10.979713439941406,
+          6.565349578857422,
+          6.2316436767578125,
+          4.4952850341796875,
+          5.049568176269531,
+          34.3272819519043,
+          41.694480895996094,
+          16.374980926513672,
+          76.75334167480469,
+          70.44649505615234,
+          121.60791778564453,
+          70.19563293457031,
+          78.20848846435547,
+          103.29261779785156,
+          3.8736190795898438,
+          5.0,
+          3.7222747802734375,
+          3.621457099914551,
+          23.122814178466797,
+          43.35572814941406,
+          50.0,
+          20.818166732788086,
+          31.682634353637695,
+          18.67637062072754,
+          3.7140960693359375,
+          3.1741816997528076,
+          1.5,
+          1.3607559204101562,
+          0.30000001192092896,
+          0.30000001192092896,
+          0.15690255165100098,
+          0.24288129806518555
+        ],
+        "maximum_applied_external_force": 0.0,
+        "terminal_terms": {
+          "invalid_state": false,
+          "invalid_contacts": false,
+          "complete": true
+        },
+        "elapsed": 197.68631672859192
+      },
+      "replay_errors": {
+        "exact_qpos_error": 0.0,
+        "exact_qvel_error": 0.0,
+        "exact_control_error": 0.0,
+        "exact_contact_trace_error": 0.0,
+        "exact_locomotion_trace_error": 0.0
+      },
+      "full_contact_attribution_exact": true,
+      "attributed_contact_rows": 244398,
+      "final_vs_physical_projection": {
+        "qpos": 0.0,
+        "qvel": 0.0,
+        "ctrl_physics": 9.837872437691197e-18
+      },
+      "reference_tracking_error": {
+        "qpos": 0.0,
+        "qvel": 0.0
+      },
+      "refined_reference_sha256": "f54e378eea6a8cb7f954280c68e87119bcc5d257bfb843ac05fb36cd6d31edd7",
+      "video": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_v1/execution_42/rollout.mp4"
+    },
+    "43": {
+      "physical_assessment": {
+        "status": "SUCCESS",
+        "numeric_gates": {
+          "full_execution": true,
+          "initial_ground_support": true,
+          "terrain_free_lift_over_5cm": true,
+          "actual_retained_root_walk_over_2m": true,
+          "alternating_footsteps_at_least_5": true,
+          "airborne_and_bilateral_grip_through_walk": true,
+          "continuous_physical_grasp_while_airborne": true,
+          "support_gated_opening": true,
+          "physical_open_hands": true,
+          "clean_withdrawal": true,
+          "stable_final_robot": true,
+          "stable_final_object": true,
+          "zero_forbidden_object_impulse": true,
+          "zero_self_and_invalid_terrain": true,
+          "independent_exact_replay": true,
+          "physical_model_integrity": true,
+          "effort_limits_preserved": true,
+          "genuine_orcs_pipeline": true,
+          "reference_clock": true,
+          "accepted_model_equivalence": true,
+          "full_task_video": true,
+          "accepted_baseline_preserved": true
+        },
+        "failed_gates": [],
+        "physics_steps": 9629,
+        "duration_seconds": 48.145,
+        "walking_root_displacement_m": 2.7503583431243896,
+        "alternating_replants": 10,
+        "maximum_lift_m": 0.7875488659183323,
+        "minimum_walk_hand_force_N": [
+          0.36190724234797245,
+          0.27673435858949896
+        ],
+        "terrain_support_start_s": 39.11,
+        "opening_s": 40.14,
+        "terrain_load_at_opening_N": 0.536259993990825,
+        "last_hand_contact_s": 40.455,
+        "final_root_linear_speed_max_mps": 0.0028232523776938767,
+        "final_root_angular_speed_max_radps": 0.010528935515945241,
+        "final_object_linear_speed_max_mps": 2.7371349960668876e-06,
+        "final_object_angular_speed_max_radps": 1.0946932668004044e-05,
+        "bad_impulses_Ns": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "standalone_comparison": {
+          "root_position_rms_m": 0.0008386363835190828,
+          "object_position_rms_m": 0.0010305460812253377,
+          "maximum_abs_control_difference": 0.1500000059609204
+        },
+        "maximum_effort_excess_backend": 0.0,
+        "maximum_effort_limit_representation_roundoff": 1.1920928966180355e-08,
+        "replay": {
+          "exact_qpos_error": 0.0,
+          "exact_qvel_error": 0.0,
+          "exact_control_error": 0.0,
+          "exact_contact_trace_error": 0.0,
+          "exact_locomotion_trace_error": 0.0
+        },
+        "checkpoint_sha256": "841a42fe5f4e2f163f6b279c090557293bd7b835b9a9f964a7881ed5511e3dbe"
+      },
+      "execution": {
+        "task": "Orcs-Uolm-Compact-Diffusion-Feedback",
+        "refined_reference_path": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_v1/feasible_43.npz",
+        "env_class": "mjlab.envs.manager_based_rl_env.ManagerBasedRlEnv",
+        "sim_class": "mjlab.sim.sim.Simulation",
+        "runner_class": "mjlab.rl.runner.MjlabOnPolicyRunner",
+        "actor_class": "CompactFeedbackActor",
+        "command_class": "DiffusionRefinedCommand",
+        "action_class": "CompactResidualAction",
+        "managers": {
+          "command_manager": "CommandManager",
+          "observation_manager": "ObservationManager",
+          "action_manager": "ActionManager",
+          "reward_manager": "RewardManager",
+          "termination_manager": "TerminationManager"
+        },
+        "steps": 9629,
+        "physics_dt": 0.005,
+        "step_dt": 0.005,
+        "reset_state_writes": 1,
+        "physics_step_counter": 9629,
+        "episode_step_counter": 9629,
+        "metric_substeps": 9629,
+        "reward_total": 144.434996756725,
+        "checkpoint_sha256": "841a42fe5f4e2f163f6b279c090557293bd7b835b9a9f964a7881ed5511e3dbe",
+        "training_performed": false,
+        "contact_impulses_Ns": {
+          "terrain": 6.666591075950568,
+          "hand_right_pad0": 19.246082186057762,
+          "hand_right_pad1": 48.58231915173106,
+          "hand_left_pad0": 26.392465759752625,
+          "hand_left_pad1": 41.985725080309834,
+          "hand_right_pad2": 0.9494915282210162,
+          "hand_left_pad2": 0.8649314484591912,
+          "hand_left_thumb_contact": 7.69838692438177,
+          "hand_right_thumb_contact": 11.267898739574115,
+          "hand_left_thumb_tip": 11.277935071106615,
+          "hand_right_thumb_tip": 9.960612553609344,
+          "hand_left_toe0": 7.943955894342222,
+          "hand_right_toe1": 4.47319889212338,
+          "hand_left_toe1": 1.7897179542506085,
+          "hand_right_toe0": 8.324018409230234
+        },
+        "bad_impulses_Ns": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "maximum_abs_actuator_force": [
+          12.731246948242188,
+          6.423583984375,
+          4.3355255126953125,
+          5.7516632080078125,
+          8.625839233398438,
+          10.806755065917969,
+          7.4608612060546875,
+          6.230712890625,
+          4.5416107177734375,
+          5.095945358276367,
+          35.43103790283203,
+          40.09080123901367,
+          16.374019622802734,
+          76.75086975097656,
+          70.69789123535156,
+          122.15284729003906,
+          70.19218444824219,
+          80.1354751586914,
+          103.3607177734375,
+          3.8736190795898438,
+          5.0,
+          3.770308494567871,
+          3.621457099914551,
+          23.20711898803711,
+          43.35995864868164,
+          50.0,
+          20.821617126464844,
+          31.59387969970703,
+          18.586042404174805,
+          4.473760604858398,
+          3.105428457260132,
+          1.5,
+          1.3604164123535156,
+          0.30000001192092896,
+          0.30000001192092896,
+          0.15688371658325195,
+          0.22294235229492188
+        ],
+        "maximum_applied_external_force": 0.0,
+        "terminal_terms": {
+          "invalid_state": false,
+          "invalid_contacts": false,
+          "complete": true
+        },
+        "elapsed": 195.91756105422974
+      },
+      "replay_errors": {
+        "exact_qpos_error": 0.0,
+        "exact_qvel_error": 0.0,
+        "exact_control_error": 0.0,
+        "exact_contact_trace_error": 0.0,
+        "exact_locomotion_trace_error": 0.0
+      },
+      "full_contact_attribution_exact": true,
+      "attributed_contact_rows": 244938,
+      "final_vs_physical_projection": {
+        "qpos": 0.0,
+        "qvel": 0.0,
+        "ctrl_physics": 9.837872437691197e-18
+      },
+      "reference_tracking_error": {
+        "qpos": 0.0,
+        "qvel": 0.0
+      },
+      "refined_reference_sha256": "455ae82b461eb4e1c344166546ba1b7c1c14ba7129f77b50e4b8e0a7bfccbac8",
+      "video": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_v1/execution_43/rollout.mp4"
+    }
+  },
+  "goal1_artifact_preservation": {
+    "logs/compact_orcs_v1/complete_execution/baseline_preservation.json": true,
+    "logs/compact_orcs_v1/complete_execution/execution.json": true,
+    "logs/compact_orcs_v1/complete_execution/model_equivalence.json": true,
+    "logs/compact_orcs_v1/complete_execution/rollout_verification.json": true,
+    "logs/compact_orcs_v1/complete_execution/task_assessment.json": true,
+    "logs/compact_orcs_v1/complete_execution/task_metrics.json": true,
+    "logs/compact_orcs_v1/complete_execution/video_metadata.json": true,
+    "logs/compact_orcs_v1/complete_execution/contact_attribution.npz": true,
+    "logs/compact_orcs_v1/complete_execution/rollout.npz": true,
+    "logs/compact_orcs_v1/complete_execution/rollout_locomotion_trace.npz": true,
+    "logs/compact_orcs_v1/complete_execution/rollout_verification_trace.npz": true,
+    "logs/compact_orcs_v1/complete_execution/rollout_model.mjb": true,
+    "logs/compact_orcs_v1/complete_execution/rollout.mp4": true
+  },
+  "goal1_source_preservation": {
+    "src/orcs/tasks/uolm/__init__.py": false,
+    "src/orcs/tasks/uolm/compact/__init__.py": true,
+    "src/orcs/tasks/uolm/compact/measurements.py": true,
+    "src/orcs/tasks/uolm/compact/model.py": true,
+    "src/orcs/tasks/uolm/compact/runtime.py": true,
+    "scripts/compact_orcs_v1/model_audit.py": true,
+    "scripts/compact_orcs_v1/render.py": true,
+    "scripts/compact_orcs_v1/run.py": false,
+    "scripts/compact_orcs_v1/validate.py": true
+  },
+  "baseline_recheck_errors": {
+    "exact_qpos_error": 0.0,
+    "exact_qvel_error": 0.0,
+    "exact_control_error": 0.0,
+    "exact_contact_trace_error": 0.0,
+    "exact_locomotion_trace_error": 0.0
+  },
+  "frozen_inference_recheck": {
+    "42": {
+      "raw": true,
+      "root_quaternion": true,
+      "object_quaternion": true,
+      "object_body_position": true,
+      "condition": true
+    },
+    "43": {
+      "raw": true,
+      "root_quaternion": true,
+      "object_quaternion": true,
+      "object_body_position": true,
+      "condition": true
+    },
+    "0": {
+      "raw": true,
+      "root_quaternion": true,
+      "object_quaternion": true,
+      "object_body_position": true,
+      "condition": true
+    }
+  },
+  "limitations": [
+    "Validated for this fixed task, contact sequence and accepted 50 g original-sized box only.",
+    "The frozen checkpoint rejects direct compact-task conditioning; matched native largebox proposals are retargeted to the fixed physical initial state and goal.",
+    "The expert supplies contact topology, gripper schedule, support and nominal feedforward. Diffusion supplies bounded motion variation in all three phases, not a new contact planner."
+  ],
+  "files_changed": [
+    "src/orcs/tasks/uolm/__init__.py",
+    "src/orcs/tasks/uolm/compact/diffusion.py",
+    "scripts/compact_orcs_v1/run.py",
+    "scripts/compact_diffusion_v1/evidence.py",
+    "scripts/compact_diffusion_v1/finalize.py",
+    "scripts/compact_diffusion_v1/proposals.py",
+    "scripts/compact_diffusion_v1/refine.py",
+    "scripts/compact_diffusion_v1/reproduce.py"
+  ],
+  "source_sha256": {
+    "src/orcs/tasks/uolm/__init__.py": "b799fbeb52520acdb26966c0b35885471800f32dc06e3c90dc02296951835aa1",
+    "src/orcs/tasks/uolm/compact/diffusion.py": "466f70a28af12ab8d621ea5e87b312084580cd8754cc5bc98f7880aac05124a6",
+    "scripts/compact_orcs_v1/run.py": "f180e5cac38e4e7a9862a8091338fe4fc534de738f123df7ca94c76e4e8b7ecd",
+    "scripts/compact_diffusion_v1/evidence.py": "d3ad86f12718908fc07fb4027613f505df1a679873debb1b12e0802bbd3d44b8",
+    "scripts/compact_diffusion_v1/finalize.py": "4008835cb1188bf309cc1702ef3cb301e35cb0b30d6ed951fe74af3aa2b49287",
+    "scripts/compact_diffusion_v1/proposals.py": "6787e32f82d5ac33295d636a69d444c1f2b1320ed97dbed4b6ed00e05583edfc",
+    "scripts/compact_diffusion_v1/refine.py": "8dc2487af3e30651002c8c422ac33914f8d27aa6895afa3075bd6c97fb345b8e",
+    "scripts/compact_diffusion_v1/reproduce.py": "1a562d996321b50f8124cd3177ef9e51d9c07acb926f3b0345ba3fb099afa693"
+  },
+  "reproduction_command": ".venv/bin/python scripts/compact_diffusion_v1/reproduce.py --out logs/compact_diffusion_v1_reproduction"
+}

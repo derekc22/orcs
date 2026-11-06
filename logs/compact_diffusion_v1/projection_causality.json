@@ -1,0 +1,115 @@
+{
+  "identical_initial_state": true,
+  "thresholds": {
+    "root_or_object_rms_m": 0.0005,
+    "native_joint_rms_rad": 0.002
+  },
+  "comparisons": {
+    "42_vs_baseline": {
+      "pickup": {
+        "root_rms_m": 0.00135994260199368,
+        "object_rms_m": 0.001722586341202259,
+        "native_joint_rms_rad": 0.002640028251335025,
+        "actuator_command_rms": 0.002804738702252507,
+        "pass_meaningful_motion": true,
+        "pass_command_difference": true
+      },
+      "carry": {
+        "root_rms_m": 0.0023057253565639257,
+        "object_rms_m": 0.0028476433362811804,
+        "native_joint_rms_rad": 0.006716602947562933,
+        "actuator_command_rms": 0.011717181652784348,
+        "pass_meaningful_motion": true,
+        "pass_command_difference": true
+      },
+      "placement": {
+        "root_rms_m": 0.0021630816627293825,
+        "object_rms_m": 0.002784264273941517,
+        "native_joint_rms_rad": 0.003189953276887536,
+        "actuator_command_rms": 0.0037057327572256327,
+        "pass_meaningful_motion": true,
+        "pass_command_difference": true
+      }
+    },
+    "43_vs_baseline": {
+      "pickup": {
+        "root_rms_m": 0.0016439894679933786,
+        "object_rms_m": 0.0024436393287032843,
+        "native_joint_rms_rad": 0.0028748256154358387,
+        "actuator_command_rms": 0.00282264593988657,
+        "pass_meaningful_motion": true,
+        "pass_command_difference": true
+      },
+      "carry": {
+        "root_rms_m": 0.0028022124897688627,
+        "object_rms_m": 0.002392437541857362,
+        "native_joint_rms_rad": 0.006400626618415117,
+        "actuator_command_rms": 0.011502456851303577,
+        "pass_meaningful_motion": true,
+        "pass_command_difference": true
+      },
+      "placement": {
+        "root_rms_m": 0.0008576930267736316,
+        "object_rms_m": 0.0009126048535108566,
+        "native_joint_rms_rad": 0.0020375994499772787,
+        "actuator_command_rms": 0.0023960203398019075,
+        "pass_meaningful_motion": true,
+        "pass_command_difference": true
+      }
+    },
+    "42_vs_43": {
+      "pickup": {
+        "root_rms_m": 0.0013805740745738149,
+        "object_rms_m": 0.002066229470074177,
+        "native_joint_rms_rad": 0.0015208873664960265,
+        "actuator_command_rms": 0.0019757780246436596,
+        "pass_meaningful_motion": true,
+        "pass_command_difference": true
+      },
+      "carry": {
+        "root_rms_m": 0.0023200323339551687,
+        "object_rms_m": 0.0021005889866501093,
+        "native_joint_rms_rad": 0.004344967659562826,
+        "actuator_command_rms": 0.006875522434711456,
+        "pass_meaningful_motion": true,
+        "pass_command_difference": true
+      },
+      "placement": {
+        "root_rms_m": 0.0016616866923868656,
+        "object_rms_m": 0.0021573160775005817,
+        "native_joint_rms_rad": 0.002992166904732585,
+        "actuator_command_rms": 0.0032737909350544214,
+        "pass_meaningful_motion": true,
+        "pass_command_difference": true
+      }
+    }
+  },
+  "identical_task_goals": true,
+  "reference_comparison": {
+    "pickup": {
+      "root_rms_m": 0.0012511030270777044,
+      "object_rms_m": 0.0018026683059280321,
+      "native_joint_rms_rad": 0.0016719223370238838,
+      "actuator_command_rms": 0.0,
+      "pass_meaningful_motion": true,
+      "pass_command_difference": false
+    },
+    "carry": {
+      "root_rms_m": 0.0014836261091719374,
+      "object_rms_m": 0.001803297799802319,
+      "native_joint_rms_rad": 0.002942894905239365,
+      "actuator_command_rms": 0.0,
+      "pass_meaningful_motion": true,
+      "pass_command_difference": false
+    },
+    "placement": {
+      "root_rms_m": 0.0015296194363404764,
+      "object_rms_m": 0.002242894933535134,
+      "native_joint_rms_rad": 0.003432476550359047,
+      "actuator_command_rms": 0.0,
+      "pass_meaningful_motion": true,
+      "pass_command_difference": false
+    }
+  },
+  "pass_causality": true
+}

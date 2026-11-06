@@ -1,0 +1,39 @@
+{
+  "task": "Orcs-Uolm-Compact-Realized-Feedback",
+  "accepted_commit": "c8fd61ad1a495024eebebee7bbc419188ba9b674",
+  "source_sha256": {
+    "src/orcs/tasks/uolm/__init__.py": "74ecffdf8cc55431a0fab77479573c842b95fcd10c3a0ecbf8c0742d0379cd80",
+    "src/orcs/tasks/uolm/compact/__init__.py": "5f254ed7f8a59216547fed207719e9b9927293a765c7ca369d78bc874c292109",
+    "src/orcs/tasks/uolm/compact/measurements.py": "7baa62c63343627a5f1c59ae0d4a56fc203eb46f6fa37e4b33f33e14f35124a2",
+    "src/orcs/tasks/uolm/compact/model.py": "c584d6171180294783758469a14d65f1b6f0838ca1e951fbfe467121ecb0a998",
+    "src/orcs/tasks/uolm/compact/runtime.py": "f29bc0e722c7471b1b7870915310812fcea36d42a8ae51062e9be76d3095c7d8",
+    "scripts/compact_orcs_v1/model_audit.py": "b590fba62ba8cc06fe939a1d53f5a60c75c2af7f0b18e48fd2b4c8e2a9ac4e65",
+    "scripts/compact_orcs_v1/render.py": "b95b953f43acf9b1ccc7869603884316f2da83e769ab74245092f936ec7d7e36",
+    "scripts/compact_orcs_v1/run.py": "192c511b85da9e2a01b2dcc95224f54e0a89eb620f6889ee9be4ce09d3a64297",
+    "scripts/compact_orcs_v1/validate.py": "226d9f4ae8224232f3bef7a499d202ed52c4ea620f6ba07044789be2a7e2228b"
+  },
+  "artifact_sha256": {
+    "logs/compact_orcs_v1/complete_execution/baseline_preservation.json": "e2cafd363ab83b75b2828f5fdff050b4ce94fe7cea70e69d31e07b30d197401f",
+    "logs/compact_orcs_v1/complete_execution/execution.json": "10949c1b7fa17cb010dbb9eeb5006649af657845569eaefb4878671fb272931b",
+    "logs/compact_orcs_v1/complete_execution/model_equivalence.json": "4ed4d8709ea8ae2c6a3b9378b3f78641517f1209c720dd3389a4bc82d3d208fb",
+    "logs/compact_orcs_v1/complete_execution/rollout_verification.json": "020f7767166cfb3448866918dd7d7a557640b4376f51854264f80c2d1f117790",
+    "logs/compact_orcs_v1/complete_execution/task_assessment.json": "9c9721326eef4543cb6c0a151c92e68091a1d0f59c5e2fe03cdf05796a7285ec",
+    "logs/compact_orcs_v1/complete_execution/task_metrics.json": "3c71f577ac2ff54a50114a6a99d500dd33b727f9dcc792e380c64f7ce535a0ea",
+    "logs/compact_orcs_v1/complete_execution/video_metadata.json": "26f3781d049144dd2258d1fced603df0d8a5e6c78c1d0225583c5764a5a8877c",
+    "logs/compact_orcs_v1/complete_execution/contact_attribution.npz": "d8ebb8908fdc6dabcba4ba725a57960ca643434c9b6d300d3896fd339985bf85",
+    "logs/compact_orcs_v1/complete_execution/rollout.npz": "4a38326d59815c611aa5fb11d8bd9a87894b803824d0fed89900e44fdd2a2bcd",
+    "logs/compact_orcs_v1/complete_execution/rollout_locomotion_trace.npz": "77929f3e8f6d1379e527ca67af5e83818bc0578b662b8b042b46883041a6600e",
+    "logs/compact_orcs_v1/complete_execution/rollout_verification_trace.npz": "42027837599b973a18c5675be48b9581ddd05d6f502b34508a6d3473b49f4b5b",
+    "logs/compact_orcs_v1/complete_execution/rollout_model.mjb": "c174967d4a2ebf0448a7056780fdecb24ffe1fdcd45a1eb72c5ca06b20eec44b",
+    "logs/compact_orcs_v1/complete_execution/rollout.mp4": "be24aa4e460f07df152e056ce95e2163df547a79befe74bd559b859b096d8fb8"
+  },
+  "commands": {
+    "execution": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 .venv/bin/python scripts/compact_orcs_v1/run.py --out FRESH_OUTPUT_DIRECTORY",
+    "replay": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 .venv/bin/python scripts/compact_orcs_v1/run.py --replay EXECUTION_DIRECTORY --out FRESH_REPLAY_DIRECTORY",
+    "model_audit": ".venv/bin/python scripts/compact_orcs_v1/model_audit.py EXECUTION_DIRECTORY",
+    "render": "MUJOCO_GL=egl .venv/bin/python scripts/compact_orcs_v1/render.py EXECUTION_DIRECTORY",
+    "assessment": ".venv/bin/python scripts/compact_orcs_v1/validate.py EXECUTION_DIRECTORY --replay REPLAY_DIRECTORY"
+  },
+  "limitations": "Single CPU MJWarp world and accepted reference only. No diffusion work or policy retraining. Rendering contrast/grid only; all physical model fields are preserved.",
+  "no_commit_or_push": true
+}

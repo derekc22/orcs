@@ -498,3 +498,9 @@ _TASKS = (
 
 SKIP_REASON: dict[str, str] = register_all(_TASKS)
 """{task_id: why it could not register}. Empty when every task registered."""
+
+from .compact import TASK_ID as _COMPACT_ID, env_cfg as _compact_env_cfg, agent_cfg as _compact_agent_cfg
+SKIP_REASON.update(register_all(((_COMPACT_ID, _compact_env_cfg, _compact_agent_cfg),)))
+
+from .compact.diffusion import TASK_ID as _COMPACT_DIFFUSION_ID, env_cfg as _compact_diffusion_env_cfg
+SKIP_REASON.update(register_all(((_COMPACT_DIFFUSION_ID, _compact_diffusion_env_cfg, _compact_agent_cfg),)))

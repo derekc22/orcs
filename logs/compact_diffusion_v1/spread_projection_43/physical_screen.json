@@ -1,0 +1,24 @@
+{
+  "pass_physical_screen": true,
+  "gates": {
+    "initial_support": true,
+    "airborne_grip": true,
+    "actual_walk": true,
+    "alternating_steps": true,
+    "airborne_contact_continuity": true,
+    "support_before_open": true,
+    "withdrawal": true,
+    "stable_robot": true,
+    "stable_object": true,
+    "zero_bad_impulses": true
+  },
+  "walk_m": 2.7503583431243896,
+  "alternating_replants": 10,
+  "maximum_lift_m": 0.7875488656740712,
+  "bad_impulses_Ns": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "note": "Preliminary screen only; unchanged Goal 1 validator must independently verify final rollout, replay and video."
+}

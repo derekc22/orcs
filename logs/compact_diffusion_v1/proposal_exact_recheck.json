@@ -1,0 +1,23 @@
+{
+  "42": {
+    "raw": true,
+    "root_quaternion": true,
+    "object_quaternion": true,
+    "object_body_position": true,
+    "condition": true
+  },
+  "43": {
+    "raw": true,
+    "root_quaternion": true,
+    "object_quaternion": true,
+    "object_body_position": true,
+    "condition": true
+  },
+  "0": {
+    "raw": true,
+    "root_quaternion": true,
+    "object_quaternion": true,
+    "object_body_position": true,
+    "condition": true
+  }
+}

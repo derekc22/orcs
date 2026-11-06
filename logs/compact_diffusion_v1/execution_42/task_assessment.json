@@ -1,0 +1,65 @@
+{
+  "status": "SUCCESS",
+  "numeric_gates": {
+    "full_execution": true,
+    "initial_ground_support": true,
+    "terrain_free_lift_over_5cm": true,
+    "actual_retained_root_walk_over_2m": true,
+    "alternating_footsteps_at_least_5": true,
+    "airborne_and_bilateral_grip_through_walk": true,
+    "continuous_physical_grasp_while_airborne": true,
+    "support_gated_opening": true,
+    "physical_open_hands": true,
+    "clean_withdrawal": true,
+    "stable_final_robot": true,
+    "stable_final_object": true,
+    "zero_forbidden_object_impulse": true,
+    "zero_self_and_invalid_terrain": true,
+    "independent_exact_replay": true,
+    "physical_model_integrity": true,
+    "effort_limits_preserved": true,
+    "genuine_orcs_pipeline": true,
+    "reference_clock": true,
+    "accepted_model_equivalence": true,
+    "full_task_video": true,
+    "accepted_baseline_preserved": true
+  },
+  "failed_gates": [],
+  "physics_steps": 9629,
+  "duration_seconds": 48.145,
+  "walking_root_displacement_m": 2.750624895095825,
+  "alternating_replants": 10,
+  "maximum_lift_m": 0.7890173157293753,
+  "minimum_walk_hand_force_N": [
+    0.40189607964863494,
+    0.29045546306361125
+  ],
+  "terrain_support_start_s": 39.11,
+  "opening_s": 40.14,
+  "terrain_load_at_opening_N": 0.5366011529258685,
+  "last_hand_contact_s": 40.455,
+  "final_root_linear_speed_max_mps": 0.0028116514764155117,
+  "final_root_angular_speed_max_radps": 0.010566473703189616,
+  "final_object_linear_speed_max_mps": 2.8356374156790607e-06,
+  "final_object_angular_speed_max_radps": 1.632405969725252e-05,
+  "bad_impulses_Ns": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "standalone_comparison": {
+    "root_position_rms_m": 0.0008258629474645151,
+    "object_position_rms_m": 0.001063643572404893,
+    "maximum_abs_control_difference": 0.1500000059609204
+  },
+  "maximum_effort_excess_backend": 0.0,
+  "maximum_effort_limit_representation_roundoff": 1.1920928966180355e-08,
+  "replay": {
+    "exact_qpos_error": 0.0,
+    "exact_qvel_error": 0.0,
+    "exact_control_error": 0.0,
+    "exact_contact_trace_error": 0.0,
+    "exact_locomotion_trace_error": 0.0
+  },
+  "checkpoint_sha256": "841a42fe5f4e2f163f6b279c090557293bd7b835b9a9f964a7881ed5511e3dbe"
+}

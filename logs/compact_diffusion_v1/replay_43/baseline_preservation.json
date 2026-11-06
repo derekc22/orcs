@@ -1,0 +1,17 @@
+{
+  "logs/compact_policy_learning_v1/selected_policy.npz": {
+    "sha256": "841a42fe5f4e2f163f6b279c090557293bd7b835b9a9f964a7881ed5511e3dbe",
+    "expected": "841a42fe5f4e2f163f6b279c090557293bd7b835b9a9f964a7881ed5511e3dbe",
+    "unchanged": true
+  },
+  "logs/compact_policy_learning_v1/complete_execution/rollout.npz": {
+    "sha256": "ab2a1c70f8d39c6412b5a5236a5f21b5164ec15d310d4f9bf5f9773265f3fbf8",
+    "expected": "ab2a1c70f8d39c6412b5a5236a5f21b5164ec15d310d4f9bf5f9773265f3fbf8",
+    "unchanged": true
+  },
+  "logs/compact_policy_learning_v1/complete_execution/rollout_model.mjb": {
+    "sha256": "f3bd7d22614e866158635253a469817f3eed8e604a9e1e58234ededcf4833bab",
+    "expected": "f3bd7d22614e866158635253a469817f3eed8e604a9e1e58234ededcf4833bab",
+    "unchanged": true
+  }
+}

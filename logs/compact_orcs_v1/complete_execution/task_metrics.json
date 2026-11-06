@@ -1,0 +1,221 @@
+{
+  "duration_s": 48.145,
+  "maximum_COM_lift_m": 0.7876352878801169,
+  "exact_qpos_error": 0.0,
+  "exact_qvel_error": 0.0,
+  "forbidden_object_impulses_Ns": {},
+  "robot_self_impulse_Ns": 0,
+  "invalid_terrain_impulse_Ns": 0.0,
+  "airborne_intervals_s": [
+    [
+      3.105,
+      39.105000000000004
+    ],
+    [
+      39.905,
+      39.910000000000004
+    ]
+  ],
+  "final_object_linear_speed_mps": 7.063638254320938e-07,
+  "final_object_angular_speed_radps": 2.889473890954683e-07,
+  "final_robot_root_speed": 0.008360851473037213,
+  "final_1s_object_linear_speed_max_mps": 7.138726741871433e-07,
+  "final_1s_object_angular_speed_max_radps": 3.1116957585565976e-07,
+  "maximum_external_force": 0.0,
+  "equalities": 0,
+  "native_limits_note": "All force limits are the preserved source model limits; no model arrays were modified.",
+  "any_hand_retained": {
+    "interval_s": [
+      17.245,
+      23.605
+    ],
+    "duration_s": 6.36,
+    "root_net_displacement_m": 2.750126361846924,
+    "qualifying_replants": [
+      {
+        "side": "left",
+        "liftoff_s": 17.38,
+        "replant_s": 17.595,
+        "clearance_m": 0.05419584304085702,
+        "same_foot_relocation_m": 0.3521605705176237
+      },
+      {
+        "side": "right",
+        "liftoff_s": 17.615000000000002,
+        "replant_s": 18.375,
+        "clearance_m": 0.062392230148236735,
+        "same_foot_relocation_m": 0.7869807150609504
+      },
+      {
+        "side": "left",
+        "liftoff_s": 18.385,
+        "replant_s": 18.815,
+        "clearance_m": 0.08283432706909041,
+        "same_foot_relocation_m": 0.5738299963160979
+      },
+      {
+        "side": "right",
+        "liftoff_s": 19.05,
+        "replant_s": 19.625,
+        "clearance_m": 0.062324582803300214,
+        "same_foot_relocation_m": 0.4517361461032901
+      },
+      {
+        "side": "left",
+        "liftoff_s": 19.71,
+        "replant_s": 20.175,
+        "clearance_m": 0.07133034159633236,
+        "same_foot_relocation_m": 0.645554688449314
+      },
+      {
+        "side": "right",
+        "liftoff_s": 20.195,
+        "replant_s": 21.045,
+        "clearance_m": 0.0647523819740058,
+        "same_foot_relocation_m": 0.7142687492890193
+      },
+      {
+        "side": "left",
+        "liftoff_s": 21.085,
+        "replant_s": 21.59,
+        "clearance_m": 0.09112345453795088,
+        "same_foot_relocation_m": 0.7020801527646572
+      },
+      {
+        "side": "right",
+        "liftoff_s": 21.625,
+        "replant_s": 22.405,
+        "clearance_m": 0.056685357335057765,
+        "same_foot_relocation_m": 0.7943984572400676
+      },
+      {
+        "side": "left",
+        "liftoff_s": 22.405,
+        "replant_s": 22.795,
+        "clearance_m": 0.06622674076420798,
+        "same_foot_relocation_m": 0.5445228796845853
+      },
+      {
+        "side": "right",
+        "liftoff_s": 23.005,
+        "replant_s": 23.435,
+        "clearance_m": 0.056874869929127554,
+        "same_foot_relocation_m": 0.20844000310705674
+      }
+    ],
+    "replant_order": [
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right"
+    ],
+    "longest_consecutive_alternating_replants": 10,
+    "terrain_contact_steps": 0
+  },
+  "bilateral_retained": {
+    "interval_s": [
+      17.245,
+      23.605
+    ],
+    "duration_s": 6.36,
+    "root_net_displacement_m": 2.750126361846924,
+    "qualifying_replants": [
+      {
+        "side": "left",
+        "liftoff_s": 17.38,
+        "replant_s": 17.595,
+        "clearance_m": 0.05419584304085702,
+        "same_foot_relocation_m": 0.3521605705176237
+      },
+      {
+        "side": "right",
+        "liftoff_s": 17.615000000000002,
+        "replant_s": 18.375,
+        "clearance_m": 0.062392230148236735,
+        "same_foot_relocation_m": 0.7869807150609504
+      },
+      {
+        "side": "left",
+        "liftoff_s": 18.385,
+        "replant_s": 18.815,
+        "clearance_m": 0.08283432706909041,
+        "same_foot_relocation_m": 0.5738299963160979
+      },
+      {
+        "side": "right",
+        "liftoff_s": 19.05,
+        "replant_s": 19.625,
+        "clearance_m": 0.062324582803300214,
+        "same_foot_relocation_m": 0.4517361461032901
+      },
+      {
+        "side": "left",
+        "liftoff_s": 19.71,
+        "replant_s": 20.175,
+        "clearance_m": 0.07133034159633236,
+        "same_foot_relocation_m": 0.645554688449314
+      },
+      {
+        "side": "right",
+        "liftoff_s": 20.195,
+        "replant_s": 21.045,
+        "clearance_m": 0.0647523819740058,
+        "same_foot_relocation_m": 0.7142687492890193
+      },
+      {
+        "side": "left",
+        "liftoff_s": 21.085,
+        "replant_s": 21.59,
+        "clearance_m": 0.09112345453795088,
+        "same_foot_relocation_m": 0.7020801527646572
+      },
+      {
+        "side": "right",
+        "liftoff_s": 21.625,
+        "replant_s": 22.405,
+        "clearance_m": 0.056685357335057765,
+        "same_foot_relocation_m": 0.7943984572400676
+      },
+      {
+        "side": "left",
+        "liftoff_s": 22.405,
+        "replant_s": 22.795,
+        "clearance_m": 0.06622674076420798,
+        "same_foot_relocation_m": 0.5445228796845853
+      },
+      {
+        "side": "right",
+        "liftoff_s": 23.005,
+        "replant_s": 23.435,
+        "clearance_m": 0.056874869929127554,
+        "same_foot_relocation_m": 0.20844000310705674
+      }
+    ],
+    "replant_order": [
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right"
+    ],
+    "longest_consecutive_alternating_replants": 10,
+    "terrain_contact_steps": 0
+  },
+  "explicit_walk_phase_realized_s": [
+    17.245,
+    23.605
+  ],
+  "root_net_entire_realized_walk_phase_m": 2.750126361846924,
+  "walking_phase_note": "The entire phase can include retention failure; only the force-bounded intervals above count as retained carry."
+}
