@@ -1,0 +1,159 @@
+{
+  "accepted": {
+    "placement_start_s": 33.505,
+    "first_second_object_alpha_rms": 44.398836501101556,
+    "first_second_45_to_55Hz_alpha_PSD_integral": 1811.7719344666948,
+    "precontact_press_speed_rms_mps": [
+      0.14097738777661878,
+      0.16739695148924794
+    ],
+    "touchdown_angular_speed_radps": 0.8818713871203225,
+    "touchdown_qvel_z_mps": -0.17157676497058166,
+    "replay_discrepancy": [
+      0.0,
+      0.0
+    ],
+    "invalid_contact_impulses": {}
+  },
+  "reference_interpolation_only": {
+    "placement_start_s": 33.505,
+    "first_second_object_alpha_rms": 14.137127499536911,
+    "first_second_45_to_55Hz_alpha_PSD_integral": 181.47936737391214,
+    "precontact_press_speed_rms_mps": [
+      0.10553050858197362,
+      0.12925324252472023
+    ],
+    "touchdown_angular_speed_radps": 0.7154188663193694,
+    "touchdown_qvel_z_mps": -0.0730848077500246,
+    "generation": {
+      "prefix": 6701,
+      "continuation_seconds": 6.390000000000001,
+      "impulses": [
+        1.8241595901533223,
+        17.436684909469925,
+        19.64748516698378,
+        0.0,
+        0.0,
+        0.0018053482910178299
+      ],
+      "release_step": 1253,
+      "withdrawal_complete": false
+    },
+    "replay_discrepancy": [
+      0.0,
+      0.0
+    ],
+    "invalid_contact_impulses": {
+      "INVALID_TERRAIN:hand_left_toe1": 0.0018053482910178299
+    }
+  },
+  "damping_only": {
+    "placement_start_s": 33.505,
+    "first_second_object_alpha_rms": 36.97659946492956,
+    "first_second_45_to_55Hz_alpha_PSD_integral": 1202.313699384308,
+    "precontact_press_speed_rms_mps": [
+      0.04764888929592777,
+      0.051424093805239074
+    ],
+    "touchdown_angular_speed_radps": 0.861546348375882,
+    "touchdown_qvel_z_mps": -0.16578417993835498,
+    "generation": {
+      "prefix": 6701,
+      "continuation_seconds": 10.14,
+      "impulses": [
+        3.9161907430112524,
+        17.845615023713233,
+        20.580201591582185,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "release_step": 1227,
+      "withdrawal_complete": true
+    },
+    "acceptance_note": "Independent full replay and all numeric task gates pass in damped_complete. No complete video inspection was performed for this lower-performing ablation, so it is not accepted as the final result."
+  },
+  "reference_interpolation_and_damping": {
+    "placement_start_s": 33.505,
+    "first_second_object_alpha_rms": 11.465362953095838,
+    "first_second_45_to_55Hz_alpha_PSD_integral": 194.22450109468318,
+    "precontact_press_speed_rms_mps": [
+      0.03132633656849698,
+      0.02664022969640716
+    ],
+    "touchdown_angular_speed_radps": 0.32771512008069115,
+    "touchdown_qvel_z_mps": -0.047551491141658936,
+    "generation": {
+      "prefix": 6701,
+      "continuation_seconds": 10.64,
+      "impulses": [
+        2.824637802019574,
+        17.385433599301265,
+        18.063925206103132,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "release_step": 1327,
+      "withdrawal_complete": true
+    },
+    "acceptance_note": "Rejected: independent full replay reports only 0.260384 N terrain load at initial opening, below the unchanged 70% weight gate. Other numeric physical gates pass. Exact paired handoff evidence is attached."
+  },
+  "selected_continuous_transfer": {
+    "placement_start_s": 33.505,
+    "first_second_object_alpha_rms": 11.465362953095838,
+    "first_second_45_to_55Hz_alpha_PSD_integral": 194.22450109468318,
+    "precontact_press_speed_rms_mps": [
+      0.03132633656849698,
+      0.02664022969640716
+    ],
+    "touchdown_angular_speed_radps": 0.32771512008069115,
+    "touchdown_qvel_z_mps": -0.047551491141658936,
+    "generation": {
+      "prefix": 6701,
+      "continuation_seconds": 10.64,
+      "impulses": [
+        2.826215511243044,
+        17.40111677699014,
+        18.074097912043708,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "release_step": 1327,
+      "withdrawal_complete": true
+    }
+  },
+  "baseline_precontact_fraction_of_placement_alpha_energy": 0.9292433274724949,
+  "interpretation": {
+    "entry": "Angular speed RMS 0.00410 rad/s and alpha RMS 0.10691 rad/s\u00b2 over final 1s before descent rule out residual brake motion as the main source.",
+    "early_descent": "50Hz position IK setpoint holds excite physical hand/object torque oscillations; interpolation-only intervention suppresses early acceleration with grip unchanged. Velocity feed-forward and effort caps are unchanged.",
+    "later_descent": "Native carriage damping is canceled by q+(preload+3*qvel)/800. Net force becomes preload. Damping-only and combined continuations show that dissipative grip and arm feedback suppress slower body/grasp motion. Arm and carriage damping are tested together, so their individual causal contributions are not separately identified.",
+    "terrain": "Most acceleration energy occurs while airborne. Asymmetric touchdown and hand constraints add a secondary impulse/rocking transient. The combined intervention reduces touchdown angular and downward speeds without changing release gates.",
+    "release": "Original release already follows sustained physical support. Release/withdrawal trajectories and sustained physical support gates are retained. The selected version also preserves the arm reference at load confirmation and rechecks current support before opening. Release energy was a small part of the regression.",
+    "limits": "Interpolation-only fails with a left toe terrain impulse and is rejected. No model, walking, pickup, contact parameters, effort caps or policies changed. Four focused continuations test two interventions and repair their load-confirmation handoff; no sweep."
+  },
+  "handoff_ablation": {
+    "prefix_controls": 8028,
+    "prefix_identity": {
+      "ctrl_physics": true,
+      "qpos": true,
+      "qvel": true,
+      "contacts": true
+    },
+    "opening_time_s": [
+      40.14,
+      40.14
+    ],
+    "unchanged_release_time": true,
+    "model_bytes_identical": true,
+    "opening_step_non_arm_controls_identical": false,
+    "reset_reference_arm_command_jump_norm_rad": 0.0481792276871633,
+    "preserved_reference_arm_command_jump_norm_rad": 0.005665296541069458,
+    "reset_reference_opening_terrain_load_N": 0.2603836358665623,
+    "preserved_reference_opening_terrain_load_N": 0.5885917940953764,
+    "box_weight_N": 0.4905,
+    "diagnostic_columns": "local_sec, lift, left/right_hand_force_norm, left/right_net_squeeze, terrain_vertical_force, arm_fit_cost, six_impulse_sums",
+    "conclusion": "Continuity at load confirmation removes the opening-step unloading disturbance. The same sustained support gate and opening time are used. The new controller also rechecks current support before opening."
+  }
+}

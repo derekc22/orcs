@@ -1,0 +1,17 @@
+{
+  "tag": "continuous_transfer",
+  "source": "logs/compact_smooth_integration_v2/canonical_entry/rollout.npz",
+  "trim": null,
+  "force_target": 2.0,
+  "plan_only": false,
+  "forward": 0.1,
+  "fork_release_height": 0.085,
+  "seconds": 17.0,
+  "plan_cache": "logs/compact_smooth_integration_v2/canonical_placement_probe/rollout_placement_plan.npz",
+  "floor_clearance": 0.0,
+  "transfer_wait": 0.0,
+  "reference_ramp": true,
+  "arm_damping": 0.7,
+  "press_damping": 6.0,
+  "continuous_handoff": true
+}

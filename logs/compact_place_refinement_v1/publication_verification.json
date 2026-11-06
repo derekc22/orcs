@@ -1,0 +1,27 @@
+{
+  "verification_utc": "2026-11-06T03:29:13.872442+00:00",
+  "publication_base_commit": "b2673fdb13329fe238ddecaf47d83e8986a024d6",
+  "branch": "main",
+  "remote": "origin",
+  "protocol_runs": 1,
+  "commands": [
+    "OPENBLAS_NUM_THREADS=1 MUJOCO_GL=egl .venv/bin/python scripts/corner_hands_v1/verify_physics.py logs/compact_place_refinement_v1/complete_execution/rollout.npz --video",
+    "OPENBLAS_NUM_THREADS=1 .venv/bin/python scripts/compact_integration_v2/audit.py logs/compact_place_refinement_v1/complete_execution"
+  ],
+  "task_status": "SUCCESS",
+  "all_task_gates_pass": true,
+  "exact_qpos_error": 0.0,
+  "exact_qvel_error": 0.0,
+  "forbidden_object_impulse_Ns": 0.0,
+  "robot_self_impulse_Ns": 0,
+  "invalid_robot_terrain_impulse_Ns": 0.0,
+  "walking_root_displacement_m": 2.750144041418522,
+  "alternating_replants": 10,
+  "selected_rollout_model_and_rerendered_video_hashes_unchanged": {
+    "rollout.npz": true,
+    "rollout_model.mjb": true,
+    "rollout.mp4": true
+  },
+  "no_further_experiments_or_controller_changes": true,
+  "raw_verifier_note": "Legacy unconditional success:false and torso-tilt fields are unchanged; accepted task assessment is SUCCESS."
+}

@@ -1,0 +1,15 @@
+{
+  "status": "SUCCESS",
+  "selected": "complete_execution/rollout.npz",
+  "source": "continuous_transfer/rollout.npz",
+  "baseline_commit": "b2673fdb13329fe238ddecaf47d83e8986a024d6",
+  "task_assessment": "complete_execution/task_assessment.json",
+  "primary_metric_change_percent": -73.25652330771581,
+  "tradeoffs": "Free-settling speed and settling time slightly worsen after final hand separation; documented in RESULT.md.",
+  "rejected": [
+    "ramp_only: invalid toe terrain contact",
+    "ramp_damped_complete: opening terrain load below gate"
+  ],
+  "numerically_valid_ablation_without_complete_video_review": "damped_complete",
+  "baseline_preserved": true
+}

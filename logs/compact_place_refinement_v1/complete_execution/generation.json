@@ -1,0 +1,20 @@
+{
+  "arguments": {
+    "source": "logs/compact_place_refinement_v1/continuous_transfer/rollout.npz",
+    "tag": "complete_execution",
+    "prefix": null,
+    "seconds": 4.0,
+    "controller": "bounded"
+  },
+  "reason": "completed",
+  "prefix": 8829,
+  "continuation_seconds": 4.0,
+  "impulses": [
+    1.9620126452607545,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ]
+}

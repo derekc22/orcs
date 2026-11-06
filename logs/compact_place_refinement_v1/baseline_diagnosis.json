@@ -1,0 +1,185 @@
+{
+  "phases": {
+    "terminal_brake": {
+      "start_s": 28.505,
+      "end_s": 29.505,
+      "object_alpha_rms": 0.5606859131291451,
+      "object_omega_rms": 0.025787290281594478,
+      "root_alpha_rms": 2.196477017731997,
+      "relative_omega_rms": 0.018367347670295856,
+      "hand_force_mean": [
+        2.7577020354179482,
+        2.795377791255321
+      ],
+      "hand_force_std": [
+        0.006627382104926273,
+        0.0065230053740508685
+      ],
+      "hand_torque_rms": [
+        0.017733264676393287,
+        0.017734718877418457
+      ],
+      "angular_acceleration_squared_integral": 0.3143686931814632
+    },
+    "stationary_entry_last_second": {
+      "start_s": 32.505,
+      "end_s": 33.505,
+      "object_alpha_rms": 0.10690618677246895,
+      "object_omega_rms": 0.004095513827981018,
+      "root_alpha_rms": 0.07126822758070983,
+      "relative_omega_rms": 0.005011284105174483,
+      "hand_force_mean": [
+        2.6291605655309405,
+        2.7171472528216043
+      ],
+      "hand_force_std": [
+        0.0019923977213154435,
+        0.04676527908160906
+      ],
+      "hand_torque_rms": [
+        0.019141121621603842,
+        0.01914415194605634
+      ],
+      "angular_acceleration_squared_integral": 0.011428932770230016
+    },
+    "descent_before_fork": {
+      "start_s": 33.505,
+      "end_s": 37.99,
+      "object_alpha_rms": 33.16569855502551,
+      "object_omega_rms": 0.647935695708319,
+      "root_alpha_rms": 12.188909410027215,
+      "relative_omega_rms": 0.897708356918406,
+      "hand_force_mean": [
+        2.931696893536895,
+        3.2784713437767468
+      ],
+      "hand_force_std": [
+        0.7318241411130819,
+        0.9788020720462266
+      ],
+      "hand_torque_rms": [
+        0.12735251033579406,
+        0.1290226179897745
+      ],
+      "angular_acceleration_squared_integral": 4933.336569483052
+    },
+    "fork_to_touchdown": {
+      "start_s": 37.99,
+      "end_s": 38.92,
+      "object_alpha_rms": 48.06104054245023,
+      "object_omega_rms": 1.07579260540931,
+      "root_alpha_rms": 20.897575913769078,
+      "relative_omega_rms": 1.9533473076574484,
+      "hand_force_mean": [
+        2.752904361075052,
+        3.066757561099146
+      ],
+      "hand_force_std": [
+        1.2002187998986067,
+        1.1317417250025215
+      ],
+      "hand_torque_rms": [
+        0.1435853702209708,
+        0.14219225659321597
+      ],
+      "angular_acceleration_squared_integral": 2148.1731647614315
+    },
+    "touchdown_to_transfer": {
+      "start_s": 38.92,
+      "end_s": 39.5,
+      "object_alpha_rms": 27.486613068410723,
+      "object_omega_rms": 0.5773977891724076,
+      "root_alpha_rms": 15.511861295732281,
+      "relative_omega_rms": 0.9691494641935602,
+      "hand_force_mean": [
+        2.9366153994116084,
+        3.3437863443356775
+      ],
+      "hand_force_std": [
+        1.604085343470412,
+        1.1859991386161328
+      ],
+      "hand_torque_rms": [
+        0.23504196094032823,
+        0.19153582318700574
+      ],
+      "angular_acceleration_squared_integral": 438.19806082406575
+    },
+    "transfer_to_open": {
+      "start_s": 39.5,
+      "end_s": 39.605000000000004,
+      "object_alpha_rms": 13.152802388325519,
+      "object_omega_rms": 0.10962334483284539,
+      "root_alpha_rms": 7.395868917651137,
+      "relative_omega_rms": 0.3246548482121803,
+      "hand_force_mean": [
+        2.7307147189516523,
+        3.113652482407759
+      ],
+      "hand_force_std": [
+        0.5620759772243762,
+        0.0938733697503799
+      ],
+      "hand_torque_rms": [
+        0.11903604325439052,
+        0.14595285536591598
+      ],
+      "angular_acceleration_squared_integral": 18.164602119965853
+    },
+    "opening_with_hand_contact": {
+      "start_s": 39.605000000000004,
+      "end_s": 40.04,
+      "object_alpha_rms": 13.464991235827334,
+      "object_omega_rms": 0.29805826147270686,
+      "root_alpha_rms": 4.863286264991656,
+      "relative_omega_rms": 0.6934534311451634,
+      "hand_force_mean": [
+        0.8841628246862314,
+        1.0533901928598697
+      ],
+      "hand_force_std": [
+        1.0483472430010263,
+        1.6875555067117207
+      ],
+      "hand_torque_rms": [
+        0.08910606188198626,
+        0.14239201760841264
+      ],
+      "angular_acceleration_squared_integral": 78.86810520669451
+    },
+    "withdrawal_clear": {
+      "start_s": 40.04,
+      "end_s": 43.61,
+      "object_alpha_rms": 1.0567268921656854,
+      "object_omega_rms": 0.01739855464067258,
+      "root_alpha_rms": 6.0342430511617735,
+      "relative_omega_rms": 0.5473409630886383,
+      "hand_force_mean": [
+        0.0,
+        0.0
+      ],
+      "hand_force_std": [
+        0.0,
+        0.0
+      ],
+      "hand_torque_rms": [
+        0.0,
+        0.0
+      ],
+      "angular_acceleration_squared_integral": 3.986518056915349
+    }
+  },
+  "initial_touchdown_s": 38.92,
+  "initial_touchdown_omega": [
+    0.4283600274082974,
+    0.7639721994225257,
+    -0.10271956410437678
+  ],
+  "events": {
+    "fork": 37.99,
+    "touch": 38.92,
+    "transfer": 39.5,
+    "open": 39.605000000000004,
+    "clear": 40.035000000000004
+  }
+}

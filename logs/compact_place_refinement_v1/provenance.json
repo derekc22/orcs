@@ -1,0 +1,28 @@
+{
+  "HEAD": "b2673fdb13329fe238ddecaf47d83e8986a024d6",
+  "tracked_worktree_diff": false,
+  "index_diff": false,
+  "committed": false,
+  "pushed": false,
+  "mujoco_version": "3.8.1",
+  "prefix_identity": {
+    "ctrl_physics": true,
+    "qpos": true,
+    "qvel": true,
+    "contacts": true,
+    "prefix_controls": 6701,
+    "prefix_duration_s": 33.505,
+    "models_byte_identical": true
+  },
+  "hashes": {
+    "logs/compact_place_refinement_v1/complete_execution/rollout.npz": "3200ef0d7f6c61b93bc233ab487f83fa3cfa58defc70858814437cfe59288092",
+    "logs/compact_place_refinement_v1/complete_execution/rollout_model.mjb": "f3bd7d22614e866158635253a469817f3eed8e604a9e1e58234ededcf4833bab",
+    "logs/compact_place_refinement_v1/complete_execution/rollout.mp4": "63d3a1f93f0e0e976ff326b58bed49ab37595c92fd09c2d63635b3236746b36a",
+    "logs/compact_place_refinement_v1/selected_comparison.mp4": "0a28893614b5e357c38e3a506b7d49b6fcac93939c57238e3dab8b1b0a924079",
+    "logs/compact_smooth_integration_v2/complete_execution/rollout.npz": "6a1c4803806c857e8f4bdb633de82ad5c65f443b0d1f3fb7357b284352811903",
+    "logs/compact_smooth_integration_v2/complete_execution/rollout_model.mjb": "f3bd7d22614e866158635253a469817f3eed8e604a9e1e58234ededcf4833bab",
+    "logs/compact_smooth_integration_v2/complete_execution/rollout.mp4": "7dfc1528195f9d754effa8b992922cc08f7ef277a7dd5c4fe2c0ec0d10cf14d6"
+  },
+  "publication_verification": "publication_verification.json",
+  "engineering_phase_note": "HEAD/committed/pushed fields above describe the original engineering phase before this user-authorized publication."
+}

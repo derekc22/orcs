@@ -1,0 +1,64 @@
+{
+  "full_sequence_visual_review_complete": true,
+  "total_frames": 2407,
+  "fps": 50,
+  "coverage": {
+    "previously_inspected_pixel_identical_prefix": [
+      0,
+      1639
+    ],
+    "prefix_identity": "video_prefix_identity.json",
+    "reference_review": "logs/compact_smooth_integration_v2/complete_execution/visual_review.json",
+    "directly_inspected_frames": [
+      1600,
+      2406
+    ],
+    "directly_inspected_sheets": [
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37
+    ]
+  },
+  "review_method": "Complete decoded-frame coverage through exact pixel identity with the accepted, fully inspected prefix plus direct inspection of all remaining chronological frame sheets, with overlap. This is not a claim of real-time playback viewing.",
+  "findings": "The inherited acquisition/walking/braking/support-transition prefix is physically identical and its first 1,640 decoded frames are pixel-identical to the accepted video. Direct review covers entry into descent, lowering, fork folding, touchdown, sustained terrain load transfer, deliberate opening, hand separation, upward/back withdrawal and stable recovery. Descent and body/object wobble are visibly reduced in the equivalent-view comparison. The box remains physically retained until terrain supports it. A small final free-settling rock remains after separation; its speed and duration are slightly worse than baseline and are explicitly quantified. No ejection, airborne release, fall, forbidden strike or recontact is visible. Both hands remain clear and the box/robot settle stably.",
+  "bounded_compliant_grasp_accepted": true,
+  "grasp_review_note": "Walking states/controls are exactly preserved: palm-relative rocking 9.09/7.02 degrees, material-point tangential excursions 8.01/5.03 mm, with uninterrupted hand forces. The accepted bounded compliant retention is preserved; zero slip is not claimed. Placement rocking and force fluctuations are reduced by interpolation and dissipative feedback. Terrain contact is continuous throughout the selected load-transfer interval and after hand separation.",
+  "comparison": {
+    "video": "../selected_comparison.mp4",
+    "same_physical_time": true,
+    "same_camera_parameters": true,
+    "playback_speed": 1.0,
+    "unfiltered": true,
+    "findings": "Less repeated box/torso wobble in descent and a gentler touchdown. Initial opening is physically supported. Slightly larger final free rock is visible; no uniform per-phase improvement is claimed.",
+    "total_frames": 705,
+    "directly_inspected_sheets": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "directly_inspected_frames": [
+      0,
+      704
+    ],
+    "review_method": "All 705 final comparison frames inspected in chronological every-frame sheets 0\u201311."
+  }
+}

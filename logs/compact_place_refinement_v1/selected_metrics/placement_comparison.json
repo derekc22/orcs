@@ -1,0 +1,289 @@
+{
+  "baseline_commit": "b2673fdb13329fe238ddecaf47d83e8986a024d6",
+  "method": "Unfiltered 200 Hz world angular velocities and numpy.gradient at dt=.005, identical to accepted motion_metrics.py. Primary placement window is placement_start to recovery_start for both. Fixed accepted 10.105s and event windows are supplements; no padding/filtering/time warping.",
+  "prefix_identity": {
+    "ctrl_physics": true,
+    "qpos": true,
+    "qvel": true,
+    "contacts": true,
+    "prefix_controls": 6701,
+    "prefix_duration_s": 33.505,
+    "models_byte_identical": true
+  },
+  "baseline": {
+    "artifact": "/home/learning/Documents/orcs-fork/logs/compact_smooth_integration_v2/complete_execution/rollout.npz",
+    "controls": 9522,
+    "duration_s": 47.61,
+    "windows": {
+      "placement": {
+        "start_s": 33.505,
+        "end_s": 43.61,
+        "duration_s": 10.105,
+        "object_alpha_rms": 27.461865999263715,
+        "object_alpha_peak": 168.5593772352462,
+        "object_alpha_squared_integral": 7620.7270204521255,
+        "object_omega_rms": 0.5621726452090975,
+        "object_omega_peak": 2.148367084274515,
+        "object_COM_speed_peak": 0.6314653568129853
+      },
+      "fixed_baseline_duration": {
+        "start_s": 33.505,
+        "end_s": 43.61,
+        "duration_s": 10.105,
+        "object_alpha_rms": 27.461865999263715,
+        "object_alpha_peak": 168.5593772352462,
+        "object_alpha_squared_integral": 7620.7270204521255,
+        "object_omega_rms": 0.5621726452090975,
+        "object_omega_peak": 2.148367084274515,
+        "object_COM_speed_peak": 0.6314653568129853
+      },
+      "before_touchdown": {
+        "start_s": 33.505,
+        "end_s": 38.92,
+        "duration_s": 5.415,
+        "object_alpha_rms": 36.16293724701288,
+        "object_alpha_peak": 168.5593772352462,
+        "object_alpha_squared_integral": 7081.509734244484,
+        "object_omega_rms": 0.73924574557205,
+        "object_omega_peak": 2.148367084274515,
+        "object_COM_speed_peak": 0.6314653568129853
+      },
+      "load_transfer": {
+        "start_s": 38.92,
+        "end_s": 39.605000000000004,
+        "duration_s": 0.685,
+        "object_alpha_rms": 25.81129337347753,
+        "object_alpha_peak": 68.82441712995472,
+        "object_alpha_squared_integral": 456.3626629440316,
+        "object_omega_rms": 0.5330356175877938,
+        "object_omega_peak": 1.2301084566143345,
+        "object_COM_speed_peak": 0.29480124563686944
+      },
+      "opening_to_clear": {
+        "start_s": 39.605000000000004,
+        "end_s": 40.04,
+        "duration_s": 0.435,
+        "object_alpha_rms": 13.464991235827334,
+        "object_alpha_peak": 79.72564154779079,
+        "object_alpha_squared_integral": 78.86810520669451,
+        "object_omega_rms": 0.29805826147270686,
+        "object_omega_peak": 0.6862685240894347,
+        "object_COM_speed_peak": 0.2078901347154562
+      },
+      "after_clear_first_0_5s": {
+        "start_s": 40.04,
+        "end_s": 40.54,
+        "duration_s": 0.5,
+        "object_alpha_rms": 2.819431999890918,
+        "object_alpha_peak": 15.11612291772543,
+        "object_alpha_squared_integral": 3.97459840100445,
+        "object_omega_rms": 0.0464809276981854,
+        "object_omega_peak": 0.25796780257807045,
+        "object_COM_speed_peak": 0.050106952446232145
+      },
+      "walking": {
+        "start_s": 17.245,
+        "end_s": 23.605,
+        "duration_s": 6.36,
+        "object_alpha_rms": 26.060154843303607,
+        "object_alpha_peak": 104.53725251732986,
+        "object_alpha_squared_integral": 4319.277424106267,
+        "object_omega_rms": 1.2511007923805433,
+        "object_omega_peak": 3.2005023438393394,
+        "object_COM_speed_peak": 1.704850249473977
+      }
+    },
+    "events_s": {
+      "placement": 33.505,
+      "fork_open_command": 37.99,
+      "initial_terrain_contact": 38.92,
+      "terrain_70percent_150ms_support_start": 39.09,
+      "compliant_transfer": 39.5,
+      "deliberate_opening": 39.605000000000004,
+      "last_hand_contact": 40.035000000000004,
+      "recovery": 43.61
+    },
+    "touchdown": {
+      "angular_speed_radps": 0.8818713871203225,
+      "COM_linear_speed_mps": 0.29480124563686944,
+      "COM_vertical_velocity_mps": -0.17174062602240361,
+      "tilt_deg": 7.818241395444649
+    },
+    "terrain_load_transfer": {
+      "max_tilt_deg": 7.818241395444649,
+      "tilt_range_deg": 4.678825639299252,
+      "angular_path_rad": 0.3143566671349274,
+      "terrain_load_peak_N": 3.5450504072603017,
+      "grounded_fraction": 0.8905109489051095,
+      "terrain_load_at_opening_N": 0.6248758011528828,
+      "hand_load_at_opening_N": [
+        2.9503281542666886,
+        6.316820819125202
+      ]
+    },
+    "post_release": {
+      "max_orientation_error_from_settled_after_clear_first_half_second_deg": 0.3273090139620169,
+      "max_COM_distance_from_settled_after_clear_first_half_second_m": 0.0009915277240731958,
+      "max_COM_speed_first_half_second_mps": 0.2078901347154562,
+      "max_angular_speed_first_half_second_radps": 0.6862685240894347,
+      "max_tilt_first_half_second_deg": 3.9614674357123394,
+      "last_hand_to_linear_settled_s": 0.20000000000000284,
+      "last_hand_to_angular_settled_s": 0.2049999999999983,
+      "final_1s_COM_speed_peak_mps": 9.903529338698485e-05,
+      "final_1s_angular_speed_peak_radps": 0.0006373484144154121
+    },
+    "walking": {
+      "root_net_displacement_m": 2.750144041418522,
+      "minimum_hand_loads_N": [
+        0.5975816829876871,
+        0.3753304625455824
+      ]
+    },
+    "final_robot": {
+      "root_linear_speed_peak_1s": 0.0026654107036078655,
+      "root_angular_speed_peak_1s": 0.010944352705832189,
+      "foot_load_min_1s_N": [
+        200.23993926323277,
+        130.85820845309982
+      ]
+    }
+  },
+  "candidate": {
+    "artifact": "logs/compact_place_refinement_v1/complete_execution/rollout.npz",
+    "controls": 9629,
+    "duration_s": 48.145,
+    "windows": {
+      "placement": {
+        "start_s": 33.505,
+        "end_s": 44.145,
+        "duration_s": 10.64,
+        "object_alpha_rms": 7.344257732779405,
+        "object_alpha_peak": 56.52823579043158,
+        "object_alpha_squared_integral": 573.9016143080146,
+        "object_omega_rms": 0.251645201594599,
+        "object_omega_peak": 1.198475807822421,
+        "object_COM_speed_peak": 0.3504319590707982
+      },
+      "fixed_baseline_duration": {
+        "start_s": 33.505,
+        "end_s": 43.61,
+        "duration_s": 10.105,
+        "object_alpha_rms": 7.53615412291164,
+        "object_alpha_peak": 56.52823579043158,
+        "object_alpha_squared_integral": 573.8995196340304,
+        "object_omega_rms": 0.25822083669913504,
+        "object_omega_peak": 1.198475807822421,
+        "object_COM_speed_peak": 0.3504319590707982
+      },
+      "before_touchdown": {
+        "start_s": 33.505,
+        "end_s": 39.105000000000004,
+        "duration_s": 5.6000000000000005,
+        "object_alpha_rms": 9.430088166985714,
+        "object_alpha_peak": 56.52823579043158,
+        "object_alpha_squared_integral": 497.98875188789435,
+        "object_omega_rms": 0.3112506954048512,
+        "object_omega_peak": 1.198475807822421,
+        "object_COM_speed_peak": 0.3504319590707982
+      },
+      "load_transfer": {
+        "start_s": 39.105000000000004,
+        "end_s": 40.14,
+        "duration_s": 1.035,
+        "object_alpha_rms": 6.488180751600728,
+        "object_alpha_peak": 20.731275835556477,
+        "object_alpha_squared_integral": 43.569866596732666,
+        "object_omega_rms": 0.30045127624401574,
+        "object_omega_peak": 0.5684576751205953,
+        "object_COM_speed_peak": 0.1701037082696699
+      },
+      "opening_to_clear": {
+        "start_s": 40.14,
+        "end_s": 40.445,
+        "duration_s": 0.305,
+        "object_alpha_rms": 8.81646721180457,
+        "object_alpha_peak": 29.804438049079174,
+        "object_alpha_squared_integral": 23.707678699531634,
+        "object_omega_rms": 0.30702836376016523,
+        "object_omega_peak": 0.5681638588346795,
+        "object_COM_speed_peak": 0.11648319433543385
+      },
+      "after_clear_first_0_5s": {
+        "start_s": 40.445,
+        "end_s": 40.945,
+        "duration_s": 0.5,
+        "object_alpha_rms": 4.1527917519708,
+        "object_alpha_peak": 16.23965890734849,
+        "object_alpha_squared_integral": 8.622839667618353,
+        "object_omega_rms": 0.1348178900082124,
+        "object_omega_peak": 0.5812348196273875,
+        "object_COM_speed_peak": 0.10965552679519756
+      },
+      "walking": {
+        "start_s": 17.245,
+        "end_s": 23.605,
+        "duration_s": 6.36,
+        "object_alpha_rms": 26.060154843303607,
+        "object_alpha_peak": 104.53725251732986,
+        "object_alpha_squared_integral": 4319.277424106267,
+        "object_omega_rms": 1.2511007923805433,
+        "object_omega_peak": 3.2005023438393394,
+        "object_COM_speed_peak": 1.704850249473977
+      }
+    },
+    "events_s": {
+      "placement": 33.505,
+      "fork_open_command": 38.015,
+      "initial_terrain_contact": 39.105000000000004,
+      "terrain_70percent_150ms_support_start": 39.145,
+      "compliant_transfer": 39.425000000000004,
+      "deliberate_opening": 40.14,
+      "last_hand_contact": 40.44,
+      "recovery": 44.145
+    },
+    "touchdown": {
+      "angular_speed_radps": 0.32771512008069115,
+      "COM_linear_speed_mps": 0.12289216850173824,
+      "COM_vertical_velocity_mps": -0.047511204290810315,
+      "tilt_deg": 6.0645184470617375
+    },
+    "terrain_load_transfer": {
+      "max_tilt_deg": 7.119055299689918,
+      "tilt_range_deg": 3.847433951492523,
+      "angular_path_rad": 0.2698632630458828,
+      "terrain_load_peak_N": 1.4086069225319535,
+      "grounded_fraction": 1.0,
+      "terrain_load_at_opening_N": 0.5885917940953764,
+      "hand_load_at_opening_N": [
+        0.1877631088217056,
+        0.4626896498886056
+      ]
+    },
+    "post_release": {
+      "max_orientation_error_from_settled_after_clear_first_half_second_deg": 0.6111300050286927,
+      "max_COM_distance_from_settled_after_clear_first_half_second_m": 0.002169412432786963,
+      "max_COM_speed_first_half_second_mps": 0.11648319433543385,
+      "max_angular_speed_first_half_second_radps": 0.5812348196273875,
+      "max_tilt_first_half_second_deg": 4.047326025321685,
+      "last_hand_to_linear_settled_s": 0.23000000000000398,
+      "last_hand_to_angular_settled_s": 0.240000000000002,
+      "final_1s_COM_speed_peak_mps": 9.903529338674886e-05,
+      "final_1s_angular_speed_peak_radps": 0.0006373484144133907
+    },
+    "walking": {
+      "root_net_displacement_m": 2.750144041418522,
+      "minimum_hand_loads_N": [
+        0.5975816829876871,
+        0.3753304625455824
+      ]
+    },
+    "final_robot": {
+      "root_linear_speed_peak_1s": 0.0028625247795808603,
+      "root_angular_speed_peak_1s": 0.010467354902343032,
+      "foot_load_min_1s_N": [
+        202.52603160758838,
+        128.31042998425912
+      ]
+    }
+  }
+}
