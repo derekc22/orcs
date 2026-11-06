@@ -1,0 +1,36 @@
+{
+  "frozen_before_policy_evaluation": true,
+  "profiles": {
+    "small": {
+      "root_xy_m": 0.001,
+      "root_yaw_rad": 0.003490658503988659,
+      "joint_rad": 0.001,
+      "joint_velocity_radps": 0.005,
+      "root_velocity_mps": 0.002,
+      "root_angular_radps": 0.002,
+      "box_xy_m": 0.001,
+      "box_yaw_rad": 0.003490658503988659
+    }
+  },
+  "development_seeds": [
+    1105101,
+    1105102,
+    1105103
+  ],
+  "independent_test_seeds": [
+    71105001,
+    71105002,
+    71105003,
+    71105004,
+    71105005,
+    71105006,
+    71105007,
+    71105008,
+    71105009,
+    71105010
+  ],
+  "nominal_repeats": 3,
+  "task_thresholds_source": "scripts/compact_integration_v2/audit.py",
+  "initial_validation": "Terrain-supported object; no meaningful forbidden-object, self or non-foot terrain contact. Invalid trials retained and reported, never silently replaced.",
+  "no_test_checkpoint_selection": true
+}

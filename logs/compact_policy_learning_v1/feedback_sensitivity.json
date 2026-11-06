@@ -1,0 +1,245 @@
+{
+  "method": "Counterfactual observations at fixed phase; only offline observation copies change. Actual execution never edits state.",
+  "rows": [
+    {
+      "time_s": 0.0,
+      "changed_observation": "root_x_m",
+      "change": 0.001,
+      "maximum_action_change": 0.003398320544048372,
+      "action_change_norm": 0.007248073928298293,
+      "nonzero_action_channels": 35
+    },
+    {
+      "time_s": 0.0,
+      "changed_observation": "left_hip_pitch_rad",
+      "change": 0.001,
+      "maximum_action_change": 0.006022788189110617,
+      "action_change_norm": 0.013554264131071981,
+      "nonzero_action_channels": 34
+    },
+    {
+      "time_s": 0.0,
+      "changed_observation": "box_x_m",
+      "change": 0.001,
+      "maximum_action_change": 0.001307449741358517,
+      "action_change_norm": 0.001445447880166181,
+      "nonzero_action_channels": 35
+    },
+    {
+      "time_s": 0.0,
+      "changed_observation": "box_y_m",
+      "change": 0.001,
+      "maximum_action_change": 0.00037293611443264455,
+      "action_change_norm": 0.0006139777133907105,
+      "nonzero_action_channels": 34
+    },
+    {
+      "time_s": 0.0,
+      "changed_observation": "box_yaw_rad",
+      "change": 0.001,
+      "maximum_action_change": 4.6835807245947884e-05,
+      "action_change_norm": 0.00010582438319416494,
+      "nonzero_action_channels": 34
+    },
+    {
+      "time_s": 4.0,
+      "changed_observation": "root_x_m",
+      "change": 0.001,
+      "maximum_action_change": 0.00528310411107713,
+      "action_change_norm": 0.00998444404615386,
+      "nonzero_action_channels": 37
+    },
+    {
+      "time_s": 4.0,
+      "changed_observation": "left_hip_pitch_rad",
+      "change": 0.001,
+      "maximum_action_change": 0.0008029937355693573,
+      "action_change_norm": 0.0013729926980742349,
+      "nonzero_action_channels": 37
+    },
+    {
+      "time_s": 4.0,
+      "changed_observation": "box_x_m",
+      "change": 0.001,
+      "maximum_action_change": 0.002971520937660177,
+      "action_change_norm": 0.005921974498672195,
+      "nonzero_action_channels": 37
+    },
+    {
+      "time_s": 4.0,
+      "changed_observation": "box_y_m",
+      "change": 0.001,
+      "maximum_action_change": 0.004937497641248942,
+      "action_change_norm": 0.008139091696123334,
+      "nonzero_action_channels": 37
+    },
+    {
+      "time_s": 4.0,
+      "changed_observation": "box_yaw_rad",
+      "change": 0.001,
+      "maximum_action_change": 0.00041707445405148036,
+      "action_change_norm": 0.0007474729763229169,
+      "nonzero_action_channels": 37
+    },
+    {
+      "time_s": 18.0,
+      "changed_observation": "root_x_m",
+      "change": 0.001,
+      "maximum_action_change": 0.004852678291669084,
+      "action_change_norm": 0.008324248592800131,
+      "nonzero_action_channels": 37
+    },
+    {
+      "time_s": 18.0,
+      "changed_observation": "left_hip_pitch_rad",
+      "change": 0.001,
+      "maximum_action_change": 0.005879578020469012,
+      "action_change_norm": 0.006147901235284448,
+      "nonzero_action_channels": 37
+    },
+    {
+      "time_s": 18.0,
+      "changed_observation": "box_x_m",
+      "change": 0.001,
+      "maximum_action_change": 0.000823657137534406,
+      "action_change_norm": 0.002090450851068964,
+      "nonzero_action_channels": 37
+    },
+    {
+      "time_s": 18.0,
+      "changed_observation": "box_y_m",
+      "change": 0.001,
+      "maximum_action_change": 0.0016565873524632124,
+      "action_change_norm": 0.002753444337050187,
+      "nonzero_action_channels": 37
+    },
+    {
+      "time_s": 18.0,
+      "changed_observation": "box_yaw_rad",
+      "change": 0.001,
+      "maximum_action_change": 0.00032485122640468767,
+      "action_change_norm": 0.0006921684559863821,
+      "nonzero_action_channels": 37
+    },
+    {
+      "time_s": 21.0,
+      "changed_observation": "root_x_m",
+      "change": 0.001,
+      "maximum_action_change": 0.00316834801382454,
+      "action_change_norm": 0.006455167327113112,
+      "nonzero_action_channels": 37
+    },
+    {
+      "time_s": 21.0,
+      "changed_observation": "left_hip_pitch_rad",
+      "change": 0.001,
+      "maximum_action_change": 0.0007085903211487277,
+      "action_change_norm": 0.0009081362405945863,
+      "nonzero_action_channels": 36
+    },
+    {
+      "time_s": 21.0,
+      "changed_observation": "box_x_m",
+      "change": 0.001,
+      "maximum_action_change": 0.0012431724649075437,
+      "action_change_norm": 0.0025566795589927176,
+      "nonzero_action_channels": 37
+    },
+    {
+      "time_s": 21.0,
+      "changed_observation": "box_y_m",
+      "change": 0.001,
+      "maximum_action_change": 0.001972293121540236,
+      "action_change_norm": 0.003129449525594469,
+      "nonzero_action_channels": 37
+    },
+    {
+      "time_s": 21.0,
+      "changed_observation": "box_yaw_rad",
+      "change": 0.001,
+      "maximum_action_change": 0.00050544940932995,
+      "action_change_norm": 0.001066469622829218,
+      "nonzero_action_channels": 37
+    },
+    {
+      "time_s": 36.0,
+      "changed_observation": "root_x_m",
+      "change": 0.001,
+      "maximum_action_change": 0.005160231204095422,
+      "action_change_norm": 0.008312232164185083,
+      "nonzero_action_channels": 36
+    },
+    {
+      "time_s": 36.0,
+      "changed_observation": "left_hip_pitch_rad",
+      "change": 0.001,
+      "maximum_action_change": 0.0014923803663902113,
+      "action_change_norm": 0.0024329304572363823,
+      "nonzero_action_channels": 36
+    },
+    {
+      "time_s": 36.0,
+      "changed_observation": "box_x_m",
+      "change": 0.001,
+      "maximum_action_change": 0.0012357794901380892,
+      "action_change_norm": 0.002893879909039978,
+      "nonzero_action_channels": 36
+    },
+    {
+      "time_s": 36.0,
+      "changed_observation": "box_y_m",
+      "change": 0.001,
+      "maximum_action_change": 0.0013018088641046366,
+      "action_change_norm": 0.002644420874424889,
+      "nonzero_action_channels": 37
+    },
+    {
+      "time_s": 36.0,
+      "changed_observation": "box_yaw_rad",
+      "change": 0.001,
+      "maximum_action_change": 0.00021888203114683868,
+      "action_change_norm": 0.0004590904408408915,
+      "nonzero_action_channels": 36
+    },
+    {
+      "time_s": 39.0,
+      "changed_observation": "root_x_m",
+      "change": 0.001,
+      "maximum_action_change": 0.009915167149999737,
+      "action_change_norm": 0.020410628919643268,
+      "nonzero_action_channels": 37
+    },
+    {
+      "time_s": 39.0,
+      "changed_observation": "left_hip_pitch_rad",
+      "change": 0.001,
+      "maximum_action_change": 0.001859845582809383,
+      "action_change_norm": 0.003327408411832967,
+      "nonzero_action_channels": 36
+    },
+    {
+      "time_s": 39.0,
+      "changed_observation": "box_x_m",
+      "change": 0.001,
+      "maximum_action_change": 0.0014654759418546437,
+      "action_change_norm": 0.002717606715404348,
+      "nonzero_action_channels": 36
+    },
+    {
+      "time_s": 39.0,
+      "changed_observation": "box_y_m",
+      "change": 0.001,
+      "maximum_action_change": 0.0019502914675928462,
+      "action_change_norm": 0.0026532150399867505,
+      "nonzero_action_channels": 37
+    },
+    {
+      "time_s": 39.0,
+      "changed_observation": "box_yaw_rad",
+      "change": 0.001,
+      "maximum_action_change": 0.0003078431995042763,
+      "action_change_norm": 0.0007184873742299656,
+      "nonzero_action_channels": 36
+    }
+  ]
+}

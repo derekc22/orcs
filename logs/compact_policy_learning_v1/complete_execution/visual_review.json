@@ -1,0 +1,33 @@
+{
+  "full_sequence_visual_review_complete": true,
+  "bounded_compliant_grasp_accepted": true,
+  "video_frames": 2407,
+  "review_method": "Direct chronological inspection of all 17 indexed contact sheets covering every decoded frame 0\u20132406, plus the larger 16-frame montage. Physical force, material-point and footstep traces supplement visual resolution.",
+  "reviewed_sheets": [
+    "frames_0000_0143.jpg",
+    "frames_0144_0287.jpg",
+    "frames_0288_0431.jpg",
+    "frames_0432_0575.jpg",
+    "frames_0576_0719.jpg",
+    "frames_0720_0863.jpg",
+    "frames_0864_1007.jpg",
+    "frames_1008_1151.jpg",
+    "frames_1152_1295.jpg",
+    "frames_1296_1439.jpg",
+    "frames_1440_1583.jpg",
+    "frames_1584_1727.jpg",
+    "frames_1728_1871.jpg",
+    "frames_1872_2015.jpg",
+    "frames_2016_2159.jpg",
+    "frames_2160_2303.jpg",
+    "frames_2304_2406.jpg"
+  ],
+  "observations": [
+    "Original box starts on terrain; hands physically acquire it and it lifts clear.",
+    "Continuous retained carry, visible alternating foot swings and replants.",
+    "Slowing and stationary hold precede lowering.",
+    "Controlled ground placement, deliberate opening, withdrawal, and stable separated recovery."
+  ],
+  "grasp_review_note": "Bounded compliant retention throughout walking; visible small rocking is retained and not claimed to be zero slip. Positive bilateral hand loads, geometric material-point diagnostics and no airborne support loss support acceptance.",
+  "video_sha256": "3f5140cfe095134a3db85ad6c5aaf62402523196715257ac9d2dd7ebcfa02eb2"
+}

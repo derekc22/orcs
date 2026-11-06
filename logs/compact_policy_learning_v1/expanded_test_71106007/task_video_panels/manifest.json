@@ -1,0 +1,26 @@
+{
+  "video": "logs/compact_policy_learning_v1/expanded_test_71106007/rollout.mp4",
+  "sha256": "6ce58e689b9fd003897f353bcac2031d11e1829f58f6ec7c398efc6caa77bc71",
+  "frames": 2407,
+  "fps": 50,
+  "files": [
+    "frames_0000_0499.jpg",
+    "frames_0500_0999.jpg",
+    "frames_1000_1499.jpg",
+    "frames_1500_1999.jpg",
+    "frames_2000_2406.jpg"
+  ],
+  "every_frame_included_once": true,
+  "task_crop": [
+    230,
+    80,
+    730,
+    690
+  ],
+  "crop_thumbnail_size": [
+    64,
+    80
+  ],
+  "full_frame_context": "rollout_montage.png and unchanged full 960x720 video",
+  "inspection_complete": true
+}

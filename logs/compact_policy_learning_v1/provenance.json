@@ -1,0 +1,29 @@
+{
+  "head": "f65e57e648db0a0d8728c8650b42a597797da9b5",
+  "expected_remote_main_confirmed_before_work": "f65e57e648db0a0d8728c8650b42a597797da9b5",
+  "tracked_worktree_unchanged": true,
+  "index_unchanged": true,
+  "committed": false,
+  "pushed": false,
+  "standalone_model_matches_protected_baseline": true,
+  "hashes": {
+    "logs/compact_place_refinement_v1/complete_execution/rollout.npz": "3200ef0d7f6c61b93bc233ab487f83fa3cfa58defc70858814437cfe59288092",
+    "logs/compact_place_refinement_v1/complete_execution/rollout_model.mjb": "f3bd7d22614e866158635253a469817f3eed8e604a9e1e58234ededcf4833bab",
+    "logs/compact_policy_learning_v1/selected_policy.npz": "841a42fe5f4e2f163f6b279c090557293bd7b835b9a9f964a7881ed5511e3dbe",
+    "logs/compact_policy_learning_v1/complete_execution/rollout.npz": "ab2a1c70f8d39c6412b5a5236a5f21b5164ec15d310d4f9bf5f9773265f3fbf8",
+    "logs/compact_policy_learning_v1/complete_execution/rollout_model.mjb": "f3bd7d22614e866158635253a469817f3eed8e604a9e1e58234ededcf4833bab",
+    "logs/compact_policy_learning_v1/complete_execution/rollout.mp4": "3f5140cfe095134a3db85ad6c5aaf62402523196715257ac9d2dd7ebcfa02eb2"
+  },
+  "source_hashes": {
+    "scripts/compact_policy_learning_v1/compare_videos.py": "3227d42895af9c171d6b1b916594a1576e456a6c5166aa4442b852ef35efb56e",
+    "scripts/compact_policy_learning_v1/controller.py": "3c087e9bc5b85c7da8d8823bdfe30a790a9e0a879ae7682816af4a3f6e419263",
+    "scripts/compact_policy_learning_v1/evaluate.py": "5a2c778427c619f12f96f96e2e16c7ee4121343e32db8d845a9dc86bef9bcf32",
+    "scripts/compact_policy_learning_v1/replay.py": "c6afbcabe6cfecba6f7fc6319048d7d0de2b91c17aa7e40b629dc37d284db0f8",
+    "scripts/compact_policy_learning_v1/report.py": "94cf274c61da6e1ec7fa0f8d2c9194ddfd5ea6344e6b284fab838a22f7a95cfd",
+    "scripts/compact_policy_learning_v1/rollout.py": "4299494fdfca27c68cd58a02a618b385471f58e71d22d179c78aeab587ad0911",
+    "scripts/compact_policy_learning_v1/task_video_panels.py": "7a1e974f08f0b28c392e7e4756cdab702f880c78660b7a44a8c88cdc56477f73",
+    "scripts/compact_policy_learning_v1/train.py": "5280bb0c0c23be94128b82ed055bc52ab51ac656fd283e97c0a43db5d70fbaa3",
+    "scripts/compact_policy_learning_v1/video_coverage.py": "2d18a741891e93b75a6c96f61138a7c21b62945ccafd7f921407fdc341517c49",
+    "scripts/compact_policy_learning_v1/video_sheets.py": "acda5b6111dc69091c810a2d063c1bf4dbed97836d9617cca443c821ede86359"
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "engineered_commit": "f65e57e648db0a0d8728c8650b42a597797da9b5",
+  "baseline_robustness_comparator": "Frozen committed expert control replay with unchanged native position servos. This ablates learned feedback; it is not a regeneration of all historical online engineered controllers.",
+  "nominal": {
+    "maximum_COM_lift_m": {
+      "engineered": 0.7877500186254462,
+      "learned": 0.7877500186457487
+    },
+    "minimum_walking_COM_lift_m": {
+      "engineered": 0.5697514178022172,
+      "learned": 0.5697514178942724
+    },
+    "minimum_walking_hand_force_N": {
+      "engineered": [
+        0.5975816829876871,
+        0.3753304625455824
+      ],
+      "learned": [
+        0.5975816831113244,
+        0.3753304627951898
+      ]
+    },
+    "final_1s_object_linear_speed_max_mps": {
+      "engineered": 9.903529338674886e-05,
+      "learned": 9.903529338653184e-05
+    },
+    "final_1s_object_angular_speed_max_radps": {
+      "engineered": 0.0006373484144133906,
+      "learned": 0.0006373484144126259
+    }
+  },
+  "nominal_motion": {
+    "walking": {
+      "object_alpha": {
+        "engineered": 26.060154843303607,
+        "learned": 26.06015486237958
+      },
+      "object_omega": {
+        "engineered": 1.2511007923805433,
+        "learned": 1.2511007919426334
+      },
+      "relative_omega": {
+        "engineered": 0.7968926275266032,
+        "learned": 0.7968926318372994
+      },
+      "root_alpha": {
+        "engineered": 35.722069444296835,
+        "learned": 35.722069468126094
+      }
+    },
+    "placement": {
+      "object_alpha": {
+        "engineered": 7.344257732779405,
+        "learned": 7.34425773277964
+      },
+      "object_omega": {
+        "engineered": 0.251645201594599,
+        "learned": 0.25164520159459486
+      },
+      "relative_omega": {
+        "engineered": 0.4347500731268291,
+        "learned": 0.4347500731268282
+      },
+      "root_alpha": {
+        "engineered": 5.8870034714469925,
+        "learned": 5.887003471446957
+      }
+    },
+    "complete_execution": {
+      "object_alpha": {
+        "engineered": 13.20223139331108,
+        "learned": 13.196287633662916
+      },
+      "object_omega": {
+        "engineered": 0.5322295174798358,
+        "learned": 0.5322274299470313
+      },
+      "relative_omega": {
+        "engineered": 0.4098324148570887,
+        "learned": 0.4098232522399625
+      },
+      "root_alpha": {
+        "engineered": 14.878299036367588,
+        "learned": 14.878299263759521
+      }
+    }
+  }
+}

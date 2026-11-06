@@ -1,0 +1,122 @@
+[
+  {
+    "profile": "small",
+    "seed": 71105001,
+    "identical_initial_state": true,
+    "ablation_controls_exact_expert_prefix": true
+  },
+  {
+    "profile": "small",
+    "seed": 71105002,
+    "identical_initial_state": true,
+    "ablation_controls_exact_expert_prefix": true
+  },
+  {
+    "profile": "small",
+    "seed": 71105003,
+    "identical_initial_state": true,
+    "ablation_controls_exact_expert_prefix": true
+  },
+  {
+    "profile": "small",
+    "seed": 71105004,
+    "identical_initial_state": true,
+    "ablation_controls_exact_expert_prefix": true
+  },
+  {
+    "profile": "small",
+    "seed": 71105005,
+    "identical_initial_state": true,
+    "ablation_controls_exact_expert_prefix": true
+  },
+  {
+    "profile": "small",
+    "seed": 71105006,
+    "identical_initial_state": true,
+    "ablation_controls_exact_expert_prefix": true
+  },
+  {
+    "profile": "small",
+    "seed": 71105007,
+    "identical_initial_state": true,
+    "ablation_controls_exact_expert_prefix": true
+  },
+  {
+    "profile": "small",
+    "seed": 71105008,
+    "identical_initial_state": true,
+    "ablation_controls_exact_expert_prefix": true
+  },
+  {
+    "profile": "small",
+    "seed": 71105009,
+    "identical_initial_state": true,
+    "ablation_controls_exact_expert_prefix": true
+  },
+  {
+    "profile": "small",
+    "seed": 71105010,
+    "identical_initial_state": true,
+    "ablation_controls_exact_expert_prefix": true
+  },
+  {
+    "profile": "modest",
+    "seed": 71106001,
+    "identical_initial_state": true,
+    "ablation_controls_exact_expert_prefix": true
+  },
+  {
+    "profile": "modest",
+    "seed": 71106002,
+    "identical_initial_state": true,
+    "ablation_controls_exact_expert_prefix": true
+  },
+  {
+    "profile": "modest",
+    "seed": 71106003,
+    "identical_initial_state": true,
+    "ablation_controls_exact_expert_prefix": true
+  },
+  {
+    "profile": "modest",
+    "seed": 71106004,
+    "identical_initial_state": true,
+    "ablation_controls_exact_expert_prefix": true
+  },
+  {
+    "profile": "modest",
+    "seed": 71106005,
+    "identical_initial_state": true,
+    "ablation_controls_exact_expert_prefix": true
+  },
+  {
+    "profile": "modest",
+    "seed": 71106006,
+    "identical_initial_state": true,
+    "ablation_controls_exact_expert_prefix": true
+  },
+  {
+    "profile": "modest",
+    "seed": 71106007,
+    "identical_initial_state": true,
+    "ablation_controls_exact_expert_prefix": true
+  },
+  {
+    "profile": "modest",
+    "seed": 71106008,
+    "identical_initial_state": true,
+    "ablation_controls_exact_expert_prefix": true
+  },
+  {
+    "profile": "modest",
+    "seed": 71106009,
+    "identical_initial_state": true,
+    "ablation_controls_exact_expert_prefix": true
+  },
+  {
+    "profile": "modest",
+    "seed": 71106010,
+    "identical_initial_state": true,
+    "ablation_controls_exact_expert_prefix": true
+  }
+]

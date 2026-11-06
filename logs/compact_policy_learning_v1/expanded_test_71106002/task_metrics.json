@@ -1,0 +1,328 @@
+{
+  "duration_s": 48.145,
+  "maximum_COM_lift_m": 0.7877824416175678,
+  "exact_qpos_error": 0.0,
+  "exact_qvel_error": 0.0,
+  "forbidden_object_impulses_Ns": {},
+  "robot_self_impulse_Ns": 0,
+  "invalid_terrain_impulse_Ns": 0.0,
+  "airborne_intervals_s": [
+    [
+      3.115,
+      39.105000000000004
+    ]
+  ],
+  "final_object_linear_speed_mps": 5.3030381497012954e-05,
+  "final_object_angular_speed_radps": 0.0003378630770986398,
+  "final_robot_root_speed": 0.008311766942618691,
+  "final_1s_object_linear_speed_max_mps": 9.903529338736634e-05,
+  "final_1s_object_angular_speed_max_radps": 0.000637348414415587,
+  "maximum_external_force": 0.0,
+  "equalities": 0,
+  "native_limits_note": "All force limits are the preserved source model limits; no model arrays were modified.",
+  "any_hand_retained": {
+    "interval_s": [
+      17.245,
+      23.605
+    ],
+    "duration_s": 6.36,
+    "root_net_displacement_m": 2.7503612897087533,
+    "qualifying_replants": [
+      {
+        "side": "left",
+        "liftoff_s": 17.38,
+        "replant_s": 17.595,
+        "clearance_m": 0.0528023551084527,
+        "same_foot_relocation_m": 0.3505086254119972
+      },
+      {
+        "side": "right",
+        "liftoff_s": 17.615000000000002,
+        "replant_s": 18.375,
+        "clearance_m": 0.06260645066144153,
+        "same_foot_relocation_m": 0.7855262310371799
+      },
+      {
+        "side": "left",
+        "liftoff_s": 18.385,
+        "replant_s": 18.815,
+        "clearance_m": 0.0827840752831001,
+        "same_foot_relocation_m": 0.5736243576589442
+      },
+      {
+        "side": "right",
+        "liftoff_s": 19.05,
+        "replant_s": 19.625,
+        "clearance_m": 0.06229721584421839,
+        "same_foot_relocation_m": 0.45176272630552694
+      },
+      {
+        "side": "left",
+        "liftoff_s": 19.71,
+        "replant_s": 20.175,
+        "clearance_m": 0.0713295098349044,
+        "same_foot_relocation_m": 0.6455836825633178
+      },
+      {
+        "side": "right",
+        "liftoff_s": 20.195,
+        "replant_s": 21.045,
+        "clearance_m": 0.06474510543361098,
+        "same_foot_relocation_m": 0.7142677839702174
+      },
+      {
+        "side": "left",
+        "liftoff_s": 21.085,
+        "replant_s": 21.59,
+        "clearance_m": 0.0911137212526141,
+        "same_foot_relocation_m": 0.7020394807013949
+      },
+      {
+        "side": "right",
+        "liftoff_s": 21.625,
+        "replant_s": 22.405,
+        "clearance_m": 0.056677228280582706,
+        "same_foot_relocation_m": 0.7944039176063096
+      },
+      {
+        "side": "left",
+        "liftoff_s": 22.405,
+        "replant_s": 22.795,
+        "clearance_m": 0.06621143976733336,
+        "same_foot_relocation_m": 0.5445135664750649
+      },
+      {
+        "side": "right",
+        "liftoff_s": 23.005,
+        "replant_s": 23.435,
+        "clearance_m": 0.056869159047463064,
+        "same_foot_relocation_m": 0.20852577106715678
+      }
+    ],
+    "replant_order": [
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right"
+    ],
+    "longest_consecutive_alternating_replants": 10,
+    "terrain_contact_steps": 0
+  },
+  "bilateral_retained": {
+    "interval_s": [
+      17.245,
+      23.605
+    ],
+    "duration_s": 6.36,
+    "root_net_displacement_m": 2.7503612897087533,
+    "qualifying_replants": [
+      {
+        "side": "left",
+        "liftoff_s": 17.38,
+        "replant_s": 17.595,
+        "clearance_m": 0.0528023551084527,
+        "same_foot_relocation_m": 0.3505086254119972
+      },
+      {
+        "side": "right",
+        "liftoff_s": 17.615000000000002,
+        "replant_s": 18.375,
+        "clearance_m": 0.06260645066144153,
+        "same_foot_relocation_m": 0.7855262310371799
+      },
+      {
+        "side": "left",
+        "liftoff_s": 18.385,
+        "replant_s": 18.815,
+        "clearance_m": 0.0827840752831001,
+        "same_foot_relocation_m": 0.5736243576589442
+      },
+      {
+        "side": "right",
+        "liftoff_s": 19.05,
+        "replant_s": 19.625,
+        "clearance_m": 0.06229721584421839,
+        "same_foot_relocation_m": 0.45176272630552694
+      },
+      {
+        "side": "left",
+        "liftoff_s": 19.71,
+        "replant_s": 20.175,
+        "clearance_m": 0.0713295098349044,
+        "same_foot_relocation_m": 0.6455836825633178
+      },
+      {
+        "side": "right",
+        "liftoff_s": 20.195,
+        "replant_s": 21.045,
+        "clearance_m": 0.06474510543361098,
+        "same_foot_relocation_m": 0.7142677839702174
+      },
+      {
+        "side": "left",
+        "liftoff_s": 21.085,
+        "replant_s": 21.59,
+        "clearance_m": 0.0911137212526141,
+        "same_foot_relocation_m": 0.7020394807013949
+      },
+      {
+        "side": "right",
+        "liftoff_s": 21.625,
+        "replant_s": 22.405,
+        "clearance_m": 0.056677228280582706,
+        "same_foot_relocation_m": 0.7944039176063096
+      },
+      {
+        "side": "left",
+        "liftoff_s": 22.405,
+        "replant_s": 22.795,
+        "clearance_m": 0.06621143976733336,
+        "same_foot_relocation_m": 0.5445135664750649
+      },
+      {
+        "side": "right",
+        "liftoff_s": 23.005,
+        "replant_s": 23.435,
+        "clearance_m": 0.056869159047463064,
+        "same_foot_relocation_m": 0.20852577106715678
+      }
+    ],
+    "replant_order": [
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right"
+    ],
+    "longest_consecutive_alternating_replants": 10,
+    "terrain_contact_steps": 0
+  },
+  "explicit_walk_phase_realized_s": [
+    17.245,
+    23.605
+  ],
+  "root_net_entire_realized_walk_phase_m": 2.7503612897087533,
+  "walking_phase_note": "The entire phase can include retention failure; only the force-bounded intervals above count as retained carry.",
+  "placement": {
+    "terrain_70percent_support_start_s": 39.145,
+    "opening_command_start_s": 40.14,
+    "last_EE_contact_s": 40.44,
+    "recovery_start_s": 44.145,
+    "ground_force_at_opening_N": 0.5885917952924102,
+    "box_weight_N": 0.49050000000000005,
+    "terrain_support_before_opening": true,
+    "after_last_hand_contact_ground_continuous": true,
+    "final_ground_load_mean_N": 0.49049964393073814,
+    "final_root_linear_speed_max_1s_mps": 0.002862524785788105,
+    "final_root_angular_speed_max_1s_radps": 0.010467354921570584,
+    "final_hand_joints": {
+      "left_press": -0.02515704498328723,
+      "right_press": -0.025028464960931335,
+      "left_fork": 0.015687555909065783,
+      "right_fork": 0.016008528776742133,
+      "left_thumb": -0.0001748435097255008,
+      "right_thumb": -0.00019081579745309455
+    }
+  },
+  "object_COM_horizontal_walk_displacement_m": 2.794026033245184,
+  "minimum_walking_hand_force_N": [
+    0.5973292772201202,
+    0.37543211882735394
+  ],
+  "minimum_walking_COM_lift_m": 0.5699327759611961,
+  "recorded_physics_controls": 9629,
+  "initial_ground_supported": true,
+  "physical_integrity": {
+    "object_errors_vs_accepted": {
+      "geom_pos": 0.0,
+      "geom_quat": 0.0,
+      "geom_size": 0.0,
+      "geom_condim": 0.0,
+      "geom_friction": 0.0,
+      "geom_solref": 0.0,
+      "geom_solimp": 0.0,
+      "geom_margin": 0.0,
+      "geom_gap": 0.0,
+      "geom_contype": 0.0,
+      "geom_conaffinity": 0.0,
+      "body_mass": 0.0,
+      "body_inertia": 0.0,
+      "body_ipos": 0.0,
+      "body_iquat": 0.0,
+      "mesh_vertices": 0.0
+    },
+    "physical_fields_identical_corner_pickup": {
+      "body_mass": true,
+      "body_inertia": true,
+      "body_pos": true,
+      "body_quat": true,
+      "body_parentid": true,
+      "geom_bodyid": true,
+      "geom_type": true,
+      "geom_pos": true,
+      "geom_quat": true,
+      "geom_size": true,
+      "geom_friction": true,
+      "geom_solref": true,
+      "geom_solimp": true,
+      "geom_contype": true,
+      "geom_conaffinity": true,
+      "jnt_type": true,
+      "jnt_bodyid": true,
+      "jnt_pos": true,
+      "jnt_axis": true,
+      "jnt_range": true,
+      "actuator_gainprm": true,
+      "actuator_biasprm": true,
+      "actuator_ctrlrange": true,
+      "actuator_forcerange": true
+    },
+    "unchanged_box": true,
+    "unchanged_hands": true,
+    "effort_caps_respected": true,
+    "equalities": 0,
+    "disabled_flags": 0,
+    "external_force_max": 0.0,
+    "no_object_actuator": true
+  },
+  "grasp": {
+    "left": {
+      "max_COM_motion_in_plate_m": 0.026536822005618462,
+      "max_relative_rotation_deg": 8.957784919095422,
+      "final_relative_rotation_deg": 1.8824727534835846,
+      "initial_contact_anchor_plate_m": [
+        0.04277771026265691,
+        -0.051729726351131565,
+        -0.013695327018289974
+      ],
+      "max_material_anchor_tangential_motion_m": 0.007927643279416993,
+      "final_material_anchor_tangential_motion_m": 0.001598393127533043,
+      "max_material_anchor_normal_motion_m": 0.008557746024147758
+    },
+    "right": {
+      "max_COM_motion_in_plate_m": 0.020694526110237286,
+      "max_relative_rotation_deg": 6.794365212619987,
+      "final_relative_rotation_deg": 2.339303982192567,
+      "initial_contact_anchor_plate_m": [
+        0.024887341422612945,
+        -0.04899900211095525,
+        -0.0151609047366482
+      ],
+      "max_material_anchor_tangential_motion_m": 0.005038150550556541,
+      "final_material_anchor_tangential_motion_m": 0.0022186231047483292,
+      "max_material_anchor_normal_motion_m": 0.006622281619632648
+    },
+    "method": "Initial contact center weighted by palm-pad forces reconstructed at the first walking state. The same BOX MATERIAL POINT is followed in the actual moving plate frame at every walking state. These geometric diagnostics are not extra real-state edits or supports. They measure bounded relative motion, not total sliding path length."
+  }
+}

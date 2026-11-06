@@ -1,0 +1,21 @@
+{
+  "full_sequence_visual_review_complete": true,
+  "bounded_compliant_grasp_accepted": true,
+  "video_frames": 2407,
+  "review_method": "Direct chronological inspection of all five every-frame task-view panels (25 columns, row-major), frames 0\u20132406, plus the larger 16-frame full-view montage. Each task thumbnail is 64x80 pixels from fixed crop x230:730 y80:690; robot, box and nearby terrain remain inside the crop. No temporal subsampling. Fine grasp/contact claims use independent 200 Hz forces and geometric traces; thumbnail review alone does not resolve small sliding.",
+  "reviewed_panels": [
+    "frames_0000_0499.jpg",
+    "frames_0500_0999.jpg",
+    "frames_1000_1499.jpg",
+    "frames_1500_1999.jpg",
+    "frames_2000_2406.jpg"
+  ],
+  "video_sha256": "68dab5527f6141338e228aeecc79141b326e14b25d1d1b91f4574ef8111de355",
+  "observations": [
+    "Physical ground acquisition and sustained lift.",
+    "Airborne retention through real alternating foot swings and replants; no gross grasp loss.",
+    "Slowing precedes smooth descent and ground transfer.",
+    "Physical opening, separated withdrawal and stable recovery."
+  ],
+  "grasp_review_note": "Bounded compliant retention accepted, not zero slip: left/right material-point excursions 8.057/4.984 mm and relative palm rocking 8.976/6.867 degrees, with uninterrupted measured physical hand support."
+}

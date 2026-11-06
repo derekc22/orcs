@@ -1,0 +1,1012 @@
+{
+  "protected_parent": "f65e57e648db0a0d8728c8650b42a597797da9b5",
+  "branch": "main",
+  "remote": "origin",
+  "retrained": false,
+  "additional_experiments": false,
+  "accepted_verification_runs": 1,
+  "staged_paths": [
+    "logs/compact_policy_learning_v1/METHODOLOGY.md",
+    "logs/compact_policy_learning_v1/PUBLICATION.md",
+    "logs/compact_policy_learning_v1/REPRODUCE.md",
+    "logs/compact_policy_learning_v1/RESULT.md",
+    "logs/compact_policy_learning_v1/ROBUSTNESS.md",
+    "logs/compact_policy_learning_v1/SELECTION.json",
+    "logs/compact_policy_learning_v1/SUMMARY.json",
+    "logs/compact_policy_learning_v1/all_trials.csv",
+    "logs/compact_policy_learning_v1/all_trials.json",
+    "logs/compact_policy_learning_v1/baseline_commit.txt",
+    "logs/compact_policy_learning_v1/complete_execution/evaluation.json",
+    "logs/compact_policy_learning_v1/complete_execution/generation.json",
+    "logs/compact_policy_learning_v1/complete_execution/grasp_audit.json",
+    "logs/compact_policy_learning_v1/complete_execution/grasp_audit_trace.npz",
+    "logs/compact_policy_learning_v1/complete_execution/motion_metrics.json",
+    "logs/compact_policy_learning_v1/complete_execution/motion_trace.npz",
+    "logs/compact_policy_learning_v1/complete_execution/physical_integrity.json",
+    "logs/compact_policy_learning_v1/complete_execution/rollout.mp4",
+    "logs/compact_policy_learning_v1/complete_execution/rollout.npz",
+    "logs/compact_policy_learning_v1/complete_execution/rollout_locomotion_trace.npz",
+    "logs/compact_policy_learning_v1/complete_execution/rollout_model.mjb",
+    "logs/compact_policy_learning_v1/complete_execution/rollout_verification.json",
+    "logs/compact_policy_learning_v1/complete_execution/rollout_verification_trace.npz",
+    "logs/compact_policy_learning_v1/complete_execution/task_assessment.json",
+    "logs/compact_policy_learning_v1/complete_execution/task_metrics.json",
+    "logs/compact_policy_learning_v1/complete_execution/video_review/manifest.json",
+    "logs/compact_policy_learning_v1/complete_execution/visual_review.json",
+    "logs/compact_policy_learning_v1/evaluation_protocol.json",
+    "logs/compact_policy_learning_v1/expanded_protocol.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106001/evaluation.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106001/generation.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106001/grasp_audit.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106001/grasp_audit_trace.npz",
+    "logs/compact_policy_learning_v1/expanded_test_71106001/physical_integrity.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106001/rollout_locomotion_trace.npz",
+    "logs/compact_policy_learning_v1/expanded_test_71106001/rollout_verification.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106001/rollout_verification_trace.npz",
+    "logs/compact_policy_learning_v1/expanded_test_71106001/task_assessment.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106001/task_metrics.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106001/task_video_panels/manifest.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106001/visual_review.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106002/evaluation.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106002/generation.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106002/grasp_audit.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106002/grasp_audit_trace.npz",
+    "logs/compact_policy_learning_v1/expanded_test_71106002/physical_integrity.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106002/rollout_locomotion_trace.npz",
+    "logs/compact_policy_learning_v1/expanded_test_71106002/rollout_verification.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106002/rollout_verification_trace.npz",
+    "logs/compact_policy_learning_v1/expanded_test_71106002/task_assessment.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106002/task_metrics.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106002/task_video_panels/manifest.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106002/visual_review.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106003/evaluation.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106003/generation.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106003/grasp_audit.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106003/grasp_audit_trace.npz",
+    "logs/compact_policy_learning_v1/expanded_test_71106003/physical_integrity.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106003/rollout_locomotion_trace.npz",
+    "logs/compact_policy_learning_v1/expanded_test_71106003/rollout_verification.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106003/rollout_verification_trace.npz",
+    "logs/compact_policy_learning_v1/expanded_test_71106003/task_assessment.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106003/task_metrics.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106003/task_video_panels/manifest.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106003/visual_review.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106004/evaluation.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106004/generation.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106004/grasp_audit.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106004/grasp_audit_trace.npz",
+    "logs/compact_policy_learning_v1/expanded_test_71106004/physical_integrity.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106004/rollout_locomotion_trace.npz",
+    "logs/compact_policy_learning_v1/expanded_test_71106004/rollout_verification.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106004/rollout_verification_trace.npz",
+    "logs/compact_policy_learning_v1/expanded_test_71106004/task_assessment.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106004/task_metrics.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106004/task_video_panels/manifest.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106004/visual_review.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106005/evaluation.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106005/generation.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106005/grasp_audit.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106005/grasp_audit_trace.npz",
+    "logs/compact_policy_learning_v1/expanded_test_71106005/physical_integrity.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106005/rollout_locomotion_trace.npz",
+    "logs/compact_policy_learning_v1/expanded_test_71106005/rollout_verification.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106005/rollout_verification_trace.npz",
+    "logs/compact_policy_learning_v1/expanded_test_71106005/task_assessment.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106005/task_metrics.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106005/task_video_panels/manifest.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106005/visual_review.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106006/evaluation.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106006/generation.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106006/grasp_audit.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106006/grasp_audit_trace.npz",
+    "logs/compact_policy_learning_v1/expanded_test_71106006/physical_integrity.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106006/rollout_locomotion_trace.npz",
+    "logs/compact_policy_learning_v1/expanded_test_71106006/rollout_verification.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106006/rollout_verification_trace.npz",
+    "logs/compact_policy_learning_v1/expanded_test_71106006/task_assessment.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106006/task_metrics.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106006/task_video_panels/manifest.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106006/visual_review.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106007/evaluation.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106007/generation.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106007/grasp_audit.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106007/grasp_audit_trace.npz",
+    "logs/compact_policy_learning_v1/expanded_test_71106007/physical_integrity.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106007/rollout_locomotion_trace.npz",
+    "logs/compact_policy_learning_v1/expanded_test_71106007/rollout_verification.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106007/rollout_verification_trace.npz",
+    "logs/compact_policy_learning_v1/expanded_test_71106007/task_assessment.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106007/task_metrics.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106007/task_video_panels/manifest.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106007/visual_review.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106008/evaluation.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106008/generation.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106008/grasp_audit.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106008/grasp_audit_trace.npz",
+    "logs/compact_policy_learning_v1/expanded_test_71106008/physical_integrity.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106008/rollout_locomotion_trace.npz",
+    "logs/compact_policy_learning_v1/expanded_test_71106008/rollout_verification.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106008/rollout_verification_trace.npz",
+    "logs/compact_policy_learning_v1/expanded_test_71106008/task_assessment.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106008/task_metrics.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106008/task_video_panels/manifest.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106008/visual_review.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106009/evaluation.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106009/generation.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106009/grasp_audit.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106009/grasp_audit_trace.npz",
+    "logs/compact_policy_learning_v1/expanded_test_71106009/physical_integrity.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106009/rollout_locomotion_trace.npz",
+    "logs/compact_policy_learning_v1/expanded_test_71106009/rollout_verification.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106009/rollout_verification_trace.npz",
+    "logs/compact_policy_learning_v1/expanded_test_71106009/task_assessment.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106009/task_metrics.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106009/task_video_panels/manifest.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106009/visual_review.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106010/evaluation.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106010/generation.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106010/grasp_audit.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106010/grasp_audit_trace.npz",
+    "logs/compact_policy_learning_v1/expanded_test_71106010/physical_integrity.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106010/rollout_locomotion_trace.npz",
+    "logs/compact_policy_learning_v1/expanded_test_71106010/rollout_verification.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106010/rollout_verification_trace.npz",
+    "logs/compact_policy_learning_v1/expanded_test_71106010/task_assessment.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106010/task_metrics.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106010/task_video_panels/manifest.json",
+    "logs/compact_policy_learning_v1/expanded_test_71106010/visual_review.json",
+    "logs/compact_policy_learning_v1/expert_comparison.json",
+    "logs/compact_policy_learning_v1/feedback_sensitivity.json",
+    "logs/compact_policy_learning_v1/nominal_repeat_identity.json",
+    "logs/compact_policy_learning_v1/paired_ablation_integrity.json",
+    "logs/compact_policy_learning_v1/pilot.json",
+    "logs/compact_policy_learning_v1/provenance.json",
+    "logs/compact_policy_learning_v1/publication_manifest.json",
+    "logs/compact_policy_learning_v1/publication_verification.json",
+    "logs/compact_policy_learning_v1/selected_policy.npz",
+    "logs/compact_policy_learning_v1/training.json",
+    "logs/compact_policy_learning_v1/training_configuration.json",
+    "scripts/compact_policy_learning_v1/controller.py",
+    "scripts/compact_policy_learning_v1/evaluate.py",
+    "scripts/compact_policy_learning_v1/replay.py",
+    "scripts/compact_policy_learning_v1/rollout.py",
+    "scripts/compact_policy_learning_v1/task_video_panels.py",
+    "scripts/compact_policy_learning_v1/train.py",
+    "scripts/compact_policy_learning_v1/video_sheets.py"
+  ],
+  "files": [
+    {
+      "path": "logs/compact_policy_learning_v1/METHODOLOGY.md",
+      "size_bytes": 7078,
+      "sha256": "c1a2de6f2c0d2a0edf54bee9266a7491fb98181a6d16b0b3721ce4feec0db837"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/PUBLICATION.md",
+      "size_bytes": 3888,
+      "sha256": "e44711393fe906fa428a78dd4b4ff5022a0db9bc519bc783f816cdd4fe3b0201"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/REPRODUCE.md",
+      "size_bytes": 8873,
+      "sha256": "0fab96784e928512109fab6176d7e9b3d29a08ddcbe8cb21fabbeb9149a21ecf"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/RESULT.md",
+      "size_bytes": 12690,
+      "sha256": "91333a04c29bc7015bfd68459580110b1ca28ae5384f851309fd954ae09bce5d"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/ROBUSTNESS.md",
+      "size_bytes": 4572,
+      "sha256": "815e87b0e340efa40ae5fd1a0e59e16471c3f5673643bd4c1763bb218b29e5d4"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/SELECTION.json",
+      "size_bytes": 653,
+      "sha256": "47f52b8dd22be3165988b2740b4d906653a6cb07ff306cf6f44e8532536ff23e"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/SUMMARY.json",
+      "size_bytes": 2062,
+      "sha256": "7a76a46312ec72cd832200b092e99ee55f7ca1d3ae5cc13615588b0798963f12"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/all_trials.csv",
+      "size_bytes": 19833,
+      "sha256": "8a7690b1414f80660e9172118c0057435740e1b77be1f36184518cea1f28d31e"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/all_trials.json",
+      "size_bytes": 1517125,
+      "sha256": "ffd3de2d11c4270f69a4283359334d38392ee23fdab7dfcec272202196fc80fd"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/baseline_commit.txt",
+      "size_bytes": 41,
+      "sha256": "897fb64f2634e1f36cbaaaaf9ab168d0cc9bdf9754a285771b54b95e6f3e9e11"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/complete_execution/evaluation.json",
+      "size_bytes": 7041,
+      "sha256": "c537659f4f0026b595fce21738efe5025db8e874ff755ccd88aa0f0aa7c1ea63"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/complete_execution/generation.json",
+      "size_bytes": 25774,
+      "sha256": "f19f72b74d420f55984c90c405fa138c29d85332a66a9ebfa49f4d8e1bbf1412"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/complete_execution/grasp_audit.json",
+      "size_bytes": 1374,
+      "sha256": "090b262580c1058b29b6d46259e2bc0a57d1eae250d7c269b5ed03aa2ae68140"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/complete_execution/grasp_audit_trace.npz",
+      "size_bytes": 134417,
+      "sha256": "00be85ff9fe8d5273ab4d6a1662ac3282dc6339f7eef2aa542b70ca76f539212"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/complete_execution/motion_metrics.json",
+      "size_bytes": 18686,
+      "sha256": "1fe4335e8621241bbd1a228045d147cdd56e6b02c361e4fcbbef79ab67be2973"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/complete_execution/motion_trace.npz",
+      "size_bytes": 4954690,
+      "sha256": "4b956c4ca41f6ceda8dcab68b3efb1dbb40568e284b48bb12555e12121fe183d"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/complete_execution/physical_integrity.json",
+      "size_bytes": 1263,
+      "sha256": "459f1f78b36fdad6836cca1903beaad5eaf79c96a1e94a7c6373518563c2a84c"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/complete_execution/rollout.mp4",
+      "size_bytes": 9730724,
+      "sha256": "3f5140cfe095134a3db85ad6c5aaf62402523196715257ac9d2dd7ebcfa02eb2"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/complete_execution/rollout.npz",
+      "size_bytes": 10829721,
+      "sha256": "ab2a1c70f8d39c6412b5a5236a5f21b5164ec15d310d4f9bf5f9773265f3fbf8"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/complete_execution/rollout_locomotion_trace.npz",
+      "size_bytes": 2022254,
+      "sha256": "d72e845e22899f9cfbbed77501dd3bfa77cdc566f0706c61bdf1606065547a02"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/complete_execution/rollout_model.mjb",
+      "size_bytes": 90260222,
+      "sha256": "f3bd7d22614e866158635253a469817f3eed8e604a9e1e58234ededcf4833bab"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/complete_execution/rollout_verification.json",
+      "size_bytes": 2992,
+      "sha256": "493e32ead61a552e6b8ffffb0a6c40af53d69f0dd508fdaca61110f4b9ff4864"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/complete_execution/rollout_verification_trace.npz",
+      "size_bytes": 2194309,
+      "sha256": "73f644b97cb3c2abc494eefa775847cca4c29d8369f91785453607bd04e56121"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/complete_execution/task_assessment.json",
+      "size_bytes": 2413,
+      "sha256": "bcfff65fad552f8e767a1a61e0ab9367901450e917b8c89546b31681669c6bff"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/complete_execution/task_metrics.json",
+      "size_bytes": 9858,
+      "sha256": "616c159038ef073660e3c637c462332f78f25aa5ff6194a879b97c243c526104"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/complete_execution/video_review/manifest.json",
+      "size_bytes": 753,
+      "sha256": "7eec35f431aff2c70d816a83e7fe12e114e5587a39f49442f98d8e1d9f94f4b9"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/complete_execution/visual_review.json",
+      "size_bytes": 1552,
+      "sha256": "6c7f8f108853d7a1d5e47b7f7fc4ee54435e4e414e8fe9c158f235bcdc8e2843"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/evaluation_protocol.json",
+      "size_bytes": 915,
+      "sha256": "360c88edf5fd4ee338942a91337b3c72cb5a5ff01d419632ed527425428647ce"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_protocol.json",
+      "size_bytes": 825,
+      "sha256": "3fea509e87b19a55b800bfac95235a4ea0cf3fc2beefb7f677fefc669a8f79cf"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106001/evaluation.json",
+      "size_bytes": 7035,
+      "sha256": "9072b7856c027d7d5c693ccf0581f2730b523e34185f32a3e441f0301b99352d"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106001/generation.json",
+      "size_bytes": 27112,
+      "sha256": "49e687e0fb0bfd01d2f8cc95ee3de0113a28f205ce2543ac689ae8a547ee18bf"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106001/grasp_audit.json",
+      "size_bytes": 1376,
+      "sha256": "f80380742b5a955098e1816344eaa03fcaa1801a05c020c83a4c1df196405403"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106001/grasp_audit_trace.npz",
+      "size_bytes": 134336,
+      "sha256": "9ccc4245cf6d258dea602d2464ce8bafe8dce198cf96ff9641281b77c9e0e7cd"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106001/physical_integrity.json",
+      "size_bytes": 1263,
+      "sha256": "459f1f78b36fdad6836cca1903beaad5eaf79c96a1e94a7c6373518563c2a84c"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106001/rollout_locomotion_trace.npz",
+      "size_bytes": 2033422,
+      "sha256": "9123273e2a5634199e80ab2b09346129c773e4453b48dca3eaf2083d38d04300"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106001/rollout_verification.json",
+      "size_bytes": 2964,
+      "sha256": "17018978ecc6af71b1126190e0fd097a548fcb02911b6f03cf989cbb8d321bcf"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106001/rollout_verification_trace.npz",
+      "size_bytes": 2199280,
+      "sha256": "557e222e609efee15184e8c30353cdc91fc3e64e00c2f58eb5effe0b59c592da"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106001/task_assessment.json",
+      "size_bytes": 2382,
+      "sha256": "3dc30ad78974813aa574b15d62e20ad09e081097260c0535f5b53b68dded62e4"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106001/task_metrics.json",
+      "size_bytes": 9852,
+      "sha256": "19eb03bc3546a0d1518734687fcd5d6231af708707497f070a4b0f0d52cd54b1"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106001/task_video_panels/manifest.json",
+      "size_bytes": 602,
+      "sha256": "0fa9fbb3070de2abac64cea2a0a19c6ee8de73bd534a649907994f6f42eddbed"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106001/visual_review.json",
+      "size_bytes": 1370,
+      "sha256": "36a5bf610f59436023299e2315c91e2e19da4b8353b47882cf70d7e8bb3405c2"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106002/evaluation.json",
+      "size_bytes": 7038,
+      "sha256": "cf732fc4450b9a70ad8a91795eba2139fc06d0241e20ce55ef60c25b9d7a721f"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106002/generation.json",
+      "size_bytes": 28614,
+      "sha256": "825e566b00a2d07f4e7a5a1b1b92dd96a6524a4b026c102a6c210289f3d8f76f"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106002/grasp_audit.json",
+      "size_bytes": 1375,
+      "sha256": "5ce2265f07a1abd289888923bb16351db9f6d25ef6153c0ece764f9561d2f482"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106002/grasp_audit_trace.npz",
+      "size_bytes": 134371,
+      "sha256": "f74ec90689b9bdd32e2034472b30f1d41b6ca258db77ca1086fad10d1d5832c7"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106002/physical_integrity.json",
+      "size_bytes": 1263,
+      "sha256": "459f1f78b36fdad6836cca1903beaad5eaf79c96a1e94a7c6373518563c2a84c"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106002/rollout_locomotion_trace.npz",
+      "size_bytes": 2037855,
+      "sha256": "1f341992895af60dbe14d8c4631362b1cb45f9e943ef7c451432bb86d36730fb"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106002/rollout_verification.json",
+      "size_bytes": 2986,
+      "sha256": "66831c1f045729699f2cc42d4fed3aba76e846cc032df81ca3c77f4fae93d7fb"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106002/rollout_verification_trace.npz",
+      "size_bytes": 2200751,
+      "sha256": "f5a62c0058b28cf3563993249b2ca0f8176ba68af5a5f5142bf2776bd6fc23c9"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106002/task_assessment.json",
+      "size_bytes": 2383,
+      "sha256": "8eb0d18ed4ddbab4b072ab2544e912d27bc0e5afe72715b614f7c1f7331bbd46"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106002/task_metrics.json",
+      "size_bytes": 9855,
+      "sha256": "7b74212540cded8b5767a1b59f2e4647093eeb37eb2724257b069d0a7985f240"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106002/task_video_panels/manifest.json",
+      "size_bytes": 602,
+      "sha256": "684992a1065a7a0b29c98ed2ca03485b56b7635b95c79976a055cb62529d3055"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106002/visual_review.json",
+      "size_bytes": 1370,
+      "sha256": "be2b0f550f862ebb1c09175a29f8ab4f527476d5194a71ea38235e543a705e54"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106003/evaluation.json",
+      "size_bytes": 7033,
+      "sha256": "9b171b3bf6a3e1f7490e677e102eb365e9866b0da328f750f66f83b2559eafaf"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106003/generation.json",
+      "size_bytes": 27632,
+      "sha256": "9be2fe78e0a6f5d220cedc520f8a47d205bc25aa030295056989362a34201835"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106003/grasp_audit.json",
+      "size_bytes": 1372,
+      "sha256": "27c37c5a05f2b016534294fa084270a75de35708899169100757a5c7c4615e58"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106003/grasp_audit_trace.npz",
+      "size_bytes": 134398,
+      "sha256": "55b3dde158e535e3bb3f92c17764336e26124ed19764bbe138edc2e668a9bd47"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106003/physical_integrity.json",
+      "size_bytes": 1263,
+      "sha256": "459f1f78b36fdad6836cca1903beaad5eaf79c96a1e94a7c6373518563c2a84c"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106003/rollout_locomotion_trace.npz",
+      "size_bytes": 2034029,
+      "sha256": "4d01e504a73d9d48bb1d4fd230b8b2b858a02c71a4c1c342a203fd4296502915"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106003/rollout_verification.json",
+      "size_bytes": 2990,
+      "sha256": "67e7b641b984ccff4cc4c82cd7d08776824f2caae4977dec97bea6db3977da3a"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106003/rollout_verification_trace.npz",
+      "size_bytes": 2199129,
+      "sha256": "4dabb826627f361d547f27d1feecabe0584b8b6114883caf7a5911ed024c04d4"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106003/task_assessment.json",
+      "size_bytes": 2381,
+      "sha256": "1e629b27091048c70747d820e766067845b62efcfc79d94544fb7dd43db798ef"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106003/task_metrics.json",
+      "size_bytes": 9849,
+      "sha256": "481caf280904b6593962c852a733f762201da501b2090e69dd17614732a82786"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106003/task_video_panels/manifest.json",
+      "size_bytes": 602,
+      "sha256": "6fad03ae26a5d85f135d63e2b4ab21977911574e434eb9930808e56927e581bf"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106003/visual_review.json",
+      "size_bytes": 1370,
+      "sha256": "ad5ea9a8851340118cee45695b28c264d562d3d9ab622182d713b8a28a6d402b"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106004/evaluation.json",
+      "size_bytes": 7038,
+      "sha256": "1e7005ae8ad0f373b391757b0299a1dada83ca004f99e840a53c09b8ba15dd79"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106004/generation.json",
+      "size_bytes": 26889,
+      "sha256": "4ef07d60a1ee7f4b99e965dea422f4122d3c7c2a0b9176997f96e6720ed69d27"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106004/grasp_audit.json",
+      "size_bytes": 1378,
+      "sha256": "a3796fee72d52656a42692b015f39d48c2ae51368ca494464fd664efeba4d19d"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106004/grasp_audit_trace.npz",
+      "size_bytes": 134383,
+      "sha256": "94adcc3d8479c3896f8d20e2c0e86d313c7075e590e064f7d63a44fa3809f31e"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106004/physical_integrity.json",
+      "size_bytes": 1263,
+      "sha256": "459f1f78b36fdad6836cca1903beaad5eaf79c96a1e94a7c6373518563c2a84c"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106004/rollout_locomotion_trace.npz",
+      "size_bytes": 2035359,
+      "sha256": "c2df48a1d14ef96da515e156232f324b5039af22e8eec1a03dcd405098154c15"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106004/rollout_verification.json",
+      "size_bytes": 2993,
+      "sha256": "c70cd10396318f64a04eb4d055c1f5b7ab28cc2c77b92a672d983323c91e6631"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106004/rollout_verification_trace.npz",
+      "size_bytes": 2199076,
+      "sha256": "1034ac59fc136e3dfd1568e69e28d8db413c6f2b1905ec2057409ce2caada4af"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106004/task_assessment.json",
+      "size_bytes": 2383,
+      "sha256": "13b1de40b5ae6b1f464fb02bec92c7e3e02e566db27ff9c5c7bd7249bfa1d251"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106004/task_metrics.json",
+      "size_bytes": 9858,
+      "sha256": "dbcc32dfa647549f28503b9ad6ce3bf6bf627080fdbfe75d4bbbd7b46180f5c2"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106004/task_video_panels/manifest.json",
+      "size_bytes": 602,
+      "sha256": "992b71e8913d13516ffb74732008efa30a03e2ea8e0604fe3d5af853ac259835"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106004/visual_review.json",
+      "size_bytes": 1370,
+      "sha256": "1912ca4def4f9d1d1415d207f374f03383d4047febbcaed23bd457e027ca6014"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106005/evaluation.json",
+      "size_bytes": 7031,
+      "sha256": "1f65a314ee5f5d1b6d8a2cc2e1ce82a8a765da7cf08e88e732198cb17c30f17a"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106005/generation.json",
+      "size_bytes": 28208,
+      "sha256": "600d374e6e707fe45bd53e5445d89369f57c59df835f3d5f651e4822ef98d18c"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106005/grasp_audit.json",
+      "size_bytes": 1375,
+      "sha256": "783287418a513cd82d63a2bf2ecd94ad5e989353b56e940b8940f544ad440945"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106005/grasp_audit_trace.npz",
+      "size_bytes": 134410,
+      "sha256": "a6ff9a8f1f89935eafd511aea0a00256a42d7fe2e098de84c83db65f296e04ca"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106005/physical_integrity.json",
+      "size_bytes": 1263,
+      "sha256": "459f1f78b36fdad6836cca1903beaad5eaf79c96a1e94a7c6373518563c2a84c"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106005/rollout_locomotion_trace.npz",
+      "size_bytes": 2033360,
+      "sha256": "9d100cf95a44186fdf7ec903407260601ec8bbb279f069c06a88cbdcc1e58a70"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106005/rollout_verification.json",
+      "size_bytes": 2988,
+      "sha256": "8a4bc45bea5ef9c5a58a6cd67c5fccedd1c7ed7eb90723ac357f5e6733851b6b"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106005/rollout_verification_trace.npz",
+      "size_bytes": 2199144,
+      "sha256": "4aad760984bd8437608f936168fa9b77a8ef0f505e0c745e61cf027d4d8ba07f"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106005/task_assessment.json",
+      "size_bytes": 2386,
+      "sha256": "f78bb71c7d15228ade7dfb5fb5a66d3b3545b59197bf11c59560ab329b2a7082"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106005/task_metrics.json",
+      "size_bytes": 9845,
+      "sha256": "e952668b1c87602fe3d641c6a24e3b8259cefef9f940baa2486de03d8f60dd55"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106005/task_video_panels/manifest.json",
+      "size_bytes": 602,
+      "sha256": "8309da063060d40a1dd84d5619018d5f1f80cca4167064350b27fcc1036fe79e"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106005/visual_review.json",
+      "size_bytes": 1370,
+      "sha256": "9d44c8e4414b9838a5bfc10646aed18f608d08c84d78a76b38ab7ef271345830"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106006/evaluation.json",
+      "size_bytes": 7034,
+      "sha256": "664f93ce3f988002886e1b311e4ed4eb6ec1f0827a2c97dd543874df2e83a124"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106006/generation.json",
+      "size_bytes": 26271,
+      "sha256": "1ae20a960937d8549b69a80528b66625fc70af1a8cb927859714c0afde36e464"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106006/grasp_audit.json",
+      "size_bytes": 1375,
+      "sha256": "6f157a5d7407ec4ea779f6a15fd265972eeeeff3dc45e99f5e77c37e35ebf67c"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106006/grasp_audit_trace.npz",
+      "size_bytes": 134352,
+      "sha256": "87ccc7906c76904737a4fe18d79390d904385e80b0a18145b670a6ab51b3f1e2"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106006/physical_integrity.json",
+      "size_bytes": 1263,
+      "sha256": "459f1f78b36fdad6836cca1903beaad5eaf79c96a1e94a7c6373518563c2a84c"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106006/rollout_locomotion_trace.npz",
+      "size_bytes": 2029077,
+      "sha256": "e87ed0fe6f130f3f768dc67d554c423d5faa5c92ea0a72072e02d16c7a02c1d1"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106006/rollout_verification.json",
+      "size_bytes": 2987,
+      "sha256": "cb25dc17b461d342dfede67c53da5c1052d3db0ff29fc8c0406bf8cb09abc3cf"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106006/rollout_verification_trace.npz",
+      "size_bytes": 2197887,
+      "sha256": "be135cf10a0dcef699ce1c66c760839845bddd9d39486c91f853b730769bf613"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106006/task_assessment.json",
+      "size_bytes": 2383,
+      "sha256": "c31fc64b99fb03349d273b7a56163109f6142e70e54ef6df50cfbb91ed303b38"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106006/task_metrics.json",
+      "size_bytes": 9853,
+      "sha256": "28b8baf335e1cf97765c62756108eb32d82c42e3c9def6b23e5ab686c0f7b98c"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106006/task_video_panels/manifest.json",
+      "size_bytes": 602,
+      "sha256": "755eb260291b5979a4c1b3e997af5ffaecb53f5b642cbdc7a9ec3a4db6a3f7c2"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106006/visual_review.json",
+      "size_bytes": 1370,
+      "sha256": "2ccb8c9c229f65dc1468d1150955130def7aa03691bcb47595a0a201b0fffd7e"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106007/evaluation.json",
+      "size_bytes": 7049,
+      "sha256": "2596be3dafa938535734b232939b6ab54ade099676a9765bca21f24da97b0e13"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106007/generation.json",
+      "size_bytes": 27569,
+      "sha256": "6d987408e426da2546fa8cba517976fa1a99b5524435e0526613e6759572baab"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106007/grasp_audit.json",
+      "size_bytes": 1375,
+      "sha256": "068b4b9f4f9c01dfb1cd2c5849ce69e2229cf38de88b962626fb0a8608ac62fd"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106007/grasp_audit_trace.npz",
+      "size_bytes": 134391,
+      "sha256": "e6427da004c7d23191ccab7155fd797d5410ec3ea33a902086b200ee5eb49df3"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106007/physical_integrity.json",
+      "size_bytes": 1263,
+      "sha256": "459f1f78b36fdad6836cca1903beaad5eaf79c96a1e94a7c6373518563c2a84c"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106007/rollout_locomotion_trace.npz",
+      "size_bytes": 2037251,
+      "sha256": "7a15dd9a7376cf13fe374a45fdf24f946906036168c1f8510ce4265a9b2ea51a"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106007/rollout_verification.json",
+      "size_bytes": 2951,
+      "sha256": "95b15767b196137425d4bea91e5cb16138bd869f81fc69d4081f3bca2eedfdbb"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106007/rollout_verification_trace.npz",
+      "size_bytes": 2200612,
+      "sha256": "f97f0235750224c053027fa0562ed8d60a17a7387ca7fac23850dfcbdcdff5fe"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106007/task_assessment.json",
+      "size_bytes": 2385,
+      "sha256": "db6fa375f0d53b867bfa3fce4c406c0e2606d123e5dafcd4a4fafd6a57084130"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106007/task_metrics.json",
+      "size_bytes": 9866,
+      "sha256": "557693113808e2513dd3f4acdc729b8585429b2f420b9bdf6f1a9aa746eb1d08"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106007/task_video_panels/manifest.json",
+      "size_bytes": 602,
+      "sha256": "c2d2b28a2e26212414a2e9786cb6ea3301d4704f3f4d8d15e82c28f59ded8d87"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106007/visual_review.json",
+      "size_bytes": 1370,
+      "sha256": "00ee8348a2f88dc9673d79876892ab7f0dd3bf5b595df0834fe15a50574ec378"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106008/evaluation.json",
+      "size_bytes": 7034,
+      "sha256": "cb5df0e18f043fb5841ec7da414770e4cb84f11fefb9a8ab10eac6ec9a4e935f"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106008/generation.json",
+      "size_bytes": 26377,
+      "sha256": "d0453d972e453edfb84ac40743bf7e1621c9122977e120f5f9a17752bfe39e23"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106008/grasp_audit.json",
+      "size_bytes": 1377,
+      "sha256": "d8484f38ff0bddcaaf023a4b4e1b41770699fbded9dfc899aae2b774589447ca"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106008/grasp_audit_trace.npz",
+      "size_bytes": 134343,
+      "sha256": "b16ab1eaef2ef7b03a78dc505be3401e246e2d49f516e05e224413b29aed180c"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106008/physical_integrity.json",
+      "size_bytes": 1263,
+      "sha256": "459f1f78b36fdad6836cca1903beaad5eaf79c96a1e94a7c6373518563c2a84c"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106008/rollout_locomotion_trace.npz",
+      "size_bytes": 2034650,
+      "sha256": "7be563b8a8fe6d6ba2f7b24938293bef0e9a18bbfbf4b399fa2f600b22281405"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106008/rollout_verification.json",
+      "size_bytes": 2989,
+      "sha256": "746d361d54c77429bcdbd315683a63f9ab87f9f5eccc58a51e805559e99179b9"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106008/rollout_verification_trace.npz",
+      "size_bytes": 2198963,
+      "sha256": "5597995f8b8b669cd7c880e7c77009bc5124789bdfb254db64f1e866cb2f3196"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106008/task_assessment.json",
+      "size_bytes": 2383,
+      "sha256": "4f3aed1165b139caf55e23d8b7eace8dbab70d17ffcebc23bef515d98a4de20b"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106008/task_metrics.json",
+      "size_bytes": 9855,
+      "sha256": "1be18175b061567ac118dd22123149b3933ff26e6413b85a3a4397b3b83fdb43"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106008/task_video_panels/manifest.json",
+      "size_bytes": 602,
+      "sha256": "200692ec53d31edb3147ff03ac1d6cfdbbdcc2128e418fde0230bde0e90f9189"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106008/visual_review.json",
+      "size_bytes": 1370,
+      "sha256": "4b94f7f8bcf9cfa96334b9fcbc9c9761520592128d1f94b6be240bfddd7176e0"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106009/evaluation.json",
+      "size_bytes": 7045,
+      "sha256": "fbec37a6a2d768a18bb6eacda9085d79a1bc790b7389199d0536e8e7abd10b8b"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106009/generation.json",
+      "size_bytes": 27952,
+      "sha256": "a2c936dc27fe06f6d88846bdd8bca161b67ff4e6dd414c1f29fb64c2efb9dda4"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106009/grasp_audit.json",
+      "size_bytes": 1376,
+      "sha256": "685441fe6132275124d5cb02cee430aead2ccc2ba4f5bf37c045c3d53b9cc030"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106009/grasp_audit_trace.npz",
+      "size_bytes": 134367,
+      "sha256": "c5f145ebad11de4a40dd972d30aee61a170857fe351afcb7cbc388ad7c577802"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106009/physical_integrity.json",
+      "size_bytes": 1263,
+      "sha256": "459f1f78b36fdad6836cca1903beaad5eaf79c96a1e94a7c6373518563c2a84c"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106009/rollout_locomotion_trace.npz",
+      "size_bytes": 2031920,
+      "sha256": "5bae617119599e541d711593214c75dc4bc600ac106e9314a70ce1ecb8c605f9"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106009/rollout_verification.json",
+      "size_bytes": 2989,
+      "sha256": "1fc8b4863c6e34b011208a379d5d5ba3ebdaeba6ecb7abe880af62303b86c137"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106009/rollout_verification_trace.npz",
+      "size_bytes": 2198811,
+      "sha256": "ad87e65a76b00a0d295bfa57de8e9844dc734c91c1eba1d3becb082679800d81"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106009/task_assessment.json",
+      "size_bytes": 2384,
+      "sha256": "33eb6010dbdd6c733d53fd360f1e3f287710c5c01c573aa35473166cb50cd647"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106009/task_metrics.json",
+      "size_bytes": 9860,
+      "sha256": "a11d80ce5f9d371dccebdddad34910d48ac8f8f03ebaf79ab735484eb8d4e4cf"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106009/task_video_panels/manifest.json",
+      "size_bytes": 602,
+      "sha256": "b4f679c4eeb69948893af407e5363d036ecdafc92700f844a6447941f2c08b90"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106009/visual_review.json",
+      "size_bytes": 1370,
+      "sha256": "e9dd8047c418e1d9a4847eeed1f7493f3575928dee58f181e69d58065a1e9781"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106010/evaluation.json",
+      "size_bytes": 7039,
+      "sha256": "dbf324ab9204367249ed622959d8fa42551720cd19a572b11298cd6e8b23772c"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106010/generation.json",
+      "size_bytes": 26901,
+      "sha256": "4d8898b5291ed4c075d478a8f5fa4f66f0155b771ccf41c457f961275d174abc"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106010/grasp_audit.json",
+      "size_bytes": 1371,
+      "sha256": "9a7f4ca2032a3288a2725cd2e2b65fd274afb7eb665616652566fe80dd8cee32"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106010/grasp_audit_trace.npz",
+      "size_bytes": 134343,
+      "sha256": "74e31eed34a1e092c9c14d4c3c82af1864bf3ed2f4a4c739f66b264c0458d41d"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106010/physical_integrity.json",
+      "size_bytes": 1263,
+      "sha256": "459f1f78b36fdad6836cca1903beaad5eaf79c96a1e94a7c6373518563c2a84c"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106010/rollout_locomotion_trace.npz",
+      "size_bytes": 2037298,
+      "sha256": "ed909ad8dcc6fc4b62e97899fd89a8fdf69325f14e03286c08c4afefc8fc077b"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106010/rollout_verification.json",
+      "size_bytes": 2991,
+      "sha256": "78a649fa058e5aa0c03a805fd713a019f3e83f38d7d027409fff13b9a5eab1c4"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106010/rollout_verification_trace.npz",
+      "size_bytes": 2200795,
+      "sha256": "31fa1f82a13a22e8bbe0ffaa18f301890d3a00ca704db43c73edb2126aab5640"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106010/task_assessment.json",
+      "size_bytes": 2385,
+      "sha256": "946910acbcc0f5229c787d91f31d065b685d8c2c058d1f0368c69ad0b632b348"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106010/task_metrics.json",
+      "size_bytes": 9853,
+      "sha256": "6f9f23ecb87a2707012de083d2baa0a243b038334587751ff60c89104bf5bc31"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106010/task_video_panels/manifest.json",
+      "size_bytes": 602,
+      "sha256": "129b483ba7229983d2eae9afd0ea4bcf1204a1b2f7d17bbfcf5bddab64fdff8a"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expanded_test_71106010/visual_review.json",
+      "size_bytes": 1370,
+      "sha256": "198393d4bc91b47cd1b6f66dfb65456b8d2f9a1f5b938410917329cc5a5f62d5"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/expert_comparison.json",
+      "size_bytes": 2484,
+      "sha256": "6b73f3ea4b232e816f6215d79794f5baa2ad386b894823adc091e5445fdca069"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/feedback_sensitivity.json",
+      "size_bytes": 7377,
+      "sha256": "a9df402857c25335b7d2c685b15918e74f63eaef29f5fea6f3af53ba50712afa"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/nominal_repeat_identity.json",
+      "size_bytes": 300,
+      "sha256": "329a188a498493c37e80b53f214e910cfc94492e09b0b832c03d5382d47a514f"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/paired_ablation_integrity.json",
+      "size_bytes": 2852,
+      "sha256": "e70fbcf656f362d7714db58bddf7a8c1702a4810647d5722a6daf72a8fc6b045"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/pilot.json",
+      "size_bytes": 3236,
+      "sha256": "d48ad98e0e0344c899e9389723856141f875581500e06ba8fda1d52cb763f2fd"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/provenance.json",
+      "size_bytes": 2422,
+      "sha256": "5bebb6abcb639fb1c89e310e2c700e93df03f769a02836674ecfe81dca9e3a44"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/publication_verification.json",
+      "size_bytes": 1467,
+      "sha256": "3b0c529709e76f4dc0fc8fd365e9a1408859058f112c2133819d88a9d5e817fa"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/selected_policy.npz",
+      "size_bytes": 76284486,
+      "sha256": "841a42fe5f4e2f163f6b279c090557293bd7b835b9a9f964a7881ed5511e3dbe"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/training.json",
+      "size_bytes": 19435,
+      "sha256": "d23ef38b7de4d05475dde19b73213d342902d5b8956a84d922014c367fdcf935"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/training_configuration.json",
+      "size_bytes": 2559,
+      "sha256": "7bf6678e64ad75831066488a9e264eac18217a16b87828e683e7f43c983f641a"
+    },
+    {
+      "path": "scripts/compact_policy_learning_v1/controller.py",
+      "size_bytes": 1605,
+      "sha256": "3c087e9bc5b85c7da8d8823bdfe30a790a9e0a879ae7682816af4a3f6e419263"
+    },
+    {
+      "path": "scripts/compact_policy_learning_v1/evaluate.py",
+      "size_bytes": 5837,
+      "sha256": "5a2c778427c619f12f96f96e2e16c7ee4121343e32db8d845a9dc86bef9bcf32"
+    },
+    {
+      "path": "scripts/compact_policy_learning_v1/replay.py",
+      "size_bytes": 1147,
+      "sha256": "c6afbcabe6cfecba6f7fc6319048d7d0de2b91c17aa7e40b629dc37d284db0f8"
+    },
+    {
+      "path": "scripts/compact_policy_learning_v1/rollout.py",
+      "size_bytes": 6437,
+      "sha256": "4299494fdfca27c68cd58a02a618b385471f58e71d22d179c78aeab587ad0911"
+    },
+    {
+      "path": "scripts/compact_policy_learning_v1/task_video_panels.py",
+      "size_bytes": 2007,
+      "sha256": "7a1e974f08f0b28c392e7e4756cdab702f880c78660b7a44a8c88cdc56477f73"
+    },
+    {
+      "path": "scripts/compact_policy_learning_v1/train.py",
+      "size_bytes": 7237,
+      "sha256": "5280bb0c0c23be94128b82ed055bc52ab51ac656fd283e97c0a43db5d70fbaa3"
+    },
+    {
+      "path": "scripts/compact_policy_learning_v1/video_sheets.py",
+      "size_bytes": 1677,
+      "sha256": "acda5b6111dc69091c810a2d063c1bf4dbed97836d9617cca443c821ede86359"
+    }
+  ],
+  "manifest_self_hash_omitted": true,
+  "exclusion_document": "logs/compact_policy_learning_v1/PUBLICATION.md",
+  "required_existing_local_audit_comparison_model": "logs/corner_hands_v1/pickup3_model.mjb"
+}

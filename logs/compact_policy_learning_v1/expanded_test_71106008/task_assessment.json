@@ -1,0 +1,62 @@
+{
+  "status": "SUCCESS",
+  "numeric_and_integrity_gates": {
+    "original_box_and_contact_properties": true,
+    "unchanged_existing_hand_mechanism": true,
+    "initial_ground_support": true,
+    "terrain_free_COM_lift_over_5cm": true,
+    "actual_airborne_root_walk_over_2m": true,
+    "at_least_five_consecutive_alternating_qualifying_replants": true,
+    "no_object_terrain_contact_while_walking": true,
+    "continuous_bilateral_walking_support": true,
+    "continuous_EE_support_through_initial_airborne_carry": true,
+    "terrain_load_transfer_before_full_hand_opening": true,
+    "physical_hand_opening": true,
+    "clean_withdrawal_and_continuous_ground_support": true,
+    "stable_final_robot": true,
+    "stable_final_object": true,
+    "zero_forbidden_object_impulse": true,
+    "zero_robot_self_and_invalid_terrain_impulse": true,
+    "finite_actuation_with_preserved_effort_limits": true,
+    "no_virtual_grasp_or_hidden_force": true,
+    "independent_exact_raw_control_physics_replay": true,
+    "complete_video_inspection": true
+  },
+  "grasp_retention_review": {
+    "accepted_as_bounded_compliant_retention": true,
+    "zero_slip_claim": false,
+    "peak_contact_local_tangential_motion_mm": [
+      8.964274134052307,
+      5.393871843634952
+    ],
+    "final_contact_local_tangential_motion_mm": [
+      1.1879459567138289,
+      1.953002885197953
+    ],
+    "peak_relative_palm_rocking_degrees": [
+      8.997416440762011,
+      6.826515797813608
+    ],
+    "basis": "Bounded compliant retention accepted, not zero slip: left/right material-point excursions 8.964/5.394 mm and relative palm rocking 8.997/6.827 degrees, with uninterrupted measured physical hand support."
+  },
+  "stability_thresholds": {
+    "final_1s_root_linear_mps": 0.01,
+    "final_1s_root_angular_radps": 0.03,
+    "final_1s_object_linear_mps": 0.001,
+    "final_1s_object_angular_radps": 0.003
+  },
+  "raw_verifier_note": "Unconditional success:false and legacy 45-degree torso-tilt full_valid fields are preserved. This assessment uses the requested physical criteria and explicit visual review; independent raw replay measurements are unchanged.",
+  "physics_controls": 9629,
+  "duration_seconds": 48.145,
+  "minimum_final_1s_foot_loads_N": [
+    202.5260320150283,
+    128.3104295160382
+  ],
+  "mocap_count": 0,
+  "tendon_count": 0,
+  "gravity_mps2": [
+    0.0,
+    0.0,
+    -9.81
+  ]
+}

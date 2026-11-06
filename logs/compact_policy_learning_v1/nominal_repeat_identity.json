@@ -1,0 +1,18 @@
+{
+  "2": {
+    "initial_qpos": true,
+    "initial_qvel": true,
+    "ctrl_physics": true,
+    "qpos": true,
+    "qvel": true,
+    "contacts": true
+  },
+  "3": {
+    "initial_qpos": true,
+    "initial_qvel": true,
+    "ctrl_physics": true,
+    "qpos": true,
+    "qvel": true,
+    "contacts": true
+  }
+}

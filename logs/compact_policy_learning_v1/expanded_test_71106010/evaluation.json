@@ -1,0 +1,249 @@
+{
+  "duration_s": 48.145,
+  "maximum_COM_lift_m": 0.7877609435494992,
+  "exact_qpos_error": 0.0,
+  "exact_qvel_error": 0.0,
+  "forbidden_object_impulses_Ns": {},
+  "robot_self_impulse_Ns": 0,
+  "invalid_terrain_impulse_Ns": 0.0,
+  "airborne_intervals_s": [
+    [
+      3.13,
+      39.105000000000004
+    ]
+  ],
+  "final_object_linear_speed_mps": 5.303038149844868e-05,
+  "final_object_angular_speed_radps": 0.0003378630771031507,
+  "final_robot_root_speed": 0.008311767481484955,
+  "final_1s_object_linear_speed_max_mps": 9.903529338681558e-05,
+  "final_1s_object_angular_speed_max_radps": 0.0006373484144131114,
+  "maximum_external_force": 0.0,
+  "equalities": 0,
+  "native_limits_note": "All force limits are the preserved source model limits; no model arrays were modified.",
+  "any_hand_retained": {
+    "interval_s": [
+      17.245,
+      23.605
+    ],
+    "duration_s": 6.36,
+    "root_net_displacement_m": 2.7500295366358736,
+    "qualifying_replants": [
+      {
+        "side": "left",
+        "liftoff_s": 17.38,
+        "replant_s": 17.595,
+        "clearance_m": 0.05324546961377305,
+        "same_foot_relocation_m": 0.3506585591304181
+      },
+      {
+        "side": "right",
+        "liftoff_s": 17.615000000000002,
+        "replant_s": 18.375,
+        "clearance_m": 0.06231402210740513,
+        "same_foot_relocation_m": 0.7833702832103607
+      },
+      {
+        "side": "left",
+        "liftoff_s": 18.385,
+        "replant_s": 18.815,
+        "clearance_m": 0.08281688075756014,
+        "same_foot_relocation_m": 0.5746349380037261
+      },
+      {
+        "side": "right",
+        "liftoff_s": 19.055,
+        "replant_s": 19.625,
+        "clearance_m": 0.0623416742351672,
+        "same_foot_relocation_m": 0.4482830534256314
+      },
+      {
+        "side": "left",
+        "liftoff_s": 19.71,
+        "replant_s": 20.175,
+        "clearance_m": 0.07133789997097822,
+        "same_foot_relocation_m": 0.6454848723644284
+      },
+      {
+        "side": "right",
+        "liftoff_s": 20.195,
+        "replant_s": 21.045,
+        "clearance_m": 0.0647471967337514,
+        "same_foot_relocation_m": 0.7143063318689366
+      },
+      {
+        "side": "left",
+        "liftoff_s": 21.085,
+        "replant_s": 21.59,
+        "clearance_m": 0.09111413367119188,
+        "same_foot_relocation_m": 0.7020381404639499
+      },
+      {
+        "side": "right",
+        "liftoff_s": 21.625,
+        "replant_s": 22.405,
+        "clearance_m": 0.05667742921951534,
+        "same_foot_relocation_m": 0.7944049118294453
+      },
+      {
+        "side": "left",
+        "liftoff_s": 22.405,
+        "replant_s": 22.795,
+        "clearance_m": 0.06621131890003852,
+        "same_foot_relocation_m": 0.5445140267766343
+      },
+      {
+        "side": "right",
+        "liftoff_s": 23.005,
+        "replant_s": 23.435,
+        "clearance_m": 0.056869159669151896,
+        "same_foot_relocation_m": 0.20852580608815394
+      }
+    ],
+    "replant_order": [
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right"
+    ],
+    "longest_consecutive_alternating_replants": 10,
+    "terrain_contact_steps": 0
+  },
+  "bilateral_retained": {
+    "interval_s": [
+      17.245,
+      23.605
+    ],
+    "duration_s": 6.36,
+    "root_net_displacement_m": 2.7500295366358736,
+    "qualifying_replants": [
+      {
+        "side": "left",
+        "liftoff_s": 17.38,
+        "replant_s": 17.595,
+        "clearance_m": 0.05324546961377305,
+        "same_foot_relocation_m": 0.3506585591304181
+      },
+      {
+        "side": "right",
+        "liftoff_s": 17.615000000000002,
+        "replant_s": 18.375,
+        "clearance_m": 0.06231402210740513,
+        "same_foot_relocation_m": 0.7833702832103607
+      },
+      {
+        "side": "left",
+        "liftoff_s": 18.385,
+        "replant_s": 18.815,
+        "clearance_m": 0.08281688075756014,
+        "same_foot_relocation_m": 0.5746349380037261
+      },
+      {
+        "side": "right",
+        "liftoff_s": 19.055,
+        "replant_s": 19.625,
+        "clearance_m": 0.0623416742351672,
+        "same_foot_relocation_m": 0.4482830534256314
+      },
+      {
+        "side": "left",
+        "liftoff_s": 19.71,
+        "replant_s": 20.175,
+        "clearance_m": 0.07133789997097822,
+        "same_foot_relocation_m": 0.6454848723644284
+      },
+      {
+        "side": "right",
+        "liftoff_s": 20.195,
+        "replant_s": 21.045,
+        "clearance_m": 0.0647471967337514,
+        "same_foot_relocation_m": 0.7143063318689366
+      },
+      {
+        "side": "left",
+        "liftoff_s": 21.085,
+        "replant_s": 21.59,
+        "clearance_m": 0.09111413367119188,
+        "same_foot_relocation_m": 0.7020381404639499
+      },
+      {
+        "side": "right",
+        "liftoff_s": 21.625,
+        "replant_s": 22.405,
+        "clearance_m": 0.05667742921951534,
+        "same_foot_relocation_m": 0.7944049118294453
+      },
+      {
+        "side": "left",
+        "liftoff_s": 22.405,
+        "replant_s": 22.795,
+        "clearance_m": 0.06621131890003852,
+        "same_foot_relocation_m": 0.5445140267766343
+      },
+      {
+        "side": "right",
+        "liftoff_s": 23.005,
+        "replant_s": 23.435,
+        "clearance_m": 0.056869159669151896,
+        "same_foot_relocation_m": 0.20852580608815394
+      }
+    ],
+    "replant_order": [
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right"
+    ],
+    "longest_consecutive_alternating_replants": 10,
+    "terrain_contact_steps": 0
+  },
+  "explicit_walk_phase_realized_s": [
+    17.245,
+    23.605
+  ],
+  "root_net_entire_realized_walk_phase_m": 2.7500295366358736,
+  "walking_phase_note": "The entire phase can include retention failure; only the force-bounded intervals above count as retained carry.",
+  "numeric_gates": {
+    "full_execution": true,
+    "initial_ground_support": true,
+    "terrain_free_lift_over_5cm": true,
+    "actual_retained_root_walk_over_2m": true,
+    "alternating_footsteps_at_least_5": true,
+    "airborne_and_bilateral_grip_through_walk": true,
+    "continuous_physical_grasp_while_airborne": true,
+    "support_gated_opening": true,
+    "physical_open_hands": true,
+    "clean_withdrawal": true,
+    "stable_final_robot": true,
+    "stable_final_object": true,
+    "zero_forbidden_object_impulse": true,
+    "zero_self_and_invalid_terrain": true,
+    "independent_exact_replay": true,
+    "physical_model_integrity": true,
+    "effort_limits_preserved": true
+  },
+  "complete_numeric_success": true,
+  "failed_gates": [],
+  "minimum_walk_hand_force_N": [
+    0.6014453980144648,
+    0.3760317614495502
+  ],
+  "last_hand_contact_s": 40.44,
+  "terrain_support_start_s": 39.145,
+  "ground_load_at_opening_N": 0.5885918056217745,
+  "final_root_linear_speed_max_mps": 0.0028625248389453416,
+  "final_root_angular_speed_max_radps": 0.010467355087719349,
+  "visual_review_complete": true,
+  "full_video_rendered": true
+}

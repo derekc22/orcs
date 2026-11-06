@@ -1,0 +1,27 @@
+{
+  "source": "logs/compact_policy_learning_v1/nominal_v1_cached/rollout.mp4",
+  "sha256": "3f5140cfe095134a3db85ad6c5aaf62402523196715257ac9d2dd7ebcfa02eb2",
+  "frames": 2407,
+  "fps": 50.0,
+  "every_frame_included_once": true,
+  "files": [
+    "frames_0000_0143.jpg",
+    "frames_0144_0287.jpg",
+    "frames_0288_0431.jpg",
+    "frames_0432_0575.jpg",
+    "frames_0576_0719.jpg",
+    "frames_0720_0863.jpg",
+    "frames_0864_1007.jpg",
+    "frames_1008_1151.jpg",
+    "frames_1152_1295.jpg",
+    "frames_1296_1439.jpg",
+    "frames_1440_1583.jpg",
+    "frames_1584_1727.jpg",
+    "frames_1728_1871.jpg",
+    "frames_1872_2015.jpg",
+    "frames_2016_2159.jpg",
+    "frames_2160_2303.jpg",
+    "frames_2304_2406.jpg"
+  ],
+  "inspection_complete": true
+}

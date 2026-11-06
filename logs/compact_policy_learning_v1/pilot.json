@@ -1,0 +1,114 @@
+{
+  "source": "/home/learning/Documents/orcs-fork/logs/compact_place_refinement_v1/complete_execution/rollout.npz",
+  "baseline_commit": "f65e57e648db0a0d8728c8650b42a597797da9b5",
+  "source_sha256": "3200ef0d7f6c61b93bc233ab487f83fa3cfa58defc70858814437cfe59288092",
+  "model_sha256": "f3bd7d22614e866158635253a469817f3eed8e604a9e1e58234ededcf4833bab",
+  "reference_exact": true,
+  "states": 9629,
+  "nv": 49,
+  "nu": 37,
+  "arguments": {
+    "mode": "pilot",
+    "workers": 8,
+    "stride": 4,
+    "samples": 256,
+    "seed": 11052026,
+    "cost_profile": "default",
+    "output": "/home/learning/Documents/orcs-fork/logs/compact_policy_learning_v1/policy.npz"
+  },
+  "training_transitions": 3328,
+  "validation": [
+    {
+      "block": 0,
+      "time_s": 0.0,
+      "relative_validation_error": 0.9372270775481198,
+      "restored_nominal_error": 0.0,
+      "fit_residual": 0.49818694889240384
+    },
+    {
+      "block": 125,
+      "time_s": 2.5,
+      "relative_validation_error": 0.1249563106482187,
+      "restored_nominal_error": 0.0,
+      "fit_residual": 0.10476561902381161
+    },
+    {
+      "block": 500,
+      "time_s": 10.0,
+      "relative_validation_error": 0.04051862242523004,
+      "restored_nominal_error": 0.0,
+      "fit_residual": 0.029377608589912695
+    },
+    {
+      "block": 850,
+      "time_s": 17.0,
+      "relative_validation_error": 0.2763044270534613,
+      "restored_nominal_error": 0.0,
+      "fit_residual": 0.20028080474668608
+    },
+    {
+      "block": 875,
+      "time_s": 17.5,
+      "relative_validation_error": 0.016194719189296956,
+      "restored_nominal_error": 0.0,
+      "fit_residual": 0.01980385060006013
+    },
+    {
+      "block": 1050,
+      "time_s": 21.0,
+      "relative_validation_error": 0.006170555297036671,
+      "restored_nominal_error": 0.0,
+      "fit_residual": 0.0054209841470909395
+    },
+    {
+      "block": 1175,
+      "time_s": 23.5,
+      "relative_validation_error": 0.006050508033434951,
+      "restored_nominal_error": 0.0,
+      "fit_residual": 0.007514332413835529
+    },
+    {
+      "block": 1475,
+      "time_s": 29.5,
+      "relative_validation_error": 0.005921652188644461,
+      "restored_nominal_error": 0.0,
+      "fit_residual": 0.0034364902215155446
+    },
+    {
+      "block": 1700,
+      "time_s": 34.0,
+      "relative_validation_error": 0.03628304550344539,
+      "restored_nominal_error": 0.0,
+      "fit_residual": 0.028553143463407052
+    },
+    {
+      "block": 1900,
+      "time_s": 38.0,
+      "relative_validation_error": 0.02871750454549093,
+      "restored_nominal_error": 0.0,
+      "fit_residual": 0.02908845804129139
+    },
+    {
+      "block": 2000,
+      "time_s": 40.0,
+      "relative_validation_error": 0.1354713580879628,
+      "restored_nominal_error": 0.0,
+      "fit_residual": 0.10041523637173788
+    },
+    {
+      "block": 2200,
+      "time_s": 44.0,
+      "relative_validation_error": 0.5384320700743582,
+      "restored_nominal_error": 0.0,
+      "fit_residual": 0.19439628196646164
+    },
+    {
+      "block": 2350,
+      "time_s": 47.0,
+      "relative_validation_error": 0.2405507943114492,
+      "restored_nominal_error": 0.0,
+      "fit_residual": 0.16728898216373436
+    }
+  ],
+  "elapsed_s": 3.3825454711914062
+}

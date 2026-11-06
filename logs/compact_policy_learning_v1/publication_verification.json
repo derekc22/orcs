@@ -1,0 +1,36 @@
+{
+  "status": "SUCCESS",
+  "verification_runs": 1,
+  "retrained": false,
+  "additional_experiments": false,
+  "commands": [
+    [
+      ".venv/bin/python",
+      "scripts/compact_policy_learning_v1/replay.py",
+      "/home/learning/Documents/orcs-fork/logs/compact_policy_learning_v1/complete_execution/rollout.npz",
+      "--video"
+    ],
+    [
+      ".venv/bin/python",
+      "scripts/compact_integration_v2/audit.py",
+      "/home/learning/Documents/orcs-fork/logs/compact_policy_learning_v1/complete_execution"
+    ]
+  ],
+  "elapsed_s": 55.62017321586609,
+  "task_assessment": "SUCCESS",
+  "all_task_gates": true,
+  "exact_qpos_error": 0.0,
+  "exact_qvel_error": 0.0,
+  "forbidden_object_impulse_Ns": 0.0,
+  "robot_self_impulse_Ns": 0,
+  "invalid_terrain_impulse_Ns": 0.0,
+  "root_walking_displacement_m": 2.750144043440257,
+  "alternating_steps": 10,
+  "accepted_artifact_hashes_unchanged": true,
+  "hashes": {
+    "logs/compact_policy_learning_v1/complete_execution/rollout.npz": "ab2a1c70f8d39c6412b5a5236a5f21b5164ec15d310d4f9bf5f9773265f3fbf8",
+    "logs/compact_policy_learning_v1/complete_execution/rollout_model.mjb": "f3bd7d22614e866158635253a469817f3eed8e604a9e1e58234ededcf4833bab",
+    "logs/compact_policy_learning_v1/complete_execution/rollout.mp4": "3f5140cfe095134a3db85ad6c5aaf62402523196715257ac9d2dd7ebcfa02eb2",
+    "logs/compact_policy_learning_v1/selected_policy.npz": "841a42fe5f4e2f163f6b279c090557293bd7b835b9a9f964a7881ed5511e3dbe"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "status": "SUCCESS",
+  "protected_baseline": "/home/learning/Documents/orcs-fork/logs/compact_place_refinement_v1/complete_execution/rollout.npz",
+  "policy": "/home/learning/Documents/orcs-fork/logs/compact_policy_learning_v1/selected_policy.npz",
+  "nominal_repeat_successes": 3,
+  "nominal_repeats": 3,
+  "independent_groups": {
+    "small": {
+      "valid_trials": 10,
+      "trials": 10,
+      "numeric_successes": 10,
+      "fully_audited_successes": 0,
+      "visual_reviewed_trials": 0,
+      "feedback_disabled_successes": 0,
+      "retained_root_walk_range_m": [
+        2.7500853426246246,
+        2.7506543743153284
+      ],
+      "minimum_grip_N": [
+        0.5971680343255373,
+        0.3752334728165253
+      ],
+      "no_learning_failures": true
+    },
+    "modest": {
+      "valid_trials": 10,
+      "trials": 10,
+      "numeric_successes": 10,
+      "fully_audited_successes": 10,
+      "visual_reviewed_trials": 10,
+      "feedback_disabled_successes": 0,
+      "retained_root_walk_range_m": [
+        2.749126732997308,
+        2.7509941236420254
+      ],
+      "minimum_grip_N": [
+        0.5966910645326299,
+        0.3752299639651803
+      ],
+      "no_learning_failures": true
+    }
+  },
+  "training_runs": 1,
+  "checkpoint_tuning_runs": 0,
+  "visual_coverage": "All 2407 nominal video frames directly reviewed in 17 full-view sheets; every frame of all ten modest-profile videos directly reviewed in five task-view panels each, plus each larger full-view montage. Small-profile trials have independent full physical replay; their separate videos are not claimed fully reviewed.",
+  "limits": "Local reference-conditioned simulation policy with privileged current robot/object state. Tested xy/yaw/native-joint/velocity envelope only; root/box roll/pitch/height, changed goals, runtime disturbances and hardware transfer are not established.",
+  "complete_nominal": "/home/learning/Documents/orcs-fork/logs/compact_policy_learning_v1/complete_execution",
+  "total_recorded_trials": 51,
+  "additional_nominal_diagnostic_successes": 1
+}

@@ -1,0 +1,32 @@
+{
+  "reason": "Small profile: all three development numerical passes and ten held-out online completions. Evaluate a wider envelope with the SAME frozen policy; no retraining or selection.",
+  "profile": {
+    "root_xy_m": 0.005,
+    "root_yaw_rad": 0.017453292519943295,
+    "joint_rad": 0.005,
+    "joint_velocity_radps": 0.02,
+    "root_velocity_mps": 0.005,
+    "root_angular_radps": 0.005,
+    "box_xy_m": 0.005,
+    "box_yaw_rad": 0.017453292519943295
+  },
+  "development_seeds": [
+    1105201,
+    1105202,
+    1105203
+  ],
+  "independent_test_seeds": [
+    71106001,
+    71106002,
+    71106003,
+    71106004,
+    71106005,
+    71106006,
+    71106007,
+    71106008,
+    71106009,
+    71106010
+  ],
+  "checkpoint_sha256": "841a42fe5f4e2f163f6b279c090557293bd7b835b9a9f964a7881ed5511e3dbe",
+  "checkpoint_frozen": true
+}

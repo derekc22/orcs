@@ -1,0 +1,29 @@
+{
+  "left": {
+    "max_COM_motion_in_plate_m": 0.026684386423240763,
+    "max_relative_rotation_deg": 8.976211308952003,
+    "final_relative_rotation_deg": 2.020054354250807,
+    "initial_contact_anchor_plate_m": [
+      0.042578695286163704,
+      -0.0516504316757421,
+      -0.013609699114694214
+    ],
+    "max_material_anchor_tangential_motion_m": 0.008057009978393733,
+    "final_material_anchor_tangential_motion_m": 0.0013496054552523985,
+    "max_material_anchor_normal_motion_m": 0.008691869442078575
+  },
+  "right": {
+    "max_COM_motion_in_plate_m": 0.021088994063136666,
+    "max_relative_rotation_deg": 6.866906708581774,
+    "final_relative_rotation_deg": 2.2897643581267024,
+    "initial_contact_anchor_plate_m": [
+      0.02496410547059876,
+      -0.04880587525438598,
+      -0.01509132324159614
+    ],
+    "max_material_anchor_tangential_motion_m": 0.004983593424386824,
+    "final_material_anchor_tangential_motion_m": 0.0022563004856487887,
+    "max_material_anchor_normal_motion_m": 0.006818505487220555
+  },
+  "method": "Initial contact center weighted by palm-pad forces reconstructed at the first walking state. The same BOX MATERIAL POINT is followed in the actual moving plate frame at every walking state. These geometric diagnostics are not extra real-state edits or supports. They measure bounded relative motion, not total sliding path length."
+}
