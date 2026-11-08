@@ -1,0 +1,226 @@
+{
+  "seed": 42,
+  "scale": 0.6,
+  "centroidal_guard_ticks": 1,
+  "compiler_sha256": "d020bceabdbe75b19977186bc809a329dc04a0e94827fe95639cb7ad3137f9f8",
+  "base_reference": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_authority_v1/feasible_42.npz",
+  "base_sha256": "eda3dd14b3d1da9a8c82dd252445878e55c1385a873b49eb050959aa1a6a922e",
+  "diffusion": {
+    "sample": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_v1/proposals/sample_42.npz",
+    "sample_sha256": "28481e7cf06db9a028b4dd6402a0466d8aee8eae193dc285475377f9972b6d6f",
+    "calibration_sha256": "8753b728f4c222d6d7791b43ae8c0eac57ac97f67e372455b3811fa0cb457da2",
+    "frozen_checkpoint_sha256": "36470e72206000a1305d88a0c0bf8e5e6c73d12180b3de9f69d49efa4ae0d442",
+    "mode_gains": [
+      100.0,
+      60.0,
+      50.0
+    ],
+    "mode_limits": [
+      0.008,
+      0.025,
+      0.06
+    ],
+    "phases": {
+      "pickup": {
+        "physical_interval_s": [
+          2.7,
+          8.0
+        ],
+        "native_interval_frames": [
+          0,
+          105
+        ],
+        "requested_peak": [
+          0.004505904521044204,
+          0.011103154492211758,
+          0.006765381337614845
+        ],
+        "clock_paused_fraction": 0.0,
+        "maximum_clock_speed": 1.0
+      },
+      "carry": {
+        "physical_interval_s": [
+          17.245,
+          23.605
+        ],
+        "native_interval_frames": [
+          105,
+          225
+        ],
+        "requested_peak": [
+          0.0024941201872870455,
+          0.01022117750322278,
+          0.005633498123114244
+        ],
+        "clock_paused_fraction": 0.204241948153967,
+        "maximum_clock_speed": 1.5172889449061704
+      },
+      "placement": {
+        "physical_interval_s": [
+          33.505,
+          38.8
+        ],
+        "native_interval_frames": [
+          225,
+          299
+        ],
+        "requested_peak": [
+          0.0029836556175068412,
+          0.014832302669940171,
+          0.010661465280533359
+        ],
+        "clock_paused_fraction": 0.0,
+        "maximum_clock_speed": 1.0
+      }
+    }
+  },
+  "coordinates": [
+    "pelvis height",
+    "pelvis world yaw",
+    "waist yaw"
+  ],
+  "dependent_coordinates": "Root xy preserves whole-system horizontal COM; leg and arm changes preserve both sole and hand transforms. These are constraint responses, not independent diffusion commands.",
+  "maximum_foot_or_hand_position_residual_m": 0.00021248885714130343,
+  "maximum_foot_or_hand_angle_residual_rad": 0.00011123756709268769,
+  "maximum_com_xy_change_m": 5.502857650420524e-05,
+  "maximum_added_joint_limit_excursion_rad": 1.000088900582341e-12,
+  "maximum_added_joint_velocity_radps": 0.7000000002000017,
+  "maximum_added_root_velocity_mps": 0.04000000020000002,
+  "maximum_feedforward_increment_rad": 0.17573680508319628,
+  "maximum_incremental_joint_torque_Nm": 7.024690783687152,
+  "maximum_flight_additional_external_moment_Nm": 0.10124996551900031,
+  "flight_diagnostics": [
+    {
+      "ticks": [
+        3450,
+        3458
+      ],
+      "extra_angular_momentum_change": 6.481394633226072e-14,
+      "extra_mean_external_moment_Nm": 2.6068900449496407e-13,
+      "extra_com_displacement_change_m": 6.377745716588144e-16
+    },
+    {
+      "ticks": [
+        3623,
+        3626
+      ],
+      "extra_angular_momentum_change": 0.0001501541321914731,
+      "extra_mean_external_moment_Nm": 0.01501541321914731,
+      "extra_com_displacement_change_m": 5.346084256382752e-07
+    },
+    {
+      "ticks": [
+        3707,
+        3720
+      ],
+      "extra_angular_momentum_change": 0.0022671949268118128,
+      "extra_mean_external_moment_Nm": 0.023533473136308984,
+      "extra_com_displacement_change_m": 6.5821978801980255e-06
+    },
+    {
+      "ticks": [
+        3751,
+        3763
+      ],
+      "extra_angular_momentum_change": 0.001924482353163582,
+      "extra_mean_external_moment_Nm": 0.03499058823933786,
+      "extra_com_displacement_change_m": 2.2566028325363336e-05
+    },
+    {
+      "ticks": [
+        3863,
+        3874
+      ],
+      "extra_angular_momentum_change": 0.008233217946732332,
+      "extra_mean_external_moment_Nm": 0.10124996551900031,
+      "extra_com_displacement_change_m": 0.00019987516259304725
+    },
+    {
+      "ticks": [
+        4139,
+        4147
+      ],
+      "extra_angular_momentum_change": 0.0003377262686179713,
+      "extra_mean_external_moment_Nm": 0.009242278527603471,
+      "extra_com_displacement_change_m": 5.639094974204898e-06
+    },
+    {
+      "ticks": [
+        4281,
+        4284
+      ],
+      "extra_angular_momentum_change": 0.0003979351329310496,
+      "extra_mean_external_moment_Nm": 0.03979351329310496,
+      "extra_com_displacement_change_m": 6.011701439638929e-07
+    },
+    {
+      "ticks": [
+        4285,
+        4288
+      ],
+      "extra_angular_momentum_change": 0.0002010556368735458,
+      "extra_mean_external_moment_Nm": 0.02010556368735458,
+      "extra_com_displacement_change_m": 1.7192013727710383e-06
+    },
+    {
+      "ticks": [
+        4289,
+        4291
+      ],
+      "extra_angular_momentum_change": 0.0004607168808490841,
+      "extra_mean_external_moment_Nm": 0.09214337616981683,
+      "extra_com_displacement_change_m": 1.192490664779108e-06
+    },
+    {
+      "ticks": [
+        4395,
+        4402
+      ],
+      "extra_angular_momentum_change": 0.0004630097163155684,
+      "extra_mean_external_moment_Nm": 0.015433657210518948,
+      "extra_com_displacement_change_m": 8.004688610803857e-07
+    },
+    {
+      "ticks": [
+        4435,
+        4440
+      ],
+      "extra_angular_momentum_change": 0.0004062639540557707,
+      "extra_mean_external_moment_Nm": 0.020313197702788534,
+      "extra_com_displacement_change_m": 3.874217133046845e-06
+    },
+    {
+      "ticks": [
+        4511,
+        4518
+      ],
+      "extra_angular_momentum_change": 0.00017741423527863474,
+      "extra_mean_external_moment_Nm": 0.005913807842621159,
+      "extra_com_displacement_change_m": 1.6483239851087568e-07
+    },
+    {
+      "ticks": [
+        4551,
+        4559
+      ],
+      "extra_angular_momentum_change": 0.000169281043034285,
+      "extra_mean_external_moment_Nm": 0.004836601229551,
+      "extra_com_displacement_change_m": 2.759827520963984e-06
+    },
+    {
+      "ticks": [
+        4642,
+        4659
+      ],
+      "extra_angular_momentum_change": 2.5470960670923106e-05,
+      "extra_mean_external_moment_Nm": 0.00013419138058624717,
+      "extra_com_displacement_change_m": 1.046086821259408e-07
+    }
+  ],
+  "object_reference_bit_identical": true,
+  "gripper_reference_bit_identical": true,
+  "gripper_feedforward_bit_identical": true,
+  "physics_rate_samples_preserved": true,
+  "actual_ORCS_required": true,
+  "pass_cheap_gate": true
+}

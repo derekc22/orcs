@@ -1,0 +1,241 @@
+{
+  "purpose": "Selectively preserve verified Goal 5 implementation, attribution and lightweight physical verification evidence in Git, without rerunning engineering.",
+  "verified_run_base_commit": "41b76ac978a58dae03985cf2188bbc212c390274",
+  "task": "Orcs-Uolm-Compact-Diffusion-Feedback",
+  "original_recorded_status": "SUCCESS",
+  "reproduction_instructions": "scripts/compact_diffusion_body_v1/README.md",
+  "reproduction_command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MUJOCO_GL=egl .venv/bin/python -B scripts/compact_diffusion_body_v1/reproduce.py --out logs/compact_diffusion_body_v1_reproduction",
+  "committed_source": [
+    "scripts/compact_diffusion_body_v1/README.md",
+    "scripts/compact_diffusion_body_v1/plot.py",
+    "scripts/compact_diffusion_body_v1/refine.py",
+    "scripts/compact_diffusion_body_v1/report.py",
+    "scripts/compact_diffusion_body_v1/reproduce.py"
+  ],
+  "committed_original_evidence": [
+    "logs/compact_diffusion_body_v1/goal5_assessment.json",
+    "logs/compact_diffusion_body_v1/goal5_manifest.json",
+    "logs/compact_diffusion_body_v1/preservation_before.json",
+    "logs/compact_diffusion_body_v1/body_final_42.json",
+    "logs/compact_diffusion_body_v1/body_final_43.json",
+    "logs/compact_diffusion_body_v1/feasible_42.json",
+    "logs/compact_diffusion_body_v1/feasible_43.json",
+    "logs/compact_diffusion_body_v1/disabled.json",
+    "logs/compact_diffusion_body_v1/disabled/execution.json",
+    "logs/compact_diffusion_body_v1/disabled/physical_screen.json",
+    "logs/compact_diffusion_body_v1/inference_recheck/provenance.json",
+    "logs/compact_diffusion_body_v1/executed_body_authority.pdf",
+    "logs/compact_diffusion_body_v1/execution_42/execution.json",
+    "logs/compact_diffusion_body_v1/execution_42/task_assessment.json",
+    "logs/compact_diffusion_body_v1/execution_42/rollout_verification.json",
+    "logs/compact_diffusion_body_v1/execution_42/model_equivalence.json",
+    "logs/compact_diffusion_body_v1/execution_42/baseline_preservation.json",
+    "logs/compact_diffusion_body_v1/execution_42/video_metadata.json",
+    "logs/compact_diffusion_body_v1/replay_42/execution.json",
+    "logs/compact_diffusion_body_v1/execution_43/execution.json",
+    "logs/compact_diffusion_body_v1/execution_43/task_assessment.json",
+    "logs/compact_diffusion_body_v1/execution_43/rollout_verification.json",
+    "logs/compact_diffusion_body_v1/execution_43/model_equivalence.json",
+    "logs/compact_diffusion_body_v1/execution_43/baseline_preservation.json",
+    "logs/compact_diffusion_body_v1/execution_43/video_metadata.json",
+    "logs/compact_diffusion_body_v1/replay_43/execution.json"
+  ],
+  "evidence_policy": "Existing SUCCESS assessments, source-attribution results, independent replay records and original manifests were inspected. Only the selected small files were hashed for consistency. No inference, optimization, simulation, training, full reproduction, dependency installation or large-artifact verification was run.",
+  "attribution_location": {
+    "assessment": "logs/compact_diffusion_body_v1/goal5_assessment.json",
+    "fields": [
+      "comparisons",
+      "authority_expansion",
+      "arm_object_retention",
+      "body_target_tracking",
+      "attribution",
+      "body_comparison_interpretation"
+    ]
+  },
+  "original_manifest_scope": "goal5_manifest.json and preservation_before.json remain byte-identical historical records of the successful run. They also name local-only data and screened-out trial artifacts; they do not enumerate the Git bundle. Historical git_head and tracked_files_unchanged describe verification before this preservation commit.",
+  "existing_source_dependencies": [
+    "scripts/compact_diffusion_v1/proposals.py",
+    "scripts/compact_diffusion_v1/refine.py",
+    "scripts/compact_diffusion_v1/evidence.py",
+    "scripts/compact_orcs_v1/run.py",
+    "scripts/compact_orcs_v1/render.py",
+    "scripts/compact_orcs_v1/validate.py",
+    "scripts/compact_orcs_v1/model_audit.py",
+    "scripts/compact_integration_v1/metrics.py",
+    "src/orcs/tasks/uolm/compact/model.py",
+    "src/orcs/tasks/uolm/compact/runtime.py",
+    "src/orcs/tasks/uolm/compact/diffusion.py",
+    "src/orcs/tasks/uolm/diffusion_runtime.py"
+  ],
+  "retained_existing_data_dependencies": [
+    {
+      "path": "logs/compact_diffusion_authority_v1/feasible_42.npz",
+      "size_bytes": 4423345,
+      "already_tracked": false,
+      "sha256_from_existing_provenance": "eda3dd14b3d1da9a8c82dd252445878e55c1385a873b49eb050959aa1a6a922e"
+    },
+    {
+      "path": "logs/compact_diffusion_authority_v1/feasible_43.npz",
+      "size_bytes": 4411466,
+      "already_tracked": false,
+      "sha256_from_existing_provenance": "f4a81d7142fa7a84f531b52479a5658dd29cd648b53a4f3ed39206c67c69b919"
+    },
+    {
+      "path": "logs/compact_diffusion_authority_v1/disabled.npz",
+      "size_bytes": 9053248,
+      "already_tracked": false,
+      "sha256_from_existing_provenance": "df00333519bc5572d1293c53fb63e41f46347d03ad920fd1d06bf0b13a2cf25b"
+    },
+    {
+      "path": "logs/compact_diffusion_authority_v1/disabled/rollout.npz",
+      "size_bytes": 5142874,
+      "already_tracked": false,
+      "sha256_from_existing_provenance": "4a38326d59815c611aa5fb11d8bd9a87894b803824d0fed89900e44fdd2a2bcd"
+    },
+    {
+      "path": "logs/compact_diffusion_primary_v1/goal3_assessment.json",
+      "size_bytes": 53305,
+      "already_tracked": false,
+      "sha256_from_existing_provenance": "4b86cb5ae6b4dde391895bbfa8ff088b8c33d440f8a6515df91b4a606bc6ab79"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/selected_policy.npz",
+      "size_bytes": 76284486,
+      "already_tracked": true,
+      "sha256_from_existing_provenance": "841a42fe5f4e2f163f6b279c090557293bd7b835b9a9f964a7881ed5511e3dbe"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/provenance.json",
+      "size_bytes": 2422,
+      "already_tracked": true,
+      "sha256_from_existing_provenance": null
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/complete_execution/rollout_model.mjb",
+      "size_bytes": 90260222,
+      "already_tracked": true,
+      "sha256_from_existing_provenance": "f3bd7d22614e866158635253a469817f3eed8e604a9e1e58234ededcf4833bab"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/complete_execution/rollout.npz",
+      "size_bytes": 10829721,
+      "already_tracked": true,
+      "sha256_from_existing_provenance": "ab2a1c70f8d39c6412b5a5236a5f21b5164ec15d310d4f9bf5f9773265f3fbf8"
+    },
+    {
+      "path": "logs/compact_orcs_v1/complete_execution/rollout.npz",
+      "size_bytes": 5142874,
+      "already_tracked": false,
+      "sha256_from_existing_provenance": "4a38326d59815c611aa5fb11d8bd9a87894b803824d0fed89900e44fdd2a2bcd"
+    },
+    {
+      "path": "logs/compact_orcs_v1/complete_execution/rollout_locomotion_trace.npz",
+      "size_bytes": 1835967,
+      "already_tracked": false,
+      "sha256_from_existing_provenance": "77929f3e8f6d1379e527ca67af5e83818bc0578b662b8b042b46883041a6600e"
+    },
+    {
+      "path": "logs/compact_diffusion_v1/proposals/sample_42.npz",
+      "size_bytes": 78842,
+      "already_tracked": true,
+      "sha256_from_existing_provenance": "28481e7cf06db9a028b4dd6402a0466d8aee8eae193dc285475377f9972b6d6f"
+    },
+    {
+      "path": "logs/compact_diffusion_v1/proposals/sample_43.npz",
+      "size_bytes": 78793,
+      "already_tracked": true,
+      "sha256_from_existing_provenance": "ab93490535c1b809d140fba2c11c777b50e1ec5c3638e60f4580e4318ded7282"
+    },
+    {
+      "path": "logs/compact_diffusion_v1/proposals/provenance.json",
+      "size_bytes": 2409,
+      "already_tracked": true,
+      "sha256_from_existing_provenance": "5cac93e3d147dc783468f6fd0146cdd49344205b69d8bc0006adef18afb7da42"
+    },
+    {
+      "path": "logs/compact_diffusion_v1/calibration/sample_0.npz",
+      "size_bytes": 78836,
+      "already_tracked": true,
+      "sha256_from_existing_provenance": "8753b728f4c222d6d7791b43ae8c0eac57ac97f67e372455b3811fa0cb457da2"
+    },
+    {
+      "path": "logs/compact_diffusion_authority_v1/execution_42/rollout.npz",
+      "size_bytes": 4495108,
+      "already_tracked": false,
+      "sha256_from_existing_provenance": "898c9b324c3644a019ddc361a1b1982f65b9d99a1de64cc471b6510e282df24f"
+    },
+    {
+      "path": "logs/compact_diffusion_authority_v1/execution_42/rollout_locomotion_trace.npz",
+      "size_bytes": 1837375,
+      "already_tracked": false,
+      "sha256_from_existing_provenance": "92fbb523c129250492d6c3661ad6229136ab5aad82c7881977ed96720a27100f"
+    },
+    {
+      "path": "logs/compact_diffusion_authority_v1/execution_42/rollout_verification_trace.npz",
+      "size_bytes": 1642731,
+      "already_tracked": false,
+      "sha256_from_existing_provenance": "eb87a99f1afc4f43c1a8e5717dc937e0cf0286cfed82497261210ac0a1eba5d0"
+    },
+    {
+      "path": "logs/compact_diffusion_authority_v1/execution_42/task_assessment.json",
+      "size_bytes": 2208,
+      "already_tracked": true,
+      "sha256_from_existing_provenance": "82d29295cb66c720b6e1dee941fa2343fa2e022612848f43c68ad51953743ab0"
+    },
+    {
+      "path": "logs/compact_diffusion_authority_v1/execution_43/rollout.npz",
+      "size_bytes": 4474152,
+      "already_tracked": false,
+      "sha256_from_existing_provenance": "d09239ec7d85ee5738a6add3a5daccc9ac280e2ed583ae455378ee467a934ae0"
+    },
+    {
+      "path": "logs/compact_diffusion_authority_v1/execution_43/rollout_locomotion_trace.npz",
+      "size_bytes": 1835475,
+      "already_tracked": false,
+      "sha256_from_existing_provenance": "8b7bf4ec9ce4e2986e39350bf536c51ec15c1202b8445a1dfa7b1ff0a253fecb"
+    },
+    {
+      "path": "logs/compact_diffusion_authority_v1/execution_43/rollout_verification_trace.npz",
+      "size_bytes": 1620383,
+      "already_tracked": false,
+      "sha256_from_existing_provenance": "9c38dfb13197e2c4405e3c464ac2406334355baa16cb0d38b28e876bd55e44c3"
+    },
+    {
+      "path": "logs/compact_diffusion_authority_v1/execution_43/task_assessment.json",
+      "size_bytes": 2220,
+      "already_tracked": true,
+      "sha256_from_existing_provenance": "0017ca1ce55d0ca13d5233f18c4b3b883aaba2ec30f43438186da07a14e9000f"
+    }
+  ],
+  "local_dependency_policy": "Untracked baseline references and rollouts remain at their existing local paths. Their hashes are taken from accepted manifests or the successful run snapshot. Goal 3 assessment is only an existing preservation-snapshot input and is not bundled as a new experiment. This commit does not claim clean-clone reproduction without the retained baseline artifacts and external checkpoint/data.",
+  "external_frozen_diffusion": {
+    "path": "/home/learning/Documents/g1-diffusion/logs/object_goal_single_stage_init_goal_hf_bps_e10000_b16_lr5e-06_ts1000_w300_s10_transformer_2026Aug05_21-21-42/checkpoints/object_goal_single_stage_init_goal_epoch_000999.pt",
+    "sha256": "36470e72206000a1305d88a0c0bf8e5e6c73d12180b3de9f69d49efa4ae0d442",
+    "conditioning_source": "/home/learning/Documents/g1-diffusion/data/hf_bps_preprocessed/omomo_sub3_largebox_003_sample1.pkl",
+    "sampling": {
+      "sampler": "ddim",
+      "steps": 50,
+      "eta": 0.0,
+      "precision": "fp32",
+      "device": "cpu",
+      "seeds": [
+        42,
+        43,
+        0
+      ]
+    }
+  },
+  "excluded_new_artifacts": {
+    "local_root": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_body_v1",
+    "categories": [
+      "Checkpoint weights",
+      "Full videos (*.mp4)",
+      "Rollouts, references, generated samples, diagnostics and trace arrays (*.npz)",
+      "Compiled models (*.mjb)",
+      "Duplicate PNG figure and storyboards",
+      "Trial-candidate outputs, logs and caches"
+    ],
+    "provenance": "Original local paths and SHA-256 hashes remain in goal5_manifest.json; feasible_42.json and feasible_43.json record physical-realization lineage."
+  },
+  "scope": "Only scripts/compact_diffusion_body_v1/ and logs/compact_diffusion_body_v1/ are staged. All previously accepted baselines and unrelated working-tree changes remain untouched."
+}
