@@ -1,0 +1,43 @@
+{
+  "seed": 43,
+  "object_limit_m": 0.03,
+  "spread_gain": 35.0,
+  "posture_gain": 12.0,
+  "source_sample": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_v1/proposals/sample_43.npz",
+  "source_sample_sha256": "ab93490535c1b809d140fba2c11c777b50e1ec5c3638e60f4580e4318ded7282",
+  "calibration_sha256": "8753b728f4c222d6d7791b43ae8c0eac57ac97f67e372455b3811fa0cb457da2",
+  "frozen_checkpoint_sha256": "36470e72206000a1305d88a0c0bf8e5e6c73d12180b3de9f69d49efa4ae0d442",
+  "phases": {
+    "pickup": {
+      "peak_requested_translation_m": 0.012545423645653073,
+      "peak_projected_translation_m": 0.010260240903049509,
+      "peak_projected_rotation_rad": 0.009249130075187604,
+      "peak_arm_delta_rad": 0.1999929729530756
+    },
+    "carry": {
+      "peak_requested_translation_m": 0.009436962240460594,
+      "peak_projected_translation_m": 0.007655891093010165,
+      "peak_projected_rotation_rad": 0.0167221712915414,
+      "peak_arm_delta_rad": 0.16629932688040538
+    },
+    "placement": {
+      "peak_requested_translation_m": 0.012269769199362493,
+      "peak_projected_translation_m": 0.01225076437246866,
+      "peak_projected_rotation_rad": 0.0056109643655534724,
+      "peak_arm_delta_rad": 0.08296588233989496
+    }
+  },
+  "maximum_hand_ik_residual_m": 2.3869981948357145e-07,
+  "maximum_arm_position_delta_rad": 0.19980894886325093,
+  "maximum_physics_rate_hand_residual_m": 3.120583852862e-08,
+  "maximum_physics_rate_hand_angle_residual_rad": 7.240794647544174e-08,
+  "maximum_added_arm_velocity_radps": 0.42780839803794324,
+  "maximum_added_arm_acceleration_radps2": 76.69419447676329,
+  "added_arm_position_limit_excess_rad": 1.000088900582341e-12,
+  "baseline_soft_limit_excursion_rad": 0.009171959288246878,
+  "maximum_servo_increment_rad": 0.20184515793265723,
+  "root_legs_waist_gripper_bit_identical": true,
+  "nonarm_feedforward_bit_identical": true,
+  "method": "Nonlinear arm-only hand-pose IK, frozen-sample object translation and null-space arm posture; additive physics-rate reference and servo feedforward with RNE torque difference; no root/leg/waist/gripper changes.",
+  "pass_cheap_gate": true
+}

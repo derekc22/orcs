@@ -1,0 +1,67 @@
+{
+  "checkpoint": "/home/learning/Documents/g1-diffusion/logs/object_goal_single_stage_init_goal_hf_bps_e10000_b16_lr5e-06_ts1000_w300_s10_transformer_2026Aug05_21-21-42/checkpoints/object_goal_single_stage_init_goal_epoch_000999.pt",
+  "checkpoint_sha256": "36470e72206000a1305d88a0c0bf8e5e6c73d12180b3de9f69d49efa4ae0d442",
+  "model_type": "object_goal_single_stage_init_goal",
+  "state_dim": 47,
+  "condition_dim": 56,
+  "horizon": 300,
+  "fps": 50,
+  "sampling": {
+    "sampler": "ddim",
+    "steps": 50,
+    "eta": 0.0,
+    "precision": "fp32",
+    "device": "cpu",
+    "seeds": [
+      42,
+      43,
+      0
+    ]
+  },
+  "conditioning_source": "/home/learning/Documents/g1-diffusion/data/hf_bps_preprocessed/omomo_sub3_largebox_003_sample1.pkl",
+  "normalized_condition_absmax": 2.596539258956909,
+  "actual_task_condition_absmax": 148551.671875,
+  "conditioning_contract": "Matched native largebox motion prior; identical condition for both seeds. Actual compact initial state, final task goal and contacts are imposed by refinement, not claimed as diffusion outputs.",
+  "native_joint_names": [
+    "left_hip_pitch_joint",
+    "left_hip_roll_joint",
+    "left_hip_yaw_joint",
+    "left_knee_joint",
+    "left_ankle_pitch_joint",
+    "left_ankle_roll_joint",
+    "right_hip_pitch_joint",
+    "right_hip_roll_joint",
+    "right_hip_yaw_joint",
+    "right_knee_joint",
+    "right_ankle_pitch_joint",
+    "right_ankle_roll_joint",
+    "waist_yaw_joint",
+    "waist_roll_joint",
+    "waist_pitch_joint",
+    "left_shoulder_pitch_joint",
+    "left_shoulder_roll_joint",
+    "left_shoulder_yaw_joint",
+    "left_elbow_joint",
+    "left_wrist_roll_joint",
+    "left_wrist_pitch_joint",
+    "left_wrist_yaw_joint",
+    "right_shoulder_pitch_joint",
+    "right_shoulder_roll_joint",
+    "right_shoulder_yaw_joint",
+    "right_elbow_joint",
+    "right_wrist_roll_joint",
+    "right_wrist_pitch_joint",
+    "right_wrist_yaw_joint"
+  ],
+  "object_centroid_offset_body": [
+    -7.048849745214247e-09,
+    1.6680218611236138e-09,
+    8.448643020158696e-09
+  ],
+  "historical_object_correction_count": 1,
+  "causal_requirements": {
+    "per_phase_object_or_root_rms_m": 0.0005,
+    "per_phase_native_joint_rms_rad": 0.002,
+    "criterion": "Both sample-vs-baseline and sample-vs-sample must show >=0.5 mm RMS object/root motion OR >=2 mrad RMS native posture in every phase; no success from numerical differences alone."
+  }
+}

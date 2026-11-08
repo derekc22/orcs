@@ -1,0 +1,7 @@
+{
+  "qref": true,
+  "vref": true,
+  "uref": true,
+  "goal_position": true,
+  "goal_quaternion": true
+}

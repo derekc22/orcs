@@ -1,0 +1,10 @@
+{
+  "frames": 2407,
+  "fps": 50.0,
+  "duration_s": 48.14,
+  "size": [
+    960,
+    720
+  ],
+  "rendering": "Recorded actual ORCS states; display contrast and ground grid only, no state interpolation or time scaling"
+}

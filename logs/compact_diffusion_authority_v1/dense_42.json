@@ -1,0 +1,43 @@
+{
+  "seed": 42,
+  "object_limit_m": 0.03,
+  "spread_gain": 35.0,
+  "posture_gain": 12.0,
+  "source_sample": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_v1/proposals/sample_42.npz",
+  "source_sample_sha256": "28481e7cf06db9a028b4dd6402a0466d8aee8eae193dc285475377f9972b6d6f",
+  "calibration_sha256": "8753b728f4c222d6d7791b43ae8c0eac57ac97f67e372455b3811fa0cb457da2",
+  "frozen_checkpoint_sha256": "36470e72206000a1305d88a0c0bf8e5e6c73d12180b3de9f69d49efa4ae0d442",
+  "phases": {
+    "pickup": {
+      "peak_requested_translation_m": 0.024038530891710035,
+      "peak_projected_translation_m": 0.016091699226521476,
+      "peak_projected_rotation_rad": 0.039957823950831535,
+      "peak_arm_delta_rad": 0.1999929729530756
+    },
+    "carry": {
+      "peak_requested_translation_m": 0.01853807986587859,
+      "peak_projected_translation_m": 0.015227892803439835,
+      "peak_projected_rotation_rad": 0.030976826969255133,
+      "peak_arm_delta_rad": 0.18304901341577406
+    },
+    "placement": {
+      "peak_requested_translation_m": 0.019817953221136195,
+      "peak_projected_translation_m": 0.013015122313361806,
+      "peak_projected_rotation_rad": 0.028571443021570216,
+      "peak_arm_delta_rad": 0.17948544414233547
+    }
+  },
+  "maximum_hand_ik_residual_m": 6.639164035458606e-05,
+  "maximum_arm_position_delta_rad": 0.20000000000100002,
+  "maximum_physics_rate_hand_residual_m": 3.1709152259516114e-07,
+  "maximum_physics_rate_hand_angle_residual_rad": 6.263755901088709e-07,
+  "maximum_added_arm_velocity_radps": 0.7000000002000017,
+  "maximum_added_arm_acceleration_radps2": 66.59655033494207,
+  "added_arm_position_limit_excess_rad": 1.000088900582341e-12,
+  "baseline_soft_limit_excursion_rad": 0.009171959288246878,
+  "maximum_servo_increment_rad": 0.20510349676604533,
+  "root_legs_waist_gripper_bit_identical": true,
+  "nonarm_feedforward_bit_identical": true,
+  "method": "Nonlinear arm-only hand-pose IK, frozen-sample object translation and null-space arm posture; additive physics-rate reference and servo feedforward with RNE torque difference; no root/leg/waist/gripper changes.",
+  "pass_cheap_gate": true
+}

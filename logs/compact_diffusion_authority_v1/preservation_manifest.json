@@ -1,0 +1,147 @@
+{
+  "purpose": "Selectively preserve the verified Goal 4 source and lightweight evidence in Git without rerunning any engineering or physical verification.",
+  "verified_run_base_commit": "078d617682d7236b611bb95bf9d95aaf4038113a",
+  "task": "Orcs-Uolm-Compact-Diffusion-Feedback",
+  "status_recorded_by_original_run": "SUCCESS",
+  "reproduction_instructions": "scripts/compact_diffusion_authority_v1/README.md",
+  "reproduction_command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MUJOCO_GL=egl .venv/bin/python -B scripts/compact_diffusion_authority_v1/reproduce.py --out logs/compact_diffusion_authority_v1_reproduction",
+  "verification_policy": "Reused successful stored assessments, replay reports, and manifest hashes. Only selected small files were hash-checked for commit consistency; no inference, optimization, simulation, training, full reproduction, or large-artifact verification was performed.",
+  "committed_source": [
+    "scripts/compact_diffusion_authority_v1/README.md",
+    "scripts/compact_diffusion_authority_v1/plot.py",
+    "scripts/compact_diffusion_authority_v1/refine.py",
+    "scripts/compact_diffusion_authority_v1/report.py",
+    "scripts/compact_diffusion_authority_v1/reproduce.py"
+  ],
+  "committed_original_evidence": [
+    "logs/compact_diffusion_authority_v1/goal4_assessment.json",
+    "logs/compact_diffusion_authority_v1/goal4_manifest.json",
+    "logs/compact_diffusion_authority_v1/dense_42.json",
+    "logs/compact_diffusion_authority_v1/dense_43.json",
+    "logs/compact_diffusion_authority_v1/feasible_42.json",
+    "logs/compact_diffusion_authority_v1/feasible_43.json",
+    "logs/compact_diffusion_authority_v1/identity_check.json",
+    "logs/compact_diffusion_authority_v1/inference_recheck/provenance.json",
+    "logs/compact_diffusion_authority_v1/disabled/execution.json",
+    "logs/compact_diffusion_authority_v1/disabled/physical_screen.json",
+    "logs/compact_diffusion_authority_v1/executed_authority.png",
+    "logs/compact_diffusion_authority_v1/execution_42/execution.json",
+    "logs/compact_diffusion_authority_v1/execution_42/task_assessment.json",
+    "logs/compact_diffusion_authority_v1/execution_42/rollout_verification.json",
+    "logs/compact_diffusion_authority_v1/execution_42/model_equivalence.json",
+    "logs/compact_diffusion_authority_v1/execution_42/baseline_preservation.json",
+    "logs/compact_diffusion_authority_v1/execution_42/video_metadata.json",
+    "logs/compact_diffusion_authority_v1/replay_42/execution.json",
+    "logs/compact_diffusion_authority_v1/execution_43/execution.json",
+    "logs/compact_diffusion_authority_v1/execution_43/task_assessment.json",
+    "logs/compact_diffusion_authority_v1/execution_43/rollout_verification.json",
+    "logs/compact_diffusion_authority_v1/execution_43/model_equivalence.json",
+    "logs/compact_diffusion_authority_v1/execution_43/baseline_preservation.json",
+    "logs/compact_diffusion_authority_v1/execution_43/video_metadata.json",
+    "logs/compact_diffusion_authority_v1/replay_43/execution.json"
+  ],
+  "historical_manifest_note": "goal4_manifest.json is the untouched original run manifest. It also records hashes of local-only artifacts and original snapshot files; it is not a list of files bundled in this commit. Historical git_head and tracked_files_unchanged fields describe verification before this preservation commit.",
+  "retained_existing_reproduction_dependencies": [
+    {
+      "path": "logs/compact_policy_learning_v1/selected_policy.npz",
+      "size_bytes": 76284486,
+      "already_tracked": true,
+      "sha256_from_existing_provenance": "841a42fe5f4e2f163f6b279c090557293bd7b835b9a9f964a7881ed5511e3dbe"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/provenance.json",
+      "size_bytes": 2422,
+      "already_tracked": true,
+      "sha256_from_existing_provenance": null
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/complete_execution/rollout_model.mjb",
+      "size_bytes": 90260222,
+      "already_tracked": true,
+      "sha256_from_existing_provenance": "f3bd7d22614e866158635253a469817f3eed8e604a9e1e58234ededcf4833bab"
+    },
+    {
+      "path": "logs/compact_policy_learning_v1/complete_execution/rollout.npz",
+      "size_bytes": 10829721,
+      "already_tracked": true,
+      "sha256_from_existing_provenance": "ab2a1c70f8d39c6412b5a5236a5f21b5164ec15d310d4f9bf5f9773265f3fbf8"
+    },
+    {
+      "path": "logs/compact_orcs_v1/complete_execution/rollout.npz",
+      "size_bytes": 5142874,
+      "already_tracked": false,
+      "sha256_from_existing_provenance": "4a38326d59815c611aa5fb11d8bd9a87894b803824d0fed89900e44fdd2a2bcd"
+    },
+    {
+      "path": "logs/compact_diffusion_v1/proposals/conditioning.npz",
+      "size_bytes": 51615,
+      "already_tracked": true,
+      "sha256_from_existing_provenance": "b6c54c78cb30ab8c04c58c5992eebaab59ad91d820d2685e89be6de46ee7f040"
+    },
+    {
+      "path": "logs/compact_diffusion_v1/proposals/sample_42.npz",
+      "size_bytes": 78842,
+      "already_tracked": true,
+      "sha256_from_existing_provenance": "28481e7cf06db9a028b4dd6402a0466d8aee8eae193dc285475377f9972b6d6f"
+    },
+    {
+      "path": "logs/compact_diffusion_v1/proposals/sample_43.npz",
+      "size_bytes": 78793,
+      "already_tracked": true,
+      "sha256_from_existing_provenance": "ab93490535c1b809d140fba2c11c777b50e1ec5c3638e60f4580e4318ded7282"
+    },
+    {
+      "path": "logs/compact_diffusion_v1/calibration/sample_0.npz",
+      "size_bytes": 78836,
+      "already_tracked": true,
+      "sha256_from_existing_provenance": "8753b728f4c222d6d7791b43ae8c0eac57ac97f67e372455b3811fa0cb457da2"
+    },
+    {
+      "path": "logs/compact_diffusion_v1/execution_42/rollout.npz",
+      "size_bytes": 4483107,
+      "already_tracked": false,
+      "sha256_from_existing_provenance": "5a3bb83de69107f5530b3d62268c18a2d638c4fba8319950dd8e596b19483653"
+    },
+    {
+      "path": "logs/compact_diffusion_v1/execution_43/rollout.npz",
+      "size_bytes": 4485904,
+      "already_tracked": false,
+      "sha256_from_existing_provenance": "072370939b26afc7d666be4929cf8f3cea4abfbdbc8bbd8825630d64fd71269b"
+    },
+    {
+      "path": "logs/compact_diffusion_v1/causality.json",
+      "size_bytes": 7057,
+      "already_tracked": true,
+      "sha256_from_existing_provenance": "e51e9c984a98f03ce10bd9628c229f3d6b344c6aea1e469a4448f73eed96354a"
+    }
+  ],
+  "local_only_dependency_note": "Untracked baseline rollout arrays listed above remain at their original local paths with provenance from earlier accepted manifests. They are required by baseline comparisons/reporting. This source commit does not claim clean-clone reproduction without those retained artifacts and the external checkpoint/data; none were repackaged.",
+  "external_frozen_checkpoint": {
+    "path": "/home/learning/Documents/g1-diffusion/logs/object_goal_single_stage_init_goal_hf_bps_e10000_b16_lr5e-06_ts1000_w300_s10_transformer_2026Aug05_21-21-42/checkpoints/object_goal_single_stage_init_goal_epoch_000999.pt",
+    "sha256": "36470e72206000a1305d88a0c0bf8e5e6c73d12180b3de9f69d49efa4ae0d442",
+    "conditioning_source": "/home/learning/Documents/g1-diffusion/data/hf_bps_preprocessed/omomo_sub3_largebox_003_sample1.pkl",
+    "sampling": {
+      "sampler": "ddim",
+      "steps": 50,
+      "eta": 0.0,
+      "precision": "fp32",
+      "device": "cpu",
+      "seeds": [
+        42,
+        43,
+        0
+      ]
+    }
+  },
+  "excluded_new_artifacts": {
+    "local_root": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_authority_v1",
+    "categories": [
+      "Videos (*.mp4)",
+      "Rollout/reference/trace arrays and generated samples (*.npz)",
+      "Compiled physical models (*.mjb)",
+      "Duplicate PDF figure, storyboards, logs, caches and rejected-candidate artifacts"
+    ],
+    "provenance": "Original paths and SHA-256 hashes remain in goal4_manifest.json; feasible_42.json and feasible_43.json identify reference derivation and hashes."
+  },
+  "scope": "Only scripts/compact_diffusion_authority_v1/ and logs/compact_diffusion_authority_v1/ are staged. Goals 1\u20133 and all unrelated working-tree changes remain untouched."
+}
