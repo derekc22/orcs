@@ -1,0 +1,32 @@
+{
+  "disabled_vs_goal5_max_error": {
+    "qpos": 0.0,
+    "qvel": 0.0,
+    "ctrl_physics": 0.0
+  },
+  "fresh_sample_arrays_equal": {
+    "42": {
+      "raw": true,
+      "root_quaternion": true,
+      "object_quaternion": true,
+      "object_body_position": true,
+      "condition": true
+    },
+    "43": {
+      "raw": true,
+      "root_quaternion": true,
+      "object_quaternion": true,
+      "object_body_position": true,
+      "condition": true
+    },
+    "0": {
+      "raw": true,
+      "root_quaternion": true,
+      "object_quaternion": true,
+      "object_body_position": true,
+      "condition": true
+    }
+  },
+  "all_prior_hashes_unchanged": true,
+  "syntax": "PASS"
+}

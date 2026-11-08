@@ -1,0 +1,2015 @@
+{
+  "tracking": {
+    "42": {
+      "pickup": {
+        "source_to_refined": {
+          "actual": {
+            "rms": 0.003730138337046998,
+            "peak": 0.006777180150878883
+          },
+          "target": {
+            "rms": 0.004213890001203315,
+            "peak": 0.0071778663052612145
+          },
+          "error": {
+            "rms": 0.0008896330069098731,
+            "peak": 0.0026603261952499427
+          },
+          "correlation": 0.9803880678639657,
+          "least_squares_gain": 0.8695044765270402
+        },
+        "refined_to_executed_added_XY": {
+          "actual": {
+            "rms": 0.005298652686178684,
+            "peak": 0.009878979995846748
+          },
+          "target": {
+            "rms": 0.003730138337046998,
+            "peak": 0.006777180150878883
+          },
+          "error": {
+            "rms": 0.0016009203234964844,
+            "peak": 0.0031907299574141716
+          },
+          "correlation": 0.9971019968620444,
+          "least_squares_gain": 1.4168067267886106
+        },
+        "absolute_refined_to_executed_XY_error_m": {
+          "rms": 0.0016009203234964844,
+          "peak": 0.0031907299574141716
+        }
+      },
+      "carry": {
+        "source_to_refined": {
+          "actual": {
+            "rms": 0.0013414341365212941,
+            "peak": 0.004781571558821391
+          },
+          "target": {
+            "rms": 0.0014545151034245029,
+            "peak": 0.005049560314482974
+          },
+          "error": {
+            "rms": 0.00021884603084956696,
+            "peak": 0.0012297950083824422
+          },
+          "correlation": 0.9905265198303335,
+          "least_squares_gain": 0.9139582653875048
+        },
+        "refined_to_executed_added_XY": {
+          "actual": {
+            "rms": 0.002658010460436344,
+            "peak": 0.007552204187959433
+          },
+          "target": {
+            "rms": 0.0013414341365212941,
+            "peak": 0.004781571558821391
+          },
+          "error": {
+            "rms": 0.0020216383685455835,
+            "peak": 0.006154865431321947
+          },
+          "correlation": 0.6599355322373842,
+          "least_squares_gain": 1.3274765369462849
+        },
+        "absolute_refined_to_executed_XY_error_m": {
+          "rms": 0.0020216383685455835,
+          "peak": 0.006154865431321947
+        }
+      },
+      "placement": {
+        "source_to_refined": {
+          "actual": {
+            "rms": 0.0015821493607371855,
+            "peak": 0.002696764135033888
+          },
+          "target": {
+            "rms": 0.0029914290001095967,
+            "peak": 0.005461632297547778
+          },
+          "error": {
+            "rms": 0.001751651434172716,
+            "peak": 0.004123547220703866
+          },
+          "correlation": 0.8768551237213382,
+          "least_squares_gain": 0.46842617001542064
+        },
+        "refined_to_executed_added_XY": {
+          "actual": {
+            "rms": 0.0020659887231886387,
+            "peak": 0.003527761669829488
+          },
+          "target": {
+            "rms": 0.0015821493607371855,
+            "peak": 0.002696764135033888
+          },
+          "error": {
+            "rms": 0.0005347767851022628,
+            "peak": 0.0013520495160927292
+          },
+          "correlation": 0.9905814479258759,
+          "least_squares_gain": 1.2954474517245333
+        },
+        "absolute_refined_to_executed_XY_error_m": {
+          "rms": 0.0005347767851022628,
+          "peak": 0.0013520495160927292
+        }
+      }
+    },
+    "43": {
+      "pickup": {
+        "source_to_refined": {
+          "actual": {
+            "rms": 0.002039907850295957,
+            "peak": 0.004130247046580674
+          },
+          "target": {
+            "rms": 0.0021029621562104004,
+            "peak": 0.004366737279336076
+          },
+          "error": {
+            "rms": 0.0003760785788777659,
+            "peak": 0.0011382705688755721
+          },
+          "correlation": 0.9839402551640092,
+          "least_squares_gain": 0.954475358038885
+        },
+        "refined_to_executed_added_XY": {
+          "actual": {
+            "rms": 0.0029521072283387184,
+            "peak": 0.005944008938968182
+          },
+          "target": {
+            "rms": 0.002039907850295957,
+            "peak": 0.004130247046580674
+          },
+          "error": {
+            "rms": 0.0009388619217654971,
+            "peak": 0.0019936405446125687
+          },
+          "correlation": 0.9953160487812083,
+          "least_squares_gain": 1.4412465896730058
+        },
+        "absolute_refined_to_executed_XY_error_m": {
+          "rms": 0.0009388619217654971,
+          "peak": 0.0019936405446125687
+        }
+      },
+      "carry": {
+        "source_to_refined": {
+          "actual": {
+            "rms": 0.0004568000305020993,
+            "peak": 0.0016670843607139987
+          },
+          "target": {
+            "rms": 0.000492486407285736,
+            "peak": 0.001766992751629797
+          },
+          "error": {
+            "rms": 5.481415093324684e-05,
+            "peak": 0.00024139947092384107
+          },
+          "correlation": 0.9958037546371242,
+          "least_squares_gain": 0.9239697585201245
+        },
+        "refined_to_executed_added_XY": {
+          "actual": {
+            "rms": 0.0006905865157023072,
+            "peak": 0.00274666934274137
+          },
+          "target": {
+            "rms": 0.00045680003050209937,
+            "peak": 0.0016670843607139987
+          },
+          "error": {
+            "rms": 0.00036486222499639194,
+            "peak": 0.00176711134826927
+          },
+          "correlation": 0.8641281977461072,
+          "least_squares_gain": 1.3237685381175865
+        },
+        "absolute_refined_to_executed_XY_error_m": {
+          "rms": 0.00036486222499639194,
+          "peak": 0.00176711134826927
+        }
+      },
+      "placement": {
+        "source_to_refined": {
+          "actual": {
+            "rms": 0.0004133716337367467,
+            "peak": 0.0012689525696431038
+          },
+          "target": {
+            "rms": 0.003670347666804439,
+            "peak": 0.006218066129131914
+          },
+          "error": {
+            "rms": 0.0036465695928337106,
+            "peak": 0.006217277305538966
+          },
+          "correlation": -0.1357670148092577,
+          "least_squares_gain": 0.012799596789492674
+        },
+        "refined_to_executed_added_XY": {
+          "actual": {
+            "rms": 0.0007131965830922127,
+            "peak": 0.0019374972907826304
+          },
+          "target": {
+            "rms": 0.0004133716337367467,
+            "peak": 0.0012689525696431038
+          },
+          "error": {
+            "rms": 0.0004982858497319458,
+            "peak": 0.0013844686451459757
+          },
+          "correlation": 0.7933387186171519,
+          "least_squares_gain": 1.2618403758281986
+        },
+        "absolute_refined_to_executed_XY_error_m": {
+          "rms": 0.0004982858497319458,
+          "peak": 0.0013844686451459757
+        }
+      }
+    }
+  },
+  "inherited_body_source_tracking": {
+    "42": {
+      "pickup": {
+        "root_height": {
+          "actual": {
+            "rms": 0.0020784400403499603,
+            "peak": 0.004244685173034668
+          },
+          "requested": {
+            "rms": 0.0021203330576203467,
+            "peak": 0.0043925098735449735
+          },
+          "tracking_error": {
+            "rms": 0.00029783253726607564,
+            "peak": 0.0008080526346230023
+          },
+          "correlation": 0.9904297202056445,
+          "least_squares_gain": 0.9705722693311274
+        },
+        "root_yaw": {
+          "actual": {
+            "rms": 0.004062712642068515,
+            "peak": 0.009991242794032493
+          },
+          "requested": {
+            "rms": 0.004304136805783749,
+            "peak": 0.011086239652671104
+          },
+          "tracking_error": {
+            "rms": 0.00048356861438494757,
+            "peak": 0.001578467189954534
+          },
+          "correlation": 0.9945764284779182,
+          "least_squares_gain": 0.939170687883444
+        },
+        "waist_yaw": {
+          "actual": {
+            "rms": 0.007704044226557016,
+            "peak": 0.01439250260591507
+          },
+          "requested": {
+            "rms": 0.004792570250344246,
+            "peak": 0.008638369487847882
+          },
+          "tracking_error": {
+            "rms": 0.003097516681556114,
+            "peak": 0.006608395989288814
+          },
+          "correlation": 0.960290114644299,
+          "least_squares_gain": 1.5831616224484522
+        }
+      },
+      "carry": {
+        "root_height": {
+          "actual": {
+            "rms": 0.001171965035609901,
+            "peak": 0.0042724609375
+          },
+          "requested": {
+            "rms": 0.0008437489566710766,
+            "peak": 0.0024937132168346347
+          },
+          "tracking_error": {
+            "rms": 0.0006495994575558903,
+            "peak": 0.003379590011493065
+          },
+          "correlation": 0.8287793382256977,
+          "least_squares_gain": 1.168286354006328
+        },
+        "root_yaw": {
+          "actual": {
+            "rms": 0.0038732594470075486,
+            "peak": 0.014459887320369472
+          },
+          "requested": {
+            "rms": 0.0031034560603863965,
+            "peak": 0.010214612468215721
+          },
+          "tracking_error": {
+            "rms": 0.002441373455884458,
+            "peak": 0.012830245007290068
+          },
+          "correlation": 0.7497420457914521,
+          "least_squares_gain": 0.9693916405296791
+        },
+        "waist_yaw": {
+          "actual": {
+            "rms": 0.004952844697982073,
+            "peak": 0.021021679043769836
+          },
+          "requested": {
+            "rms": 0.0030107482106734767,
+            "peak": 0.018969487071122896
+          },
+          "tracking_error": {
+            "rms": 0.003189697077109271,
+            "peak": 0.011076627522936743
+          },
+          "correlation": 0.6905291410523087,
+          "least_squares_gain": 1.2918989818513684
+        }
+      },
+      "placement": {
+        "root_height": {
+          "actual": {
+            "rms": 0.0013389852829277515,
+            "peak": 0.0033195316791534424
+          },
+          "requested": {
+            "rms": 0.0011667478949846056,
+            "peak": 0.0028474299604015884
+          },
+          "tracking_error": {
+            "rms": 0.00020494706808694673,
+            "peak": 0.0006851145052616187
+          },
+          "correlation": 0.9959292399495058,
+          "least_squares_gain": 1.1430902041997586
+        },
+        "root_yaw": {
+          "actual": {
+            "rms": 0.005231324138712002,
+            "peak": 0.013805538839331265
+          },
+          "requested": {
+            "rms": 0.004885385758665602,
+            "peak": 0.01261558855101212
+          },
+          "tracking_error": {
+            "rms": 0.0006164551952704093,
+            "peak": 0.002082645102432758
+          },
+          "correlation": 0.9930166425487799,
+          "least_squares_gain": 1.0653568108344105
+        },
+        "waist_yaw": {
+          "actual": {
+            "rms": 0.0019393633119761944,
+            "peak": 0.0051062628626823425
+          },
+          "requested": {
+            "rms": 0.00229887278293598,
+            "peak": 0.004902600567386037
+          },
+          "tracking_error": {
+            "rms": 0.0011521708648705431,
+            "peak": 0.003334300875459025
+          },
+          "correlation": 0.8470484453389651,
+          "least_squares_gain": 0.730247610228782
+        }
+      }
+    },
+    "43": {
+      "pickup": {
+        "root_height": {
+          "actual": {
+            "rms": 0.001580906449817121,
+            "peak": 0.0037225186824798584
+          },
+          "requested": {
+            "rms": 0.0016937959721496142,
+            "peak": 0.003911449772309055
+          },
+          "tracking_error": {
+            "rms": 0.00014238113956249122,
+            "peak": 0.0004903117585134094
+          },
+          "correlation": 0.99769134666776,
+          "least_squares_gain": 0.9320391590992636
+        },
+        "root_yaw": {
+          "actual": {
+            "rms": 0.003069495959931855,
+            "peak": 0.007075042739588453
+          },
+          "requested": {
+            "rms": 0.0030867717235025707,
+            "peak": 0.007089571178294376
+          },
+          "tracking_error": {
+            "rms": 0.0004599688175918327,
+            "peak": 0.0015083119551706978
+          },
+          "correlation": 0.9804336760779407,
+          "least_squares_gain": 0.983316529684411
+        },
+        "waist_yaw": {
+          "actual": {
+            "rms": 0.0043626101687550545,
+            "peak": 0.009914085268974304
+          },
+          "requested": {
+            "rms": 0.0028266116217193927,
+            "peak": 0.008247883863125666
+          },
+          "tracking_error": {
+            "rms": 0.001882770511481612,
+            "peak": 0.005055978662229574
+          },
+          "correlation": 0.9219939259539895,
+          "least_squares_gain": 1.4692151675276317
+        }
+      },
+      "carry": {
+        "root_height": {
+          "actual": {
+            "rms": 0.0004085289256181568,
+            "peak": 0.0013859272003173828
+          },
+          "requested": {
+            "rms": 0.0002688307608875082,
+            "peak": 0.0007040197895406956
+          },
+          "tracking_error": {
+            "rms": 0.0003358130412342722,
+            "peak": 0.0013733065357315801
+          },
+          "correlation": 0.5692580709112752,
+          "least_squares_gain": 0.8744673091889529
+        },
+        "root_yaw": {
+          "actual": {
+            "rms": 0.0030328770499509538,
+            "peak": 0.008454403042565093
+          },
+          "requested": {
+            "rms": 0.0025193663434669466,
+            "peak": 0.007390663301258148
+          },
+          "tracking_error": {
+            "rms": 0.0015055721726983436,
+            "peak": 0.005884309994942463
+          },
+          "correlation": 0.7884128795222621,
+          "least_squares_gain": 1.0460351207435732
+        },
+        "waist_yaw": {
+          "actual": {
+            "rms": 0.0046842521987855434,
+            "peak": 0.015112299472093582
+          },
+          "requested": {
+            "rms": 0.0046373781751282836,
+            "peak": 0.01310296934136561
+          },
+          "tracking_error": {
+            "rms": 0.0022053718863832565,
+            "peak": 0.01089205934308979
+          },
+          "correlation": 0.8508192416728413,
+          "least_squares_gain": 0.8970781806363
+        }
+      },
+      "placement": {
+        "root_height": {
+          "actual": {
+            "rms": 0.0027197469025850296,
+            "peak": 0.005017101764678955
+          },
+          "requested": {
+            "rms": 0.002547777278157511,
+            "peak": 0.004498160128342917
+          },
+          "tracking_error": {
+            "rms": 0.0002935862106952566,
+            "peak": 0.0007819839609619129
+          },
+          "correlation": 0.9952276379822139,
+          "least_squares_gain": 1.0631366715961106
+        },
+        "root_yaw": {
+          "actual": {
+            "rms": 0.0056100567728606015,
+            "peak": 0.012499200607367282
+          },
+          "requested": {
+            "rms": 0.0052777713413806005,
+            "peak": 0.012229263886635932
+          },
+          "tracking_error": {
+            "rms": 0.001749453546593867,
+            "peak": 0.007830535937973983
+          },
+          "correlation": 0.9371750771666801,
+          "least_squares_gain": 1.0100032587567405
+        },
+        "waist_yaw": {
+          "actual": {
+            "rms": 0.0028021293692290783,
+            "peak": 0.007313773036003113
+          },
+          "requested": {
+            "rms": 0.003044651763898962,
+            "peak": 0.0074234882501660075
+          },
+          "tracking_error": {
+            "rms": 0.0015495496322791577,
+            "peak": 0.005337251213460766
+          },
+          "correlation": 0.9025507380622091,
+          "least_squares_gain": 0.7940065399310011
+        }
+      }
+    }
+  },
+  "yaw_definition": "Goal 5 directly commands left world-Z rotation. Retention uses its original world-frame relative-rotation Z component and original source-target tracking, rather than substituting Euler yaw. Euler roll/pitch/yaw are reported separately: pickup Euler yaw RMS decreases 37%, while world-Z rotation-component RMS retains 85.5% and direct yaw-source tracking correlations exceed 0.98 in pickup.",
+  "refinement": {
+    "42": {
+      "seed": 42,
+      "base_reference": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_body_v1/feasible_42.npz",
+      "base_sha256": "b32374fcbb9becc500bd817ef43da61ca4f178aa90d854ec5f2a990122765342",
+      "compiler_sha256": "a3d7caec7375fd8b8a386ff97e6f7a5aae0e1c4e5ced76bf33411f2cb46fa42f",
+      "helper_sha256": "7079929408dece0ac7cb6bb60f0d7532746f146a40f124d665514aa9848d45a4",
+      "diffusion": {
+        "source": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_v1/proposals/sample_42.npz",
+        "source_sha256": "28481e7cf06db9a028b4dd6402a0466d8aee8eae193dc285475377f9972b6d6f",
+        "calibration_sha256": "8753b728f4c222d6d7791b43ae8c0eac57ac97f67e372455b3811fa0cb457da2",
+        "checkpoint_sha256": "36470e72206000a1305d88a0c0bf8e5e6c73d12180b3de9f69d49efa4ae0d442",
+        "alignment_yaw_rad": 3.371819171162271,
+        "gain": 20.0,
+        "limit_m": 0.008,
+        "phases": {
+          "pickup": {
+            "physical_interval_s": [
+              2.7,
+              8.0
+            ],
+            "native_frames": [
+              0,
+              105
+            ],
+            "requested_xy_rms_m": 0.004213890001203315,
+            "requested_xy_peak_m": 0.0071778663052612145,
+            "paused_clock_fraction": 0.0
+          },
+          "carry": {
+            "physical_interval_s": [
+              17.245,
+              23.605
+            ],
+            "native_frames": [
+              105,
+              225
+            ],
+            "requested_xy_rms_m": 0.0024708581307059923,
+            "requested_xy_peak_m": 0.005049560314482974,
+            "paused_clock_fraction": 0.21445404556166536
+          },
+          "placement": {
+            "physical_interval_s": [
+              33.505,
+              38.8
+            ],
+            "native_frames": [
+              225,
+              299
+            ],
+            "requested_xy_rms_m": 0.0029914290001095967,
+            "requested_xy_peak_m": 0.005461632297547778,
+            "paused_clock_fraction": 0.0
+          }
+        }
+      },
+      "additive_smoothing_sigma_s": 0.1,
+      "contact_cone": "Unchanged accepted model; exact L1 facets for its pyramidal friction cone.",
+      "independent_coordinates": [
+        "root world X",
+        "root world Y"
+      ],
+      "root_roll_pitch_policy": "Goal 5 reference retained; counterlean prototypes were rejected before physical rollout.",
+      "support_envelope": {
+        "guard_s": 0.05,
+        "entry_exit_blend_s": 0.3,
+        "minimum_supported_duration_s": 0.7,
+        "method": "Product of quintic entry/exit gates in intervals containing both complete ramps."
+      },
+      "maximum_foot_hand_position_error_m": 3.8511853770851456e-08,
+      "maximum_foot_hand_angle_error_rad": 3.183138175502822e-08,
+      "maximum_horizontal_COM_displacement_m": 0.005559991810184507,
+      "maximum_added_joint_limit_excursion_rad": 1.000088900582341e-12,
+      "maximum_added_joint_velocity_radps": 0.6392187474792578,
+      "maximum_added_XY_velocity_mps": 0.028285558087608142,
+      "maximum_added_XY_acceleration_mps2": 0.5733404687411985,
+      "maximum_feedforward_increment_rad": 0.12235288681273652,
+      "maximum_incremental_native_effort_Nm": 1.0535070488866332,
+      "flight_added_XY_position_m": 0.0,
+      "flight_added_XY_velocity_mps": 0.0,
+      "stable_support_wrench_checks": [
+        [
+          540,
+          true,
+          true
+        ],
+        [
+          560,
+          true,
+          true
+        ],
+        [
+          580,
+          true,
+          true
+        ],
+        [
+          600,
+          true,
+          true
+        ],
+        [
+          620,
+          true,
+          true
+        ],
+        [
+          640,
+          true,
+          true
+        ],
+        [
+          660,
+          true,
+          true
+        ],
+        [
+          680,
+          true,
+          true
+        ],
+        [
+          700,
+          true,
+          true
+        ],
+        [
+          720,
+          true,
+          true
+        ],
+        [
+          740,
+          true,
+          true
+        ],
+        [
+          760,
+          true,
+          true
+        ],
+        [
+          780,
+          true,
+          true
+        ],
+        [
+          800,
+          true,
+          true
+        ],
+        [
+          820,
+          true,
+          true
+        ],
+        [
+          840,
+          true,
+          true
+        ],
+        [
+          860,
+          true,
+          true
+        ],
+        [
+          880,
+          true,
+          true
+        ],
+        [
+          900,
+          true,
+          true
+        ],
+        [
+          920,
+          true,
+          true
+        ],
+        [
+          940,
+          true,
+          true
+        ],
+        [
+          960,
+          true,
+          true
+        ],
+        [
+          980,
+          true,
+          true
+        ],
+        [
+          1000,
+          true,
+          true
+        ],
+        [
+          1020,
+          true,
+          true
+        ],
+        [
+          1040,
+          true,
+          true
+        ],
+        [
+          1060,
+          true,
+          true
+        ],
+        [
+          1080,
+          true,
+          true
+        ],
+        [
+          1100,
+          true,
+          true
+        ],
+        [
+          1120,
+          true,
+          true
+        ],
+        [
+          1140,
+          true,
+          true
+        ],
+        [
+          1160,
+          true,
+          true
+        ],
+        [
+          1180,
+          true,
+          true
+        ],
+        [
+          1200,
+          true,
+          true
+        ],
+        [
+          1220,
+          true,
+          true
+        ],
+        [
+          1240,
+          true,
+          true
+        ],
+        [
+          1260,
+          true,
+          true
+        ],
+        [
+          1280,
+          true,
+          true
+        ],
+        [
+          1300,
+          true,
+          true
+        ],
+        [
+          1320,
+          true,
+          true
+        ],
+        [
+          1340,
+          true,
+          true
+        ],
+        [
+          1360,
+          true,
+          true
+        ],
+        [
+          1380,
+          true,
+          true
+        ],
+        [
+          1400,
+          true,
+          true
+        ],
+        [
+          1420,
+          true,
+          true
+        ],
+        [
+          1440,
+          true,
+          true
+        ],
+        [
+          1460,
+          true,
+          true
+        ],
+        [
+          1480,
+          true,
+          true
+        ],
+        [
+          1500,
+          true,
+          true
+        ],
+        [
+          1520,
+          true,
+          true
+        ],
+        [
+          1540,
+          true,
+          true
+        ],
+        [
+          1560,
+          true,
+          true
+        ],
+        [
+          1580,
+          true,
+          true
+        ],
+        [
+          1600,
+          true,
+          true
+        ],
+        [
+          3480,
+          true,
+          true
+        ],
+        [
+          3500,
+          true,
+          true
+        ],
+        [
+          3520,
+          false,
+          false
+        ],
+        [
+          3540,
+          true,
+          true
+        ],
+        [
+          3560,
+          true,
+          true
+        ],
+        [
+          3580,
+          true,
+          true
+        ],
+        [
+          3600,
+          true,
+          true
+        ],
+        [
+          3900,
+          true,
+          true
+        ],
+        [
+          3920,
+          true,
+          true
+        ],
+        [
+          3940,
+          false,
+          false
+        ],
+        [
+          3960,
+          true,
+          true
+        ],
+        [
+          3980,
+          true,
+          true
+        ],
+        [
+          4000,
+          true,
+          true
+        ],
+        [
+          4020,
+          false,
+          false
+        ],
+        [
+          4040,
+          true,
+          true
+        ],
+        [
+          4060,
+          true,
+          true
+        ],
+        [
+          4080,
+          true,
+          true
+        ],
+        [
+          4100,
+          true,
+          true
+        ],
+        [
+          4120,
+          true,
+          true
+        ],
+        [
+          4680,
+          true,
+          true
+        ],
+        [
+          4700,
+          true,
+          true
+        ],
+        [
+          4720,
+          true,
+          true
+        ],
+        [
+          6720,
+          true,
+          true
+        ],
+        [
+          6740,
+          true,
+          true
+        ],
+        [
+          6760,
+          true,
+          true
+        ],
+        [
+          6780,
+          true,
+          true
+        ],
+        [
+          6800,
+          true,
+          true
+        ],
+        [
+          6820,
+          true,
+          true
+        ],
+        [
+          6840,
+          true,
+          true
+        ],
+        [
+          6860,
+          true,
+          true
+        ],
+        [
+          6880,
+          true,
+          true
+        ],
+        [
+          6900,
+          true,
+          true
+        ],
+        [
+          6920,
+          true,
+          true
+        ],
+        [
+          6940,
+          true,
+          true
+        ],
+        [
+          6960,
+          true,
+          true
+        ],
+        [
+          6980,
+          true,
+          true
+        ],
+        [
+          7000,
+          true,
+          true
+        ],
+        [
+          7020,
+          true,
+          true
+        ],
+        [
+          7040,
+          true,
+          true
+        ],
+        [
+          7060,
+          true,
+          true
+        ],
+        [
+          7080,
+          true,
+          true
+        ],
+        [
+          7100,
+          true,
+          true
+        ],
+        [
+          7120,
+          true,
+          true
+        ],
+        [
+          7140,
+          true,
+          true
+        ],
+        [
+          7160,
+          true,
+          true
+        ],
+        [
+          7180,
+          true,
+          true
+        ],
+        [
+          7200,
+          true,
+          true
+        ],
+        [
+          7220,
+          true,
+          true
+        ],
+        [
+          7240,
+          true,
+          true
+        ],
+        [
+          7260,
+          true,
+          true
+        ],
+        [
+          7280,
+          true,
+          true
+        ],
+        [
+          7300,
+          true,
+          true
+        ],
+        [
+          7320,
+          true,
+          true
+        ],
+        [
+          7340,
+          true,
+          true
+        ],
+        [
+          7360,
+          true,
+          true
+        ],
+        [
+          7380,
+          true,
+          true
+        ],
+        [
+          7400,
+          true,
+          true
+        ],
+        [
+          7420,
+          true,
+          true
+        ],
+        [
+          7440,
+          true,
+          true
+        ],
+        [
+          7460,
+          true,
+          true
+        ],
+        [
+          7480,
+          true,
+          true
+        ],
+        [
+          7500,
+          true,
+          true
+        ],
+        [
+          7520,
+          true,
+          true
+        ],
+        [
+          7540,
+          true,
+          true
+        ],
+        [
+          7560,
+          true,
+          true
+        ],
+        [
+          7580,
+          true,
+          true
+        ],
+        [
+          7600,
+          true,
+          true
+        ],
+        [
+          7620,
+          true,
+          true
+        ],
+        [
+          7640,
+          true,
+          true
+        ],
+        [
+          7660,
+          true,
+          true
+        ],
+        [
+          7680,
+          true,
+          true
+        ],
+        [
+          7700,
+          true,
+          true
+        ],
+        [
+          7720,
+          true,
+          true
+        ],
+        [
+          7740,
+          true,
+          true
+        ],
+        [
+          7760,
+          true,
+          true
+        ]
+      ],
+      "baseline_feasible_checks": 126,
+      "introduced_wrench_infeasibilities": 0,
+      "retained_G5_height_orientation_waist_object": true,
+      "retained_gripper_feedforward": true,
+      "simulation_stepped": false,
+      "physical_model_changed": false,
+      "pass_cheap_gate": true
+    },
+    "43": {
+      "seed": 43,
+      "base_reference": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_body_v1/feasible_43.npz",
+      "base_sha256": "04b4113763c670219ef7da4dc549907ba8e74d88c138a5e21a08507d4843eaa3",
+      "compiler_sha256": "a3d7caec7375fd8b8a386ff97e6f7a5aae0e1c4e5ced76bf33411f2cb46fa42f",
+      "helper_sha256": "7079929408dece0ac7cb6bb60f0d7532746f146a40f124d665514aa9848d45a4",
+      "diffusion": {
+        "source": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_v1/proposals/sample_43.npz",
+        "source_sha256": "ab93490535c1b809d140fba2c11c777b50e1ec5c3638e60f4580e4318ded7282",
+        "calibration_sha256": "8753b728f4c222d6d7791b43ae8c0eac57ac97f67e372455b3811fa0cb457da2",
+        "checkpoint_sha256": "36470e72206000a1305d88a0c0bf8e5e6c73d12180b3de9f69d49efa4ae0d442",
+        "alignment_yaw_rad": 3.371819171162271,
+        "gain": 20.0,
+        "limit_m": 0.008,
+        "phases": {
+          "pickup": {
+            "physical_interval_s": [
+              2.7,
+              8.0
+            ],
+            "native_frames": [
+              0,
+              105
+            ],
+            "requested_xy_rms_m": 0.0021029621562104004,
+            "requested_xy_peak_m": 0.004366737279336076,
+            "paused_clock_fraction": 0.0
+          },
+          "carry": {
+            "physical_interval_s": [
+              17.245,
+              23.605
+            ],
+            "native_frames": [
+              105,
+              225
+            ],
+            "requested_xy_rms_m": 0.0011596036944921204,
+            "requested_xy_peak_m": 0.002731038969146957,
+            "paused_clock_fraction": 0.21445404556166536
+          },
+          "placement": {
+            "physical_interval_s": [
+              33.505,
+              38.8
+            ],
+            "native_frames": [
+              225,
+              299
+            ],
+            "requested_xy_rms_m": 0.003670347666804439,
+            "requested_xy_peak_m": 0.006218066129131914,
+            "paused_clock_fraction": 0.0
+          }
+        }
+      },
+      "additive_smoothing_sigma_s": 0.1,
+      "contact_cone": "Unchanged accepted model; exact L1 facets for its pyramidal friction cone.",
+      "independent_coordinates": [
+        "root world X",
+        "root world Y"
+      ],
+      "root_roll_pitch_policy": "Goal 5 reference retained; counterlean prototypes were rejected before physical rollout.",
+      "support_envelope": {
+        "guard_s": 0.05,
+        "entry_exit_blend_s": 0.3,
+        "minimum_supported_duration_s": 0.7,
+        "method": "Product of quintic entry/exit gates in intervals containing both complete ramps."
+      },
+      "maximum_foot_hand_position_error_m": 4.083874785517971e-07,
+      "maximum_foot_hand_angle_error_rad": 2.7342460640984746e-06,
+      "maximum_horizontal_COM_displacement_m": 0.0037650158401105814,
+      "maximum_added_joint_limit_excursion_rad": 1.000088900582341e-12,
+      "maximum_added_joint_velocity_radps": 0.7000000002000017,
+      "maximum_added_XY_velocity_mps": 0.0179279021505125,
+      "maximum_added_XY_acceleration_mps2": 0.8219424842990452,
+      "maximum_feedforward_increment_rad": 0.12522984816883959,
+      "maximum_incremental_native_effort_Nm": 2.0906534666528707,
+      "flight_added_XY_position_m": 0.0,
+      "flight_added_XY_velocity_mps": 0.0,
+      "stable_support_wrench_checks": [
+        [
+          540,
+          true,
+          true
+        ],
+        [
+          560,
+          true,
+          true
+        ],
+        [
+          580,
+          true,
+          true
+        ],
+        [
+          600,
+          true,
+          true
+        ],
+        [
+          620,
+          true,
+          true
+        ],
+        [
+          640,
+          true,
+          true
+        ],
+        [
+          660,
+          true,
+          true
+        ],
+        [
+          680,
+          true,
+          true
+        ],
+        [
+          700,
+          true,
+          true
+        ],
+        [
+          720,
+          true,
+          true
+        ],
+        [
+          740,
+          true,
+          true
+        ],
+        [
+          760,
+          true,
+          true
+        ],
+        [
+          780,
+          true,
+          true
+        ],
+        [
+          800,
+          true,
+          true
+        ],
+        [
+          820,
+          true,
+          true
+        ],
+        [
+          840,
+          true,
+          true
+        ],
+        [
+          860,
+          true,
+          true
+        ],
+        [
+          880,
+          true,
+          true
+        ],
+        [
+          900,
+          true,
+          true
+        ],
+        [
+          920,
+          true,
+          true
+        ],
+        [
+          940,
+          true,
+          true
+        ],
+        [
+          960,
+          true,
+          true
+        ],
+        [
+          980,
+          true,
+          true
+        ],
+        [
+          1000,
+          true,
+          true
+        ],
+        [
+          1020,
+          true,
+          true
+        ],
+        [
+          1040,
+          true,
+          true
+        ],
+        [
+          1060,
+          true,
+          true
+        ],
+        [
+          1080,
+          true,
+          true
+        ],
+        [
+          1100,
+          true,
+          true
+        ],
+        [
+          1120,
+          true,
+          true
+        ],
+        [
+          1140,
+          true,
+          true
+        ],
+        [
+          1160,
+          true,
+          true
+        ],
+        [
+          1180,
+          true,
+          true
+        ],
+        [
+          1200,
+          true,
+          true
+        ],
+        [
+          1220,
+          true,
+          true
+        ],
+        [
+          1240,
+          true,
+          true
+        ],
+        [
+          1260,
+          true,
+          true
+        ],
+        [
+          1280,
+          true,
+          true
+        ],
+        [
+          1300,
+          true,
+          true
+        ],
+        [
+          1320,
+          true,
+          true
+        ],
+        [
+          1340,
+          true,
+          true
+        ],
+        [
+          1360,
+          true,
+          true
+        ],
+        [
+          1380,
+          true,
+          true
+        ],
+        [
+          1400,
+          true,
+          true
+        ],
+        [
+          1420,
+          true,
+          true
+        ],
+        [
+          1440,
+          true,
+          true
+        ],
+        [
+          1460,
+          true,
+          true
+        ],
+        [
+          1480,
+          true,
+          true
+        ],
+        [
+          1500,
+          true,
+          true
+        ],
+        [
+          1520,
+          true,
+          true
+        ],
+        [
+          1540,
+          true,
+          true
+        ],
+        [
+          1560,
+          true,
+          true
+        ],
+        [
+          1580,
+          true,
+          true
+        ],
+        [
+          1600,
+          true,
+          true
+        ],
+        [
+          3480,
+          true,
+          true
+        ],
+        [
+          3500,
+          true,
+          true
+        ],
+        [
+          3520,
+          false,
+          false
+        ],
+        [
+          3540,
+          true,
+          true
+        ],
+        [
+          3560,
+          true,
+          true
+        ],
+        [
+          3580,
+          true,
+          true
+        ],
+        [
+          3600,
+          true,
+          true
+        ],
+        [
+          3900,
+          true,
+          true
+        ],
+        [
+          3920,
+          true,
+          true
+        ],
+        [
+          3940,
+          false,
+          false
+        ],
+        [
+          3960,
+          true,
+          true
+        ],
+        [
+          3980,
+          true,
+          true
+        ],
+        [
+          4000,
+          true,
+          true
+        ],
+        [
+          4020,
+          false,
+          false
+        ],
+        [
+          4040,
+          true,
+          true
+        ],
+        [
+          4060,
+          true,
+          true
+        ],
+        [
+          4080,
+          true,
+          true
+        ],
+        [
+          4100,
+          true,
+          true
+        ],
+        [
+          4120,
+          true,
+          true
+        ],
+        [
+          4680,
+          true,
+          true
+        ],
+        [
+          4700,
+          true,
+          true
+        ],
+        [
+          4720,
+          true,
+          true
+        ],
+        [
+          6720,
+          true,
+          true
+        ],
+        [
+          6740,
+          true,
+          true
+        ],
+        [
+          6760,
+          true,
+          true
+        ],
+        [
+          6780,
+          true,
+          true
+        ],
+        [
+          6800,
+          true,
+          true
+        ],
+        [
+          6820,
+          true,
+          true
+        ],
+        [
+          6840,
+          true,
+          true
+        ],
+        [
+          6860,
+          true,
+          true
+        ],
+        [
+          6880,
+          true,
+          true
+        ],
+        [
+          6900,
+          true,
+          true
+        ],
+        [
+          6920,
+          true,
+          true
+        ],
+        [
+          6940,
+          true,
+          true
+        ],
+        [
+          6960,
+          true,
+          true
+        ],
+        [
+          6980,
+          true,
+          true
+        ],
+        [
+          7000,
+          true,
+          true
+        ],
+        [
+          7020,
+          true,
+          true
+        ],
+        [
+          7040,
+          true,
+          true
+        ],
+        [
+          7060,
+          true,
+          true
+        ],
+        [
+          7080,
+          true,
+          true
+        ],
+        [
+          7100,
+          true,
+          true
+        ],
+        [
+          7120,
+          true,
+          true
+        ],
+        [
+          7140,
+          true,
+          true
+        ],
+        [
+          7160,
+          true,
+          true
+        ],
+        [
+          7180,
+          true,
+          true
+        ],
+        [
+          7200,
+          true,
+          true
+        ],
+        [
+          7220,
+          true,
+          true
+        ],
+        [
+          7240,
+          true,
+          true
+        ],
+        [
+          7260,
+          true,
+          true
+        ],
+        [
+          7280,
+          true,
+          true
+        ],
+        [
+          7300,
+          true,
+          true
+        ],
+        [
+          7320,
+          true,
+          true
+        ],
+        [
+          7340,
+          true,
+          true
+        ],
+        [
+          7360,
+          true,
+          true
+        ],
+        [
+          7380,
+          true,
+          true
+        ],
+        [
+          7400,
+          true,
+          true
+        ],
+        [
+          7420,
+          true,
+          true
+        ],
+        [
+          7440,
+          true,
+          true
+        ],
+        [
+          7460,
+          true,
+          true
+        ],
+        [
+          7480,
+          true,
+          true
+        ],
+        [
+          7500,
+          true,
+          true
+        ],
+        [
+          7520,
+          true,
+          true
+        ],
+        [
+          7540,
+          true,
+          true
+        ],
+        [
+          7560,
+          true,
+          true
+        ],
+        [
+          7580,
+          true,
+          true
+        ],
+        [
+          7600,
+          true,
+          true
+        ],
+        [
+          7620,
+          true,
+          true
+        ],
+        [
+          7640,
+          true,
+          true
+        ],
+        [
+          7660,
+          true,
+          true
+        ],
+        [
+          7680,
+          true,
+          true
+        ],
+        [
+          7700,
+          true,
+          true
+        ],
+        [
+          7720,
+          true,
+          true
+        ],
+        [
+          7740,
+          true,
+          true
+        ],
+        [
+          7760,
+          true,
+          true
+        ]
+      ],
+      "baseline_feasible_checks": 126,
+      "introduced_wrench_infeasibilities": 0,
+      "retained_G5_height_orientation_waist_object": true,
+      "retained_gripper_feedforward": true,
+      "simulation_stepped": false,
+      "physical_model_changed": false,
+      "pass_cheap_gate": true
+    }
+  }
+}

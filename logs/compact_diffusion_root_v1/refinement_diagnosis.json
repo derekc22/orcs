@@ -1,0 +1,74 @@
+{
+  "strategy": "Frozen sampled XY, Goal 5 hands/soles constrained, bounded IK, additive smoothing, differential feedforward; no full-body replacement or controller changes.",
+  "history": [
+    {
+      "artifact": "xy_42.json",
+      "mechanism": "Independent counterlean with exact COM constraint overconstrained hands/soles and produced excessive reference and torque changes.",
+      "physical_rollout_performed": false,
+      "cheap_gate": false,
+      "maximum_added_joint_velocity_radps": 0.7000000002000017,
+      "maximum_feedforward_increment_rad": 0.9868937793667621,
+      "introduced_wrench_infeasibilities": 11
+    },
+    {
+      "artifact": "bounded_xy_42.json",
+      "mechanism": "Counterlean still exceeded tracking/feedforward and local contact-wrench limits; tilt expansion rejected.",
+      "physical_rollout_performed": false,
+      "cheap_gate": false,
+      "maximum_added_joint_velocity_radps": 0.7000000002000017,
+      "maximum_feedforward_increment_rad": 0.4602905619869686,
+      "introduced_wrench_infeasibilities": 9
+    },
+    {
+      "artifact": "supported_xy_42.json",
+      "mechanism": "Overlapping phase/support boundary constraints produced discontinuous joint compensation.",
+      "physical_rollout_performed": false,
+      "cheap_gate": false,
+      "maximum_added_joint_velocity_radps": 1.5963565032324356,
+      "maximum_feedforward_increment_rad": 6.3077428425545365,
+      "introduced_wrench_infeasibilities": 5
+    },
+    {
+      "artifact": "smooth_supported_42.json",
+      "mechanism": "Nonmonotone bounded IK iterations switched solutions, creating velocity spikes.",
+      "physical_rollout_performed": false,
+      "cheap_gate": false,
+      "maximum_added_joint_velocity_radps": 24.0000000002,
+      "maximum_feedforward_increment_rad": 8.439462524150953,
+      "introduced_wrench_infeasibilities": 9
+    },
+    {
+      "artifact": "projected_supported_42.json",
+      "mechanism": "Monotone bounded projection fit geometry but needed additive smoothing before physical execution.",
+      "physical_rollout_performed": false,
+      "cheap_gate": false,
+      "maximum_added_joint_velocity_radps": 2.8125000001125,
+      "maximum_feedforward_increment_rad": 0.39616181412963214,
+      "introduced_wrench_infeasibilities": 4
+    },
+    {
+      "artifact": "polished_xy_42.json",
+      "mechanism": "After additive smoothing only tick 4360 introduced a contact-wrench infeasibility.",
+      "physical_rollout_performed": false,
+      "cheap_gate": false,
+      "maximum_added_joint_velocity_radps": 0.6392187474792578,
+      "maximum_feedforward_increment_rad": 0.12235288681273652,
+      "introduced_wrench_infeasibilities": 1
+    },
+    {
+      "artifact": "polished_xy_43.json",
+      "mechanism": "Same short support bout failed in the other sample. Baseline feasible incremental-wrench gain was only 0.1523 (0.1258 in sample 42).",
+      "physical_rollout_performed": false,
+      "cheap_gate": false,
+      "maximum_added_joint_velocity_radps": 0.7000000002000017,
+      "maximum_feedforward_increment_rad": 0.12522984816883959,
+      "introduced_wrench_infeasibilities": 1
+    }
+  ],
+  "correction": "Use supported intervals long enough to contain two complete 300 ms quintic ramps plus 50 ms guards; the offending 21.46--21.975 s bout is excluded for both samples by the same 0.70 s minimum.",
+  "accepted_candidates": [
+    "proposal_42.json",
+    "proposal_43.json"
+  ],
+  "further_expansion": "None after both physical projections completed. Preserve the physical result; root tilt remains expert constrained."
+}

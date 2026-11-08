@@ -1,0 +1,31 @@
+{
+  "method": "Deterministic frozen-feedback closed-loop physical projection through registered ORCS UOLM; no policy fitting or physical state playback.",
+  "projection_run": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_root_v1/projection_42",
+  "proposal": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_root_v1/proposal_42.npz",
+  "proposal_sha256": "615e9f13372d3491417bd6a2fa83a54d624498f80f159f8a3ffec4c823e60be5",
+  "realized_reference_sha256": "99cb293ee3aa56b507684cfcb6ccd3a531df1d18d5bba3fdb81cc9b8ec9ca659",
+  "physical_screen": {
+    "pass_physical_screen": true,
+    "gates": {
+      "initial_support": true,
+      "airborne_grip": true,
+      "actual_walk": true,
+      "alternating_steps": true,
+      "airborne_contact_continuity": true,
+      "support_before_open": true,
+      "withdrawal": true,
+      "stable_robot": true,
+      "stable_object": true,
+      "zero_bad_impulses": true
+    },
+    "walk_m": 2.7502689361572266,
+    "alternating_replants": 10,
+    "maximum_lift_m": 0.7875905661804619,
+    "bad_impulses_Ns": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "note": "Preliminary screen only; unchanged Goal 1 validator must independently verify final rollout, replay and video."
+  }
+}
