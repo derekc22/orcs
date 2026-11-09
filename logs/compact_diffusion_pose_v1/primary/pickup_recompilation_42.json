@@ -1,0 +1,36 @@
+{
+  "compared_arrays": {
+    "qref": {
+      "exact": false,
+      "maximum_error": 1.1915703579390424e-07
+    },
+    "vref": {
+      "exact": false,
+      "maximum_error": 1.1693394164069559e-07
+    },
+    "uref": {
+      "exact": false,
+      "maximum_error": 1.1913801767349241e-07
+    },
+    "goal_position": {
+      "exact": true,
+      "maximum_error": 0.0
+    },
+    "goal_quaternion": {
+      "exact": true,
+      "maximum_error": 0.0
+    }
+  },
+  "all_exact": false,
+  "extracted_reference_sha256": "1303aeea8373c80f2e7cbd7599760a206f6ee1015d8fcc071fd394e4346bb846",
+  "recompiled_reference_sha256": "0f940015ad641ce41df4f4049a728e1a3833141576af946a80d4b12db12115c5",
+  "compiler_record": "logs/compact_diffusion_pose_v1/primary/pickup_recompiled_42.json",
+  "all_float32_arrays_exact": true,
+  "float32_arrays_exact": {
+    "qref": true,
+    "vref": true,
+    "uref": true,
+    "goal_position": true,
+    "goal_quaternion": true
+  }
+}

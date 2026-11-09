@@ -1,0 +1,14 @@
+{
+  "all_arrays_exact": true,
+  "errors": {
+    "qref": 0.0,
+    "vref": 0.0,
+    "uref": 0.0,
+    "goal_position": 0.0,
+    "goal_quaternion": 0.0
+  },
+  "source": "logs/compact_diffusion_pose_v1/primary/pickup_43.npz",
+  "recompiled": "logs/compact_diffusion_pose_v1/primary/pickup_recompiled_43.npz",
+  "source_sha256": "a820e719cb7c42cbab1ec8e3db0eefddbf99c54722b8af6d4c0ac2e80a69fe43",
+  "recompiled_sha256": "a820e719cb7c42cbab1ec8e3db0eefddbf99c54722b8af6d4c0ac2e80a69fe43"
+}

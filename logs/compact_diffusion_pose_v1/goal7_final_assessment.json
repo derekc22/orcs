@@ -1,0 +1,163 @@
+{
+  "status": "FAILURE",
+  "eight_of_ten_achieved": false,
+  "retained_candidate_status": "SUCCESS",
+  "reason": "Two quality-preserving full-source pickup samples remain verified. A new full-source carry sample completes all 22 physical gates and exact replay, but worsens box acceleration and torso oscillation. Position/velocity-consistent refinements fail contact/balance screens near support transitions. Source-primary placement is not verified. Diffusion dominance across permitted motions and all phases is therefore not established.",
+  "final_candidate_assessment": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_pose_v1/primary/consistent/pickup_assessment.json",
+  "phase_component_comparisons": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_pose_v1/primary/consistent/pickup_comparison.csv",
+  "source_attribution": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_pose_v1/primary/consistent/pickup_source_attribution.json",
+  "videos": {
+    "42": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_pose_v1/primary/consistent/pickup_execution_42/rollout.mp4",
+    "43": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_pose_v1/primary/consistent/pickup_execution_43/rollout.mp4"
+  },
+  "replay_errors": {
+    "42": {
+      "exact_qpos_error": 0.0,
+      "exact_qvel_error": 0.0,
+      "exact_control_error": 0.0,
+      "exact_contact_trace_error": 0.0,
+      "exact_locomotion_trace_error": 0.0
+    },
+    "43": {
+      "exact_qpos_error": 0.0,
+      "exact_qvel_error": 0.0,
+      "exact_control_error": 0.0,
+      "exact_contact_trace_error": 0.0,
+      "exact_locomotion_trace_error": 0.0
+    }
+  },
+  "physical_metrics": {
+    "42": {
+      "status": "SUCCESS",
+      "numeric_gates": {
+        "full_execution": true,
+        "initial_ground_support": true,
+        "terrain_free_lift_over_5cm": true,
+        "actual_retained_root_walk_over_2m": true,
+        "alternating_footsteps_at_least_5": true,
+        "airborne_and_bilateral_grip_through_walk": true,
+        "continuous_physical_grasp_while_airborne": true,
+        "support_gated_opening": true,
+        "physical_open_hands": true,
+        "clean_withdrawal": true,
+        "stable_final_robot": true,
+        "stable_final_object": true,
+        "zero_forbidden_object_impulse": true,
+        "zero_self_and_invalid_terrain": true,
+        "independent_exact_replay": true,
+        "physical_model_integrity": true,
+        "effort_limits_preserved": true,
+        "genuine_orcs_pipeline": true,
+        "reference_clock": true,
+        "accepted_model_equivalence": true,
+        "full_task_video": true,
+        "accepted_baseline_preserved": true
+      },
+      "walking_root_displacement_m": 2.7503159046173096,
+      "alternating_replants": 10,
+      "maximum_lift_m": 0.7876012412346056,
+      "maximum_effort_excess_backend": 0.0
+    },
+    "43": {
+      "status": "SUCCESS",
+      "numeric_gates": {
+        "full_execution": true,
+        "initial_ground_support": true,
+        "terrain_free_lift_over_5cm": true,
+        "actual_retained_root_walk_over_2m": true,
+        "alternating_footsteps_at_least_5": true,
+        "airborne_and_bilateral_grip_through_walk": true,
+        "continuous_physical_grasp_while_airborne": true,
+        "support_gated_opening": true,
+        "physical_open_hands": true,
+        "clean_withdrawal": true,
+        "stable_final_robot": true,
+        "stable_final_object": true,
+        "zero_forbidden_object_impulse": true,
+        "zero_self_and_invalid_terrain": true,
+        "independent_exact_replay": true,
+        "physical_model_integrity": true,
+        "effort_limits_preserved": true,
+        "genuine_orcs_pipeline": true,
+        "reference_clock": true,
+        "accepted_model_equivalence": true,
+        "full_task_video": true,
+        "accepted_baseline_preserved": true
+      },
+      "walking_root_displacement_m": 2.7505838871002197,
+      "alternating_replants": 10,
+      "maximum_lift_m": 0.7876643126608829,
+      "maximum_effort_excess_backend": 0.0
+    }
+  },
+  "reproduction_command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MUJOCO_GL=egl .venv/bin/python -B scripts/compact_diffusion_pose_v1/primary_reproduce.py --out logs/compact_diffusion_pose_v1_pickup_reproduction",
+  "remaining_expert_dependencies": [
+    "Footstep locations and support/contact schedule",
+    "Compact-gripper actuation and contact/release mechanics",
+    "Accepted carry and placement task-scale reference backbone",
+    "Task endpoint anchors and frozen feedback stabilization"
+  ],
+  "manifest": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_pose_v1/goal7_final_manifest.json",
+  "preservation": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_pose_v1/primary_preservation.json",
+  "no_commits_or_pushes": true,
+  "coordinated_extension_assessment": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_pose_v1/coordinated/coordinated_assessment.json",
+  "coordinated_extension_status": "ONE_PHYSICAL_SUCCESS_REJECTED_FOR_QUALITY",
+  "coordinated_carry_causal_evidence": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_pose_v1/coordinated/carry_causal_42.json",
+  "coordinated_final_rejections": {
+    "implicit_42": {
+      "processed_ticks": [
+        3300,
+        3871
+      ],
+      "maximum_position_error_m": 0.0008946467923773966,
+      "maximum_angle_error_rad": 0.004618790184410385,
+      "maximum_COM_error_m": 0.0005063737094767298,
+      "pass_geometry": false,
+      "pass_dynamics": false,
+      "pass_cheap_gate": false,
+      "simulator_stepped": false,
+      "physical_execution_performed": false
+    },
+    "reaction_42": {
+      "processed_ticks": [
+        3300,
+        3866
+      ],
+      "maximum_position_error_m": 0.0007343175526333651,
+      "maximum_angle_error_rad": 0.004708651801692811,
+      "maximum_COM_error_m": 0.0005346909204478699,
+      "pass_geometry": false,
+      "pass_dynamics": false,
+      "pass_cheap_gate": false,
+      "simulator_stepped": false,
+      "physical_execution_performed": false
+    },
+    "dynamic_com_42": {
+      "processed_ticks": [
+        3300,
+        4074
+      ],
+      "maximum_position_error_m": 0.0008800472941573136,
+      "maximum_angle_error_rad": 0.005083853670704103,
+      "maximum_COM_error_m": 0.010127193445909037,
+      "pass_geometry": false,
+      "pass_dynamics": false,
+      "pass_cheap_gate": false,
+      "simulator_stepped": false,
+      "physical_execution_performed": false
+    }
+  },
+  "latest_preservation": {
+    "preservation_before.json": {
+      "count": 64,
+      "all_unchanged": true,
+      "failed": []
+    },
+    "unrelated_untracked_hashes.json": {
+      "count": 223,
+      "all_unchanged": true,
+      "failed": []
+    }
+  },
+  "original_goal7_sources_unchanged": true
+}

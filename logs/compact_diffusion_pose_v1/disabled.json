@@ -1,0 +1,4 @@
+{
+  "source": "logs/compact_diffusion_root_v1/disabled.npz",
+  "purpose": "Unmodified diffusion-disabled control-path ablation"
+}

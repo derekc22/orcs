@@ -1,0 +1,753 @@
+{
+  "seed": 43,
+  "source": {
+    "checkpoint_sha256": "36470e72206000a1305d88a0c0bf8e5e6c73d12180b3de9f69d49efa4ae0d442",
+    "sample_sha256": "ab93490535c1b809d140fba2c11c777b50e1ec5c3638e60f4580e4318ded7282",
+    "calibration_sha256": "8753b728f4c222d6d7791b43ae8c0eac57ac97f67e372455b3811fa0cb457da2",
+    "native_lift_frame": 58,
+    "native_placement_end_frame": 277,
+    "physical_lift_guard_tick": 641,
+    "phases": {
+      "pickup": {
+        "physical_ticks": [
+          641,
+          1600
+        ],
+        "native_frames": [
+          58,
+          105
+        ],
+        "root_height_peak_change_m": 0.3236680103667914,
+        "object_position_peak_change_m": 0.2718548426357915
+      },
+      "carry": {
+        "physical_ticks": [
+          3449,
+          4721
+        ],
+        "native_frames": [
+          105,
+          225
+        ],
+        "root_height_peak_change_m": 0.0,
+        "object_position_peak_change_m": 0.1797003508676092
+      },
+      "placement": {
+        "physical_ticks": [
+          6701,
+          7760
+        ],
+        "native_frames": [
+          225,
+          277
+        ],
+        "root_height_peak_change_m": 0.06151220756581238,
+        "object_position_peak_change_m": 0.2643830748625592
+      }
+    },
+    "method": "Full frozen native curves aligned to shared contact events and task pose endpoints, plus retained prior sample-dependent motion. Source root/waist/object/arm interior preferences replace the expert curves; expert feet, waist yaw and gripper mechanics remain authoritative.",
+    "projection_options": {
+      "continuous": false,
+      "fixed_motion": false,
+      "fixed_angles": false
+    },
+    "selected_phases": [
+      "pickup"
+    ]
+  },
+  "compiler_sha256": "1ee4f2538b2b9f138e0a9e4418bf9ef86475dacb40ffe5085736c91eb72ddece",
+  "helper_sha256": {
+    "primary_targets.py": "2df317e1cdf06e500cbf9cba2d402a846b2e9005770c395e3ca227e59b9f467a",
+    "primary_kinematics.py": "d1eb0745e4504f35541aacb177658f398d2749114d5360e1ed16c048a578afd5",
+    "primary_dynamics.py": "1008d629a474858e363ffdac916e64fb66ee30798d28f3b4ab18202e33b3e837"
+  },
+  "base_sha256": "a551e8d1d2a8bf8f557c00c36c6df617178ee1508e3e89c184336c41eb60422d",
+  "maximum_contact_position_error_m": 9.748863678808487e-06,
+  "maximum_contact_angle_error_rad": 1.632447408781799e-05,
+  "geometry_failure_count": 0,
+  "introduced_dynamic_infeasibilities": [],
+  "loaded_dynamics_checks": [
+    {
+      "tick": 650,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.3039486984899327e-12,
+      "maximum_loaded_effort_excess_Nm": -4.447854682715698
+    },
+    {
+      "tick": 660,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.554623179662485e-12,
+      "maximum_loaded_effort_excess_Nm": -4.389560463950728
+    },
+    {
+      "tick": 670,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.098321516541546e-12,
+      "maximum_loaded_effort_excess_Nm": -4.3791496960574685
+    },
+    {
+      "tick": 680,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 1.4430678874077785e-12,
+      "maximum_loaded_effort_excess_Nm": -4.76961984494948
+    },
+    {
+      "tick": 690,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 1.4207524046128128e-12,
+      "maximum_loaded_effort_excess_Nm": -4.317988186111741
+    },
+    {
+      "tick": 700,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 1.5571155476123977e-12,
+      "maximum_loaded_effort_excess_Nm": -4.369124752002237
+    },
+    {
+      "tick": 710,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 1.5961676425035876e-12,
+      "maximum_loaded_effort_excess_Nm": -4.554755892442491
+    },
+    {
+      "tick": 720,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 1.5898393712632242e-12,
+      "maximum_loaded_effort_excess_Nm": -4.4320727544399645
+    },
+    {
+      "tick": 730,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 1.6118772983020335e-12,
+      "maximum_loaded_effort_excess_Nm": -4.348462084825134
+    },
+    {
+      "tick": 740,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 1.778632796600732e-12,
+      "maximum_loaded_effort_excess_Nm": -4.428689677716395
+    },
+    {
+      "tick": 750,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 1.6536216840279394e-12,
+      "maximum_loaded_effort_excess_Nm": -4.320028168042807
+    },
+    {
+      "tick": 760,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 1.9222262670481882e-12,
+      "maximum_loaded_effort_excess_Nm": -4.729093133031359
+    },
+    {
+      "tick": 770,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 1.8008372570932352e-12,
+      "maximum_loaded_effort_excess_Nm": -4.248142218917984
+    },
+    {
+      "tick": 780,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.1160850849355484e-12,
+      "maximum_loaded_effort_excess_Nm": -4.647017217520829
+    },
+    {
+      "tick": 790,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.144895372424571e-12,
+      "maximum_loaded_effort_excess_Nm": -4.337393593721171
+    },
+    {
+      "tick": 800,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.122468867327143e-12,
+      "maximum_loaded_effort_excess_Nm": -4.57975233012021
+    },
+    {
+      "tick": 810,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.3696877793355497e-12,
+      "maximum_loaded_effort_excess_Nm": -4.333488185369584
+    },
+    {
+      "tick": 820,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.631894702176396e-12,
+      "maximum_loaded_effort_excess_Nm": -4.557699303236731
+    },
+    {
+      "tick": 830,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.7593205498277484e-12,
+      "maximum_loaded_effort_excess_Nm": -4.269705599896046
+    },
+    {
+      "tick": 840,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 3.160693928805358e-12,
+      "maximum_loaded_effort_excess_Nm": -4.493224481200198
+    },
+    {
+      "tick": 850,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 3.0714181198376878e-12,
+      "maximum_loaded_effort_excess_Nm": -4.315916957472359
+    },
+    {
+      "tick": 860,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 3.141042981269493e-12,
+      "maximum_loaded_effort_excess_Nm": -4.493145440099799
+    },
+    {
+      "tick": 870,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.993993941657891e-12,
+      "maximum_loaded_effort_excess_Nm": -4.344123317586329
+    },
+    {
+      "tick": 880,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.8534952178915773e-12,
+      "maximum_loaded_effort_excess_Nm": -4.379287072876127
+    },
+    {
+      "tick": 890,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.4534818621191334e-12,
+      "maximum_loaded_effort_excess_Nm": -4.4328593258007185
+    },
+    {
+      "tick": 900,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.4856228186820317e-12,
+      "maximum_loaded_effort_excess_Nm": -4.285217121633402
+    },
+    {
+      "tick": 910,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.663314013773288e-12,
+      "maximum_loaded_effort_excess_Nm": -4.439561158236225
+    },
+    {
+      "tick": 920,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.0616841567289157e-12,
+      "maximum_loaded_effort_excess_Nm": -4.34494150180314
+    },
+    {
+      "tick": 930,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.519928710142949e-12,
+      "maximum_loaded_effort_excess_Nm": -4.287493720414683
+    },
+    {
+      "tick": 940,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.2963853041346738e-12,
+      "maximum_loaded_effort_excess_Nm": -4.365220898306912
+    },
+    {
+      "tick": 950,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.468691917556498e-12,
+      "maximum_loaded_effort_excess_Nm": -4.271268293735872
+    },
+    {
+      "tick": 960,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 3.085975919248085e-12,
+      "maximum_loaded_effort_excess_Nm": -4.371976680346193
+    },
+    {
+      "tick": 970,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.3450130726132556e-12,
+      "maximum_loaded_effort_excess_Nm": -4.316728929271083
+    },
+    {
+      "tick": 980,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 3.191891195797325e-12,
+      "maximum_loaded_effort_excess_Nm": -4.517309849961864
+    },
+    {
+      "tick": 990,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.2844504066199534e-12,
+      "maximum_loaded_effort_excess_Nm": -4.2998776999621215
+    },
+    {
+      "tick": 1000,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 4.564570943443869e-12,
+      "maximum_loaded_effort_excess_Nm": -4.37043019366142
+    },
+    {
+      "tick": 1010,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.6640911698905256e-12,
+      "maximum_loaded_effort_excess_Nm": -4.244449219308018
+    },
+    {
+      "tick": 1020,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.46480613697031e-12,
+      "maximum_loaded_effort_excess_Nm": -4.528959372566051
+    },
+    {
+      "tick": 1030,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.379985097888948e-12,
+      "maximum_loaded_effort_excess_Nm": -4.320551624869021
+    },
+    {
+      "tick": 1040,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 3.127498260369066e-12,
+      "maximum_loaded_effort_excess_Nm": -4.515592739121892
+    },
+    {
+      "tick": 1050,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.596811654598241e-12,
+      "maximum_loaded_effort_excess_Nm": -4.293877717053442
+    },
+    {
+      "tick": 1060,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 4.354155924701786e-12,
+      "maximum_loaded_effort_excess_Nm": -4.612725386292882
+    },
+    {
+      "tick": 1070,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.0805579481475434e-12,
+      "maximum_loaded_effort_excess_Nm": -4.2047200261546465
+    },
+    {
+      "tick": 1080,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 4.454436819401053e-12,
+      "maximum_loaded_effort_excess_Nm": -4.6419726812515405
+    },
+    {
+      "tick": 1090,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 1.7404688801292423e-12,
+      "maximum_loaded_effort_excess_Nm": -4.344479497616609
+    },
+    {
+      "tick": 1100,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 8.518963312553751e-12,
+      "maximum_loaded_effort_excess_Nm": -4.620929300332883
+    },
+    {
+      "tick": 1110,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 1.922906278650771e-12,
+      "maximum_loaded_effort_excess_Nm": -4.212227746977959
+    },
+    {
+      "tick": 1120,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 3.649192059640427e-12,
+      "maximum_loaded_effort_excess_Nm": -4.607565431646956
+    },
+    {
+      "tick": 1130,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.592703829407128e-12,
+      "maximum_loaded_effort_excess_Nm": -4.257909999415068
+    },
+    {
+      "tick": 1140,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 3.875233467454109e-12,
+      "maximum_loaded_effort_excess_Nm": -4.720667838101542
+    },
+    {
+      "tick": 1150,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.396222109624091e-12,
+      "maximum_loaded_effort_excess_Nm": -4.32938203410393
+    },
+    {
+      "tick": 1160,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 3.1261937483151314e-12,
+      "maximum_loaded_effort_excess_Nm": -4.481471744451804
+    },
+    {
+      "tick": 1170,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.723155034800584e-12,
+      "maximum_loaded_effort_excess_Nm": -4.446939485678977
+    },
+    {
+      "tick": 1180,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.7530200341630007e-12,
+      "maximum_loaded_effort_excess_Nm": -4.625025987110008
+    },
+    {
+      "tick": 1190,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.3314683517128287e-12,
+      "maximum_loaded_effort_excess_Nm": -4.505008961205985
+    },
+    {
+      "tick": 1200,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.6436630662374228e-12,
+      "maximum_loaded_effort_excess_Nm": -4.5040909451642115
+    },
+    {
+      "tick": 1210,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.1875834477214084e-12,
+      "maximum_loaded_effort_excess_Nm": -4.419553735522564
+    },
+    {
+      "tick": 1220,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.2239987629291136e-12,
+      "maximum_loaded_effort_excess_Nm": -4.410184159591364
+    },
+    {
+      "tick": 1230,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.075811744717271e-12,
+      "maximum_loaded_effort_excess_Nm": -4.480620720425922
+    },
+    {
+      "tick": 1240,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 1.8751666885918894e-12,
+      "maximum_loaded_effort_excess_Nm": -4.348365126061011
+    },
+    {
+      "tick": 1250,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.2981061498228428e-12,
+      "maximum_loaded_effort_excess_Nm": -4.499723015387854
+    },
+    {
+      "tick": 1260,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 1.369127033967743e-12,
+      "maximum_loaded_effort_excess_Nm": -4.374330564190024
+    },
+    {
+      "tick": 1270,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.894795514407633e-12,
+      "maximum_loaded_effort_excess_Nm": -4.4242044922187445
+    },
+    {
+      "tick": 1280,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 1.84297022087776e-12,
+      "maximum_loaded_effort_excess_Nm": -4.381499886774006
+    },
+    {
+      "tick": 1290,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.3563928586156635e-12,
+      "maximum_loaded_effort_excess_Nm": -4.36570237133443
+    },
+    {
+      "tick": 1300,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 1.7648105199441488e-12,
+      "maximum_loaded_effort_excess_Nm": -4.429586814007888
+    },
+    {
+      "tick": 1310,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.2570834090629432e-12,
+      "maximum_loaded_effort_excess_Nm": -4.372511938966473
+    },
+    {
+      "tick": 1320,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.0026758029700886e-12,
+      "maximum_loaded_effort_excess_Nm": -4.458611172632572
+    },
+    {
+      "tick": 1330,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.398081733190338e-12,
+      "maximum_loaded_effort_excess_Nm": -4.359692005624649
+    },
+    {
+      "tick": 1340,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 1.7890133818809772e-12,
+      "maximum_loaded_effort_excess_Nm": -4.320680297060936
+    },
+    {
+      "tick": 1350,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.4009683130543635e-12,
+      "maximum_loaded_effort_excess_Nm": -4.45788838692664
+    },
+    {
+      "tick": 1360,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 1.4581669205426806e-12,
+      "maximum_loaded_effort_excess_Nm": -4.285414540030778
+    },
+    {
+      "tick": 1370,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.4044100044307015e-12,
+      "maximum_loaded_effort_excess_Nm": -4.421922531509421
+    },
+    {
+      "tick": 1380,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 1.8898216325169415e-12,
+      "maximum_loaded_effort_excess_Nm": -4.34016046100341
+    },
+    {
+      "tick": 1390,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.274763710730099e-12,
+      "maximum_loaded_effort_excess_Nm": -4.338473610409909
+    },
+    {
+      "tick": 1400,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.3294699502685035e-12,
+      "maximum_loaded_effort_excess_Nm": -4.463663991295785
+    },
+    {
+      "tick": 1410,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.185363001672158e-12,
+      "maximum_loaded_effort_excess_Nm": -4.470913963930818
+    },
+    {
+      "tick": 1420,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 1.5912271500440056e-12,
+      "maximum_loaded_effort_excess_Nm": -4.2963280011994405
+    },
+    {
+      "tick": 1430,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.368105711525459e-12,
+      "maximum_loaded_effort_excess_Nm": -4.452755705335209
+    },
+    {
+      "tick": 1440,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 1.7393309015290015e-12,
+      "maximum_loaded_effort_excess_Nm": -4.130184951924139
+    },
+    {
+      "tick": 1450,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.255529096828468e-12,
+      "maximum_loaded_effort_excess_Nm": -4.502686295537389
+    },
+    {
+      "tick": 1460,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 1.910804847682357e-12,
+      "maximum_loaded_effort_excess_Nm": -4.078029078456932
+    },
+    {
+      "tick": 1470,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.22605267552467e-12,
+      "maximum_loaded_effort_excess_Nm": -4.421167000118416
+    },
+    {
+      "tick": 1480,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 1.9700907571973403e-12,
+      "maximum_loaded_effort_excess_Nm": -4.143654377991825
+    },
+    {
+      "tick": 1490,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.0480700468894497e-12,
+      "maximum_loaded_effort_excess_Nm": -4.408045551850612
+    },
+    {
+      "tick": 1500,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 1.892264123171117e-12,
+      "maximum_loaded_effort_excess_Nm": -4.173291162267188
+    },
+    {
+      "tick": 1510,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.2319368575551835e-12,
+      "maximum_loaded_effort_excess_Nm": -4.455009473612876
+    },
+    {
+      "tick": 1520,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 1.997707554934891e-12,
+      "maximum_loaded_effort_excess_Nm": -4.162337179627748
+    },
+    {
+      "tick": 1530,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.109146191031641e-12,
+      "maximum_loaded_effort_excess_Nm": -4.446568455941118
+    },
+    {
+      "tick": 1540,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.01663685750475e-12,
+      "maximum_loaded_effort_excess_Nm": -4.138901920314836
+    },
+    {
+      "tick": 1550,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 1.9847457011223923e-12,
+      "maximum_loaded_effort_excess_Nm": -4.386384461648386
+    },
+    {
+      "tick": 1560,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.0353718710452995e-12,
+      "maximum_loaded_effort_excess_Nm": -4.147571534171621
+    },
+    {
+      "tick": 1570,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.2879476091475226e-12,
+      "maximum_loaded_effort_excess_Nm": -4.345947424642443
+    },
+    {
+      "tick": 1580,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.2347679262679776e-12,
+      "maximum_loaded_effort_excess_Nm": -4.272851793065311
+    },
+    {
+      "tick": 1590,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 2.075284388780574e-12,
+      "maximum_loaded_effort_excess_Nm": -4.403860113743783
+    },
+    {
+      "tick": 1600,
+      "baseline_feasible": true,
+      "candidate_feasible": true,
+      "wrench_error": 1.9395041128689172e-12,
+      "maximum_loaded_effort_excess_Nm": -4.2240819790621185
+    }
+  ],
+  "maximum_predicted_actuator_force_excess_Nm": -2.1992619787899326,
+  "maximum_control_range_excess": 0.0,
+  "maximum_native_velocity_radps": 22.666950225830078,
+  "maximum_added_native_velocity_radps": 1.7092301677057886,
+  "maximum_control_increment_rad": 1.3289101334984983,
+  "preserved_gripper_controls": true,
+  "physical_model_changed": false,
+  "simulator_stepped": false,
+  "contract": "Full frozen-proposal interior preferences, fixed expert sole poses and gripper mechanics, loaded contact inverse-dynamics delta preserving all baseline 200 Hz feedforward details. Necessary screens only; actual ORCS execution and unchanged gates remain mandatory.",
+  "pass_cheap_gate": true
+}

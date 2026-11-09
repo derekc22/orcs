@@ -1,0 +1,793 @@
+{
+  "scope": "Verified two-sample Goal 7 diffusion-primary pickup, preserving the accepted incremental baseline and Goal 6 carry/placement",
+  "baseline_commit": "6e09e89fc547dc547582ece30a82c7e620c90cc7",
+  "candidate_status": "SUCCESS",
+  "eight_of_ten_achieved": false,
+  "sources_unchanged": true,
+  "verification": "Existing evidence and static checks only; no simulation, inference, optimization or reproduction rerun.",
+  "samples": {
+    "42": {
+      "status": "SUCCESS",
+      "numeric_gates": {
+        "full_execution": true,
+        "initial_ground_support": true,
+        "terrain_free_lift_over_5cm": true,
+        "actual_retained_root_walk_over_2m": true,
+        "alternating_footsteps_at_least_5": true,
+        "airborne_and_bilateral_grip_through_walk": true,
+        "continuous_physical_grasp_while_airborne": true,
+        "support_gated_opening": true,
+        "physical_open_hands": true,
+        "clean_withdrawal": true,
+        "stable_final_robot": true,
+        "stable_final_object": true,
+        "zero_forbidden_object_impulse": true,
+        "zero_self_and_invalid_terrain": true,
+        "independent_exact_replay": true,
+        "physical_model_integrity": true,
+        "effort_limits_preserved": true,
+        "genuine_orcs_pipeline": true,
+        "reference_clock": true,
+        "accepted_model_equivalence": true,
+        "full_task_video": true,
+        "accepted_baseline_preserved": true
+      },
+      "walking_root_displacement_m": 2.7503159046173096,
+      "alternating_replants": 10,
+      "maximum_effort_excess_backend": 0.0,
+      "bad_impulses_Ns": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "replay_errors": {
+        "exact_qpos_error": 0.0,
+        "exact_qvel_error": 0.0,
+        "exact_control_error": 0.0,
+        "exact_contact_trace_error": 0.0,
+        "exact_locomotion_trace_error": 0.0
+      },
+      "quality_pass": true,
+      "pickup_object_expert_RMS_m": 0.1132594421505928,
+      "pickup_pelvis_height_expert_RMS_m": 0.19477200508117676
+    },
+    "43": {
+      "status": "SUCCESS",
+      "numeric_gates": {
+        "full_execution": true,
+        "initial_ground_support": true,
+        "terrain_free_lift_over_5cm": true,
+        "actual_retained_root_walk_over_2m": true,
+        "alternating_footsteps_at_least_5": true,
+        "airborne_and_bilateral_grip_through_walk": true,
+        "continuous_physical_grasp_while_airborne": true,
+        "support_gated_opening": true,
+        "physical_open_hands": true,
+        "clean_withdrawal": true,
+        "stable_final_robot": true,
+        "stable_final_object": true,
+        "zero_forbidden_object_impulse": true,
+        "zero_self_and_invalid_terrain": true,
+        "independent_exact_replay": true,
+        "physical_model_integrity": true,
+        "effort_limits_preserved": true,
+        "genuine_orcs_pipeline": true,
+        "reference_clock": true,
+        "accepted_model_equivalence": true,
+        "full_task_video": true,
+        "accepted_baseline_preserved": true
+      },
+      "walking_root_displacement_m": 2.7505838871002197,
+      "alternating_replants": 10,
+      "maximum_effort_excess_backend": 0.0,
+      "bad_impulses_Ns": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "replay_errors": {
+        "exact_qpos_error": 0.0,
+        "exact_qvel_error": 0.0,
+        "exact_control_error": 0.0,
+        "exact_contact_trace_error": 0.0,
+        "exact_locomotion_trace_error": 0.0
+      },
+      "quality_pass": true,
+      "pickup_object_expert_RMS_m": 0.11396787315607071,
+      "pickup_pelvis_height_expert_RMS_m": 0.19231487810611725
+    }
+  },
+  "committed_files": {
+    "logs/compact_diffusion_pose_v1/disabled.json": {
+      "kind": "file",
+      "sha256": "a4c3af2040cdd0515c05ee3c13c65d1dd6d68d142dfa457e7b149b15a8d16f49",
+      "size_bytes": 129
+    },
+    "logs/compact_diffusion_pose_v1/disabled/baseline_preservation.json": {
+      "kind": "file",
+      "sha256": "e2cafd363ab83b75b2828f5fdff050b4ce94fe7cea70e69d31e07b30d197401f",
+      "size_bytes": 786
+    },
+    "logs/compact_diffusion_pose_v1/disabled/execution.json": {
+      "kind": "file",
+      "sha256": "94580ad33ca6ad83cafcb0c4372e7c02906cb5c99307e46a7c3baccd6f0c35d4",
+      "size_bytes": 2822
+    },
+    "logs/compact_diffusion_pose_v1/disabled/model_equivalence.json": {
+      "kind": "file",
+      "sha256": "4ed4d8709ea8ae2c6a3b9378b3f78641517f1209c720dd3389a4bc82d3d208fb",
+      "size_bytes": 2842
+    },
+    "logs/compact_diffusion_pose_v1/disabled/physical_screen.json": {
+      "kind": "file",
+      "sha256": "1184897b1c14bd7b8146f26caa67b82bd4a4c042e768ee2d0e6c69360b6a5626",
+      "size_bytes": 624
+    },
+    "logs/compact_diffusion_pose_v1/execution_42/baseline_preservation.json": {
+      "kind": "file",
+      "sha256": "e2cafd363ab83b75b2828f5fdff050b4ce94fe7cea70e69d31e07b30d197401f",
+      "size_bytes": 786
+    },
+    "logs/compact_diffusion_pose_v1/execution_42/execution.json": {
+      "kind": "file",
+      "sha256": "a074dc70b14fb9d4d33ddc2d9eeb68825ed7654c294e774c566bfdc8557d3342",
+      "size_bytes": 2809
+    },
+    "logs/compact_diffusion_pose_v1/execution_42/model_equivalence.json": {
+      "kind": "file",
+      "sha256": "4ed4d8709ea8ae2c6a3b9378b3f78641517f1209c720dd3389a4bc82d3d208fb",
+      "size_bytes": 2842
+    },
+    "logs/compact_diffusion_pose_v1/execution_42/rollout_verification.json": {
+      "kind": "file",
+      "sha256": "122110bcabbd6a4a6d340a7de547c2cb3bde555d56a6aa4b98767108559ed68f",
+      "size_bytes": 2064
+    },
+    "logs/compact_diffusion_pose_v1/execution_42/task_assessment.json": {
+      "kind": "file",
+      "sha256": "5c9eea98aa5fa39bab96315cb810f6536274115c38c5d0c586f5f3dcd820a09f",
+      "size_bytes": 2205
+    },
+    "logs/compact_diffusion_pose_v1/execution_42/task_metrics.json": {
+      "kind": "file",
+      "sha256": "ed8c9704aae46421f9390c652f6ae918c4715bd721680209cbbcbcdc465efd77",
+      "size_bytes": 5934
+    },
+    "logs/compact_diffusion_pose_v1/execution_42/video_metadata.json": {
+      "kind": "file",
+      "sha256": "26f3781d049144dd2258d1fced603df0d8a5e6c78c1d0225583c5764a5a8877c",
+      "size_bytes": 217
+    },
+    "logs/compact_diffusion_pose_v1/execution_43/baseline_preservation.json": {
+      "kind": "file",
+      "sha256": "e2cafd363ab83b75b2828f5fdff050b4ce94fe7cea70e69d31e07b30d197401f",
+      "size_bytes": 786
+    },
+    "logs/compact_diffusion_pose_v1/execution_43/execution.json": {
+      "kind": "file",
+      "sha256": "34cb6e7d149fa7ab937803bebe86ac79bb3fafe5c36e7c147559bebcf943325f",
+      "size_bytes": 2815
+    },
+    "logs/compact_diffusion_pose_v1/execution_43/model_equivalence.json": {
+      "kind": "file",
+      "sha256": "4ed4d8709ea8ae2c6a3b9378b3f78641517f1209c720dd3389a4bc82d3d208fb",
+      "size_bytes": 2842
+    },
+    "logs/compact_diffusion_pose_v1/execution_43/rollout_verification.json": {
+      "kind": "file",
+      "sha256": "54b25e5fcb56da1a17770d425ac5525d4f6afc0c368114b5c72b0d3ea6f8c772",
+      "size_bytes": 2070
+    },
+    "logs/compact_diffusion_pose_v1/execution_43/task_assessment.json": {
+      "kind": "file",
+      "sha256": "d8245fdbfd97c382d6965e5d2f012d712a830b380a5d36b03b90620b87e2c2b4",
+      "size_bytes": 2205
+    },
+    "logs/compact_diffusion_pose_v1/execution_43/task_metrics.json": {
+      "kind": "file",
+      "sha256": "5ec02784814247979b75044d4f4491273ea64f56ad7007442ec248393901ff48",
+      "size_bytes": 5895
+    },
+    "logs/compact_diffusion_pose_v1/execution_43/video_metadata.json": {
+      "kind": "file",
+      "sha256": "26f3781d049144dd2258d1fced603df0d8a5e6c78c1d0225583c5764a5a8877c",
+      "size_bytes": 217
+    },
+    "logs/compact_diffusion_pose_v1/feasible_42.json": {
+      "kind": "file",
+      "sha256": "472b009cb16368a31e081de9a2ac11dff15140db021a4bc4c12715e56b4347b6",
+      "size_bytes": 1234
+    },
+    "logs/compact_diffusion_pose_v1/feasible_43.json": {
+      "kind": "file",
+      "sha256": "4c0e0bcea6812c8c0a86e69567ed12d141f306c0f9924be9f7f433f664f15107",
+      "size_bytes": 1234
+    },
+    "logs/compact_diffusion_pose_v1/goal7_assessment.json": {
+      "kind": "file",
+      "sha256": "2fecdea1d0f230f4c09e018012f77345b02a292c1f3ca9e34ac3b860b6d76bdf",
+      "size_bytes": 353693
+    },
+    "logs/compact_diffusion_pose_v1/goal7_final_assessment.json": {
+      "kind": "file",
+      "sha256": "56d9bc9737161c5925018e223638fa3ccbdc45da3fdff39661bcb683ac1361fd",
+      "size_bytes": 6812
+    },
+    "logs/compact_diffusion_pose_v1/preservation_before.json": {
+      "kind": "file",
+      "sha256": "dc28036d86f1c946e8b2d830ce1333e9607a467bee57a9ccb136af2677f67a47",
+      "size_bytes": 7937
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_42.json": {
+      "kind": "symlink",
+      "target": "../pickup_recompiled_42.json",
+      "resolved_committed_target": "logs/compact_diffusion_pose_v1/primary/pickup_recompiled_42.json",
+      "git_blob_sha256": "eff8e5908cc6231d3202738d47fbb2d32a8c66fa815c01027a1858b49179cd02"
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_43.json": {
+      "kind": "symlink",
+      "target": "../pickup_recompiled_43.json",
+      "resolved_committed_target": "logs/compact_diffusion_pose_v1/primary/pickup_recompiled_43.json",
+      "git_blob_sha256": "f5329acbc02b1db16e9b5dc4fabfca9f19c8a4745434c9e13ccbac9dcae8b3f9"
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_assessment.json": {
+      "kind": "file",
+      "sha256": "926346d68017449f16344029b08b560f2c9c113db059879eda682f380fc0e9c2",
+      "size_bytes": 448545
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_comparison.csv": {
+      "kind": "file",
+      "sha256": "ac2cb585ab1981ac3ae2dcb492ab4a6a3534090a3252c04604c99c14240350af",
+      "size_bytes": 5834
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_execution_42/baseline_preservation.json": {
+      "kind": "file",
+      "sha256": "e2cafd363ab83b75b2828f5fdff050b4ce94fe7cea70e69d31e07b30d197401f",
+      "size_bytes": 786
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_execution_42/execution.json": {
+      "kind": "file",
+      "sha256": "264bfba46f813f0fa1ff7397212b18e4e2e5d9bc12beca6ad531c8703dfad6bf",
+      "size_bytes": 2844
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_execution_42/model_equivalence.json": {
+      "kind": "file",
+      "sha256": "4ed4d8709ea8ae2c6a3b9378b3f78641517f1209c720dd3389a4bc82d3d208fb",
+      "size_bytes": 2842
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_execution_42/rollout_verification.json": {
+      "kind": "file",
+      "sha256": "00183e7b3ff2b6434f802394ec7c0421f97b98d3b3753441fd23f2b90950c048",
+      "size_bytes": 2072
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_execution_42/task_assessment.json": {
+      "kind": "file",
+      "sha256": "4934d0f525bf2cbe2903351b3551186e903527e543c11eb2a8943e5bfc92a659",
+      "size_bytes": 2202
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_execution_42/task_metrics.json": {
+      "kind": "file",
+      "sha256": "c555e6b50dbdf4426fc7c73340c3255da120cfdec12117562af3c4d023856878",
+      "size_bytes": 5939
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_execution_42/video_metadata.json": {
+      "kind": "file",
+      "sha256": "26f3781d049144dd2258d1fced603df0d8a5e6c78c1d0225583c5764a5a8877c",
+      "size_bytes": 217
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_execution_43": {
+      "kind": "symlink",
+      "target": "../pickup_execution_43",
+      "resolved_committed_target": "logs/compact_diffusion_pose_v1/primary/pickup_execution_43",
+      "git_blob_sha256": "335253e7c9f2090359befaa93126c830d7e6da5f70b8564dedd812cab0b197c3"
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_feasible_42.json": {
+      "kind": "file",
+      "sha256": "fbed1e91123d6e2d5cd1b0010d13ca7a833cddf0b7e36fee9f7e5db4d1852c8b",
+      "size_bytes": 1282
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_feasible_43.json": {
+      "kind": "symlink",
+      "target": "../pickup_feasible_43.json",
+      "resolved_committed_target": "logs/compact_diffusion_pose_v1/primary/pickup_feasible_43.json",
+      "git_blob_sha256": "a9602dd21b9c5f253b44bd462884f6e5d5fe61859c3006f3a30b403fc202bffa"
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_projection_42/baseline_preservation.json": {
+      "kind": "file",
+      "sha256": "e2cafd363ab83b75b2828f5fdff050b4ce94fe7cea70e69d31e07b30d197401f",
+      "size_bytes": 786
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_projection_42/execution.json": {
+      "kind": "file",
+      "sha256": "a71f041e9683d13b3680edd56208bb5fe7ea2aa55c4c444133dd7910b196b0cc",
+      "size_bytes": 2836
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_projection_42/model_equivalence.json": {
+      "kind": "file",
+      "sha256": "4ed4d8709ea8ae2c6a3b9378b3f78641517f1209c720dd3389a4bc82d3d208fb",
+      "size_bytes": 2842
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_projection_42/physical_screen.json": {
+      "kind": "file",
+      "sha256": "7142ab21a81324ede90c0021e26bebd225afd28e0771e1717dbe7efcf887bd91",
+      "size_bytes": 625
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_projection_43": {
+      "kind": "symlink",
+      "target": "../pickup_projection_43",
+      "resolved_committed_target": "logs/compact_diffusion_pose_v1/primary/pickup_projection_43",
+      "git_blob_sha256": "a105e92acc6e59fdbf0a82e741a7e40a51c04406960232ea14c119847a16775c"
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_replay_42/baseline_preservation.json": {
+      "kind": "file",
+      "sha256": "e2cafd363ab83b75b2828f5fdff050b4ce94fe7cea70e69d31e07b30d197401f",
+      "size_bytes": 786
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_replay_42/execution.json": {
+      "kind": "file",
+      "sha256": "19bc0c126ae446e6beeeaee414e520ad2d2f87a8080e6e841b7280c93a5569bb",
+      "size_bytes": 3094
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_replay_42/model_equivalence.json": {
+      "kind": "file",
+      "sha256": "4ed4d8709ea8ae2c6a3b9378b3f78641517f1209c720dd3389a4bc82d3d208fb",
+      "size_bytes": 2842
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_replay_43": {
+      "kind": "symlink",
+      "target": "../pickup_replay_43",
+      "resolved_committed_target": "logs/compact_diffusion_pose_v1/primary/pickup_replay_43",
+      "git_blob_sha256": "cec7b4b103dc533b1ec9259021a8d182de1f7f0c9377b36de32f78b55312fe78"
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_source_attribution.json": {
+      "kind": "file",
+      "sha256": "d5051f76b1f86a459de33dddd4593c360be24ee61eb93da2318855612bc75851",
+      "size_bytes": 339037
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/provenance.json": {
+      "kind": "file",
+      "sha256": "14d7126df227f43fcdd7b456a76c98f36bb67d1f5e23f218591da391a1afadea",
+      "size_bytes": 1410
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/visual_review.json": {
+      "kind": "file",
+      "sha256": "c5255f81a5117d65bc26b443350208d879c2078d794f4340b17fe7aa9c62b93f",
+      "size_bytes": 1191
+    },
+    "logs/compact_diffusion_pose_v1/primary/pickup_execution_43/baseline_preservation.json": {
+      "kind": "file",
+      "sha256": "e2cafd363ab83b75b2828f5fdff050b4ce94fe7cea70e69d31e07b30d197401f",
+      "size_bytes": 786
+    },
+    "logs/compact_diffusion_pose_v1/primary/pickup_execution_43/execution.json": {
+      "kind": "file",
+      "sha256": "c519f7fa5b2588251d34b406faa5e8c35e41509db3484ad809fafe195aeb5c4f",
+      "size_bytes": 2835
+    },
+    "logs/compact_diffusion_pose_v1/primary/pickup_execution_43/model_equivalence.json": {
+      "kind": "file",
+      "sha256": "4ed4d8709ea8ae2c6a3b9378b3f78641517f1209c720dd3389a4bc82d3d208fb",
+      "size_bytes": 2842
+    },
+    "logs/compact_diffusion_pose_v1/primary/pickup_execution_43/rollout_verification.json": {
+      "kind": "file",
+      "sha256": "3e8fcd9d35a8e5a311671a665a8a635d75d5fe1c2aa912cb557df687545557e3",
+      "size_bytes": 2075
+    },
+    "logs/compact_diffusion_pose_v1/primary/pickup_execution_43/task_assessment.json": {
+      "kind": "file",
+      "sha256": "0447532cba5f1d5e49a694aaf2cfdf90777f2be5c95c704c8d03b63dfe77431d",
+      "size_bytes": 2201
+    },
+    "logs/compact_diffusion_pose_v1/primary/pickup_execution_43/task_metrics.json": {
+      "kind": "file",
+      "sha256": "cb3fa32b856dc9ea2cbd2ea57740482d9c163f07ad0004913d44b08006cc90b5",
+      "size_bytes": 5891
+    },
+    "logs/compact_diffusion_pose_v1/primary/pickup_execution_43/video_metadata.json": {
+      "kind": "file",
+      "sha256": "26f3781d049144dd2258d1fced603df0d8a5e6c78c1d0225583c5764a5a8877c",
+      "size_bytes": 217
+    },
+    "logs/compact_diffusion_pose_v1/primary/pickup_feasible_43.json": {
+      "kind": "file",
+      "sha256": "f31521264cfdaebfeda2cdfa8b2b0f3af7ff6405c4fe257f43b65213f0b0ceca",
+      "size_bytes": 1260
+    },
+    "logs/compact_diffusion_pose_v1/primary/pickup_projection_43/baseline_preservation.json": {
+      "kind": "file",
+      "sha256": "e2cafd363ab83b75b2828f5fdff050b4ce94fe7cea70e69d31e07b30d197401f",
+      "size_bytes": 786
+    },
+    "logs/compact_diffusion_pose_v1/primary/pickup_projection_43/execution.json": {
+      "kind": "file",
+      "sha256": "e662b8ccc40225f84f56df57b82b7bd2fd60615d50f4aba59228af30d850bbe2",
+      "size_bytes": 2828
+    },
+    "logs/compact_diffusion_pose_v1/primary/pickup_projection_43/model_equivalence.json": {
+      "kind": "file",
+      "sha256": "4ed4d8709ea8ae2c6a3b9378b3f78641517f1209c720dd3389a4bc82d3d208fb",
+      "size_bytes": 2842
+    },
+    "logs/compact_diffusion_pose_v1/primary/pickup_projection_43/physical_screen.json": {
+      "kind": "file",
+      "sha256": "f39987f88385bcfbd56abd1b8644ecc9cd36d2f5c946da340d93351235374bcd",
+      "size_bytes": 625
+    },
+    "logs/compact_diffusion_pose_v1/primary/pickup_recompilation_42.json": {
+      "kind": "file",
+      "sha256": "2fbaab3468740bfafa1e4486bab96cb555640ee93ea3b8758c26e39cbd127d1f",
+      "size_bytes": 944
+    },
+    "logs/compact_diffusion_pose_v1/primary/pickup_recompilation_43.json": {
+      "kind": "file",
+      "sha256": "a6f69cf042fbf52d3b52e2c567a48f84995bec536f13542a1e52b9f3624b3b95",
+      "size_bytes": 482
+    },
+    "logs/compact_diffusion_pose_v1/primary/pickup_recompiled_42.json": {
+      "kind": "file",
+      "sha256": "ab2c8ebbe7a38493137633d929fcb5d8d26dedac40cf6dd4951c18452cdeb0f6",
+      "size_bytes": 22832
+    },
+    "logs/compact_diffusion_pose_v1/primary/pickup_recompiled_43.json": {
+      "kind": "file",
+      "sha256": "e95350456076df64df74eda1c251a2cbf294aa454cf605a7485457da28d9cacc",
+      "size_bytes": 22822
+    },
+    "logs/compact_diffusion_pose_v1/primary/pickup_replay_43/baseline_preservation.json": {
+      "kind": "file",
+      "sha256": "e2cafd363ab83b75b2828f5fdff050b4ce94fe7cea70e69d31e07b30d197401f",
+      "size_bytes": 786
+    },
+    "logs/compact_diffusion_pose_v1/primary/pickup_replay_43/execution.json": {
+      "kind": "file",
+      "sha256": "cd58b70aa4f2823fae58f839e79786379bd36f07f428c8ffcf9757bc3f40555d",
+      "size_bytes": 3075
+    },
+    "logs/compact_diffusion_pose_v1/primary/pickup_replay_43/model_equivalence.json": {
+      "kind": "file",
+      "sha256": "4ed4d8709ea8ae2c6a3b9378b3f78641517f1209c720dd3389a4bc82d3d208fb",
+      "size_bytes": 2842
+    },
+    "logs/compact_diffusion_pose_v1/primary_preservation.json": {
+      "kind": "file",
+      "sha256": "b7b3f1521e5d1349530e7fe15c5ef88f3b9e8d28b34e8f209a1bd73c75593f7b",
+      "size_bytes": 2492
+    },
+    "logs/compact_diffusion_pose_v1/projection_42/baseline_preservation.json": {
+      "kind": "file",
+      "sha256": "e2cafd363ab83b75b2828f5fdff050b4ce94fe7cea70e69d31e07b30d197401f",
+      "size_bytes": 786
+    },
+    "logs/compact_diffusion_pose_v1/projection_42/execution.json": {
+      "kind": "file",
+      "sha256": "85157d3ae61a8c3d99089c8ee8a019699f1f6735e6b9771fafad50e64a35bb89",
+      "size_bytes": 2808
+    },
+    "logs/compact_diffusion_pose_v1/projection_42/model_equivalence.json": {
+      "kind": "file",
+      "sha256": "4ed4d8709ea8ae2c6a3b9378b3f78641517f1209c720dd3389a4bc82d3d208fb",
+      "size_bytes": 2842
+    },
+    "logs/compact_diffusion_pose_v1/projection_42/physical_screen.json": {
+      "kind": "file",
+      "sha256": "5ce7d1b27c89a0b499f84a883aabe4ce5765dad08c5b26f585ba2ed5e973c169",
+      "size_bytes": 624
+    },
+    "logs/compact_diffusion_pose_v1/projection_43/baseline_preservation.json": {
+      "kind": "file",
+      "sha256": "e2cafd363ab83b75b2828f5fdff050b4ce94fe7cea70e69d31e07b30d197401f",
+      "size_bytes": 786
+    },
+    "logs/compact_diffusion_pose_v1/projection_43/execution.json": {
+      "kind": "file",
+      "sha256": "81cb3e2a15afe394c2dc9fd8d5198d6df3968bc807a3c221c0bffa35503462ec",
+      "size_bytes": 2811
+    },
+    "logs/compact_diffusion_pose_v1/projection_43/model_equivalence.json": {
+      "kind": "file",
+      "sha256": "4ed4d8709ea8ae2c6a3b9378b3f78641517f1209c720dd3389a4bc82d3d208fb",
+      "size_bytes": 2842
+    },
+    "logs/compact_diffusion_pose_v1/projection_43/physical_screen.json": {
+      "kind": "file",
+      "sha256": "97dbe92e6cac44190ee531a19c1ea60f38f17de5a6be3cd5cf25dc4427ed5b91",
+      "size_bytes": 624
+    },
+    "logs/compact_diffusion_pose_v1/replay_42/baseline_preservation.json": {
+      "kind": "file",
+      "sha256": "e2cafd363ab83b75b2828f5fdff050b4ce94fe7cea70e69d31e07b30d197401f",
+      "size_bytes": 786
+    },
+    "logs/compact_diffusion_pose_v1/replay_42/execution.json": {
+      "kind": "file",
+      "sha256": "c37728f888329cf30ce7169df6dd3a0da6f545151d4edc5671fd481e4f3859aa",
+      "size_bytes": 3069
+    },
+    "logs/compact_diffusion_pose_v1/replay_42/model_equivalence.json": {
+      "kind": "file",
+      "sha256": "4ed4d8709ea8ae2c6a3b9378b3f78641517f1209c720dd3389a4bc82d3d208fb",
+      "size_bytes": 2842
+    },
+    "logs/compact_diffusion_pose_v1/replay_43/baseline_preservation.json": {
+      "kind": "file",
+      "sha256": "e2cafd363ab83b75b2828f5fdff050b4ce94fe7cea70e69d31e07b30d197401f",
+      "size_bytes": 786
+    },
+    "logs/compact_diffusion_pose_v1/replay_43/execution.json": {
+      "kind": "file",
+      "sha256": "7b9c258e3a83cf7b875c14e100b5a9b0accd538abc42c0e556ca7e57de711619",
+      "size_bytes": 3075
+    },
+    "logs/compact_diffusion_pose_v1/replay_43/model_equivalence.json": {
+      "kind": "file",
+      "sha256": "4ed4d8709ea8ae2c6a3b9378b3f78641517f1209c720dd3389a4bc82d3d208fb",
+      "size_bytes": 2842
+    },
+    "logs/compact_diffusion_pose_v1/safe_42.json": {
+      "kind": "file",
+      "sha256": "84b9fc661a8c4e6f0b568fe1ac4baeef038d540e616f7cb271eceb5f6478b9bc",
+      "size_bytes": 11103
+    },
+    "logs/compact_diffusion_pose_v1/safe_43.json": {
+      "kind": "file",
+      "sha256": "490f8fdbfbb815b066d25f2ceb88d4d0f6bc6f6b4cb28a29f6d10f4afd8ddc7b",
+      "size_bytes": 11106
+    },
+    "logs/compact_diffusion_pose_v1/source_attribution.json": {
+      "kind": "file",
+      "sha256": "153e390d7115259c6f57267ebebd5b0d11aaf3dc1371df985baa70281f9fb987",
+      "size_bytes": 51800
+    },
+    "logs/compact_diffusion_pose_v1/unrelated_untracked_hashes.json": {
+      "kind": "file",
+      "sha256": "483f6a05fe0ffb5d9a27dc771e13d38763abd54912fe804d033cf4f9fa6a76f8",
+      "size_bytes": 26207
+    },
+    "scripts/compact_diffusion_pose_v1/PRIMARY_README.md": {
+      "kind": "file",
+      "sha256": "98988a9a4693f2e6ee941c2677206b7f0dcd1d991678a229ff2681d64a44f51b",
+      "size_bytes": 3449
+    },
+    "scripts/compact_diffusion_pose_v1/README.md": {
+      "kind": "file",
+      "sha256": "64c74c621c3eec8ec7f4db4d28524fb6ca644f0c5717e37d0e6985c8cf43a332",
+      "size_bytes": 4799
+    },
+    "scripts/compact_diffusion_pose_v1/VERIFIED_PICKUP.md": {
+      "kind": "file",
+      "sha256": "539aae067539930231c083bebbe1264d0b2963fdb3173bf7d733d7f72a5319cf",
+      "size_bytes": 3918
+    },
+    "scripts/compact_diffusion_pose_v1/plot.py": {
+      "kind": "file",
+      "sha256": "979343a85f815ac40aea0785e1a6c22acd8388009702a7e50e5b8fac9dd75dc9",
+      "size_bytes": 1973
+    },
+    "scripts/compact_diffusion_pose_v1/primary_compile.py": {
+      "kind": "file",
+      "sha256": "1ee4f2538b2b9f138e0a9e4418bf9ef86475dacb40ffe5085736c91eb72ddece",
+      "size_bytes": 11946
+    },
+    "scripts/compact_diffusion_pose_v1/primary_dynamics.py": {
+      "kind": "file",
+      "sha256": "1008d629a474858e363ffdac916e64fb66ee30798d28f3b4ab18202e33b3e837",
+      "size_bytes": 3345
+    },
+    "scripts/compact_diffusion_pose_v1/primary_kinematics.py": {
+      "kind": "file",
+      "sha256": "d1eb0745e4504f35541aacb177658f398d2749114d5360e1ed16c048a578afd5",
+      "size_bytes": 10943
+    },
+    "scripts/compact_diffusion_pose_v1/primary_report.py": {
+      "kind": "file",
+      "sha256": "4e6b47d073b674f70cb87871b3d140481b107faa4362606dda741a9da7bda409",
+      "size_bytes": 14968
+    },
+    "scripts/compact_diffusion_pose_v1/primary_reproduce.py": {
+      "kind": "file",
+      "sha256": "f67ced66788129453d30dacc1db9b2b6ce3173aecf52bd49581cd8fa44aa18ce",
+      "size_bytes": 2756
+    },
+    "scripts/compact_diffusion_pose_v1/primary_targets.py": {
+      "kind": "file",
+      "sha256": "2df317e1cdf06e500cbf9cba2d402a846b2e9005770c395e3ca227e59b9f467a",
+      "size_bytes": 7957
+    },
+    "scripts/compact_diffusion_pose_v1/quality.py": {
+      "kind": "file",
+      "sha256": "ebbc8cd0890cd664c21082b3b7abca755ba1983ead59c2e2b5ea442aa56919cd",
+      "size_bytes": 3675
+    },
+    "scripts/compact_diffusion_pose_v1/refine.py": {
+      "kind": "file",
+      "sha256": "28b026c094388befd325d7912a9902fd28d660b61b115df88c09496e6206b3d6",
+      "size_bytes": 14597
+    },
+    "scripts/compact_diffusion_pose_v1/report.py": {
+      "kind": "file",
+      "sha256": "f63a0b83b3fb21202aaeb7f97c51c4a328453bf8bfcb094b4264b4831ee90695",
+      "size_bytes": 14363
+    },
+    "scripts/compact_diffusion_pose_v1/reproduce.py": {
+      "kind": "file",
+      "sha256": "3952eecd43840b54cce3a18a1d3d68a1b82b5c466be34d58d51403ab39ac13a9",
+      "size_bytes": 4582
+    }
+  },
+  "existing_local_large_assets": {
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_42.npz": {
+      "sha256": "0f940015ad641ce41df4f4049a728e1a3833141576af946a80d4b12db12115c5",
+      "size_bytes": 5427481,
+      "resolved_local_path": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_pose_v1/primary/pickup_recompiled_42.npz"
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_42_diagnostics.npz": {
+      "sha256": "3ce7b0e7512551e4ab9c51d591bc20775529b1a1bd8babeb2d7d5798431cea99",
+      "size_bytes": 8547223,
+      "resolved_local_path": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_pose_v1/primary/pickup_recompiled_42_diagnostics.npz"
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_feasible_42.npz": {
+      "sha256": "1d00e8508c30cd2be58e85907e12cdd0757b40b69b38740e7816226d02c3f5e0",
+      "size_bytes": 4453702,
+      "resolved_local_path": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_pose_v1/primary/consistent/pickup_feasible_42.npz"
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_execution_42/rollout.npz": {
+      "sha256": "2148974ff8de3ac124b6f79e6b389516240e55f2444357966332215bbb1bcc9b",
+      "size_bytes": 4534589,
+      "resolved_local_path": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_pose_v1/primary/consistent/pickup_execution_42/rollout.npz"
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_execution_42/rollout_model.mjb": {
+      "sha256": "c174967d4a2ebf0448a7056780fdecb24ffe1fdcd45a1eb72c5ca06b20eec44b",
+      "size_bytes": 77678672,
+      "resolved_local_path": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_pose_v1/primary/consistent/pickup_execution_42/rollout_model.mjb"
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_execution_42/rollout_verification_trace.npz": {
+      "sha256": "fcc70684f01d3ebcef30388dd11f271c011f93e54ec7106a76e26785d1eb70e8",
+      "size_bytes": 1638789,
+      "resolved_local_path": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_pose_v1/primary/consistent/pickup_execution_42/rollout_verification_trace.npz"
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_execution_42/rollout_locomotion_trace.npz": {
+      "sha256": "219478cb8a76086cb1c1776320f23ca9b087093c9cf37a034e1c94dc54a01f3f",
+      "size_bytes": 1836047,
+      "resolved_local_path": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_pose_v1/primary/consistent/pickup_execution_42/rollout_locomotion_trace.npz"
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_execution_42/contact_attribution.npz": {
+      "sha256": "c001d9c54cbbea01c3502974350804693e6eae08c11879349d44e30ac500dcc8",
+      "size_bytes": 2595828,
+      "resolved_local_path": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_pose_v1/primary/consistent/pickup_execution_42/contact_attribution.npz"
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_execution_42/rollout.mp4": {
+      "sha256": "a48b3dd9147358fd62b65fb7c8940590d126021ad7c3dbefff8d1534409d587e",
+      "size_bytes": 22458066,
+      "resolved_local_path": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_pose_v1/primary/consistent/pickup_execution_42/rollout.mp4"
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_replay_42/rollout.npz": {
+      "sha256": "2148974ff8de3ac124b6f79e6b389516240e55f2444357966332215bbb1bcc9b",
+      "size_bytes": 4534589,
+      "resolved_local_path": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_pose_v1/primary/consistent/pickup_replay_42/rollout.npz"
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_replay_42/rollout_model.mjb": {
+      "sha256": "c174967d4a2ebf0448a7056780fdecb24ffe1fdcd45a1eb72c5ca06b20eec44b",
+      "size_bytes": 77678672,
+      "resolved_local_path": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_pose_v1/primary/consistent/pickup_replay_42/rollout_model.mjb"
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_replay_42/rollout_verification_trace.npz": {
+      "sha256": "fcc70684f01d3ebcef30388dd11f271c011f93e54ec7106a76e26785d1eb70e8",
+      "size_bytes": 1638789,
+      "resolved_local_path": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_pose_v1/primary/consistent/pickup_replay_42/rollout_verification_trace.npz"
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_replay_42/rollout_locomotion_trace.npz": {
+      "sha256": "219478cb8a76086cb1c1776320f23ca9b087093c9cf37a034e1c94dc54a01f3f",
+      "size_bytes": 1836047,
+      "resolved_local_path": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_pose_v1/primary/consistent/pickup_replay_42/rollout_locomotion_trace.npz"
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_replay_42/contact_attribution.npz": {
+      "sha256": "c001d9c54cbbea01c3502974350804693e6eae08c11879349d44e30ac500dcc8",
+      "size_bytes": 2595828,
+      "resolved_local_path": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_pose_v1/primary/consistent/pickup_replay_42/contact_attribution.npz"
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_43.npz": {
+      "sha256": "a820e719cb7c42cbab1ec8e3db0eefddbf99c54722b8af6d4c0ac2e80a69fe43",
+      "size_bytes": 5419793,
+      "resolved_local_path": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_pose_v1/primary/pickup_43.npz"
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_43_diagnostics.npz": {
+      "sha256": "dd583a5650e7c44087666dd72114f888c39f9a544fca93f7f62023a60a2d79f0",
+      "size_bytes": 8518852,
+      "resolved_local_path": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_pose_v1/primary/pickup_43_diagnostics.npz"
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_feasible_43.npz": {
+      "sha256": "a3a96e224e973df4e036af8d6b47ad2d1a619a4813ff52ec7486f306631a8408",
+      "size_bytes": 4454295,
+      "resolved_local_path": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_pose_v1/primary/pickup_feasible_43.npz"
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_execution_43/rollout.npz": {
+      "sha256": "0dfc27f73c74515c524aac07e2a417e807e8f7524c733a16352c47750931e67d",
+      "size_bytes": 4526941,
+      "resolved_local_path": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_pose_v1/primary/pickup_execution_43/rollout.npz"
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_execution_43/rollout_model.mjb": {
+      "sha256": "c174967d4a2ebf0448a7056780fdecb24ffe1fdcd45a1eb72c5ca06b20eec44b",
+      "size_bytes": 77678672,
+      "resolved_local_path": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_pose_v1/primary/pickup_execution_43/rollout_model.mjb"
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_execution_43/rollout_verification_trace.npz": {
+      "sha256": "0c615ef1d5ffe6061dbaf371d014ce03f0d0045ab751367999980438969e2361",
+      "size_bytes": 1626088,
+      "resolved_local_path": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_pose_v1/primary/pickup_execution_43/rollout_verification_trace.npz"
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_execution_43/rollout_locomotion_trace.npz": {
+      "sha256": "227575093bd100cc586366b14fda3b6378cfdca05026a74d5ef68dbec164c75c",
+      "size_bytes": 1837062,
+      "resolved_local_path": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_pose_v1/primary/pickup_execution_43/rollout_locomotion_trace.npz"
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_execution_43/contact_attribution.npz": {
+      "sha256": "3269369f0da5ba99f4959e0302bac4ec53b9cc98d36dbaea81709f2066f159f9",
+      "size_bytes": 2589878,
+      "resolved_local_path": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_pose_v1/primary/pickup_execution_43/contact_attribution.npz"
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_execution_43/rollout.mp4": {
+      "sha256": "d9b327e52a579fc316bfc1b0c5220ebd74d9294f52c4d0259520f45c9b9b3f4f",
+      "size_bytes": 22483011,
+      "resolved_local_path": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_pose_v1/primary/pickup_execution_43/rollout.mp4"
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_replay_43/rollout.npz": {
+      "sha256": "0dfc27f73c74515c524aac07e2a417e807e8f7524c733a16352c47750931e67d",
+      "size_bytes": 4526941,
+      "resolved_local_path": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_pose_v1/primary/pickup_replay_43/rollout.npz"
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_replay_43/rollout_model.mjb": {
+      "sha256": "c174967d4a2ebf0448a7056780fdecb24ffe1fdcd45a1eb72c5ca06b20eec44b",
+      "size_bytes": 77678672,
+      "resolved_local_path": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_pose_v1/primary/pickup_replay_43/rollout_model.mjb"
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_replay_43/rollout_verification_trace.npz": {
+      "sha256": "0c615ef1d5ffe6061dbaf371d014ce03f0d0045ab751367999980438969e2361",
+      "size_bytes": 1626088,
+      "resolved_local_path": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_pose_v1/primary/pickup_replay_43/rollout_verification_trace.npz"
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_replay_43/rollout_locomotion_trace.npz": {
+      "sha256": "227575093bd100cc586366b14fda3b6378cfdca05026a74d5ef68dbec164c75c",
+      "size_bytes": 1837062,
+      "resolved_local_path": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_pose_v1/primary/pickup_replay_43/rollout_locomotion_trace.npz"
+    },
+    "logs/compact_diffusion_pose_v1/primary/consistent/pickup_replay_43/contact_attribution.npz": {
+      "sha256": "3269369f0da5ba99f4959e0302bac4ec53b9cc98d36dbaea81709f2066f159f9",
+      "size_bytes": 2589878,
+      "resolved_local_path": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_pose_v1/primary/pickup_replay_43/contact_attribution.npz"
+    },
+    "logs/compact_diffusion_pose_v1/feasible_42.npz": {
+      "sha256": "3f9d19acf29baf3a1149c3836e98b4a2e70384ea7a4d9a7b3cfb707ea3e2c198",
+      "role": "accepted incremental Goal 7 prerequisite; remains local"
+    },
+    "logs/compact_diffusion_pose_v1/feasible_43.npz": {
+      "sha256": "a551e8d1d2a8bf8f557c00c36c6df617178ee1508e3e89c184336c41eb60422d",
+      "role": "accepted incremental Goal 7 prerequisite; remains local"
+    },
+    "logs/compact_diffusion_root_v1/feasible_42.npz": {
+      "sha256": "99cb293ee3aa56b507684cfcb6ccd3a531df1d18d5bba3fdb81cc9b8ec9ca659",
+      "role": "existing accepted Goal 6 prerequisite; remains local"
+    },
+    "logs/compact_diffusion_root_v1/feasible_43.npz": {
+      "sha256": "b7703bc3f5bb7473a19dc852cd0287c12c319ac8cd1a419cc0aef3f219a4bbc0",
+      "role": "existing accepted Goal 6 prerequisite; remains local"
+    },
+    "logs/compact_diffusion_root_v1/disabled.npz": {
+      "sha256": "df00333519bc5572d1293c53fb63e41f46347d03ad920fd1d06bf0b13a2cf25b",
+      "role": "existing accepted Goal 6 prerequisite; remains local"
+    },
+    "logs/compact_policy_learning_v1/selected_policy.npz": {
+      "sha256": "841a42fe5f4e2f163f6b279c090557293bd7b835b9a9f964a7881ed5511e3dbe",
+      "role": "existing accepted Goal 6 prerequisite; remains local"
+    }
+  },
+  "asset_contract": "Paths/hashes are provenance, not bundled dependencies; large arrays, checkpoints, models, caches and videos remain local.",
+  "exclusions": [
+    "Goal 7 experiment-only screeners, isolation helpers and coordinated carry/placement refiners/results",
+    "All Goal 8 physical refinement implementations and evidence",
+    "All Goal 9 contact-response implementations and evidence",
+    "Unrelated research and all large binary artifacts"
+  ],
+  "reproduction_command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MUJOCO_GL=egl .venv/bin/python -B scripts/compact_diffusion_pose_v1/primary_reproduce.py --out logs/compact_diffusion_pose_v1_pickup_reproduction",
+  "historical_assessment_contract": "FAILURE is the unmet 8/10 objective; candidate_status SUCCESS and the two 22/22 physical assessments identify the retained pickup result."
+}

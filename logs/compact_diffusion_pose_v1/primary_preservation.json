@@ -1,0 +1,38 @@
+{
+  "preservation_before.json": {
+    "count": 64,
+    "all_unchanged": true,
+    "changed_paths": []
+  },
+  "unrelated_untracked_hashes.json": {
+    "count": 223,
+    "all_unchanged": true,
+    "changed_paths": []
+  },
+  "original_incremental_sources": {
+    "count": 6,
+    "all_unchanged": true
+  },
+  "git_head": "6e09e89fc547dc547582ece30a82c7e620c90cc7",
+  "expected_head": "6e09e89fc547dc547582ece30a82c7e620c90cc7",
+  "tracked_diff": [],
+  "index_diff": [],
+  "source_sha256": {
+    "scripts/compact_diffusion_pose_v1/PRIMARY_README.md": "98988a9a4693f2e6ee941c2677206b7f0dcd1d991678a229ff2681d64a44f51b",
+    "scripts/compact_diffusion_pose_v1/README.md": "64c74c621c3eec8ec7f4db4d28524fb6ca644f0c5717e37d0e6985c8cf43a332",
+    "scripts/compact_diffusion_pose_v1/plot.py": "979343a85f815ac40aea0785e1a6c22acd8388009702a7e50e5b8fac9dd75dc9",
+    "scripts/compact_diffusion_pose_v1/primary_compile.py": "1ee4f2538b2b9f138e0a9e4418bf9ef86475dacb40ffe5085736c91eb72ddece",
+    "scripts/compact_diffusion_pose_v1/primary_dynamics.py": "1008d629a474858e363ffdac916e64fb66ee30798d28f3b4ab18202e33b3e837",
+    "scripts/compact_diffusion_pose_v1/primary_isolate.py": "89b86ec2c5624387f09f0a68da9a4ba6a43b921c6150e3699d3e26dd259a9873",
+    "scripts/compact_diffusion_pose_v1/primary_kinematics.py": "d1eb0745e4504f35541aacb177658f398d2749114d5360e1ed16c048a578afd5",
+    "scripts/compact_diffusion_pose_v1/primary_preflight.py": "8bc003058a475c036a5d9003d0ed8c1be35ba691daf6e0869e082976177927d8",
+    "scripts/compact_diffusion_pose_v1/primary_report.py": "4e6b47d073b674f70cb87871b3d140481b107faa4362606dda741a9da7bda409",
+    "scripts/compact_diffusion_pose_v1/primary_reproduce.py": "f67ced66788129453d30dacc1db9b2b6ce3173aecf52bd49581cd8fa44aa18ce",
+    "scripts/compact_diffusion_pose_v1/primary_screen.py": "e74fb3f4e80cec406ca56070216b370bd57dcdc3ea544737aaf4ec71309433ba",
+    "scripts/compact_diffusion_pose_v1/primary_targets.py": "2df317e1cdf06e500cbf9cba2d402a846b2e9005770c395e3ca227e59b9f467a",
+    "scripts/compact_diffusion_pose_v1/quality.py": "ebbc8cd0890cd664c21082b3b7abca755ba1983ead59c2e2b5ea442aa56919cd",
+    "scripts/compact_diffusion_pose_v1/refine.py": "28b026c094388befd325d7912a9902fd28d660b61b115df88c09496e6206b3d6",
+    "scripts/compact_diffusion_pose_v1/report.py": "f63a0b83b3fb21202aaeb7f97c51c4a328453bf8bfcb094b4264b4831ee90695",
+    "scripts/compact_diffusion_pose_v1/reproduce.py": "3952eecd43840b54cce3a18a1d3d68a1b82b5c466be34d58d51403ab39ac13a9"
+  }
+}

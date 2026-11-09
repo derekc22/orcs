@@ -1,0 +1,17 @@
+{
+  "reviewed_storyboards": {
+    "42": "logs/compact_diffusion_pose_v1/primary/consistent/pickup_execution_42/storyboard.jpg",
+    "43": "logs/compact_diffusion_pose_v1/primary/consistent/pickup_execution_43/storyboard.jpg"
+  },
+  "method": "Visual review of the recorded full-task storyboard grids, supplemented by unsmoothed 200 Hz physical-state quality comparisons. Full-task video files are supplied separately; no time scaling or state interpolation.",
+  "observations": [
+    "Both samples visibly acquire, lift, walk with, place and release the original largebox.",
+    "Walking posture, foot alternation, box retention and placement appear consistent with the preserved Goal 6 gait.",
+    "Post-grasp lifting has visibly earlier coordinated pelvis/box rise and altered body/arm posture."
+  ],
+  "qualification": "Sparse visual review cannot rule out every short transient; full physical velocity/acceleration/contact metrics and the unchanged validation gates provide the complementary checks.",
+  "storyboard_sha256": {
+    "42": "14b0a5fab344b885c4a4fbb1d0d921199253e3bf9f5c9d1d4e03b28b98ecbae2",
+    "43": "fbb99a07f6c0bf425f65a21f72b1b3f3cc773b7a42ca44f7c7398923075e4162"
+  }
+}

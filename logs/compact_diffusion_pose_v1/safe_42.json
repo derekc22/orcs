@@ -1,0 +1,810 @@
+{
+  "seed": 42,
+  "scale": 0.25,
+  "base_reference": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_root_v1/feasible_42.npz",
+  "base_sha256": "99cb293ee3aa56b507684cfcb6ccd3a531df1d18d5bba3fdb81cc9b8ec9ca659",
+  "compiler_sha256": "28b026c094388befd325d7912a9902fd28d660b61b115df88c09496e6206b3d6",
+  "diffusion": {
+    "source": "/home/learning/Documents/orcs-fork/logs/compact_diffusion_v1/proposals/sample_42.npz",
+    "source_sha256": "28481e7cf06db9a028b4dd6402a0466d8aee8eae193dc285475377f9972b6d6f",
+    "calibration_sha256": "8753b728f4c222d6d7791b43ae8c0eac57ac97f67e372455b3811fa0cb457da2",
+    "checkpoint_sha256": "36470e72206000a1305d88a0c0bf8e5e6c73d12180b3de9f69d49efa4ae0d442",
+    "alignment_yaw_rad": 3.371819171162271,
+    "gain": 20.0,
+    "limit_m": 0.008,
+    "phases": {
+      "pickup": {
+        "physical_interval_s": [
+          2.7,
+          8.0
+        ],
+        "native_frames": [
+          0,
+          105
+        ],
+        "requested_xy_rms_m": 0.004213890001203315,
+        "requested_xy_peak_m": 0.0071778663052612145,
+        "paused_clock_fraction": 0.0
+      },
+      "carry": {
+        "physical_interval_s": [
+          17.245,
+          23.605
+        ],
+        "native_frames": [
+          105,
+          225
+        ],
+        "requested_xy_rms_m": 0.0024708581307059923,
+        "requested_xy_peak_m": 0.005049560314482974,
+        "paused_clock_fraction": 0.21445404556166536
+      },
+      "placement": {
+        "physical_interval_s": [
+          33.505,
+          38.8
+        ],
+        "native_frames": [
+          225,
+          299
+        ],
+        "requested_xy_rms_m": 0.0029914290001095967,
+        "requested_xy_peak_m": 0.005461632297547778,
+        "paused_clock_fraction": 0.0
+      }
+    },
+    "mode_gains": [
+      15.0,
+      15.0,
+      7.5,
+      7.5
+    ],
+    "mode_limits_rad": [
+      0.00875,
+      0.00875,
+      0.01,
+      0.01
+    ],
+    "phase_details": {
+      "pickup": {
+        "ticks": [
+          540,
+          1600
+        ],
+        "source_frames": [
+          0,
+          105
+        ],
+        "requested_peak_rad": [
+          0.006777774385234192,
+          0.0027318830372838696,
+          0.0031762416988885102,
+          0.00723415813053739
+        ]
+      },
+      "carry": {
+        "ticks": [
+          3449,
+          4721
+        ],
+        "source_frames": [
+          105,
+          225
+        ],
+        "requested_peak_rad": [
+          0.006032624614999586,
+          0.0032346059067804877,
+          0.0014804398648366733,
+          0.003754103927177497
+        ]
+      },
+      "placement": {
+        "ticks": [
+          6701,
+          7760
+        ],
+        "source_frames": [
+          225,
+          299
+        ],
+        "requested_peak_rad": [
+          0.006459044951721119,
+          0.0017640581988792958,
+          0.002755588337420698,
+          0.007062771992629507
+        ]
+      }
+    },
+    "coordinate_contract": "Root world-horizontal relative rotation vector, plus native waist roll/pitch, relative to the same seed-0 calibration. No fitted execution alignment."
+  },
+  "strategy": "Supported frozen root tilt plus waist tilt, with fixed Goal 6 root XYZ, waist yaw, hands, soles, object and gripper references; COM-preserving bounded IK, additive smoothing and differential RNE feedforward.",
+  "independently_sampled_coordinates": [
+    "root world-horizontal rotation X",
+    "root world-horizontal rotation Y",
+    "waist roll",
+    "waist pitch"
+  ],
+  "support_envelope": {
+    "minimum_supported_duration_s": 0.7,
+    "guard_s": 0.05,
+    "blend_s": 0.3
+  },
+  "smoothing_sigma_s": 0.1,
+  "added_root_acceleration_limit_radps2": 1.5,
+  "metrics": {
+    "stage_0": {
+      "maximum_foot_hand_position_error_m": 1.749953804422279e-05,
+      "maximum_foot_hand_angle_error_rad": 6.192939925581447e-05,
+      "maximum_horizontal_COM_shift_m": 8.693155963326234e-06
+    },
+    "stage_1": {
+      "maximum_foot_hand_position_error_m": 6.212852924276178e-06,
+      "maximum_foot_hand_angle_error_rad": 5.5606429172720275e-06,
+      "maximum_horizontal_COM_shift_m": 1.2445350927131996e-05
+    }
+  },
+  "maximum_added_joint_limit_excursion_rad": 1.000088900582341e-12,
+  "maximum_added_joint_velocity_radps": 0.7000000002000017,
+  "maximum_added_root_rotation_velocity_radps": 0.08959544775475098,
+  "maximum_added_root_rotation_acceleration_radps2": 1.5000000400000255,
+  "maximum_feedforward_increment_rad": 0.13315906000254316,
+  "maximum_incremental_native_effort_Nm": 2.4161472186284954,
+  "stable_support_wrench_checks": [
+    [
+      540,
+      true,
+      true
+    ],
+    [
+      560,
+      true,
+      true
+    ],
+    [
+      580,
+      true,
+      true
+    ],
+    [
+      600,
+      true,
+      true
+    ],
+    [
+      620,
+      true,
+      true
+    ],
+    [
+      640,
+      true,
+      true
+    ],
+    [
+      660,
+      true,
+      true
+    ],
+    [
+      680,
+      true,
+      true
+    ],
+    [
+      700,
+      true,
+      true
+    ],
+    [
+      720,
+      true,
+      true
+    ],
+    [
+      740,
+      true,
+      true
+    ],
+    [
+      760,
+      true,
+      true
+    ],
+    [
+      780,
+      true,
+      true
+    ],
+    [
+      800,
+      true,
+      true
+    ],
+    [
+      820,
+      true,
+      true
+    ],
+    [
+      840,
+      true,
+      true
+    ],
+    [
+      860,
+      true,
+      true
+    ],
+    [
+      880,
+      true,
+      true
+    ],
+    [
+      900,
+      true,
+      true
+    ],
+    [
+      920,
+      true,
+      true
+    ],
+    [
+      940,
+      true,
+      true
+    ],
+    [
+      960,
+      true,
+      true
+    ],
+    [
+      980,
+      true,
+      true
+    ],
+    [
+      1000,
+      true,
+      true
+    ],
+    [
+      1020,
+      true,
+      true
+    ],
+    [
+      1040,
+      true,
+      true
+    ],
+    [
+      1060,
+      true,
+      true
+    ],
+    [
+      1080,
+      true,
+      true
+    ],
+    [
+      1100,
+      true,
+      true
+    ],
+    [
+      1120,
+      true,
+      true
+    ],
+    [
+      1140,
+      true,
+      true
+    ],
+    [
+      1160,
+      true,
+      true
+    ],
+    [
+      1180,
+      true,
+      true
+    ],
+    [
+      1200,
+      true,
+      true
+    ],
+    [
+      1220,
+      true,
+      true
+    ],
+    [
+      1240,
+      true,
+      true
+    ],
+    [
+      1260,
+      true,
+      true
+    ],
+    [
+      1280,
+      true,
+      true
+    ],
+    [
+      1300,
+      true,
+      true
+    ],
+    [
+      1320,
+      true,
+      true
+    ],
+    [
+      1340,
+      true,
+      true
+    ],
+    [
+      1360,
+      true,
+      true
+    ],
+    [
+      1380,
+      true,
+      true
+    ],
+    [
+      1400,
+      true,
+      true
+    ],
+    [
+      1420,
+      true,
+      true
+    ],
+    [
+      1440,
+      true,
+      true
+    ],
+    [
+      1460,
+      true,
+      true
+    ],
+    [
+      1480,
+      true,
+      true
+    ],
+    [
+      1500,
+      true,
+      true
+    ],
+    [
+      1520,
+      true,
+      true
+    ],
+    [
+      1540,
+      true,
+      true
+    ],
+    [
+      1560,
+      true,
+      true
+    ],
+    [
+      1580,
+      true,
+      true
+    ],
+    [
+      1600,
+      true,
+      true
+    ],
+    [
+      3480,
+      true,
+      true
+    ],
+    [
+      3500,
+      true,
+      true
+    ],
+    [
+      3520,
+      false,
+      false
+    ],
+    [
+      3540,
+      true,
+      true
+    ],
+    [
+      3560,
+      true,
+      true
+    ],
+    [
+      3580,
+      true,
+      true
+    ],
+    [
+      3600,
+      true,
+      true
+    ],
+    [
+      3900,
+      true,
+      true
+    ],
+    [
+      3920,
+      true,
+      true
+    ],
+    [
+      3940,
+      true,
+      true
+    ],
+    [
+      3960,
+      true,
+      true
+    ],
+    [
+      3980,
+      true,
+      true
+    ],
+    [
+      4000,
+      true,
+      true
+    ],
+    [
+      4020,
+      false,
+      false
+    ],
+    [
+      4040,
+      true,
+      true
+    ],
+    [
+      4060,
+      true,
+      true
+    ],
+    [
+      4080,
+      true,
+      true
+    ],
+    [
+      4100,
+      true,
+      true
+    ],
+    [
+      4120,
+      true,
+      true
+    ],
+    [
+      4680,
+      true,
+      true
+    ],
+    [
+      4700,
+      true,
+      true
+    ],
+    [
+      4720,
+      true,
+      true
+    ],
+    [
+      6720,
+      true,
+      true
+    ],
+    [
+      6740,
+      true,
+      true
+    ],
+    [
+      6760,
+      true,
+      true
+    ],
+    [
+      6780,
+      true,
+      true
+    ],
+    [
+      6800,
+      true,
+      true
+    ],
+    [
+      6820,
+      true,
+      true
+    ],
+    [
+      6840,
+      true,
+      true
+    ],
+    [
+      6860,
+      true,
+      true
+    ],
+    [
+      6880,
+      true,
+      true
+    ],
+    [
+      6900,
+      true,
+      true
+    ],
+    [
+      6920,
+      true,
+      true
+    ],
+    [
+      6940,
+      true,
+      true
+    ],
+    [
+      6960,
+      true,
+      true
+    ],
+    [
+      6980,
+      true,
+      true
+    ],
+    [
+      7000,
+      true,
+      true
+    ],
+    [
+      7020,
+      true,
+      true
+    ],
+    [
+      7040,
+      true,
+      true
+    ],
+    [
+      7060,
+      true,
+      true
+    ],
+    [
+      7080,
+      true,
+      true
+    ],
+    [
+      7100,
+      true,
+      true
+    ],
+    [
+      7120,
+      true,
+      true
+    ],
+    [
+      7140,
+      true,
+      true
+    ],
+    [
+      7160,
+      true,
+      true
+    ],
+    [
+      7180,
+      true,
+      true
+    ],
+    [
+      7200,
+      true,
+      true
+    ],
+    [
+      7220,
+      true,
+      true
+    ],
+    [
+      7240,
+      true,
+      true
+    ],
+    [
+      7260,
+      true,
+      true
+    ],
+    [
+      7280,
+      true,
+      true
+    ],
+    [
+      7300,
+      true,
+      true
+    ],
+    [
+      7320,
+      true,
+      true
+    ],
+    [
+      7340,
+      true,
+      true
+    ],
+    [
+      7360,
+      true,
+      true
+    ],
+    [
+      7380,
+      true,
+      true
+    ],
+    [
+      7400,
+      true,
+      true
+    ],
+    [
+      7420,
+      true,
+      true
+    ],
+    [
+      7440,
+      true,
+      true
+    ],
+    [
+      7460,
+      true,
+      true
+    ],
+    [
+      7480,
+      true,
+      true
+    ],
+    [
+      7500,
+      true,
+      true
+    ],
+    [
+      7520,
+      true,
+      true
+    ],
+    [
+      7540,
+      true,
+      true
+    ],
+    [
+      7560,
+      true,
+      true
+    ],
+    [
+      7580,
+      true,
+      true
+    ],
+    [
+      7600,
+      true,
+      true
+    ],
+    [
+      7620,
+      true,
+      true
+    ],
+    [
+      7640,
+      true,
+      true
+    ],
+    [
+      7660,
+      true,
+      true
+    ],
+    [
+      7680,
+      true,
+      true
+    ],
+    [
+      7700,
+      true,
+      true
+    ],
+    [
+      7720,
+      true,
+      true
+    ],
+    [
+      7740,
+      true,
+      true
+    ],
+    [
+      7760,
+      true,
+      true
+    ]
+  ],
+  "baseline_feasible_checks": 127,
+  "introduced_wrench_infeasibilities": 0,
+  "flight_added_pose": 0.0,
+  "flight_added_velocity": 0.0,
+  "retained_root_XYZ": true,
+  "retained_waist_yaw": true,
+  "retained_object": true,
+  "retained_gripper_controls": true,
+  "physical_model_changed": false,
+  "simulation_stepped": false,
+  "pass_cheap_gate": true
+}

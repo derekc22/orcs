@@ -1,0 +1,19 @@
+{
+  "method": "Common float64 compiler path; seed-43 verified evidence is retained by relative links without duplicating large artifacts.",
+  "references": {
+    "pickup_42.npz": "logs/compact_diffusion_pose_v1/primary/pickup_recompiled_42.npz",
+    "pickup_42_diagnostics.npz": "logs/compact_diffusion_pose_v1/primary/pickup_recompiled_42_diagnostics.npz",
+    "pickup_42.json": "logs/compact_diffusion_pose_v1/primary/pickup_recompiled_42.json",
+    "pickup_43.npz": "logs/compact_diffusion_pose_v1/primary/pickup_43.npz",
+    "pickup_43_diagnostics.npz": "logs/compact_diffusion_pose_v1/primary/pickup_43_diagnostics.npz",
+    "pickup_43.json": "logs/compact_diffusion_pose_v1/primary/pickup_recompiled_43.json",
+    "pickup_projection_43": "logs/compact_diffusion_pose_v1/primary/pickup_projection_43",
+    "pickup_feasible_43.npz": "logs/compact_diffusion_pose_v1/primary/pickup_feasible_43.npz",
+    "pickup_feasible_43.json": "logs/compact_diffusion_pose_v1/primary/pickup_feasible_43.json",
+    "pickup_execution_43": "logs/compact_diffusion_pose_v1/primary/pickup_execution_43",
+    "pickup_replay_43": "logs/compact_diffusion_pose_v1/primary/pickup_replay_43"
+  },
+  "earlier_float32_seed42_retained": "logs/compact_diffusion_pose_v1/primary/pickup_execution_42",
+  "reference_recompilation_43": "logs/compact_diffusion_pose_v1/primary/pickup_recompilation_43.json",
+  "common_precision": "float64"
+}
